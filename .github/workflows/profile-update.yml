@@ -88,45 +88,67 @@ jobs:
       
       - name: Update README
         run: |
-          # Backup README
-          cp README.md README.md.bak
+          python3 << 'PYTHON_SCRIPT'
+          import os
+          import re
+          from datetime import datetime
           
-          # Update stats section (if exists)
-          if grep -q "<!-- STATS:START -->" README.md; then
-            # Replace stats between markers
-            sed -i '/<!-- STATS:START -->/,/<!-- STATS:END -->/c\
-<!-- STATS:START -->\n\
-**📊 Weekly Activity**\n\
-- 📦 Total Repositories: ${{ env.TOTAL_REPOS }}\n\
-- 🆕 New Repos (7d): ${{ env.NEW_REPOS }}\n\
-- 📝 Total Gists: ${{ env.TOTAL_GISTS }}\n\
-- ✨ New Gists (7d): ${{ env.NEW_GISTS }}\n\
-- 🛠️ Active Skills: ${{ env.ACTIVE_SKILLS }}\n\
-\n\
-*Last updated: $(date +"%Y-%m-%d %H:%M UTC")*\n\
-<!-- STATS:END -->' README.md
-            
-            echo "✅ Stats section updated"
-          else
-            echo "⚠️ No STATS section found in README (add <!-- STATS:START --> and <!-- STATS:END --> markers)"
-          fi
+          # Read environment variables
+          total_repos = os.environ.get('TOTAL_REPOS', '0')
+          new_repos = os.environ.get('NEW_REPOS', '0')
+          total_gists = os.environ.get('TOTAL_GISTS', '0')
+          new_gists = os.environ.get('NEW_GISTS', '0')
+          active_skills = os.environ.get('ACTIVE_SKILLS', '0')
           
-          # Update Featured Gists section (if exists and we have new gists)
-          if [ -f latest_gists.txt ] && grep -q "<!-- GISTS:START -->" README.md; then
-            # Build Gists list
-            GISTS_LIST=""
-            while IFS='|' read -r GIST_DESC GIST_URL; do
-              GISTS_LIST+="- **[$GIST_DESC]($GIST_URL)**\n"
-            done < latest_gists.txt
-            
-            # Replace gists between markers
-            sed -i "/<!-- GISTS:START -->/,/<!-- GISTS:END -->/c\
-<!-- GISTS:START -->\n\
-$GISTS_LIST\
-<!-- GISTS:END -->" README.md
-            
-            echo "✅ Gists section updated"
-          fi
+          # Read README
+          with open('README.md', 'r') as f:
+              content = f.read()
+          
+          # Update STATS section
+          if '<!-- STATS:START -->' in content and '<!-- STATS:END -->' in content:
+              stats_section = f"""<!-- STATS:START -->
+**📊 Weekly Activity**
+- 📦 Total Repositories: {total_repos}
+- 🆕 New Repos (7d): {new_repos}
+- 📝 Total Gists: {total_gists}
+- ✨ New Gists (7d): {new_gists}
+- 🛠️ Active Skills: {active_skills}
+
+*Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}*
+<!-- STATS:END -->"""
+              
+              content = re.sub(
+                  r'<!-- STATS:START -->.*?<!-- STATS:END -->',
+                  stats_section,
+                  content,
+                  flags=re.DOTALL
+              )
+              print("✅ Stats section updated")
+          else:
+              print("⚠️ No STATS section found in README")
+          
+          # Update GISTS section
+          if os.path.exists('latest_gists.txt') and '<!-- GISTS:START -->' in content:
+              gists_lines = ['<!-- GISTS:START -->']
+              with open('latest_gists.txt', 'r') as f:
+                  for line in f:
+                      desc, url = line.strip().split('|')
+                      gists_lines.append(f'- **[{desc}]({url})**')
+              gists_lines.append('<!-- GISTS:END -->')
+              
+              gists_section = '\n'.join(gists_lines)
+              content = re.sub(
+                  r'<!-- GISTS:START -->.*?<!-- GISTS:END -->',
+                  gists_section,
+                  content,
+                  flags=re.DOTALL
+              )
+              print("✅ Gists section updated")
+          
+          # Write updated README
+          with open('README.md', 'w') as f:
+              f.write(content)
+          PYTHON_SCRIPT
       
       - name: Commit and push changes
         run: |
