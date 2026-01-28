@@ -46,7 +46,7 @@ jobs:
           def get_repo_info():
               """Get basic repository information"""
               cmd = ['gh', 'repo', 'view', 'LuisSambrano/antigravity-skills', '--json', 
-                     'stargazerCount,forkCount,watchers,openIssues,name,description']
+                     'stargazerCount,forkCount,watchers,name,description']
               return run_gh_command(cmd)
 
           def get_issues_stats():
