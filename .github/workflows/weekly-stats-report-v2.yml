@@ -1,0 +1,360 @@
+name: Weekly Repo Stats Report (Hardened)
+
+on:
+  schedule:
+    # Every Monday at 10 AM UTC (7 AM Argentina time)
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+
+# Prevent duplicate reports from running simultaneously
+concurrency:
+  group: weekly-stats-report
+  cancel-in-progress: false
+
+jobs:
+  generate-stats-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install GitHub CLI
+        run: |
+          if type -p gh > /dev/null; then
+            echo "✅ GitHub CLI already installed"
+            gh --version
+            exit 0
+          fi
+
+          echo "📦 Installing GitHub CLI..."
+
+          # Error handling for each step
+          if ! curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg; then
+            echo "❌ Failed to download GitHub CLI keyring"
+            exit 1
+          fi
+
+          if ! echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null; then
+            echo "❌ Failed to add GitHub CLI repository"
+            exit 1
+          fi
+
+          if ! sudo apt update; then
+            echo "❌ Failed to update package list"
+            exit 1
+          fi
+
+          if ! sudo apt install gh -y; then
+            echo "❌ Failed to install GitHub CLI"
+            exit 1
+          fi
+
+          echo "✅ GitHub CLI installed successfully"
+          gh --version
+
+      - name: Fetch repository stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          python3 << 'PYTHON_SCRIPT'
+          import subprocess
+          import json
+          import os
+          import sys
+          import time
+          from datetime import datetime, timedelta, timezone
+
+          # Get repository from environment
+          REPO = os.environ.get('REPO_NAME', 'LuisSambrano/antigravity-skills')
+          print(f"📊 Fetching stats for repository: {REPO}\n")
+
+          def log_error(context, error, details=None):
+              """Structured error logging"""
+              print(f"❌ ERROR in {context}")
+              print(f"   Type: {type(error).__name__}")
+              print(f"   Message: {str(error)}")
+              if details:
+                  print(f"   Details: {details}")
+              print()
+
+          def run_gh_command(cmd, max_retries=3, backoff=2):
+              """Run gh CLI command with error handling and retry logic"""
+              for attempt in range(max_retries):
+                  try:
+                      result = subprocess.run(
+                          cmd,
+                          capture_output=True,
+                          text=True,
+                          check=True,
+                          timeout=30
+                      )
+                      
+                      # Validate output before parsing
+                      if not result.stdout.strip():
+                          print(f"⚠️ Empty response from: {' '.join(cmd)}")
+                          return {} if '--json' in cmd else []
+                      
+                      # Try to parse JSON with error handling
+                      try:
+                          return json.loads(result.stdout)
+                      except json.JSONDecodeError as e:
+                          print(f"❌ Invalid JSON from GitHub CLI")
+                          print(f"Command: {' '.join(cmd)}")
+                          print(f"Error: {e}")
+                          print(f"Output (first 200 chars): {result.stdout[:200]}")
+                          raise
+                          
+                  except subprocess.TimeoutExpired:
+                      print(f"❌ Command timed out after 30s: {' '.join(cmd)}")
+                      if attempt < max_retries - 1:
+                          wait_time = backoff ** attempt
+                          print(f"⚠️ Retrying in {wait_time}s... (attempt {attempt + 1}/{max_retries})")
+                          time.sleep(wait_time)
+                          continue
+                      raise
+                  except subprocess.CalledProcessError as e:
+                      if 'rate limit' in e.stderr.lower() and attempt < max_retries - 1:
+                          wait_time = backoff ** attempt
+                          print(f"⚠️ Rate limited, waiting {wait_time}s... (attempt {attempt + 1}/{max_retries})")
+                          time.sleep(wait_time)
+                          continue
+                      print(f"❌ GitHub CLI command failed: {' '.join(cmd)}")
+                      print(f"Exit code: {e.returncode}")
+                      print(f"Stderr: {e.stderr}")
+                      raise
+
+          def get_repo_info():
+              """Get basic repository information"""
+              try:
+                  cmd = ['gh', 'repo', 'view', REPO, '--json', 
+                         'stargazerCount,forkCount,watchers,name,description']
+                  return run_gh_command(cmd)
+              except Exception as e:
+                  log_error("get_repo_info", e, {"repo": REPO})
+                  raise
+
+          def get_issues_stats():
+              """Get issues statistics"""
+              try:
+                  # Open issues
+                  open_issues_cmd = ['gh', 'issue', 'list', '--repo', REPO,
+                                    '--state', 'open', '--limit', '1000', '--json', 'number']
+                  open_issues = run_gh_command(open_issues_cmd)
+                  
+                  # Closed issues
+                  closed_issues_cmd = ['gh', 'issue', 'list', '--repo', REPO,
+                                      '--state', 'closed', '--limit', '1000', '--json', 'number,closedAt']
+                  closed_issues = run_gh_command(closed_issues_cmd)
+                  
+                  # Issues closed in last 7 days (using UTC timezone)
+                  week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+                  recent_closed = [i for i in closed_issues if i.get('closedAt', '') >= week_ago]
+                  
+                  return {
+                      'open': len(open_issues),
+                      'closed_total': len(closed_issues),
+                      'closed_this_week': len(recent_closed)
+                  }
+              except Exception as e:
+                  log_error("get_issues_stats", e)
+                  raise
+
+          def get_pr_stats():
+              """Get pull request statistics"""
+              try:
+                  # Open PRs
+                  open_prs_cmd = ['gh', 'pr', 'list', '--repo', REPO,
+                                 '--state', 'open', '--limit', '1000', '--json', 'number']
+                  open_prs = run_gh_command(open_prs_cmd)
+                  
+                  # Merged PRs
+                  merged_prs_cmd = ['gh', 'pr', 'list', '--repo', REPO,
+                                   '--state', 'merged', '--limit', '1000', '--json', 'number,mergedAt']
+                  merged_prs = run_gh_command(merged_prs_cmd)
+                  
+                  # PRs merged in last 7 days (using UTC timezone)
+                  week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+                  recent_merged = [p for p in merged_prs if p.get('mergedAt', '') >= week_ago]
+                  
+                  return {
+                      'open': len(open_prs),
+                      'merged_total': len(merged_prs),
+                      'merged_this_week': len(recent_merged)
+                  }
+              except Exception as e:
+                  log_error("get_pr_stats", e)
+                  raise
+
+          def get_commit_stats():
+              """Get commit statistics for last 7 days"""
+              try:
+                  week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).strftime('%Y-%m-%d')
+                  cmd = ['git', 'log', '--since', week_ago, '--pretty=format:%an', '--all']
+                  result = subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=30)
+                  
+                  if not result.stdout.strip():
+                      return {'total': 0, 'contributors': {}}
+                  
+                  authors = result.stdout.strip().split('\n')
+                  contributors = {}
+                  for author in authors:
+                      # Escape markdown special characters in author names
+                      safe_author = author.replace('*', '\\*').replace('_', '\\_').replace('[', '\\[')
+                      contributors[safe_author] = contributors.get(safe_author, 0) + 1
+                  
+                  return {
+                      'total': len(authors),
+                      'contributors': contributors
+                  }
+              except subprocess.TimeoutExpired:
+                  print("❌ Git log command timed out")
+                  return {'total': 0, 'contributors': {}}
+              except subprocess.CalledProcessError as e:
+                  print(f"❌ Git log failed: {e.stderr}")
+                  return {'total': 0, 'contributors': {}}
+              except Exception as e:
+                  log_error("get_commit_stats", e)
+                  raise
+
+          def format_report(repo_info, issues, prs, commits):
+              """Format the stats report as markdown"""
+              today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+              
+              report = f"""## 📊 Weekly Stats Report - {today}
+
+          ### Repository Metrics
+
+          - ⭐ **Stars**: {repo_info.get('stargazerCount', 0)}
+          - 🍴 **Forks**: {repo_info.get('forkCount', 0)}
+          - 👀 **Watchers**: {repo_info.get('watchers', {}).get('totalCount', 0)}
+
+          ### Activity This Week
+
+          #### Issues
+          - 🐛 **Open Issues**: {issues['open']}
+          - ✅ **Closed This Week**: {issues['closed_this_week']}
+          - 📊 **Total Closed**: {issues['closed_total']}
+
+          #### Pull Requests
+          - 🔀 **Open PRs**: {prs['open']}
+          - ✅ **Merged This Week**: {prs['merged_this_week']}
+          - 📊 **Total Merged**: {prs['merged_total']}
+
+          #### Commits
+          - 📝 **Commits This Week**: {commits['total']}
+          """
+              
+              if commits['contributors']:
+                  report += "\n#### Top Contributors This Week\n\n"
+                  sorted_contributors = sorted(commits['contributors'].items(), 
+                                              key=lambda x: x[1], reverse=True)
+                  for i, (author, count) in enumerate(sorted_contributors[:5], 1):
+                      report += f"{i}. **{author}** - {count} commit{'s' if count > 1 else ''}\n"
+              
+              next_report = (datetime.now(timezone.utc) + timedelta(days=7)).strftime('%Y-%m-%d')
+              report += f"""
+          ---
+
+          > 💡 **Tip:** You can manually close this issue after reviewing the stats to keep the backlog clean.
+
+          *This report is automatically generated every Monday. Next report: {next_report}*
+          """
+              
+              return report
+
+          # Main execution
+          try:
+              print("📊 Fetching repository stats...\n")
+
+              repo_info = get_repo_info()
+              print(f"   ✅ Repository: {repo_info.get('name', 'unknown')}")
+              print(f"   ⭐ Stars: {repo_info.get('stargazerCount', 0)}")
+
+              issues = get_issues_stats()
+              print(f"   🐛 Issues: {issues['open']} open, {issues['closed_this_week']} closed this week")
+
+              prs = get_pr_stats()
+              print(f"   🔀 PRs: {prs['open']} open, {prs['merged_this_week']} merged this week")
+
+              commits = get_commit_stats()
+              print(f"   📝 Commits: {commits['total']} this week")
+
+              # Generate report
+              report = format_report(repo_info, issues, prs, commits)
+
+              # Save to file for next step
+              with open('stats_report.md', 'w') as f:
+                  f.write(report)
+
+              print("\n✅ Stats report generated successfully")
+              
+          except Exception as e:
+              log_error("main execution", e)
+              print("\n❌ Failed to generate stats report")
+              sys.exit(1)
+          PYTHON_SCRIPT
+
+      - name: Create GitHub Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          if [ ! -f stats_report.md ]; then
+            echo "❌ stats_report.md not found"
+            exit 1
+          fi
+
+          TODAY=$(date +%Y-%m-%d)
+
+          # Try with labels first, fallback without labels if they don't exist
+          if gh issue create \
+            --title "📊 Weekly Stats Report - $TODAY" \
+            --body-file stats_report.md \
+            --label "stats-report,automated" \
+            --repo "$REPO_NAME"; then
+            echo "✅ GitHub issue created with labels"
+          else
+            echo "⚠️ Failed to create issue with labels, trying without..."
+            if gh issue create \
+              --title "📊 Weekly Stats Report - $TODAY" \
+              --body-file stats_report.md \
+              --repo "$REPO_NAME"; then
+              echo "✅ GitHub issue created (without labels)"
+              echo "⚠️ Note: Labels 'stats-report' or 'automated' may not exist"
+            else
+              echo "❌ Failed to create GitHub issue"
+              exit 1
+            fi
+          fi
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 📊 Weekly Stats Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository**: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f stats_report.md ]; then
+            if [ "${{ job.status }}" == "success" ]; then
+              echo "✅ Stats report generated and issue created successfully" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              cat stats_report.md >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ Stats report generation failed. Check logs for details." >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "⚠️ stats_report.md not found" >> $GITHUB_STEP_SUMMARY
+          fi
