@@ -1,0 +1,211 @@
+name: Weekly Repo Stats Report
+
+on:
+  schedule:
+    # Every Monday at 10 AM UTC (7 AM Argentina time)
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+
+jobs:
+  generate-stats-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install GitHub CLI
+        run: |
+          type -p gh > /dev/null || (
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install gh -y
+          )
+
+      - name: Fetch repository stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'PYTHON_SCRIPT'
+          import subprocess
+          import json
+          import os
+          from datetime import datetime, timedelta
+
+          def run_gh_command(cmd):
+              """Run gh CLI command and return JSON output"""
+              result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+              return json.loads(result.stdout)
+
+          def get_repo_info():
+              """Get basic repository information"""
+              cmd = ['gh', 'repo', 'view', 'LuisSambrano/antigravity-skills', '--json', 
+                     'stargazerCount,forkCount,watchers,openIssues,name,description']
+              return run_gh_command(cmd)
+
+          def get_issues_stats():
+              """Get issues statistics"""
+              # Open issues
+              open_issues_cmd = ['gh', 'issue', 'list', '--repo', 'LuisSambrano/antigravity-skills',
+                                '--state', 'open', '--limit', '1000', '--json', 'number']
+              open_issues = run_gh_command(open_issues_cmd)
+              
+              # Closed issues
+              closed_issues_cmd = ['gh', 'issue', 'list', '--repo', 'LuisSambrano/antigravity-skills',
+                                  '--state', 'closed', '--limit', '1000', '--json', 'number,closedAt']
+              closed_issues = run_gh_command(closed_issues_cmd)
+              
+              # Issues closed in last 7 days
+              week_ago = (datetime.now() - timedelta(days=7)).isoformat()
+              recent_closed = [i for i in closed_issues if i.get('closedAt', '') >= week_ago]
+              
+              return {
+                  'open': len(open_issues),
+                  'closed_total': len(closed_issues),
+                  'closed_this_week': len(recent_closed)
+              }
+
+          def get_pr_stats():
+              """Get pull request statistics"""
+              # Open PRs
+              open_prs_cmd = ['gh', 'pr', 'list', '--repo', 'LuisSambrano/antigravity-skills',
+                             '--state', 'open', '--limit', '1000', '--json', 'number']
+              open_prs = run_gh_command(open_prs_cmd)
+              
+              # Merged PRs
+              merged_prs_cmd = ['gh', 'pr', 'list', '--repo', 'LuisSambrano/antigravity-skills',
+                               '--state', 'merged', '--limit', '1000', '--json', 'number,mergedAt']
+              merged_prs = run_gh_command(merged_prs_cmd)
+              
+              # PRs merged in last 7 days
+              week_ago = (datetime.now() - timedelta(days=7)).isoformat()
+              recent_merged = [p for p in merged_prs if p.get('mergedAt', '') >= week_ago]
+              
+              return {
+                  'open': len(open_prs),
+                  'merged_total': len(merged_prs),
+                  'merged_this_week': len(recent_merged)
+              }
+
+          def get_commit_stats():
+              """Get commit statistics for last 7 days"""
+              week_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
+              cmd = ['git', 'log', '--since', week_ago, '--pretty=format:%an', '--all']
+              result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+              
+              if not result.stdout.strip():
+                  return {'total': 0, 'contributors': {}}
+              
+              authors = result.stdout.strip().split('\n')
+              contributors = {}
+              for author in authors:
+                  contributors[author] = contributors.get(author, 0) + 1
+              
+              return {
+                  'total': len(authors),
+                  'contributors': contributors
+              }
+
+          def calculate_growth(current, previous):
+              """Calculate growth percentage"""
+              if previous == 0:
+                  return '+100%' if current > 0 else '0%'
+              growth = ((current - previous) / previous) * 100
+              sign = '+' if growth > 0 else ''
+              return f'{sign}{growth:.1f}%'
+
+          def format_report(repo_info, issues, prs, commits):
+              """Format the stats report as markdown"""
+              today = datetime.now().strftime('%Y-%m-%d')
+              
+              report = f"""## 📊 Weekly Stats Report - {today}
+
+          ### Repository Metrics
+
+          - ⭐ **Stars**: {repo_info['stargazerCount']}
+          - 🍴 **Forks**: {repo_info['forkCount']}
+          - 👀 **Watchers**: {repo_info['watchers']['totalCount']}
+
+          ### Activity This Week
+
+          #### Issues
+          - 🐛 **Open Issues**: {issues['open']}
+          - ✅ **Closed This Week**: {issues['closed_this_week']}
+          - 📊 **Total Closed**: {issues['closed_total']}
+
+          #### Pull Requests
+          - 🔀 **Open PRs**: {prs['open']}
+          - ✅ **Merged This Week**: {prs['merged_this_week']}
+          - 📊 **Total Merged**: {prs['merged_total']}
+
+          #### Commits
+          - 📝 **Commits This Week**: {commits['total']}
+          """
+              
+              if commits['contributors']:
+                  report += "\n#### Top Contributors This Week\n\n"
+                  sorted_contributors = sorted(commits['contributors'].items(), 
+                                              key=lambda x: x[1], reverse=True)
+                  for i, (author, count) in enumerate(sorted_contributors[:5], 1):
+                      report += f"{i}. **{author}** - {count} commit{'s' if count > 1 else ''}\n"
+              
+              report += f"""
+          ---
+
+          *This report is automatically generated every Monday. Next report: {(datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')}*
+          """
+              
+              return report
+
+          # Main execution
+          print("📊 Fetching repository stats...")
+
+          repo_info = get_repo_info()
+          print(f"   ✅ Repository: {repo_info['name']}")
+          print(f"   ⭐ Stars: {repo_info['stargazerCount']}")
+
+          issues = get_issues_stats()
+          print(f"   🐛 Issues: {issues['open']} open, {issues['closed_this_week']} closed this week")
+
+          prs = get_pr_stats()
+          print(f"   🔀 PRs: {prs['open']} open, {prs['merged_this_week']} merged this week")
+
+          commits = get_commit_stats()
+          print(f"   📝 Commits: {commits['total']} this week")
+
+          # Generate report
+          report = format_report(repo_info, issues, prs, commits)
+
+          # Save to file for next step
+          with open('stats_report.md', 'w') as f:
+              f.write(report)
+
+          print("\n✅ Stats report generated")
+          PYTHON_SCRIPT
+
+      - name: Create GitHub Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPORT=$(cat stats_report.md)
+          TODAY=$(date +%Y-%m-%d)
+
+          gh issue create \
+            --title "📊 Weekly Stats Report - $TODAY" \
+            --body "$REPORT" \
+            --label "stats-report,automated" \
+            --repo LuisSambrano/antigravity-skills
+
+          echo "✅ GitHub issue created with stats report"
+
+      - name: Create summary
+        run: |
+          echo "## 📊 Weekly Stats Report Generated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat stats_report.md >> $GITHUB_STEP_SUMMARY
