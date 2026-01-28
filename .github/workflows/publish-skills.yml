@@ -1,0 +1,164 @@
+name: Skill Publishing Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".agent/skills/custom/**"
+  workflow_dispatch:
+
+jobs:
+  publish-skill:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect new or modified skills
+        id: detect
+        run: |
+          # Get changed files in skills directory
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- '.agent/skills/custom/')
+
+          # Extract skill directories
+          SKILLS=$(echo "$CHANGED_FILES" | grep -oP '\.agent/skills/custom/\K[^/]+' | sort -u)
+
+          if [ -z "$SKILLS" ]; then
+            echo "No skill changes detected"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed skills: $SKILLS"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "skills<<EOF" >> $GITHUB_OUTPUT
+            echo "$SKILLS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node.js
+        if: steps.detect.outputs.has_changes == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install GitHub CLI
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          type -p gh >/dev/null || (
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install gh -y
+          )
+
+      - name: Create Gists for new skills
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Read changed skills
+          SKILLS="${{ steps.detect.outputs.skills }}"
+
+          for SKILL in $SKILLS; do
+            SKILL_PATH=".agent/skills/custom/$SKILL"
+            
+            # Check if SKILL.md exists
+            if [ ! -f "$SKILL_PATH/SKILL.md" ]; then
+              echo "⚠️ No SKILL.md found for $SKILL, skipping..."
+              continue
+            fi
+            
+            # Extract skill name and description from SKILL.md frontmatter
+            SKILL_NAME=$(grep -m 1 "^name:" "$SKILL_PATH/SKILL.md" | sed 's/name: //')
+            SKILL_DESC=$(grep -m 1 "^description:" "$SKILL_PATH/SKILL.md" | sed 's/description: //')
+            
+            echo "📝 Creating Gist for: $SKILL_NAME"
+            
+            # Create Gist (will return URL)
+            GIST_URL=$(gh gist create "$SKILL_PATH/SKILL.md" \
+              --desc "$SKILL_NAME - $SKILL_DESC" \
+              --public | tail -n 1)
+            
+            echo "✅ Gist created: $GIST_URL"
+            
+            # Save Gist URL to file for later use
+            echo "$SKILL_NAME|$GIST_URL" >> gist_urls.txt
+          done
+
+      - name: Update README with new Gists
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          if [ ! -f gist_urls.txt ]; then
+            echo "No Gists created, skipping README update"
+            exit 0
+          fi
+
+          # Backup README
+          cp README.md README.md.bak
+
+          # Check if Featured Gists section exists
+          if ! grep -q "## 📝 Featured Gists" README.md; then
+            echo "⚠️ Featured Gists section not found in README"
+            exit 1
+          fi
+
+          # Add new Gists to the section
+          while IFS='|' read -r SKILL_NAME GIST_URL; do
+            # Check if Gist already exists in README
+            if grep -q "$GIST_URL" README.md; then
+              echo "ℹ️ Gist for $SKILL_NAME already in README"
+              continue
+            fi
+            
+            # Insert new Gist link after "Featured Gists" header
+            sed -i "/## 📝 Featured Gists/a - **[$SKILL_NAME]($GIST_URL)** - New skill showcase" README.md
+            echo "✅ Added $SKILL_NAME to README"
+          done < gist_urls.txt
+
+      - name: Commit and push changes
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet README.md; then
+            echo "No changes to commit"
+          else
+            git add README.md
+            git commit -m "docs: auto-update README with new skill Gists [skip ci]"
+            git push
+            echo "✅ README updated and pushed"
+          fi
+
+      - name: Create notification issue
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -f gist_urls.txt ]; then
+            exit 0
+          fi
+
+          # Build issue body
+          ISSUE_BODY="## 🎉 New Skills Published\n\n"
+          ISSUE_BODY+="The following skills have been automatically published as Gists:\n\n"
+
+          while IFS='|' read -r SKILL_NAME GIST_URL; do
+            ISSUE_BODY+="- **$SKILL_NAME**: $GIST_URL\n"
+          done < gist_urls.txt
+
+          ISSUE_BODY+="\n---\n\n"
+          ISSUE_BODY+="**Next Steps (Manual)**:\n"
+          ISSUE_BODY+="1. Review the Gists for accuracy\n"
+          ISSUE_BODY+="2. Share on social media (LinkedIn/Twitter)\n"
+          ISSUE_BODY+="3. Close this issue when done\n"
+
+          # Create issue
+          gh issue create \
+            --title "📝 New Skills Published - $(date +%Y-%m-%d)" \
+            --body "$ISSUE_BODY" \
+            --label "automation,documentation"
+
+          echo "✅ Notification issue created"

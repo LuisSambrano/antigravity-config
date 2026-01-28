@@ -1,0 +1,156 @@
+name: Profile Auto-Update
+
+on:
+  schedule:
+    # Runs every Monday at 9 AM UTC (6 AM Argentina time)
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+        with:
+          repository: LuisSambrano/LuisSambrano
+          token: ${{ secrets.PROFILE_UPDATE_TOKEN }}
+      
+      - name: Checkout skills repository
+        uses: actions/checkout@v4
+        with:
+          repository: LuisSambrano/antigravity-skills
+          path: antigravity-skills
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install GitHub CLI
+        run: |
+          type -p gh >/dev/null || (
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install gh -y
+          )
+      
+      - name: Fetch latest stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get total repos
+          TOTAL_REPOS=$(gh repo list LuisSambrano --limit 1000 --json name | jq '. | length')
+          echo "TOTAL_REPOS=$TOTAL_REPOS" >> $GITHUB_ENV
+          
+          # Get repos created in last 7 days
+          WEEK_AGO=$(date -d '7 days ago' +%Y-%m-%d)
+          NEW_REPOS=$(gh repo list LuisSambrano --limit 1000 --json name,createdAt \
+            | jq --arg date "$WEEK_AGO" '[.[] | select(.createdAt >= $date)] | length')
+          echo "NEW_REPOS=$NEW_REPOS" >> $GITHUB_ENV
+          
+          # Get total Gists
+          TOTAL_GISTS=$(gh gist list --limit 1000 | wc -l)
+          echo "TOTAL_GISTS=$TOTAL_GISTS" >> $GITHUB_ENV
+          
+          # Get Gists created in last 7 days
+          NEW_GISTS=$(gh gist list --limit 1000 | awk -v date="$(date -d '7 days ago' +%Y-%m-%d)" '$2 >= date' | wc -l)
+          echo "NEW_GISTS=$NEW_GISTS" >> $GITHUB_ENV
+          
+          # Get active skills count
+          ACTIVE_SKILLS=$(find antigravity-skills/.agent/skills/custom -name "SKILL.md" | wc -l)
+          echo "ACTIVE_SKILLS=$ACTIVE_SKILLS" >> $GITHUB_ENV
+          
+          echo "📊 Stats collected:"
+          echo "  - Total Repos: $TOTAL_REPOS"
+          echo "  - New Repos (7d): $NEW_REPOS"
+          echo "  - Total Gists: $TOTAL_GISTS"
+          echo "  - New Gists (7d): $NEW_GISTS"
+          echo "  - Active Skills: $ACTIVE_SKILLS"
+      
+      - name: Get latest Gists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get 3 most recent Gists
+          gh gist list --limit 3 | while read -r gist_id rest; do
+            GIST_URL="https://gist.github.com/LuisSambrano/$gist_id"
+            GIST_DESC=$(gh gist view $gist_id --raw | head -n 1 | sed 's/^# //')
+            echo "$GIST_DESC|$GIST_URL" >> latest_gists.txt
+          done
+          
+          if [ -f latest_gists.txt ]; then
+            echo "📝 Latest Gists:"
+            cat latest_gists.txt
+          fi
+      
+      - name: Update README
+        run: |
+          # Backup README
+          cp README.md README.md.bak
+          
+          # Update stats section (if exists)
+          if grep -q "<!-- STATS:START -->" README.md; then
+            # Replace stats between markers
+            sed -i '/<!-- STATS:START -->/,/<!-- STATS:END -->/c\
+<!-- STATS:START -->\n\
+**📊 Weekly Activity**\n\
+- 📦 Total Repositories: ${{ env.TOTAL_REPOS }}\n\
+- 🆕 New Repos (7d): ${{ env.NEW_REPOS }}\n\
+- 📝 Total Gists: ${{ env.TOTAL_GISTS }}\n\
+- ✨ New Gists (7d): ${{ env.NEW_GISTS }}\n\
+- 🛠️ Active Skills: ${{ env.ACTIVE_SKILLS }}\n\
+\n\
+*Last updated: $(date +"%Y-%m-%d %H:%M UTC")*\n\
+<!-- STATS:END -->' README.md
+            
+            echo "✅ Stats section updated"
+          else
+            echo "⚠️ No STATS section found in README (add <!-- STATS:START --> and <!-- STATS:END --> markers)"
+          fi
+          
+          # Update Featured Gists section (if exists and we have new gists)
+          if [ -f latest_gists.txt ] && grep -q "<!-- GISTS:START -->" README.md; then
+            # Build Gists list
+            GISTS_LIST=""
+            while IFS='|' read -r GIST_DESC GIST_URL; do
+              GISTS_LIST+="- **[$GIST_DESC]($GIST_URL)**\n"
+            done < latest_gists.txt
+            
+            # Replace gists between markers
+            sed -i "/<!-- GISTS:START -->/,/<!-- GISTS:END -->/c\
+<!-- GISTS:START -->\n\
+$GISTS_LIST\
+<!-- GISTS:END -->" README.md
+            
+            echo "✅ Gists section updated"
+          fi
+      
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --quiet README.md; then
+            echo "No changes to commit"
+          else
+            git add README.md
+            git commit -m "chore: auto-update profile stats [skip ci]"
+            git push
+            echo "✅ Profile README updated and pushed"
+          fi
+      
+      - name: Create summary
+        run: |
+          echo "## 📊 Profile Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Stats Updated:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Repositories: ${{ env.TOTAL_REPOS }}" >> $GITHUB_STEP_SUMMARY
+          echo "- New Repos (7d): ${{ env.NEW_REPOS }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Gists: ${{ env.TOTAL_GISTS }}" >> $GITHUB_STEP_SUMMARY
+          echo "- New Gists (7d): ${{ env.NEW_GISTS }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Active Skills: ${{ env.ACTIVE_SKILLS }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Profile updated successfully!" >> $GITHUB_STEP_SUMMARY
