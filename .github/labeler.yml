@@ -1,0 +1,10 @@
+# Add 'bug' label to any changes within 'src'
+bug:
+  - changed-files:
+    - any-glob-to-any-file: 'src/**/*'
+
+# Add 'documentation' label to any changes within 'docs'
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: 'docs/**/*'
+    - any-glob-to-any-file: '*.md'
