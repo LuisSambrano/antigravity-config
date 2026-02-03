@@ -245,7 +245,7 @@ git push origin feature/amazing-feature
 ## 📬 Connect
 
 <a href="https://github.com/LuisSambrano"><img src="https://img.shields.io/badge/GitHub-LuisSambrano-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
-<a href="https://twitter.com/LuisSambrano"><img src="https://img.shields.io/badge/Twitter-@LuisSambrano-1DA1F2?style=for-the-badge&logo=twitter" alt="Twitter"/></a>
+<a href="https://x.com/luissambrano_ux"><img src="https://img.shields.io/badge/Twitter-@luissambrano__ux-1DA1F2?style=for-the-badge&logo=twitter" alt="Twitter"/></a>
 
 <br/><br/>
 
