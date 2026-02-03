@@ -1,0 +1,181 @@
+# 📚 Skills Index
+
+A curated catalog of 100+ AI skills organized by category.
+
+---
+
+## 🔍 Quick Navigation
+
+| Category                      | Skills    | Focus                         |
+| ----------------------------- | --------- | ----------------------------- |
+| [1-core](#1-core)             | Essential | Always-loaded fundamentals    |
+| [2-ai](#2-ai)                 | 30+       | Agents, prompting, RAG, voice |
+| [3-web](#3-web)               | 60+       | Frontend, backend, platforms  |
+| [4-automation](#4-automation) | 25+       | Testing, CI/CD, scraping      |
+| [5-security](#5-security)     | 30+       | API security, pentesting      |
+| [6-content](#6-content)       | 15+       | Writing, SEO, docs            |
+| [7-meta](#7-meta)             | 15+       | Skills about skills           |
+
+---
+
+## 1-core
+
+Essential skills loaded by default.
+
+| Skill                 | Description                   |
+| --------------------- | ----------------------------- |
+| `coding-standards`    | Consistent coding conventions |
+| `project-guidelines`  | Project structure standards   |
+| `typescript-patterns` | TypeScript best practices     |
+
+---
+
+## 2-ai
+
+AI agents, prompting, and machine learning.
+
+### 2-ai/agents
+
+| Skill               | Description                              |
+| ------------------- | ---------------------------------------- |
+| `langgraph`         | Multi-agent orchestration with LangGraph |
+| `crewai`            | Role-based multi-agent framework         |
+| `autonomous-agents` | Self-guided AI systems                   |
+| `agent-evaluation`  | Testing and benchmarking agents          |
+| `parallel-agents`   | Parallel agent orchestration             |
+
+### 2-ai/prompting
+
+| Skill                | Description                    |
+| -------------------- | ------------------------------ |
+| `prompt-engineering` | Prompt design best practices   |
+| `prompt-library`     | Curated prompt collection      |
+| `prompt-caching`     | Caching strategies for prompts |
+
+### 2-ai/rag
+
+| Skill                | Description                 |
+| -------------------- | --------------------------- |
+| `rag-engineer`       | Building RAG systems        |
+| `rag-implementation` | RAG patterns and strategies |
+
+### 2-ai/voice
+
+| Skill                  | Description             |
+| ---------------------- | ----------------------- |
+| `voice-agents`         | Voice-enabled AI agents |
+| `voice-ai-development` | Voice AI applications   |
+
+---
+
+## 3-web
+
+Web development skills.
+
+### 3-web/frontend
+
+| Skill             | Description                 |
+| ----------------- | --------------------------- |
+| `nextjs-*`        | Next.js App Router patterns |
+| `react-*`         | React best practices        |
+| `tailwind-*`      | Tailwind CSS patterns       |
+| `frontend-design` | UI/UX design principles     |
+
+### 3-web/backend
+
+| Skill             | Description               |
+| ----------------- | ------------------------- |
+| `api-patterns`    | API design best practices |
+| `database-design` | Database architecture     |
+| `graphql`         | GraphQL development       |
+
+### 3-web/platforms
+
+| Skill        | Description          |
+| ------------ | -------------------- |
+| `supabase-*` | Supabase integration |
+| `vercel-*`   | Vercel deployment    |
+| `firebase`   | Firebase development |
+
+---
+
+## 4-automation
+
+Automation and DevOps skills.
+
+### 4-automation/testing
+
+| Skill              | Description                |
+| ------------------ | -------------------------- |
+| `playwright-skill` | Browser automation testing |
+| `testing-patterns` | Testing best practices     |
+
+### 4-automation/cicd
+
+| Skill                        | Description           |
+| ---------------------------- | --------------------- |
+| `github-workflow-automation` | GitHub Actions        |
+| `deployment-procedures`      | Deployment strategies |
+
+### 4-automation/scraping
+
+| Skill                | Description                 |
+| -------------------- | --------------------------- |
+| `firecrawl-scraper`  | Web scraping with Firecrawl |
+| `browser-automation` | Browser automation patterns |
+
+---
+
+## 5-security
+
+Security and authentication skills.
+
+| Skill                         | Description               |
+| ----------------------------- | ------------------------- |
+| `api-security-best-practices` | API security patterns     |
+| `pentest-checklist`           | Penetration testing guide |
+| `auth-patterns`               | Authentication patterns   |
+
+---
+
+## 6-content
+
+Content creation and writing skills.
+
+| Skill               | Description             |
+| ------------------- | ----------------------- |
+| `technical-writing` | Technical documentation |
+| `seo-copywriting`   | SEO-optimized content   |
+| `blog-writing`      | Blog post creation      |
+
+---
+
+## 7-meta
+
+Skills for creating and managing skills.
+
+| Skill                 | Description                |
+| --------------------- | -------------------------- |
+| `skill-creator`       | How to create new skills   |
+| `skill-developer`     | Advanced skill development |
+| `planning-with-files` | File-based planning        |
+| `kaizen`              | Continuous improvement     |
+
+---
+
+## 🏷️ Tags Index
+
+Quick lookup by technology:
+
+- **LangGraph**: `2-ai/agents/langgraph`
+- **CrewAI**: `2-ai/agents/crewai`
+- **Next.js**: `3-web/frontend/nextjs-*`
+- **Supabase**: `3-web/platforms/supabase-*`
+- **Playwright**: `4-automation/testing/playwright-skill`
+- **GitHub Actions**: `4-automation/cicd/github-workflow-automation`
+
+---
+
+## ➕ Adding Skills
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for how to add new skills.

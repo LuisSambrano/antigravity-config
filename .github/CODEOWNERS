@@ -1,0 +1,27 @@
+# CODEOWNERS for Antigravity Config
+# These owners will be requested for review when the respective paths are modified.
+
+# Default owner for everything
+* @LuisSambrano
+
+# Skills by category
+/skills/1-core/ @LuisSambrano
+/skills/2-ai/ @LuisSambrano
+/skills/3-web/ @LuisSambrano
+/skills/4-automation/ @LuisSambrano
+/skills/5-security/ @LuisSambrano
+/skills/6-content/ @LuisSambrano
+/skills/7-meta/ @LuisSambrano
+
+# Rules (strict review)
+/rules/ @LuisSambrano
+
+# Workflows (strict review)
+/workflows/ @LuisSambrano
+
+# Installation script (strict review)
+install.sh @LuisSambrano
+
+# Documentation
+/docs/ @LuisSambrano
+*.md @LuisSambrano
