@@ -15,6 +15,7 @@ A curated catalog of 100+ AI skills organized by category.
 | [5-security](#5-security)     | 30+       | API security, pentesting      |
 | [6-content](#6-content)       | 15+       | Writing, SEO, docs            |
 | [7-meta](#7-meta)             | 15+       | Skills about skills           |
+| [8-blockchain](#8-blockchain) | 10+       | Web3, Celo, EVM, DeFi         |
 
 ---
 
@@ -163,6 +164,25 @@ Skills for creating and managing skills.
 
 ---
 
+## 8-blockchain
+
+Web3 and Blockchain development skills focused on Celo and EVM.
+
+### 8-blockchain/celo
+
+| Skill                     | Description                        |
+| ------------------------- | ---------------------------------- |
+| `minipay-integration`     | Wallet integration for MiniPay     |
+| `celo-rpc`                | Rpc interaction and network info   |
+| `fee-abstraction`         | Gas payment with stablecoins       |
+| `celo-stablecoins`        | Address book for cUSD, cEUR, cREAL |
+| `celo-composer`           | Celo DApp scaffolding              |
+| `viem` & `wagmi`          | Modern Ethereum libraries for Celo |
+| `evm-hardhat` & `foundry` | Smart contract development tools   |
+| `bridging` & `defi`       | Cross-chain and DeFi protocols     |
+
+---
+
 ## 🏷️ Tags Index
 
 Quick lookup by technology:
@@ -173,6 +193,8 @@ Quick lookup by technology:
 - **Supabase**: `3-web/platforms/supabase-*`
 - **Playwright**: `4-automation/testing/playwright-skill`
 - **GitHub Actions**: `4-automation/cicd/github-workflow-automation`
+- **Celo**: `8-blockchain/celo/*`
+- **MiniPay**: `8-blockchain/celo/minipay-integration`
 
 ---
 
