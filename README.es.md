@@ -209,7 +209,7 @@ Este proyecto actúa como el **Centro de Investigación** para el ecosistema Ant
 | [prompts/](./research/prompts/)               | Estado de Definición de Reglas Maestras      |
 | [rules/](./rules/)                            | Documentos Detallados de Estándares          |
 
-> 💡 **Para IAs**: Lee `KEY_FINDINGS.md` primero para entender el **Protocolo Zero** y los valores no negociables.
+> **Protocolo del Sistema**: Lee `KEY_FINDINGS.md` primero para entender el **Protocolo Zero** y los valores no negociables.
 
 ---
 

@@ -209,7 +209,7 @@ Este projeto atua como o **Centro de Pesquisa** para o ecossistema Antigravity. 
 | [prompts/](./research/prompts/)               | Status de Definição das Regras Mestras     |
 | [rules/](./rules/)                            | Documentos Detalhados de Padrões           |
 
-> 💡 **Para IAs**: Leia `KEY_FINDINGS.md` primeiro para entender o **Protocolo Zero** e os valores não negociáveis.
+> **Protocolo do Sistema**: Leia `KEY_FINDINGS.md` primeiro para entender o **Protocolo Zero** e os valores não negociáveis.
 
 ---
 

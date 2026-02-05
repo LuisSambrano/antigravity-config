@@ -209,7 +209,7 @@ This project acts as the **Research Center** for the Antigravity ecosystem. It d
 | [prompts/](./research/prompts/)               | Master Rule Definition Status          |
 | [rules/](./rules/)                            | Detailed Standards Documents           |
 
-> 💡 **For AIs**: Read `KEY_FINDINGS.md` first to understand the **Protocol Zero** and non-negotiable values.
+> **System Protocol**: Read `KEY_FINDINGS.md` first to understand the **Protocol Zero** and non-negotiable values.
 
 ---
 
