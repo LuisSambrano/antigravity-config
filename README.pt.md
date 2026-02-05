@@ -199,6 +199,20 @@ git push origin feature/funcionalidad-incrivel
 
 ---
 
+## 🔬 Pesquisa e Registro de Decisões
+
+Este projeto atua como o **Centro de Pesquisa** para o ecossistema Antigravity. Define os padrões, regras e filosofia que todos os outros projetos devem seguir.
+
+| Documento                                     | Propósito                                  |
+| --------------------------------------------- | ------------------------------------------ |
+| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | A "Constituição" e princípios fundamentais |
+| [prompts/](./research/prompts/)               | Status de Definição das Regras Mestras     |
+| [rules/](./rules/)                            | Documentos Detalhados de Padrões           |
+
+> 💡 **Para IAs**: Leia `KEY_FINDINGS.md` primeiro para entender o **Protocolo Zero** e os valores não negociáveis.
+
+---
+
 <div align="center">
 
 ## 📬 Conectar

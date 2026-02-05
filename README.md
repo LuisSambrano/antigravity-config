@@ -199,6 +199,20 @@ git push origin feature/amazing-feature
 
 ---
 
+## 🔬 Research & Decision Log
+
+This project acts as the **Research Center** for the Antigravity ecosystem. It defines the standards, rules, and philosophy that all other projects must follow.
+
+| Document                                      | Purpose                                |
+| --------------------------------------------- | -------------------------------------- |
+| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | The "Constitution" and core principles |
+| [prompts/](./research/prompts/)               | Master Rule Definition Status          |
+| [rules/](./rules/)                            | Detailed Standards Documents           |
+
+> 💡 **For AIs**: Read `KEY_FINDINGS.md` first to understand the **Protocol Zero** and non-negotiable values.
+
+---
+
 <div align="center">
 
 ## 📬 Connect
