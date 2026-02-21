@@ -1,26 +1,34 @@
 ---
-description: List all available workflows and their purposes
+description: List all available workflows and their purposes.
 ---
 
-# Help Workflow
+# 🆘 /help - Agent Command Menu
 
-## Available Commands
+Usa este comando para ver qué puedo hacer por ti.
 
-| Command             | Description                              |
-| ------------------- | ---------------------------------------- |
-| `/deploy`           | Deploy to Vercel with automatic checks   |
-| `/idea`             | Evaluate the viability of a project idea |
-| `/status`           | Show current project status summary      |
-| `/create-component` | Create a new React/Next.js component     |
-| `/help`             | Show this help message                   |
+## 🔴 Core (Uso Diario)
 
-## How Workflows Work
+| Comando       | Descripción        | Cuándo usarlo                                                           |
+| :------------ | :----------------- | :---------------------------------------------------------------------- |
+| **`/status`** | **Health Check**   | Al empezar el día o retomar un proyecto. Revisa git, errores y calidad. |
+| **`/deploy`** | **Producción**     | Cuando quieras subir algo a Vercel/Internet. Verifica seguridad antes.  |
+| **`/idea`**   | **Brainstorming**  | Para analizar viabilidad de videos, tendencias o nuevas apps.           |
+| **`/trello`** | **Gestión Tareas** | Gestionar tableros, listas y tarjetas de Trello.                        |
+| **`/issue`**  | **Investigación**  | Investiga un tema automáticamente y crea un Issue en GitHub.            |
 
-Workflows are `.md` files in `.agent/workflows/`. Each defines step-by-step instructions that the AI agent follows automatically when triggered.
+## 🧠 Skills (Se Activan Automáticamente)
 
-## Creating New Workflows
+> _No necesitas invocarlos. Yo los detecto y activo según el contexto._
 
-1. Create a new `.md` file in `.agent/workflows/`
-2. Add YAML frontmatter with a `description` field
-3. Write clear, numbered steps
-4. Reference the workflow in your `GEMINI.md` routing section
+| Skill                 | Área    | Se activa cuando...                                        |
+| :-------------------- | :------ | :--------------------------------------------------------- |
+| **`spec-driven-dev`** | Core    | Planificas una feature compleja o un proyecto nuevo (SDD). |
+| **`comic-generator`** | Content | Quieres crear un cómic con IA.                             |
+| **`ui-prototyping`**  | Web     | Quieres diseñar una UI antes de codificar.                 |
+| **`browser-testing`** | Tools   | Necesito testear o verificar una web visualmente.          |
+| + 100 skills más      | Varios  | Ver el [INDEX.md](./../skills/INDEX.md) completo.          |
+
+---
+
+> **Tip:** Simplemente escribe el comando (ej. `/status`) en el chat y yo me encargo del resto.
+> Para skills, solo describe lo que necesitas y yo activo el skill adecuado.

@@ -1,203 +1,174 @@
-# Skills Index
+# Skills Index — .agent
 
-93 curated skills organized across 10 categories.
+100 skills organizados en 10 categorías.
 
 ---
 
-## Quick Navigation
-
-| Category                      | Skills | Focus                                |
-| ----------------------------- | ------ | ------------------------------------ |
-| [1-core](#1-core)             | 7      | Coding fundamentals, auditing, TDD   |
-| [2-ai](#2-ai)                 | 21     | Agents, RAG, prompting, voice AI     |
-| [3-web](#3-web)               | 17     | Frontend, backend, platforms         |
-| [4-automation](#4-automation) | 10     | Testing, CI/CD, n8n, Docker          |
-| [5-security](#5-security)     | 5      | API security, compliance, pentesting |
-| [6-content](#6-content)       | 6      | Writing, SEO, social, email          |
-| [7-meta](#7-meta)             | 3      | Skill creation and management        |
-| [8-blockchain](#8-blockchain) | 19     | Celo, EVM, DeFi, stablecoins         |
-| [9-business](#9-business)     | 2      | KPI dashboards, market analysis      |
-| [10-tools](#10-tools)         | 3      | Presentations, spreadsheets, Linear  |
+| Categoría    | Skills | Área                                        |
+| ------------ | ------ | ------------------------------------------- |
+| 1-core       | 10     | Fundamentos, calidad, TDD, SDD              |
+| 10-tools     | 4      | Docs, presentaciones, Linear, browser       |
+| 2-ai         | 21     | Agentes, RAG, prompting, voz                |
+| 3-web        | 23     | Frontend, backend, plataformas, prototyping |
+| 4-automation | 10     | Testing, CI/CD, n8n, Docker                 |
+| 5-security   | 5      | API security, compliance                    |
+| 6-content    | 7      | Writing, SEO, social, email, comics         |
+| 7-meta       | 3      | Creación de skills                          |
+| 8-blockchain | 19     | Celo, EVM, DeFi                             |
+| 9-business   | 2      | KPIs, análisis de mercado                   |
 
 ---
 
 ## 1-core
 
-Coding fundamentals, quality standards, and development practices.
-
-| Skill                   | Description                                                              |
-| ----------------------- | ------------------------------------------------------------------------ |
-| `clean-code`            | Clean Code principles (Robert C. Martin) for readable, maintainable code |
-| `code-reviewer`         | AI-powered code review patterns for identifying issues and improvements  |
-| `commit`                | Conventional commit message generation following Sentry conventions      |
-| `find-bugs`             | Bug detection, security vulnerabilities, and code quality issues         |
-| `javascript-mastery`    | 33+ essential JavaScript concepts from fundamentals to advanced patterns |
-| `production-code-audit` | Full codebase deep-scan: architecture, performance, security             |
-| `tdd-orchestrator`      | Test-Driven Development orchestration with red-green-refactor            |
-
----
-
-## 2-ai
-
-AI agent development, LLM integration, RAG systems, and voice AI.
-
-| Skill                         | Description                                                      |
-| ----------------------------- | ---------------------------------------------------------------- |
-| `agent-evaluation`            | Testing and benchmarking LLM agents                              |
-| `autonomous-agent-patterns`   | Design patterns for building autonomous coding agents            |
-| `computer-use-agents`         | AI agents that interact with screens like humans                 |
-| `context-degradation`         | Detect and handle context window failures                        |
-| `crewai`                      | CrewAI multi-agent framework patterns                            |
-| `embedding-strategies`        | Embedding model selection for semantic search and RAG            |
-| `langgraph`                   | LangGraph stateful multi-actor agent framework                   |
-| `llm-app-patterns`            | Production RAG pipelines, chains, and routing patterns           |
-| `llm-evaluation`              | LLM evaluation strategies and automated benchmarks               |
-| `memory-systems`              | Short-term, long-term, and graph-based memory architectures      |
-| `multi-agent-patterns`        | Orchestrator, peer-to-peer, and hierarchical multi-agent systems |
-| `parallel-agents`             | Multi-agent orchestration for parallel independent tasks         |
-| `prompt-engineer`             | Prompt optimization with RTF, RISEN, Chain-of-Thought frameworks |
-| `prompt-engineering`          | Prompt engineering patterns and best practices                   |
-| `prompt-library`              | Curated collection of high-quality prompts for various use cases |
-| `rag-engineer`                | Building Retrieval-Augmented Generation systems                  |
-| `rag-implementation`          | RAG patterns: chunking, embeddings, vector search                |
-| `tool-design`                 | Building tools for AI agents to use effectively                  |
-| `voice-agents`                | Voice agent interaction patterns                                 |
-| `voice-ai-development`        | Building voice AI applications and voice-to-text systems         |
-| `voice-ai-engine-development` | Real-time conversational voice AI engines                        |
-
----
-
-## 3-web
-
-Web development with React, Next.js, Tailwind, Supabase, and design systems.
-
-| Skill                          | Description                                                        |
-| ------------------------------ | ------------------------------------------------------------------ |
-| `api-patterns`                 | API design: REST vs GraphQL vs tRPC selection and implementation   |
-| `cc-skill-frontend-patterns`   | React/Next.js patterns, state management, performance optimization |
-| `content-creator`              | SEO-optimized marketing content with consistent brand voice        |
-| `database-design`              | Database schema design, indexing strategies, normalization         |
-| `frontend-design`              | Distinctive production-grade frontend interfaces                   |
-| `graphql`                      | GraphQL API design and implementation                              |
-| `i18n-localization`            | Internationalization and localization patterns                     |
-| `nextjs-best-practices`        | Next.js App Router, Server Components, data fetching               |
-| `nextjs-supabase-auth`         | Supabase Auth integration with Next.js App Router                  |
-| `radix-ui-design-system`       | Headless UI design system with Radix UI primitives                 |
-| `react-best-practices`         | React performance optimization from Vercel Engineering             |
-| `react-state-management`       | Redux Toolkit, Zustand, Jotai, and React Query patterns            |
-| `screenshots`                  | Marketing screenshots generation with Playwright                   |
-| `seo-audit`                    | SEO audit and optimization                                         |
-| `stitch-ui-design`             | Google Stitch AI UI design prompts                                 |
-| `tailwind-patterns`            | Tailwind CSS v4 configuration and patterns                         |
-| `web-performance-optimization` | Core Web Vitals optimization and loading performance               |
-
----
-
-## 4-automation
-
-Testing, CI/CD, n8n workflows, Docker, and shell scripting.
-
-| Skill                        | Description                                                 |
-| ---------------------------- | ----------------------------------------------------------- |
-| `bash-pro`                   | Production Bash scripting for automation and CI/CD          |
-| `docker-expert`              | Docker multi-stage builds, optimization, and best practices |
-| `firecrawl-scraper`          | Web scraping, screenshots, and PDF parsing with Firecrawl   |
-| `github-workflow-automation` | GitHub Actions, PR reviews, issue triage automation         |
-| `n8n-code-python`            | Python code in n8n Code nodes                               |
-| `n8n-mcp-tools-expert`       | n8n + MCP tools integration and configuration               |
-| `n8n-node-configuration`     | n8n node configuration patterns and best practices          |
-| `playwright-skill`           | Browser automation with Playwright for testing and scraping |
-| `posix-shell-pro`            | Portable POSIX shell scripting                              |
-| `workflows`                  | n8n workflow management with MCP and REST API               |
-
----
-
-## 5-security
-
-API security, compliance, vulnerability assessment, and penetration testing.
-
-| Skill                         | Description                                                        |
-| ----------------------------- | ------------------------------------------------------------------ |
-| `api-security-best-practices` | Secure API design: authentication, authorization, input validation |
-| `pci-compliance`              | PCI DSS compliance for payment card data handling                  |
-| `pentest-checklist`           | Penetration testing planning and execution checklists              |
-| `security-auditor`            | DevSecOps security auditing and vulnerability assessment           |
-| `top-web-vulnerabilities`     | OWASP web application vulnerability identification                 |
-
----
-
-## 6-content
-
-Technical writing, content marketing, SEO, social media, and email.
-
-| Skill                | Description                                     |
-| -------------------- | ----------------------------------------------- |
-| `content-marketer`   | AI-powered content marketing strategy           |
-| `doc-coauthoring`    | Structured documentation co-authoring workflow  |
-| `email-sequence`     | Email drip campaign design and optimization     |
-| `readme`             | Professional README generation and updates      |
-| `social-content`     | Social media content creation and scheduling    |
-| `youtube-summarizer` | YouTube transcript extraction and summarization |
-
----
-
-## 7-meta
-
-Tools for creating and managing skills themselves.
-
-| Skill             | Description                                                 |
-| ----------------- | ----------------------------------------------------------- |
-| `kaizen`          | Continuous improvement, error proofing, and standardization |
-| `skill-creator`   | Guide for creating effective SKILL.md files                 |
-| `skill-developer` | Skill management following best practices                   |
-
----
-
-## 8-blockchain
-
-Full Celo/EVM development stack: smart contracts, DeFi, wallets, and protocols.
-
-| Skill                     | Description                                                        |
-| ------------------------- | ------------------------------------------------------------------ |
-| `8004`                    | ERC-8004 Agent Trust Protocol for AI agent identity and reputation |
-| `bridging`                | Cross-chain asset bridging to and from Celo                        |
-| `celo-composer`           | Celo dApp scaffolding with Celo Composer                           |
-| `celo-defi`               | DeFi protocol integration on Celo (Uniswap, Aave, Ubeswap)         |
-| `celo-rpc`                | Celo blockchain RPC interaction with viem                          |
-| `celo-stablecoins`        | Celo stablecoin ecosystem (USDm, EURm, USDC, USDT)                 |
-| `contract-verification`   | Smart contract verification on Celoscan/Blockscout                 |
-| `defi-protocol-templates` | DeFi staking, AMM, governance, and lending templates               |
-| `evm-foundry`             | Foundry development for EVM chains                                 |
-| `evm-hardhat`             | Hardhat development for EVM chains                                 |
-| `evm-wallet-integration`  | Wallet integration (RainbowKit, Dynamic) for Celo dApps            |
-| `fee-abstraction`         | Gas fee payment with ERC-20 tokens on Celo                         |
-| `minipay-integration`     | MiniPay wallet Mini App development                                |
-| `nft-standards`           | ERC-721 and ERC-1155 NFT implementation                            |
-| `thirdweb`                | thirdweb SDK for Celo development                                  |
-| `viem`                    | viem library for Celo transactions and fee currency                |
-| `wagmi`                   | wagmi React hooks for Celo dApps                                   |
-| `web3-testing`            | Smart contract testing with Hardhat and Foundry                    |
-| `x402`                    | x402 HTTP-native payment protocol for AI agents                    |
-
----
-
-## 9-business
-
-Business analysis, KPI design, and market strategy.
-
-| Skill                  | Description                                                   |
-| ---------------------- | ------------------------------------------------------------- |
-| `kpi-dashboard-design` | KPI dashboard design with metrics selection and visualization |
-| `startup-analyst`      | Market sizing, business analysis, and startup evaluation      |
-
----
+| Skill                   | Descripción                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| `clean-code`            | Applies principles from Robert C. Martin's 'Clean Code'. Use this skil                  |
+| `code-reviewer`         | Elite code review expert specializing in modern AI-powered code                         |
+| `coding-standards`      | Universal coding standards, best practices, and patterns for TypeScrip                  |
+| `commit`                | Create commit messages following Sentry conventions. Use when committi                  |
+| `find-bugs`             | Find bugs, security vulnerabilities, and code quality issues in local                   |
+| `javascript-mastery`    | Comprehensive JavaScript reference covering 33+ essential concepts eve                  |
+| `production-code-audit` | Autonomously deep-scan entire codebase line-by-line, understand archit                  |
+| `senior-fullstack`      | Comprehensive fullstack development skill for building complete web ap                  |
+| `spec-driven-dev`       | Spec-Driven Development methodology. Transforms ideas into structured specs before code |
+| `tdd-orchestrator`      | Master TDD orchestrator specializing in red-green-refactor                              |
 
 ## 10-tools
 
-Productivity tools for document creation and project management.
+| Skill                 | Descripción                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------- |
+| `linear-claude-skill` | Manage Linear issues, projects, and teams                                              |
+| `pptx`                | Presentation creation, editing, and analysis. When Claude needs to wor                 |
+| `browser-testing`     | Browser tool usage guide for testing, verification, screenshots, and responsive checks |
+| `xlsx`                | Comprehensive spreadsheet creation, editing, and analysis with support                 |
 
-| Skill                 | Description                                              |
-| --------------------- | -------------------------------------------------------- |
-| `linear-claude-skill` | Linear issue, project, and team management               |
-| `pptx`                | PowerPoint presentation creation, editing, and analysis  |
-| `xlsx`                | Excel spreadsheet creation, editing, and formula support |
+## 2-ai
+
+| Skill                         | Descripción                                                            |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| `autonomous-agent-patterns`   | Design patterns for building autonomous coding agents. Covers tool int |
+| `autonomous-agents`           | Autonomous agents are AI systems that can independently decompose goal |
+| `computer-use-agents`         | Build AI agents that interact with computers like humans do - viewing  |
+| `context-degradation`         | Recognize patterns of context failure: lost-in-middle, poisoning, dist |
+| `crewai`                      | Expert in CrewAI - the leading role-based multi-agent framework used b |
+| `embedding-strategies`        | Select and optimize embedding models for semantic search and RAG appli |
+| `langgraph`                   | Expert in LangGraph - the production-grade framework for building stat |
+| `llm-app-patterns`            | Production-ready patterns for building LLM applications. Covers RAG pi |
+| `llm-evaluation`              | Implement comprehensive evaluation strategies for LLM applications usi |
+| `memory-systems`              | Design short-term, long-term, and graph-based memory architectures     |
+| `multi-agent-patterns`        | Master orchestrator, peer-to-peer, and hierarchical multi-agent archit |
+| `parallel-agents`             | Multi-agent orchestration patterns. Use when multiple independent task |
+| `prompt-engineer`             | Transforms user prompts into optimized prompts using frameworks (RTF,  |
+| `prompt-engineering`          | Expert guide on prompt engineering patterns, best practices, and optim |
+| `prompt-library`              | Curated collection of high-quality prompts for various use cases. Incl |
+| `rag-engineer`                | Expert in building Retrieval-Augmented Generation systems. Masters emb |
+| `rag-implementation`          | Retrieval-Augmented Generation patterns including chunking, embeddings |
+| `tool-design`                 | Build tools that agents can use effectively, including architectural r |
+| `voice-agents`                | Voice agents represent the frontier of AI interaction - humans speakin |
+| `voice-ai-development`        | Expert in building voice AI applications - from real-time voice agents |
+| `voice-ai-engine-development` | Build real-time conversational AI voice engines using async worker pip |
+
+## 3-web
+
+| Skill                          | Descripción                                                            |
+| ------------------------------ | ---------------------------------------------------------------------- |
+| `api-patterns`                 | API design principles and decision-making. REST vs GraphQL vs tRPC sel |
+| `cc-skill-frontend-patterns`   | Frontend development patterns for React, Next.js, state management, pe |
+| `content-creator`              | Create SEO-optimized marketing content with consistent brand voice. In |
+| `database-design`              | Database design principles and decision-making. Schema design, indexin |
+| `frontend-design`              | Create distinctive, production-grade frontend interfaces with intentio |
+| `graphql`                      | GraphQL gives clients exactly the data they need - no more, no less. O |
+| `i18n-localization`            | Internationalization and localization patterns. Detecting hardcoded st |
+| `nextjs-best-practices`        | Next.js App Router principles. Server Components, data fetching, routi |
+| `nextjs-supabase-auth`         | Expert integration of Supabase Auth with Next.js App Router Use when:  |
+| `postgres-best-practices`      | Postgres performance optimization and best practices from Supabase. Us |
+| `radix-ui-design-system`       | Build accessible design systems with Radix UI primitives. Headless com |
+| `react-best-practices`         | React and Next.js performance optimization guidelines from Vercel Engi |
+| `react-patterns`               | Modern React patterns and principles. Hooks, composition, performance, |
+| `react-state-management`       | Master modern React state management with Redux Toolkit, Zustand, Jota |
+| `screenshots`                  | Generate marketing screenshots of your app using Playwright. Use when  |
+| `seo-audit`                    | >                                                                      |
+| `stitch-ui-design`             | Expert guide for creating effective prompts for Google Stitch AI UI de |
+| `tailwind-patterns`            | Tailwind CSS v4 principles. CSS-first configuration, container queries |
+| `typescript-expert`            | >-                                                                     |
+| `ui-ux-pro-max`                | UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 2 |
+| `vibecode-ui`                  | El framework definitivo para crear interfaces "Gorgeous" y de alto ren |
+| `ui-prototyping`               | UI/UX prototyping with generate_image. Design mockups before coding    |
+| `web-performance-optimization` | Optimize website and web application performance including loading spe |
+
+## 4-automation
+
+| Skill                        | Descripción                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| `bash-pro`                   | Master of defensive Bash scripting for production automation, CI/CD    |
+| `docker-expert`              | Docker containerization expert with deep knowledge of multi-stage buil |
+| `firecrawl-scraper`          | Deep web scraping, screenshots, PDF parsing, and website crawling usin |
+| `github-workflow-automation` | Automate GitHub workflows with AI assistance. Includes PR reviews, iss |
+| `n8n-code-python`            | Write Python code in n8n Code nodes. Use when writing Python in n8n, u |
+| `n8n-mcp-tools-expert`       | Expert guide for using n8n-mcp MCP tools effectively. Use when searchi |
+| `n8n-node-configuration`     | Operation-aware node configuration guidance. Use when configuring node |
+| `playwright-skill`           | Complete browser automation with Playwright. Auto-detects dev servers, |
+| `posix-shell-pro`            | Expert in strict POSIX sh scripting for maximum portability across     |
+| `workflows`                  | A hybrid skill for managing n8n workflows using both MCP (for inspecti |
+
+## 5-security
+
+| Skill                         | Descripción                                                            |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| `api-security-best-practices` | Implement secure API design patterns including authentication, authori |
+| `pci-compliance`              | Implement PCI DSS compliance requirements for secure handling of payme |
+| `pentest-checklist`           | This skill should be used when the user asks to "plan a penetration te |
+| `security-auditor`            | Expert security auditor specializing in DevSecOps, comprehensive       |
+| `top-web-vulnerabilities`     | This skill should be used when the user asks to "identify web applicat |
+
+## 6-content
+
+| Skill                | Descripción                                                            |
+| -------------------- | ---------------------------------------------------------------------- |
+| `content-marketer`   | Elite content marketing strategist specializing in AI-powered          |
+| `doc-coauthoring`    | Guide users through a structured workflow for co-authoring documentati |
+| `email-sequence`     | When the user wants to create or optimize an email sequence, drip camp |
+| `readme`             | When the user wants to create or update a README.md file for a project |
+| `social-content`     | When the user wants help creating, scheduling, or optimizing social me |
+| `comic-generator`    | Generate complete AI comics from a simple idea using NotebookLM        |
+| `youtube-summarizer` | Extract transcripts from YouTube videos and generate comprehensive, de |
+
+## 7-meta
+
+| Skill             | Descripción                                                            |
+| ----------------- | ---------------------------------------------------------------------- |
+| `kaizen`          | Guide for continuous improvement, error proofing, and standardization. |
+| `skill-creator`   | Guide for creating effective skills. This skill should be used when us |
+| `skill-developer` | Create and manage s following Anthropic best practices. Use when creat |
+
+## 8-blockchain
+
+| Skill                     | Descripción                                                            |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `8004`                    | ERC-8004 Agent Trust Protocol for AI agent identity, reputation, and v |
+| `bridging`                | Bridge assets to and from Celo. Use when transferring tokens between C |
+| `celo-composer`           | Scaffold Celo dApps with Celo Composer. Use when starting new Celo pro |
+| `celo-defi`               | Integrate DeFi protocols on Celo. Use when building swaps, lending, or |
+| `celo-rpc`                | Interact with Celo blockchain via RPC endpoints. Use when reading bala |
+| `celo-stablecoins`        | Working with Celo's stablecoin ecosystem. Use when building with USDm, |
+| `contract-verification`   | Verify smart contracts on Celo. Use when publishing contract source co |
+| `defi-protocol-templates` | Implement DeFi protocols with production-ready templates for staking,  |
+| `evm-foundry`             | Foundry development for EVM chains including Celo. Use when working wi |
+| `evm-hardhat`             | Hardhat development for EVM chains including Celo. Use when setting up |
+| `evm-wallet-integration`  | Integrate wallets into Celo dApps. Covers RainbowKit, Dynamic, and wal |
+| `fee-abstraction`         | Pay gas fees with ERC-20 tokens on Celo. Covers supported tokens, impl |
+| `minipay-integration`     | Build Mini Apps for MiniPay wallet. Use when building applications for |
+| `nft-standards`           | Implement NFT standards (ERC-721, ERC-1155) with proper metadata handl |
+| `thirdweb`                | Use thirdweb SDK for Celo development. Includes wallet connection, con |
+| `viem`                    | Use viem for Celo development. Includes fee currency support, transact |
+| `wagmi`                   | Use wagmi React hooks for Celo dApps. Includes wallet connection, tran |
+| `web3-testing`            | Test smart contracts comprehensively using Hardhat and Foundry with un |
+| `x402`                    | x402 HTTP-native payment protocol for AI agents on Celo. Use when impl |
+
+## 9-business
+
+| Skill                  | Descripción                                                           |
+| ---------------------- | --------------------------------------------------------------------- |
+| `kpi-dashboard-design` | Design effective KPI dashboards with metrics selection, visualization |
+| `startup-analyst`      | Expert startup business analyst specializing in market sizing,        |

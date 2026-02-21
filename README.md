@@ -25,8 +25,8 @@ Rules, skills, and workflows that standardize how AI coding agents operate acros
 This repository provides a ready-to-use `.agent/` configuration directory for AI coding assistants (Gemini, Cursor, Windsurf, etc.). It includes:
 
 - **Rules** — Coding standards, architecture patterns, and quality gates that the AI agent enforces automatically.
-- **Skills** — Domain-specific knowledge files that extend the agent's expertise (93 skills across 10 categories).
-- **Workflows** — Step-by-step command scripts the agent follows for common tasks like deployment and project setup.
+- **Skills** — Domain-specific knowledge files that extend the agent's expertise (104+ skills across 10 categories).
+- **Workflows** — Step-by-step command scripts the agent follows for common tasks like deployment and project health checks.
 
 The goal is simple: clone once, install, and have a consistent, opinionated development environment where your AI assistant follows professional standards.
 
@@ -58,23 +58,24 @@ antigravity-config/
 │   ├── frontend/              # Frontend-specific rules
 │   └── backend/               # Backend-specific rules
 │
-├── skills/                    # Domain knowledge (93 skills)
-│   ├── 1-core/                # Coding fundamentals
+├── skills/                    # Domain knowledge (104+ skills)
+│   ├── 1-core/                # Coding fundamentals, TDD, SDD
 │   ├── 2-ai/                  # AI agents, RAG, prompting
 │   ├── 3-web/                 # Web development (Next.js, React, Tailwind)
 │   ├── 4-automation/          # Testing, CI/CD, scraping
 │   ├── 5-security/            # API security, pentesting
-│   ├── 6-content/             # Technical writing, SEO
+│   ├── 6-content/             # Technical writing, SEO, comics
 │   ├── 7-meta/                # Skill creation and management
-│   ├── 8-blockchain/
-│   ├── 9-business/
-│   └── 10-tools/          # Celo, EVM, DeFi
+│   ├── 8-blockchain/          # Celo, EVM, DeFi
+│   ├── 9-business/            # KPIs, market analysis
+│   └── 10-tools/              # Docs, presentations, browser testing
 │
 ├── workflows/                 # Agent command scripts
 │   ├── deploy.md              # /deploy — production deployment
 │   ├── idea.md                # /idea — evaluate project ideas
 │   ├── status.md              # /status — project health check
-│   ├── create-component.md    # /create-component — scaffold components
+│   ├── trello.md              # /trello — manage Trello boards
+│   ├── issue.md               # /issue — research and create GitHub issues
 │   └── help.md                # /help — list available commands
 │
 ├── templates/                 # Project templates
@@ -88,17 +89,17 @@ antigravity-config/
 
 Skills are markdown files that give the AI agent domain-specific knowledge. Each skill contains instructions, patterns, and references the agent uses when working in that domain.
 
-### 1-core — Fundamentals (+6 skills)
+### 1-core — Fundamentals (10 skills)
 
-Coding conventions, project structure standards, and TypeScript patterns that apply to all projects.
+Coding conventions, project structure standards, TypeScript patterns, TDD orchestration, and **Spec-Driven Development (SDD)** — a methodology for converting ideas into structured specifications before writing code.
 
 ### 2-ai — AI & Agents (21 skills)
 
 Multi-agent orchestration (LangGraph, CrewAI), RAG systems, prompt engineering, voice AI development, and agent evaluation frameworks.
 
-### 3-web — Web Development (17 skills)
+### 3-web — Web Development (23 skills)
 
-Next.js App Router patterns, React best practices, Tailwind CSS architecture, Supabase integration, Vercel deployment, and UI/UX design principles.
+Next.js App Router patterns, React best practices, Tailwind CSS architecture, Supabase integration, Vercel deployment, UI/UX design principles, and **UI prototyping** workflows.
 
 ### 4-automation — Testing & DevOps (10 skills)
 
@@ -108,9 +109,9 @@ Playwright browser testing, GitHub Actions workflows, deployment procedures, and
 
 API security best practices and penetration testing checklists.
 
-### 6-content — Content Creation
+### 6-content — Content Creation (7 skills)
 
-Technical writing guidelines, SEO copywriting, and documentation standards.
+Technical writing guidelines, SEO copywriting, documentation standards, and **AI comic generation** with NotebookLM.
 
 ### 7-meta — Skill Management (3 skills)
 
