@@ -25,7 +25,7 @@ Reglas, skills y workflows que estandarizan cómo operan los agentes de código 
 Este repositorio provee un directorio `.agent/` listo para usar con asistentes de código IA (Gemini, Cursor, Windsurf, etc.). Incluye:
 
 - **Rules** — Estándares de código, patrones de arquitectura y quality gates que el agente IA aplica automáticamente.
-- **Skills** — Archivos de conocimiento especializado que extienden la expertise del agente (104+ skills en 10 categorías).
+- **Skills** — Archivos de conocimiento especializado que extienden la expertise del agente (105+ skills en 10 categorías).
 - **Workflows** — Scripts de comandos paso a paso que el agente sigue para tareas comunes como deployment y health checks.
 
 El objetivo es directo: clonar, instalar, y tener un entorno de desarrollo consistente y opinionado donde tu asistente IA sigue estándares profesionales.
@@ -68,7 +68,7 @@ antigravity-config/
 │   ├── 7-meta/                # Creación y gestión de skills
 │   ├── 8-blockchain/          # Celo, EVM, DeFi
 │   ├── 9-business/            # KPIs, análisis de mercado
-│   └── 10-tools/              # Docs, presentaciones, browser testing
+│   └── 10-tools/              # Docs, presentaciones, browser testing, Chrome DevTools MCP
 │
 ├── workflows/                 # Scripts de comandos del agente
 │   ├── deploy.md              # /deploy — deployment a producción

@@ -25,7 +25,7 @@ Rules, skills, and workflows that standardize how AI coding agents operate acros
 This repository provides a ready-to-use `.agent/` configuration directory for AI coding assistants (Gemini, Cursor, Windsurf, etc.). It includes:
 
 - **Rules** — Coding standards, architecture patterns, and quality gates that the AI agent enforces automatically.
-- **Skills** — Domain-specific knowledge files that extend the agent's expertise (104+ skills across 10 categories).
+- **Skills** — Domain-specific knowledge files that extend the agent's expertise (105+ skills across 10 categories).
 - **Workflows** — Step-by-step command scripts the agent follows for common tasks like deployment and project health checks.
 
 The goal is simple: clone once, install, and have a consistent, opinionated development environment where your AI assistant follows professional standards.
@@ -60,6 +60,7 @@ antigravity-config/
 │
 ├── skills/                    # Domain knowledge (104+ skills)
 │   ├── 1-core/                # Coding fundamentals, TDD, SDD
+│   │   └── ...
 │   ├── 2-ai/                  # AI agents, RAG, prompting
 │   ├── 3-web/                 # Web development (Next.js, React, Tailwind)
 │   ├── 4-automation/          # Testing, CI/CD, scraping
@@ -68,7 +69,7 @@ antigravity-config/
 │   ├── 7-meta/                # Skill creation and management
 │   ├── 8-blockchain/          # Celo, EVM, DeFi
 │   ├── 9-business/            # KPIs, market analysis
-│   └── 10-tools/              # Docs, presentations, browser testing
+│   └── 10-tools/              # Docs, presentations, browser testing, Chrome DevTools MCP
 │
 ├── workflows/                 # Agent command scripts
 │   ├── deploy.md              # /deploy — production deployment
