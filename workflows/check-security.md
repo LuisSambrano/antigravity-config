@@ -28,8 +28,15 @@ Usa este workflow regularmente para evaluar y blindar la postura de seguridad de
    - Examino cabeceras críticas (security headers) en tu configuración de framework (ej. `next.config.ts` o `next.config.js`): `Content-Security-Policy (CSP)`, `Strict-Transport-Security (HSTS)`, `X-Frame-Options`, `X-Content-Type-Options`.
    - Audito la configuración y origen CORS para prevenir consumo de API desde dominios riesgosos o no autorizados.
 
-5. **Sanitización y Mitigación (OWASP Top 10)**
-   - Rastreo inyecciones de código tipo XSS, por ejemplo cuando pasas código crudo al renderizado UI (uso de `dangerouslySetInnerHTML`).
+5. **Sanitización y Mitigación Avanzada (Checklist Exhaustivo)**
+   - Examino el código contra las siguientes vulnerabilidades estructuradas:
+     - **Inyecciones**: SQL Injection (SQLi), NoSQL Injection, OS Command Injection, LDAP Injection, XML External Entity (XXE) Injection, Server-Side Template Injection (SSTI).
+     - **Vulnerabilidades de Cliente y Peticiones**: Cross-Site Scripting (XSS) (Reflected, Stored, DOM-based), Server-Side Request Forgery (SSRF), Cross-Site Request Forgery (CSRF), Unvalidated Redirects and Forwards, Clickjacking (UI Redressing).
+     - **Control de Acceso y Autorización**: Insecure Direct Object Reference (IDOR) / Broken Access Control, Missing Function-Level Access Control, Directory Traversal / Path Traversal, Local File Inclusion (LFI), Remote File Inclusion (RFI), Parameter Tampering / Mass Assignment.
+     - **Autenticación y Sesiones**: Default Passwords / Weak Passwords, Credential Stuffing / Brute Force, Session Fixation, Session Hijacking, Insufficient Session Expiration, JSON Web Token (JWT) Vulnerabilities (None Algorithm, Signature bypass).
+     - **Datos, Lógica e Integridad**: Sensitive Data Exposure, Insecure Deserialization, Business Logic Flaws, Race Conditions (Time-of-check to time-of-use - TOCTOU), Denial of Service (DoS) / Buffer Overflows.
+     - **Configuración y Operaciones**: Security Misconfiguration, Missing or Weak HTTP Security Headers (CORS, CSP, HSTS), Insecure Cryptographic Storage / Weak Ciphers, Using Components with Known Vulnerabilities, Open Cloud Storage Buckets (S3, GCP), Insufficient Logging & Monitoring.
+     - **Ejecución de Código**: Remote Code Execution (RCE).
    - Identifico dependencias y paquetes de terceros obsoletos ejecutando auditorías de ecosistema (como `npm audit`).
 
 ## Generación del Reporte (Veredicto)
