@@ -1,101 +1,45 @@
 ---
-description: Manage Trello boards, lists, and cards from the agent
+description: Manage Trello boards, lists, and cards via the API
 ---
 
-# /trello Workflow
+# /trello - Project Management Integration
 
-This workflow is triggered when the user types `/trello <action>`. It provides quick access to common Trello operations.
-
-## Trigger
-
-- User command: `/trello <action> [args]`
+Use this workflow to interface directly with Trello boards, querying status, creating cards, and syncing project progress without leaving the IDE.
 
 ## Prerequisites
 
-- `TRELLO_API_KEY` and `TRELLO_TOKEN` must be set in environment
-- If not set, guide user to https://trello.com/power-ups/admin
+- `TRELLO_API_KEY` and `TRELLO_TOKEN` must be configured in the environment.
+- Unconfigured states should direct the user to the Trello Admin portal.
 
-## Actions
+## Automated Commands
 
-### `/trello status`
+### Overview & Discovery
 
-Show an overview of the user's active boards.
+- **`/trello status`**: Aggregates and displays active boards, filtering out closed boards, presenting a summary table with column distributions.
+- **`/trello boards`**: Lists all available boards with their respective IDs and URLs.
+- **`/trello lists <boardId>`**: Retrieves and structures all lists within a designated board by position.
+- **`/trello cards <listId>`**: Aggregates all cards within a list, displaying labels, due dates, and member assignments.
 
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh get-boards`
-2. Filter out closed boards
-3. For each active board, optionally fetch lists to show column counts
-4. Present a summary table to the user
+### Mutations & Creation
 
-### `/trello boards`
+- **`/trello create card <listId> "<name>" "[desc]"`**: Provisions a new card within a list. Returns the canonical URL.
+- **`/trello create board "<name>" "[desc]"`**: Initializes a new Trello board. Returns the canonical URL.
+- **`/trello move <cardId> <targetListId>`**: Reassigns a card to a different list (e.g., moving from 'In Progress' to 'Done').
 
-List all boards with their IDs for reference.
+### Search & Synchronization
 
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh get-boards`
-2. Format as a clean table: Name | ID | URL
+- **`/trello search "<query>"`**: Executes a global search across all boards and cards, returning formatted markdown links.
+- **`/trello sync`**: Cross-references the active project state (e.g., local `task.md`) with a specified board, proposing state updates and card movements. Executes approved mutations.
 
-### `/trello lists <boardId>`
+## Usage Example
 
-Show all lists on a specific board.
+USER: `/trello status`
 
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh get-lists <boardId>`
-2. Format as a table: Name | ID | Position
+AGENT:
 
-### `/trello cards <listId>`
+```text
+📋 Active Boards Overview:
 
-Show all cards on a specific list.
-
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh get-cards <listId>`
-2. Format as a table: Name | Labels | Due | Members | URL
-
-### `/trello create card <listId> <name> [desc]`
-
-Create a new card on a list.
-
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh create-card <listId> "<name>" "<desc>"`
-2. Confirm creation and show the card URL
-
-### `/trello create board <name> [desc]`
-
-Create a new board.
-
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh create-board "<name>" "<desc>"`
-2. Confirm creation and show the board URL
-
-### `/trello move <cardId> <targetListId>`
-
-Move a card to another list.
-
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh move-card <cardId> <targetListId>`
-2. Confirm the move
-
-### `/trello search <query>`
-
-Search across boards and cards.
-
-1. Run: `bash ~/.agent/skills/10-tools/trello-skill/scripts/trello-ops.sh search "<query>"`
-2. Format results as a table with links
-
-### `/trello sync`
-
-Sync project progress with a Trello board.
-
-1. Ask user which board to sync with (or use the most recently referenced board)
-2. Fetch the board's lists and cards
-3. Compare with local project state (task.md or similar)
-4. Suggest card updates or movements based on progress
-5. Execute approved changes
-
-## Example
-
-**User:** `/trello status`
-
-**Agent Action:**
-
-1. Fetch boards: `bash scripts/trello-ops.sh get-boards`
-2. Present:
-
-```
-📋 Tus Boards Activos:
 | Board          | Lists | Cards | URL                          |
 |----------------|-------|-------|------------------------------|
 | Puente MVP     | 5     | 12    | https://trello.com/b/abc123  |

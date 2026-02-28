@@ -1,74 +1,68 @@
 ---
-description: Evalúo viabilidad de una idea de YouTube o cualquier fuente
+description: Evaluate technical feasibility of product ideas and technologies
 ---
 
-# /idea - Evaluar Viabilidad de Ideas
+# /idea - Feasibility Evaluation
 
-Usa este workflow cuando veas algo interesante y quieras saber si podemos hacerlo.
+Use this workflow to assess the technical viability of new features, libraries, or product concepts within the current stack.
 
-## Lo que YO hago automáticamente
+## Automated Execution Steps
 
-1. **Investigo la idea**
-   - Qué es exactamente
-   - Qué tecnología usa
-   - Qué recursos necesita
+1. **Research & Analysis**
+   - Define the core concept and technical requirements.
+   - Identify underlying technologies and dependencies.
+   - Assess required infrastructure resources.
 
-2. **Evalúo viabilidad**
-   - ¿Funciona con tu stack? (Next.js, Supabase, Vercel)
-   - ¿Cuánto tiempo tomaría?
-   - ¿Qué riesgos hay?
+2. **Feasibility Assessment**
+   - Stack Compatibility: Evaluate integration with Next.js, Supabase, Vercel.
+   - Effort Estimation: Approximate implementation time.
+   - Risk Analysis: Identify security, performance, or architectural risks.
 
-3. **Te doy veredicto**
-   - ✅ SÍ: Plan de implementación
-   - ⚠️ PARCIAL: Qué partes sí, cuáles no
-   - ❌ NO: Por qué no y alternativas
+3. **Verdict Generation**
+   - ✅ YES: Provide an actionable implementation plan.
+   - ⚠️ PARTIAL: Specify supported vs. unsupported components.
+   - ❌ NO: State blocking reasons and propose viable alternatives.
 
-## Cuándo usarlo
+## Usage Context
 
-- Viste un video de YouTube sobre algo cool
-- Leíste sobre una tecnología nueva
-- Tienes una idea y no sabes si es posible
-- Quieres saber si algo vale la pena antes de invertir tiempo
+- Evaluating a new technology trend or library.
+- Assessing if a requested feature aligns with the current architecture.
+- Determining implementation cost before committing development time.
 
-## Ejemplo
+## Usage Example
 
-Tú: `/idea Quiero implementar autenticación con passkeys como vi en este video`
+USER: `/idea Implement passkey authentication`
 
-Yo:
+AGENT:
 
-```
-🔍 Investigando passkeys...
+```text
+🔍 Researching WebAuthn passkeys...
 
-## Análisis
+## Analysis
 
-**Qué es**: Autenticación sin contraseña usando biometría (Face ID, huella)
+**Concept**: Passwordless authentication via device biometrics.
 
-**Tu stack**:
-- Next.js ✅ Soportado
-- Supabase ⚠️ No nativo, pero hay workaround
-- Vercel ✅ Soportado
+**Stack Compatibility**:
+- Next.js ✅ Supported
+- Supabase ⚠️ Indirect support via workarounds
+- Vercel ✅ Supported
 
-## Veredicto: ⚠️ PARCIAL
+## Verdict: ⚠️ PARTIAL
 
-**Lo que SÍ podemos hacer**:
-- Implementar WebAuthn con librería `@simplewebauthn`
-- Usar como método secundario (además de email/password)
+**Supported Implementation**:
+- Integrate WebAuthn via `@simplewebauthn`.
+- Deploy as a secondary MFA method.
 
-**Lo que NO recomiendo**:
-- Usar como único método (no todos los dispositivos lo soportan)
+**Unsupported Strategy**:
+- Exclusive passkey authentication (due to device compatibility limits).
 
-**Tiempo estimado**: 4-6 horas
+**Estimated Effort**: 4-6 hours
 
-**Alternativa más simple**: Magic links (ya soportado por Supabase)
-
-¿Quieres que proceda con passkeys o prefieres la alternativa?
+**Recommended Alternative**: Magic links (Native Supabase support).
 ```
 
-## TÚ NO necesitas
+## Prerequisites
 
-- ❌ Investigar antes de preguntarme
-- ❌ Entender la tecnología
-- ❌ Saber si es compatible
-- ❌ Dar contexto técnico detallado
-
-Solo dime qué viste/quieres y yo hago el trabajo.
+- ❌ Do not self-research before invoking.
+- ❌ Deep technical context is not required from the user.
+- Provide the core idea; the agent handles the technical assessment.

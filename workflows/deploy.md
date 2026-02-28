@@ -1,54 +1,52 @@
 ---
-description: Deploy a Vercel con verificaciones automáticas
+description: Deploy to Vercel with automated quality and security checks
 ---
 
-# /deploy - Deploy a Producción
+# /deploy - Production Deployment
 
-Usa este workflow cuando quieras publicar tu trabajo.
+Use this workflow to deploy the current project to production.
 
-## Lo que YO hago automáticamente
+## Automated Execution Steps
 
-1. **Verifico calidad**
-   - TypeScript: 0 errores
-   - ESLint: 0 errores
-   - Build: Exitoso
+1. **Quality Assurance Check**
+   - TypeScript: 0 errors required
+   - ESLint: 0 errors required
+   - Build: Must complete successfully
 
-2. **Verifico seguridad**
-   - No hay secretos expuestos
-   - Variables de entorno correctas
+2. **Security Verification**
+   - No exposed secrets in code or staging
+   - Environment variables validated
 
-3. **Ejecuto deploy**
+3. **Deployment Execution**
 
    ```bash
    // turbo
    vercel --prod
    ```
 
-4. **Te reporto resultado**
-   - ✅ Deploy exitoso + URL
-   - ❌ Falló + qué arreglar
+4. **Result Reporting**
+   - ✅ Deployment successful + Production URL
+   - ❌ Deployment failed + Actionable fix recommendations
 
-## Cuándo usarlo
+## Usage Context
 
-- Terminaste una feature y quieres publicar
-- Arreglaste un bug y quieres que esté live
-- Quieres mostrar el proyecto a alguien
+- Completing a feature and deploying to production.
+- Releasing a hotfix or bug fix.
+- Deploying a stable version for stakeholder review.
 
-## Ejemplo
+## Usage Example
 
-Tú: `/deploy`
+USER: `/deploy`
 
-Yo:
+AGENT:
 
-```
-🚀 Iniciando deploy a Vercel...
+```text
+🚀 Initiating Vercel deployment...
 
-✅ TypeScript: 0 errores
-✅ ESLint: 0 errores
-✅ Build: Exitoso
-✅ Deploy: Completado
+✅ TypeScript: 0 errors
+✅ ESLint: 0 errors
+✅ Build: Successful
+✅ Deploy: Completed
 
-🔗 URL: https://tu-proyecto.vercel.app
-
-¿Necesitas algo más?
+🔗 URL: https://your-project.vercel.app
 ```

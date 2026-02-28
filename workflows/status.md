@@ -1,66 +1,63 @@
 ---
-description: Resumen del estado actual del proyecto
+description: Comprehensive project health, CI/CD, and quality status report
 ---
 
-# /status - Estado del Proyecto
+# /status - Project Status Report
 
-Usa este workflow cuando quieras saber cómo va el proyecto.
+Use this workflow to generate an overview of the project's current health, codebase quality, and repository state.
 
-## Lo que YO hago automáticamente
+## Automated Execution Steps
 
-1. **Reviso el código**
-   - TypeScript errors
-   - ESLint warnings
-   - Build status
+1. **Codebase Quality Check**
+   - TypeScript compilation status (errors/warnings)
+   - ESLint validation
+   - Build execution status
 
-2. **Reviso Git**
-   - Commits pendientes
-   - Branch actual
-   - Sincronización con GitHub
+2. **Version Control Audit**
+   - Pending working tree changes (uncommitted)
+   - Current active branch
+   - Synchronization state with remote repository (GitHub)
 
-3. **Reviso calidad**
-   - Accesibilidad
-   - Performance
-   - SEO (si aplica)
+3. **Performance & Standards Review**
+   - Accessibility (a11y) score
+   - Core Web Vitals / Navigation performance
+   - SEO metadata (if applicable)
 
-4. **Te doy resumen**
-   - ✅ Lo que está bien
-   - ⚠️ Lo que necesita atención
-   - 📝 Recomendaciones
+4. **Summary Generation**
+   - ✅ Optimal elements (Passed checks)
+   - ⚠️ Attention required (Warnings/Degradations)
+   - 📝 Actionable recommendations
 
-## Cuándo usarlo
+## Usage Context
 
-- No recuerdas dónde quedaste
-- Quieres saber si hay problemas
-- Antes de mostrar a alguien
-- Cuando retomas después de días/semanas
+- Resuming work on a project after a context switch or downtime.
+- Auditing the project state before a major refactor or deployment.
+- Generating a stakeholder report on technical debt.
 
-## Ejemplo
+## Usage Example
 
-Tú: `/status`
+USER: `/status`
 
-Yo:
+AGENT:
 
-```
-📊 Estado de venezuela-news-app
+```text
+📊 Project Status: venezuela-news-app
 
-## ✅ Bien (5/7)
-- TypeScript: 0 errores
-- ESLint: 0 errores
-- Build: Exitoso
-- Git: Sincronizado con GitHub
-- Accesibilidad: 95/100
+## ✅ Optimal (5/7)
+- TypeScript: 0 errors
+- ESLint: 0 errors
+- Build: Successful
+- Git: Synced with origin/main
+- Accessibility: 95/100
 
-## ⚠️ Atención (2 items)
-- Performance: 78/100 (imagen hero muy grande)
-- SEO: Falta meta description en /about
+## ⚠️ Attention Required (2 items)
+- Performance: 78/100 (Oversized hero asset)
+- SEO: Missing meta description on `/about`
 
-## 📝 Recomendaciones
-1. Optimizar imagen hero (convertir a WebP)
-2. Agregar meta description a /about
+## 📝 Recommendations
+1. Convert hero image to WebP format.
+2. Inject meta description tags in `/about` route.
 
-## 🔄 Último commit
-`feat(carousel): add auto-play functionality` (hace 2 días)
-
-¿Quieres que arregle alguno de los warnings?
+## 🔄 Last Commit
+`feat(carousel): add auto-play functionality` (2 days ago)
 ```
