@@ -1,13 +1,13 @@
 # Skills Index — .agent
 
-101 skills organizados en 10 categorías.
+100 skills organizados en 10 categorías.
 
 ---
 
 | Categoría    | Skills | Área                                        |
 | ------------ | ------ | ------------------------------------------- |
 | 1-core       | 10     | Fundamentos, calidad, TDD, SDD              |
-| 10-tools     | 5      | Docs, presentaciones, Linear, browser, CDP  |
+| 10-tools     | 4      | Docs, presentaciones, Linear, browser       |
 | 2-ai         | 21     | Agentes, RAG, prompting, voz                |
 | 3-web        | 23     | Frontend, backend, plataformas, prototyping |
 | 4-automation | 10     | Testing, CI/CD, n8n, Docker                 |
@@ -38,7 +38,6 @@
 
 | Skill                 | Descripción                                                                            |
 | --------------------- | -------------------------------------------------------------------------------------- |
-| `chrome-devtools-mcp` | Chrome DevTools MCP for ultra-fast UI testing, debugging, and performance auditing     |
 | `linear-claude-skill` | Manage Linear issues, projects, and teams                                              |
 | `pptx`                | Presentation creation, editing, and analysis. When Claude needs to wor                 |
 | `browser-testing`     | Browser tool usage guide for testing, verification, screenshots, and responsive checks |
