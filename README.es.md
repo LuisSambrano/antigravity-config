@@ -22,13 +22,25 @@ Reglas, skills y workflows que estandarizan cómo operan los agentes de código 
 
 ## Qué es esto
 
-Este repositorio provee un directorio `.agent/` listo para usar con asistentes de código IA (Gemini, Cursor, Windsurf, etc.). Incluye:
+Este repositorio provee un directorio `.agent/` listo para usar con asistentes de código IA (Gemini, Cursor, Windsurf, etc.). Actúa como el cerebro y la ley de tu agente IA, dándole límites claros y conocimiento especializado para usar en tus proyectos.
 
-- **Rules** — Estándares de código, patrones de arquitectura y quality gates que el agente IA aplica automáticamente.
-- **Skills** — Archivos de conocimiento especializado que extienden la expertise del agente (105+ skills en 10 categorías).
-- **Workflows** — Scripts de comandos paso a paso que el agente sigue para tareas comunes como deployment y health checks.
+### Los Tres Pilares
+
+- **Rules (La Constitución)** — Las leyes inmutables de tu proyecto. El agente IA las aplica automáticamente a cada archivo que crea o edita (ej. "usar siempre TypeScript estricto", "seguir convenciones específicas de nombres"). Estas se modifican en `GEMINI.md` o en la carpeta `rules/` para adaptar el agente a las preferencias de tu equipo.
+- **Skills (La Biblioteca)** — Conocimiento especializado bajo demanda. El agente las lee pasivamente al trabajar en temas específicos, o puedes decirle explícitamente "Lee el skill X antes de hacer Y" para darle un contexto profundo y especializado (hay más de 105 skills en 10 categorías disponibles).
+- **Workflows (Los SOPs / Procedimientos Operativos)** — Guías paso a paso para ejecutar tareas complejas. Esta es la parte más interactiva: los invocas explícitamente usando comandos como `/deploy`, `/idea`, `/check-security`. El uso de un workflow asegura que el agente IA nunca se salte pasos críticos al realizar operaciones de múltiples fases.
 
 El objetivo es directo: clonar, instalar, y tener un entorno de desarrollo consistente y opinionado donde tu asistente IA sigue estándares profesionales.
+
+---
+
+## 🤖 For AI Agents (How to Read This Repo)
+
+**SYSTEM DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, follow these operating instructions:
+
+1. **Start Here**: Your first step is ALWAYS to read `rules/PROTOCOL_ZERO.md` to understand the foundational philosophy.
+2. **Skill Discovery**: Check `skills/INDEX.md` to find relevant knowledge before writing domain-specific code. If a skill matches the user's request, read its `SKILL.md` file unconditionally.
+3. **Workflow Execution**: If you see the user typing a command like `/deploy` or `/idea`, immediately view the corresponding `.md` file in the `workflows/` directory and execute it step-by-step, exactly as written.
 
 ---
 
