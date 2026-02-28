@@ -13,7 +13,7 @@
 | 4-automation | 10     | Testing, CI/CD, n8n, Docker                 |
 | 5-security   | 5      | API security, compliance                    |
 | 6-content    | 7      | Writing, SEO, social, email, comics         |
-| 7-meta       | 3      | Creación de skills                          |
+| 7-meta       | 4      | Creación de skills, repo-showcase           |
 | 8-blockchain | 19     | Celo, EVM, DeFi                             |
 | 9-business   | 2      | KPIs, análisis de mercado                   |
 
@@ -139,6 +139,7 @@
 | Skill             | Descripción                                                            |
 | ----------------- | ---------------------------------------------------------------------- |
 | `kaizen`          | Guide for continuous improvement, error proofing, and standardization. |
+| `repo-showcase`   | Directiva proactiva para generar repositorios espejo automáticos.      |
 | `skill-creator`   | Guide for creating effective skills. This skill should be used when us |
 | `skill-developer` | Create and manage s following Anthropic best practices. Use when creat |
 
