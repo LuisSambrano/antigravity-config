@@ -27,11 +27,11 @@ Use this workflow to trigger autonomous research on a specific topic. The agent 
 
 ## Usage Example
 
-USER: `/issue Research Crypto Adoption Metrics in Venezuela 2024`
+USER: `/issue Research Next.js Core Web Vitals Optimization`
 
 AGENT:
 
 1. Executes web searches for relevant adoption data and stablecoin usage.
 2. Aggregates findings into the markdown template.
-3. Executes: `gh issue create --title "[RESEARCH] Crypto Adoption Metrics in Venezuela 2024" ...`
-4. Reply: "Issue created successfully: https://github.com/LuisSambrano/puente-fintech-dapp/issues/15"
+3. Executes: `gh issue create --title "[RESEARCH] Next.js Core Web Vitals Optimization" ...`
+4. Reply: "Issue created successfully: https://github.com/your-org/target-repo/issues/15"

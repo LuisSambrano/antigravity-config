@@ -41,7 +41,7 @@ USER: `/status`
 AGENT:
 
 ```text
-📊 Project Status: venezuela-news-app
+📊 Project Status: target-project-name
 
 ## ✅ Optimal (5/7)
 - TypeScript: 0 errors

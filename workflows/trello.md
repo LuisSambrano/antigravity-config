@@ -42,6 +42,6 @@ AGENT:
 
 | Board          | Lists | Cards | URL                          |
 |----------------|-------|-------|------------------------------|
-| Puente MVP     | 5     | 12    | https://trello.com/b/abc123  |
+| Client MVP     | 5     | 12    | https://trello.com/b/abc123  |
 | Antigravity    | 4     | 8     | https://trello.com/b/def456  |
 ```

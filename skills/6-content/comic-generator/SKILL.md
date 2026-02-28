@@ -15,7 +15,7 @@ Automated comic creation workflow using NotebookLM.
 ## Prerequisites
 
 - NotebookLM MCP configured (`nlm` CLI available)
-- `PATH` includes `/Users/luissambrano/.local/bin`
+- `PATH` includes `~/.local/bin`
 
 ## Variables
 

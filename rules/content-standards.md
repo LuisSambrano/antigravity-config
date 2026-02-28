@@ -56,7 +56,7 @@
 - **OpenGraph Hero**: 1200x630px absolute minimum bounds.
 - **Inline Density**: 2-3 auxiliary images supporting the Core Body.
 - **Alt Processing**: Meaningful contextual string; inject focus keyword natively only if relevant to the graphic.
-- **File Nomenclature**: Kebab-case formatting, highly descriptive (e.g., `venezuela-economy-report-2026.jpg`).
+- **File Nomenclature**: Kebab-case formatting, highly descriptive (e.g., `quarterly-economy-report-2026.jpg`).
 
 ---
 

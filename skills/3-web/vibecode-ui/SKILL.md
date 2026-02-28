@@ -10,7 +10,7 @@ Este skill fusiona la filosofía de diseño "Vibecode" con estándares de ingeni
 ## � Biblioteca de Datos Extendida (Full Mode)
 
 Este Skill tiene acceso a una base de datos de reglas detallada en `./data/`.
-Antes de realizar tareas complejas, **consulta los archivos CSV relevantes** en `/Users/luissambrano/.agent/skills/vibecode-ui/data/`:
+Antes de realizar tareas complejas, **consulta los archivos CSV relevantes** en `~/playground/.agent/skills/vibecode-ui/data/`:
 
 - `ux-guidelines.csv`: Lista de verificación UX exhaustiva (100+ reglas).
 - `styles.csv`: Definiciones detalladas de 67 estilos visuales.

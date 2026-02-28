@@ -1,6 +1,6 @@
 # Next.js Strict Engineering Standards
 
-These rules are MANDATORY for all Antigravity projects (`Puente`, `M&TVenezuela`, etc.).
+These rules are MANDATORY for all Antigravity properties and client projects.
 
 ## 1. App Router Architecture
 

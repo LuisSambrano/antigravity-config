@@ -93,7 +93,7 @@ This document operationalizes the **inflexible DevSecOps validation barriers** t
 ## 🔍 Defect Triage & Telemetry Report
 
 **Timestamp**: 2026-02-03 (ISO-8601 UTC)
-**Target Target**: `venezuela-news-app/main`
+**Target Repository**: `target-project-name/main`
 
 ---
 
