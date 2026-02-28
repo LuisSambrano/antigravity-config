@@ -1,384 +1,165 @@
-# ✅ Antigravity Quality Gates
+# ✅ Enterprise Quality Gates (CI/CD)
 
-**Version**: 1.0.0
+**Version**: 2.0.0
 **Status**: MANDATORY
-**Level**: 1 (Quality Assurance - Transversal)
+**Level**: 1 (Quality Assurance & DevSecOps Validation)
 
 ---
 
 ## 🎯 Purpose
 
-This document dictates the **mandatory quality gates** automatically enforced throughout the development lifecycle. These gates unify all localized QA workflows into automated checklists.
-
-**Origin**: Condenses `auto-qa.md` and auxiliary quality workflows.
+This document operationalizes the **inflexible DevSecOps validation barriers** that code must pass through to reach production. These automated gates intercept human error, enforce strict mathematical limits on complexity, and guarantee zero-downtime deployment trajectories.
 
 ---
 
-## 🚦 Quality Gates (By Lifecycle Stage)
+## 🚦 Validation Trajectories (The Pipeline)
 
-### 1. Pre-Code Gate (Initialization Phase)
+### 1. The Editor Gate (Real-time Analysis)
 
-**Trigger**: Prior to the creation or modification of any source code file.
+**Trigger**: Executed instantly within the IDE terminal or via pre-commit hooks (`husky` / `lint-staged`).
 
-**Automated Validations**:
+**Automated Code Static Analysis**:
 
-#### Workspace Architecture
+- [ ] ✅ **TypeScript Compilation Bounds**: `tsc --noEmit` must yield absolute zero violations.
+- [ ] ✅ **ESLint Diagnostics**: Strict compliance with AST parsing rulesets. Zero errors; zero warnings.
+- [ ] ✅ **Prettier AST Formatter**: All file mutations must be pre-formatted. Trailing commas and 2-space indentation are absolute.
 
-- [ ] ✅ Project root contains the `.agent/` directory.
-- [ ] ✅ `.agent/rules/architecture.md` exists.
-- [ ] ✅ Bilingual README configuration (`README.md`, `README.es.md`) exists.
-- [ ] ✅ `.gitignore` array is fully configured.
-
-#### TypeScript Compiler
-
-- [ ] ✅ `tsconfig.json` exists.
-- [ ] ✅ `"strict": true` is explicitly enabled.
-- [ ] ✅ `"noUncheckedIndexedAccess": true` is explicitly enabled.
-
-#### ESLint Linter
-
-- [ ] ✅ `.eslintrc.json` or `eslint.config.js` exists.
-- [ ] ✅ Strict TypeScript rulesets are active.
-
-**Failure Action**: Automatically provision missing configuration files.
+**Failure Action**: Code is actively blocked from local `.git` staging.
 
 ---
 
-### 2. During-Code Gate (Active Development Phase)
+### 2. The DevSecOps Gate (Dependency & Security Verification)
 
-**Trigger**: Actively evaluated during code generation or manual modification.
+**Trigger**: Executed locally pre-push, or automatically upon CI ingestion.
 
-**Automated Enforcements**:
+**Automated Ingress Validations**:
 
-#### Naming Conventions
+- [ ] ✅ **Software Composition Analysis (SCA)**: `npm audit` or `pnpm audit` must reflect zero Critical or High CVE advisories.
+- [ ] ✅ **Secret Sanitization**: Automated scanning against accidental leakage of Private Keys, JWTs, or Database URIs within code strings using tools like TruffleHog or GitGuardian algorithms.
+- [ ] ✅ **Static Application Security Testing (SAST)**: Enforced boundaries scanning for SQL Injection (SQLi), Cross-Site Scripting (XSS), and Cross-Site Request Forgery (CSRF) attack vectors.
 
-- ✅ Components: `PascalCase.tsx`
-- ✅ Utilities: `camelCase.ts`
-- ✅ Hooks: `use*.ts`
-- ✅ Types: `*.types.ts`
-- ✅ Variables: `camelCase`
-- ✅ Constants: `SCREAMING_SNAKE_CASE`
-- ✅ Functions: `camelCase` (verb-led definitions)
-- ✅ Booleans: `is*`, `has*`, `can*`
-
-#### Import Topology
-
-```typescript
-// 1. React Runtime
-import React from "react";
-
-// 2. Vendor Dependencies (e.g., node_modules)
-import { motion } from "framer-motion";
-
-// 3. Internal Application Aliases
-import { Button } from "@/components/ui/button";
-
-// 4. Type Declarations
-import type { User } from "@/types/user.types";
-
-// 5. CSS Stylesheets
-import "./styles.css";
-```
-
-#### TypeScript Integrity
-
-- ✅ The `any` type is strictly forbidden.
-- ✅ `interface` used for public object topologies.
-- ✅ `type` used for unions.
-- ✅ Generics are contextually descriptive.
-
-#### Error Handling Paradigms
-
-- ✅ `try-catch` structures mandatory for all asynchronous operations.
-- ✅ Error logging must include systemic context.
-- ✅ Failures are returned as objects (No `throw` operations in production payloads).
-
-#### Comment Syntax
-
-- ✅ Comments document "WHY", never "WHAT".
-- ✅ JSDoc formatting is mandatory for public/exported functions.
-- ✅ Code syntax is strictly English; complex architectural annotations are localized (Spanish).
-
-**Failure Action**: Trigger local block or warn developer prior to save operations.
+**Failure Action**: Immediate abortion of the Push or Pull Request sequence.
 
 ---
 
-### 3. Post-Code Gate (Compilation Phase)
+### 3. The Integration Gate (Testing Automation)
 
-**Trigger**: Immediately following file ingestion/modification.
+**Trigger**: Pushed branch execution within the CI cloud runtime.
 
-**Automated Validations**:
+**Automated Assertions**:
 
-#### TypeScript Type Integrity Check
+- [ ] ✅ **Syntax Compilation**: `npm run build` succeeds predictably without exhaust memory or tracing failures.
+- [ ] ✅ **Unit Test Matrices**: Execution of `Vitest` or `Jest` suites. Minimum acceptable Statement Coverage threshold is **85%**.
+- [ ] ✅ **End-to-End (E2E) Journeys**: Headless UI testing (via Playwright or Cypress) must pass critical user flow simulations (Authentication, Payments, Core Data Mutability).
 
-```bash
-# turbo execution
-tsc --noEmit
-```
-
-**Assertion**: 0 type errors.
-
-#### ESLint Diagnostics
-
-```bash
-# turbo execution
-npx eslint . --ext .ts,.tsx --max-warnings 0
-```
-
-**Assertion**: 0 errors, 0 warnings.
-
-#### Build Verification
-
-```bash
-# turbo execution
-npm run build
-```
-
-**Assertion**: Success without compilation errors.
-
-**Failure Action**: Hard-block Git commit operations. Propagate critical errors to the user.
+**Failure Action**: Pipeline termination. Issue propagated back to GitHub PR for blockade.
 
 ---
 
-### 4. Pre-Commit Gate (Version Control Phase)
+### 4. The Continuous Delivery Gate (Pre-Production Constraints)
 
-**Trigger**: Intercepts `git commit` operations.
+**Trigger**: Merging code into main or protected release branches.
 
-**Automated Validations**:
+**Automated Pre-Flight Checks**:
 
-#### Git Staging Diagnostics
+- [ ] ✅ **Semantic Versioning (SemVer)**: Updates must cleanly map to `MAJOR.MINOR.PATCH` topological tags.
+- [ ] ✅ **Database Migration Sync**: DDL (Data Definition Language) commands must be strictly verified as forward-compatible (e.g., adding columns, never dropping columns concurrently) to prevent schema-drift.
+- [ ] ✅ **Core Web Vitals Emulation**: CI lighthouse-ci passes local bundle weight testing (Largest Contentful Paint < 2.5s). Max initial JS heap constraint is `< 500kb` parsed.
 
-```bash
-# turbo execution
-git status
-```
-
-**Required State**:
-
-- [ ] ✅ `.env` configurations absent from the staging area.
-- [ ] ✅ Hardcoded secrets completely absent.
-- [ ] ✅ Asset sizes > 10MB absent from the staging area.
-- [ ] ✅ `.gitignore` effectively blocking `node_modules/`, `.env*`, and `.DS_Store`.
-
-#### Conventional Commits Formatting
-
-```bash
-# Mandatory structural pattern
-<type>(<scope>): <description>
-
-# Validated types
-feat, fix, refactor, style, docs, test, chore
-```
-
-**Formatting Examples**:
-
-- ✅ `feat(auth): implement SSR authentication`
-- ✅ `fix(ui): correct dark mode contrast ratios`
-- ❌ `updated auth stuff`
-- ❌ `fix bug`
-
-#### Production Code Integrity
-
-- [ ] ✅ `console.log` statements stripped from production code.
-- [ ] ✅ Zero `TODO` annotations lacking GitHub issue association.
-- [ ] ✅ Zero orphaned or commented-out code blocks lacking clear justification.
-- [ ] ✅ Zero unused imports.
-
-**Failure Action**: Abort Git commit. Output required rectifications.
+**Failure Action**: Deployment webhook is aborted. Staging environment rolls over to the previous stable snapshot.
 
 ---
 
-### 5. Pre-Deploy Gate (CI/CD Pipeline Phase)
+### 5. AI Agent Terminal Gate (Pre-Response Validation)
 
-**Trigger**: Actively evaluated prior to production/staging deployment.
+**Trigger**: Triggered by Antigravity Agents immediately prior to invoking the `notify_user` execution.
 
-**Automated Validations**:
+**Automated Context Computations**:
 
-#### Testing Architecture
+- [ ] ⚠️ **Linter Consensus**: Execute `tsc --noEmit && npx eslint . --max-warnings 0`. Failure here halts the Agent's notification loop.
+- [ ] ⚠️ **Accessibility Contract**: If a UI component was created, verify 4.5:1 minimum color contrast and mandatory `aria-*` tags for custom interaction mappings.
+- [ ] ⚠️ **DOM Responsiveness Matrix**: Simulate component bounding boxes across target resolutions (375px, 768px, 1024px).
+- [ ] ⚠️ **Content Density Optimization**: Verify generated markdown or blog output strictly exceeds 800 words and follows a predictable `H1 -> H2 -> H3` linear semantic flow.
 
-```bash
-# turbo execution
-npm run test
-```
-
-**Assertion**: 100% test pass rate.
-
-#### Cloud Environment Verification
-
-- [ ] ✅ `.env.example` is fully synchronized with required dependencies.
-- [ ] ✅ Required variables are thoroughly documented.
-- [ ] ✅ Zero secrets leaked into `.env.example`.
-
-#### Database Schemas (If Applicable)
-
-- [ ] ✅ Forward migrations verified and applied.
-- [ ] ✅ RLS policies heavily audited for gaps.
-- [ ] ✅ Data indexing validated for high-frequency queries.
-
-#### Security Baseline
-
-- [ ] ✅ Outdated dependencies pruned (`npm audit`).
-- [ ] ✅ Zero critical CVE vulnerabilities remaining.
-- [ ] ✅ HTTPS rigidly configured across all routes.
-
-**Failure Action**: Hard-block deployment pipeline. Route issue to engineer.
+**Action**: Agents autonomously parse output metrics, auto-resolve trivial compiler failures, and aggregate fatal issues for human consultation.
 
 ---
 
-### 6. Pre-Delivery Gate (Agent Output Phase)
+## 📊 Autogenerated Telemetry Reporting (Agent Schema)
 
-**Trigger**: Fired immediately prior to invoking the `notify_user` system tool.
-
-**Automated Validations**:
-
-#### Full System Summary Execute
-
-```bash
-tsc --noEmit && \
-npx eslint . --ext .ts,.tsx --max-warnings 0 && \
-npm run build
-```
-
-#### Content Quality Assertions (If Generating Text)
-
-**For Article/Documentation Targets**:
-
-- [ ] ⚠️ Total word count ≥ 800 boundaries.
-- [ ] ⚠️ Linear Heading Topology: H1 → H2 → H3 (No structural jumps).
-- [ ] ⚠️ Syntax highlighting injected on all code blocks.
-- [ ] ⚠️ Hyperlinks are descriptive, validated, and resolving.
-
-**For UI Component Targets**:
-
-- [ ] ⚠️ Viewport responsiveness verified across 4 matrices (375px, 768px, 1024px, 1440px).
-- [ ] ⚠️ Dark mode color inversions functionally operate.
-- [ ] ⚠️ End-to-end Accessibility parameters met (Alt Text, ARIA bounds, minimum 4.5:1 contrast, keyboard navigation flow).
-
-#### Performance Benchmarks
-
-**Core Web Vitals Thresholds**:
-
-- [ ] ✅ LCP (Largest Contentful Paint) < 2.5s
-- [ ] ✅ FID (First Input Delay) < 100ms
-- [ ] ✅ CLS (Cumulative Layout Shift) < 0.1
-
-**Lighthouse Benchmarks**:
-
-- [ ] ✅ Performance ≥ 90
-- [ ] ✅ Accessibility ≥ 95
-- [ ] ✅ Best Practices ≥ 90
-- [ ] ✅ SEO ≥ 95
-
-#### Git Hygiene Confirmation
-
-```bash
-# turbo execution
-git status
-```
-
-**Required State**:
-
-- [ ] ✅ Working tree clean (all necessary changes fully committed).
-- [ ] ✅ Branch aligned with remote origin.
-
-**Action**: Aggregates data and autonomously generates the QA status payload.
-
----
-
-## 📊 Autogenerated QA Reporting Schema
-
-### Format Template
+### Protocol Output
 
 ```markdown
-## 🔍 Quality Assurance Report
+## 🔍 Defect Triage & Telemetry Report
 
-**Timestamp**: 2026-02-03  
-**Target Repository**: venezuela-news-app  
-**Active Branch**: feature/new-carousel
-
----
-
-### ✅ Optimal Integrity (X/Y checks passed)
-
-- TypeScript: 0 errors
-- ESLint: 0 errors, 0 warnings
-- Build Compilation: Success
-- Git Status: Clean
-- Commit Nomenclature: ✅
-- Accessibility Score: 98/100
-- Performance Score: 95/100
+**Timestamp**: 2026-02-03 (ISO-8601 UTC)
+**Target Target**: `venezuela-news-app/main`
 
 ---
 
-### ⚠️ Attention Required (X non-fatal items)
+### ✅ Optimal Heuristics (Zero-Defect)
 
-- **SEO**: Meta description data missing on the `/about` route.
-- **Performance**: High-resolution image asset on `/home` bypasses WebP optimization bounds (1.2MB).
-- **Content Density**: Article payload word count registers at 650 (Target: 800+).
-
----
-
-### ❌ Fatal Breaches (X critical violations)
-
-- **Security Override**: Stray `.env` configuration file detected within the Git staging tree.
-- **TypeScript Core**: 3 distinct type violations mapped to `components/ArticleCard.tsx`.
+- Static Compiler (TypeScript): SUCCESS (0 Errors)
+- Code Composition (ESLint): SUCCESS (0 Warnings)
+- Build Output: SUCCESS (1.2s execution phase)
+- Target A11y Ratio: 100/100
+- Initial Payload Weight: 142kb (Optimal)
 
 ---
 
-### 📝 Actionable Recommendations
+### ⚠️ Performance/Debt Vectors (Action Recommended)
 
-1. **Optimize Image Assets**: Throttle homepage hero asset to WebP parameters and enforce late/lazy loading.
-2. **Expand Data Density**: Append >150 words of targeted content to clear article validation matrix.
-3. **Patch SEO Routing**: Inject meta description tags to address the `/about` page degradation.
-4. **Isolate Env Variables**: Promptly unstage the `.env` file and append the target to `.gitignore` rules.
+- **Asset Degredation**: Route `app/dashboard` imports a monolithic image asset spanning 1.8MB. WebP optimization is required to prevent LCP penalties.
+- **Coverage Gap**: `UserService.ts` branch logic coverage fell to 78% (Target: > 85%). Supplemental Unit Tests required.
 
 ---
 
-### 🎯 Iterative Next Steps
+### ❌ Fatal Breach (Action Required)
 
-1. Remediate Critical/Fatal Breaches (❌).
-2. Triage and integrate Warning advisories (⚠️).
-3. Re-trigger automated QA cycle.
-4. Advance to Delivery state.
+- **SAST Violation**: Detected a hardcoded initialization vector inside `api/stripe/route.ts`.
+
+---
+
+### 🎯 Orchestration Matrix (Next Immediate Actions)
+
+1. Neutralize `api/stripe/route.ts` hardcoded string with `process.env`.
+2. Pipeline trigger WebP image compression conversion.
+3. Validate sequence and unblock compilation trajectory.
 ```
 
 ---
 
-## 🚨 Severity Threat Matrices
+## 🚨 Threat Matrix & Anomaly Definitions
 
-### Critical Severity (❌) - Blocks Deployment/Delivery
+### Critical Anomalies (❌) - Pipeline Destruction
 
-- Failed Build compilations.
-- Fatal TypeScript routing errors.
-- ESLint terminal state errors.
-- Exposed hardcoded security secrets.
-- Overriding or disabling production Database RLS.
-- Lighthouse Performance metrics dropping < 70 points.
+- Breaking compilation bounds (Build failures).
+- Raw SQL concatenation (Injection vectors).
+- Overriding database Row Level Security (RLS) policies.
+- Leaking server-side `.keys` to the public boundary.
 
-**Automated Action**: Total procedure halt. Refusal to proceed without resolution.
+**Resolution Algorithm**: Agent enforces a hard halt. The problem must be manually re-engineered immediately.
 
-### High Severity (⚠️) - Demands Immediate Triage
+### High Anomalies (⚠️) - Severe Friction
 
-- Active ESLint warnings.
-- Lighthouse metric degradation < 90 points.
-- Lighthouse Accessibility degradation < 95 points.
-- Monolithic functional drift (functions spanning > 50 lines).
-- Missing critical HTML alt text/ARIA structures.
+- Component code blocks demonstrating Cyclomatic Complexity > 10.
+- Missing explicit alternative text (`alt=""`) or semantic structuring in UI models.
+- Lighthouse metric falling below 90 total points due to unoptimized third-party JS scripts.
 
-**Automated Action**: Flag issues directly to engineer. Resolve proactively prior to delivery whenever technically feasible.
+**Resolution Algorithm**: Agent attempts code restructuring to eliminate complexity/errors before presenting output to human supervisors.
 
-### Medium Severity (📝) - Advisory Recommendations
+### Medium Anomalies (📝) - Technical Debt Sprawl
 
-- Hanging TODO strings lacking issue topology.
-- Variable nomenclature that degrades self-documenting parameters.
-- Opportunities for micro-refactoring or localized component logic cleaning.
+- Stray developer loops `console.log()` retained in production tracks.
+- Ambiguous functional naming schemas that violate self-documenting parameters.
+- Empty error catches lacking Sentry or local logging logic.
 
-**Automated Action**: Push to next viable sprint. Log in advisory parameters.
+**Resolution Algorithm**: Agent logs an advisory warning and requests authorization to push micro-fix refactoring routines in the next cycle.
 
 ---
 
 ## 📚 Core References
 
-- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Level 0
-- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Level 1
-- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Level 1
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md)
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md)

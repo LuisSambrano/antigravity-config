@@ -1,366 +1,136 @@
-# 🌌 PROTOCOL ZERO: Antigravity Philosophy
+# 🌌 PROTOCOL ZERO: Antigravity Prime Directive
 
-**Version**: 1.0.0
+**Version**: 2.0.0
 **Status**: IMMUTABLE
-**Level**: 0 (Foundational)
+**Level**: 0 (Foundational Doctrine)
 
 ---
 
 ## 🎯 Purpose
 
-This document defines the **fundamental principles** and **non-negotiable values** of the Antigravity ecosystem. All technical, architectural, and operational decisions must align with these principles.
+This document enshrines the **unalterable foundational doctrines** and **engineering axioms** of the Antigravity ecosystem. All architectural design, code synthesis, and operational deployment pipelines must derive logically from these axioms.
 
 ---
 
-## 🧬 Core Principles
+## 🧬 Core Engineering Axioms
 
-### 1. Playground is the Source of Truth
+### 1. The Local Workspace as the Single Source of Truth (SSOT)
 
-**Philosophy**: The local environment (`~/playground`) is the origin of all truth. GitHub is merely a cloud mirror.
+**Philosophy**: The local developer machine (`~/playground`) acts as the absolute Authoritative State. Remote VCS (GitHub) is strictly a passive, downstream artifact mirror.
 
 **Implications**:
 
-- ✅ All changes originate locally.
-- ✅ Synchronization is strictly unidirectional: `Local → GitHub`.
-- ✅ Local directory names are authoritative.
-- ✅ GitHub adapts to the local environment, never the reverse.
-- ❌ Never edit directly in the GitHub Web UI (except in extreme emergencies).
-- ❌ Never rename local directories to match remote inconsistencies.
-
-**Example**:
-
-```bash
-# ✅ CORRECT
-cd ~/playground/repos/LuisSambrano/my-project
-# Make local changes
-git push origin main
-
-# ❌ INCORRECT
-# Editing via GitHub Web UI
-# Running pull to sync local environment
-```
+- ✅ **Strict Unidirectionality**: State mutations flow exclusively from `Local → Remote`.
+- ✅ **Immutable Local Authority**: Directory structures, configurations, and environment variables declared locally supersede any remote drift.
+- ❌ **Prohibition of Remote Mutations**: Modifications via GitHub Web UI or remote interventions are classified as critical system violations.
+- ❌ **Rebasing Remote Drift**: Remote repositories must be force-pushed to match local state if an unauthorized remote mutation occurs.
 
 ---
 
-### 2. Quality Over Speed
+### 2. Quality as a Gatekeeper (Zero-Defect Tolerance)
 
-**Philosophy**: Never sacrifice quality for velocity. Broken code is never committed or pushed.
+**Philosophy**: Velocity is a byproduct of quality, not its replacement. Defective, unoptimized, or untested code is fundamentally blocked from ingestion.
 
 **Implications**:
 
-- ✅ All tests must pass prior to commit.
-- ✅ The build process must succeed prior to push.
-- ✅ Zero linting errors prior to commit.
-- ✅ TypeScript strict mode is mandatory.
-- ✅ Mandatory code review (including self or agent-driven reviews).
-- ❌ "I'll fix it later" is an unacceptable paradigm.
-- ❌ Commits containing TODOs without associated issue tracking are forbidden.
-- ❌ Commented-out code without documented justification is forbidden.
-
-**Pre-Commit Checklist**:
-
-```bash
-npm run build  # ✅ Must succeed
-npm run lint   # ✅ 0 errors
-tsc --noEmit   # ✅ 0 type errors
-```
+- ✅ **Automated Gate Enforcement**: Passing CI/CD pipelines is the minimum valid threshold for commit rights.
+- ✅ **Strict Concurrency**: Zero TypeScript errors (`tsc --noEmit`), zero ESLint warnings, and flawless builds are non-negotiable compilation requirements.
+- ✅ **Defensive Programming**: All IO operations and asynchronous pipelines must handle failure gracefully via isolated error boundaries.
+- ❌ **Technical Debt Acceptance**: "Fixing it post-deployment" is an invalid operational paradigm.
+- ❌ **Bypassing Gates**: Using `--no-verify` or `// @ts-ignore` without explicit, documented architectural justification is a critical violation.
 
 ---
 
-### 3. Documentation as Code
+### 3. Documentation as Executable Context
 
-**Philosophy**: Comprehensive documentation is mandatory. Documentation holds equal weight to the codebase itself.
+**Philosophy**: Code executes logic; documentation defines intent. Abstract intent must be as rigidly maintained as the execution environments.
 
 **Implications**:
 
-- ✅ Bilingual/Trilingual READMEs (EN + ES + PT) are mandatory.
-- ✅ System architecture must be visualized via Mermaid diagrams.
-- ✅ Inline comments must explain "WHY" the code exists, not "WHAT" it does.
-- ✅ `CHANGELOG.md` must be updated on every release.
-- ✅ Public APIs must be fully documented using JSDoc.
-- ❌ Repositories without a README are unacceptable.
-- ❌ Undocumented public functions are strictly forbidden.
-- ❌ Undocumented breaking changes are strictly forbidden.
-
-**Example**:
-
-```typescript
-/**
- * Fetches user data from Supabase with caching.
- *
- * Uses a 5-minute cache to reduce API calls and improve performance.
- * Cache is invalidated on user updates via Supabase realtime.
- *
- * @param userId - The UUID of the specified user.
- * @returns The User object, or null if not found.
- * @throws {Error} If the Supabase client is uninitialized.
- */
-export async function fetchUser(userId: string): Promise<User | null> {
-  // Implementation
-}
-```
+- ✅ **Bilingual Synchronization**: Core architectural documentation must exist flawlessly in English (System Primary) and Spanish (Human Primary).
+- ✅ **Architectural Visualization**: Complex system flows must be mapped via code-generated graphs (Mermaid.js).
+- ✅ **Teleological Commenting**: Inline annotations explain the _business logic ("Why")_, never the _syntax ("What")_.
+- ❌ **Undocumented Mutations**: Publishing API updates or breaking changes without immediate `CHANGELOG.md` and type-definition updates is forbidden.
 
 ---
 
-### 4. Autonomy with Accountability
+### 4. Autonomous Execution with Absolute Telemetry
 
-**Philosophy**: Agents (human or AI) possess decision-making freedom, provided they adhere to the protocol and maintain absolute transparency.
+**Philosophy**: AI Agents and human operators exercise extreme autonomy in implementation details, bound strictly by total transparency and adherence to Protocol Zero.
 
 **Implications**:
 
-- ✅ Freedom to select implementation strategies.
-- ✅ Strict obligation to adhere to architectural standards.
-- ✅ Total transparency regarding automated or manual actions.
-- ✅ Mandatory documentation of non-obvious engineering decisions.
-- ✅ Obligation to request clarification when confronted with ambiguity.
-- ❌ Deviating from protocol without documented justification is forbidden.
-- ❌ "Silent" or undocumented architectural shifts are unacceptable.
-- ❌ Proceeding on critical assumptions without user verification is forbidden.
-
-**Transparency Example**:
-
-```markdown
-## Decision: Implement Zustand overriding Context API
-
-**Rationale**: The global state complexity (>5 slices) rendered Context API
-inefficient due to predictable excessive re-renders. Zustand provides superior
-performance metrics and developer ergonomics for this specific use case.
-
-**Considered Alternatives**:
-
-- Context API: Discarded due to performance constraints.
-- Redux Toolkit: Evaluated as excessive overhead for current scope.
-- Jotai: Evaluated as less mature compared to Zustand for this architecture.
-
-**Date**: 2026-02-03
-**Author**: Luis Sambrano / Antigravity Agent
-```
+- ✅ **Design Freedom**: Operators may select novel libraries or design patterns if they mathematically or architecturally outperform existing constraints.
+- ✅ **Decision Logging**: Every non-trivial architectural pivot (e.g., migrating from Context to Zustand) requires an explicit Architecture Decision Record (ADR) appended to the issue/PR.
+- ✅ **Predictable Staging**: Agents must clarify assumptions prior to executing destructive or systemic changes.
+- ❌ **Shadow Implementations**: Introducing unapproved paradigms or deviating from the `.agent/rules/` bounds without logged consensus is a critical failure.
 
 ---
 
-### 5. Continuous Improvement (Kaizen)
+### 5. Architectural Kaizen (Continuous Iteration)
 
-**Philosophy**: Every session must leave the codebase demonstrably better than its prior state. Incremental refactoring is a constant requirement.
+**Philosophy**: Codebases tend toward entropy. Every interaction must apply negative pressure on technical debt, leaving the requested module measurably superior.
 
 **Implications**:
 
-- ✅ Refactor adjacent technical debt when interacting with legacy code.
-- ✅ Enhance test coverage upon bug discovery.
-- ✅ Synchronize documentation actively when altering APIs.
-- ✅ Document new technical insights via TIL (Today I Learned) logs.
-- ✅ Actively seek to simplify unnecessary complexity.
-- ❌ "If it works, don't touch it" is an unacceptable paradigm.
-- ❌ Degrading overall code quality is strictly forbidden.
-- ❌ Ignoring identified code smells is an unacceptable practice.
-
-**The Boy Scout Rule**:
-
-> "Always leave the codebase cleaner than you found it."
+- ✅ **The Boy Scout Axiom**: Refactor adjacent legacy code, elevate test coverage, and modernize types whenever modifying a module.
+- ✅ **Complexity Reduction**: Actively seek out and compress cyclomatic complexity strings.
+- ❌ **Stagnation Tolerance**: Preserving poorly written code simply because "it currently executes" is an invalid engineering stance.
 
 ---
 
-## 🔒 Non-Negotiable Values
+## 🔒 Enterprise Posture Standards
 
-### 1. Security First
+### 1. Zero-Trust Security Architecture
 
-**Mandatory Requirements**:
+**Mandatory Enforcement**:
 
-- ✅ Row Level Security (RLS) enforcement on all Supabase tables.
-- ✅ Strict input validation (Zero-trust client model).
-- ✅ Output sanitization (XSS prevention).
-- ✅ Environment variables are mandatory for all sensitive application secrets.
-- ✅ HTTPS enforcement in production environments.
-- ❌ Hardcoded secrets are a critical violation.
-- ❌ SQL injection vulnerabilities are a critical violation.
-- ❌ Authentication endpoints lacking rate limiting are unacceptable.
-
-**RLS Enforcement Example**:
-
-```sql
--- ✅ CORRECT: RLS Enabled and Managed
-ALTER TABLE articles ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Users can only read published articles"
-ON articles FOR SELECT
-USING (status = 'published' OR auth.uid() = author_id);
-
--- ❌ INCORRECT: RLS Disabled
--- Tables lacking policies default to unrestricted access, causing critical data leaks.
-```
+- ✅ **Data Sovereignty**: Row Level Security (RLS) is strictly enforced on all relational databases (Supabase/Postgres). Default state is `DENY ALL`.
+- ✅ **Edge Validation**: 100% of ingress payloads must be structurally validated against strict schemas (e.g., Zod) prior to application logic parsing.
+- ✅ **Cryptographic Hygiene**: Environment secrets (`.env`) manage all keys. Hardcoded tokens trigger immediate rollback.
+- ✅ **Sanitized Egress**: Output contexts must be stripped of executable payloads to neutralize XSS vectors.
 
 ---
 
-### 2. Accessibility (A11y)
+### 2. Extreme Accessibility (A11y)
 
-**Mandatory Requirements**:
+**Mandatory Enforcement**:
 
-- ✅ WCAG 2.1 AA compliance (Absolute minimum baseline).
-- ✅ Appropriate color contrast ratios (4.5:1 text, 3:1 UI components).
-- ✅ 100% functional keyboard navigation.
-- ✅ Full Screen Reader compatibility.
-- ✅ Strategic deployment of ARIA attributes.
-- ❌ Visual elements lacking alternative text definitions are forbidden.
-- ❌ Interactive elements without descriptive labels are forbidden.
-- ❌ Form inputs lacking explicit association labels are forbidden.
-
-**Implementation Example**:
-
-```tsx
-// ✅ CORRECT: Accessible Implementation
-<button
-  aria-label="Close dialog modal"
-  onClick={handleClose}
->
-  <X className="h-4 w-4" aria-hidden="true" />
-</button>
-
-// ❌ INCORRECT: Inaccessible Implementation
-<button onClick={handleClose}>
-  <X className="h-4 w-4" />
-</button>
-```
+- ✅ **WCAG 2.1 AA Baseline**: Accessibility is a core operational metric, not a post-launch enhancement.
+- ✅ **Screen Reader Matrix**: ARIA tagging, focus-trapping in modals, and logical DOM flows are required.
+- ✅ **Contrast Topologies**: 4.5:1 minimum contrast for text; 3:1 for interactive UI boundaries.
+- ❌ **Semantic Violence**: Using a `<div>` when a `<button>` or `<nav>` is semantically required is an architectural failure.
 
 ---
 
-### 3. Performance Excellence
+### 3. High-Fidelity Performance Metrics
 
-**Mandatory Requirements**:
+**Mandatory Enforcement**:
 
-- ✅ Core Web Vitals must consistently pass.
-  - LCP (Largest Contentful Paint): < 2.5s
-  - FID (First Input Delay): < 100ms
-  - CLS (Cumulative Layout Shift): < 0.1
-- ✅ Lighthouse Performance Score: > 90.
-- ✅ Optimized bundle sizes via strategic code splitting.
-- ✅ Comprehensive image optimization (WebP targeting, lazy loading defaults).
-- ❌ Initial load bundles exceeding 500KB without documented justification.
-- ❌ Deployment of unoptimized media assets.
-- ❌ Predictable, preventable component re-renders.
-
-**Implementation Example**:
-
-```tsx
-// ✅ CORRECT: Strategic Lazy Loading
-import dynamic from "next/dynamic";
-
-const HeavyDataChart = dynamic(() => import("./HeavyDataChart"), {
-  loading: () => <ChartSkeleton />,
-  ssr: false,
-});
-
-// ❌ INCORRECT: Monolithic Initial Bundle
-import { HeavyDataChart } from "./HeavyDataChart";
-```
+- ✅ **Core Web Vitals Thresholds**:
+  - Largest Contentful Paint (LCP): < 2.5s (Target: < 1.5s via Edge Caching)
+  - First Input Delay (FID): < 100ms
+  - Cumulative Layout Shift (CLS): 0.00
+  - Time to First Byte (TTFB): < 200ms
+- ✅ **Bundle Optimization**: Initial JavaScript payloads must be aggressively code-split. Dynamic imports (`next/dynamic`) are mandatory for heavy charting or secondary UI renders.
+- ✅ **Asset Delivery**: Media assets are strictly deferred, lazy-loaded, and served in next-gen formats (WebP/AVIF).
 
 ---
 
-### 4. Code Maintainability
+### 4. Cyclomatic Code Maintainability
 
-**Mandatory Requirements**:
+**Mandatory Enforcement**:
 
-- ✅ Self-documenting code via hyper-descriptive naming conventions.
-- ✅ Strict function size limits (< 50 lines per function block).
-- ✅ Architectural Separation of Concerns (UI layer isolated from business logic).
-- ✅ DRY principles (Don't Repeat Yourself).
-- ✅ Uniform consistency in naming, structural patterns, and export methods.
-- ❌ Functions exceeding 100 lines.
-- ❌ Embedding complex business logic within presentational UI components.
-- ❌ Copy-pasting architectural blocks without abstraction.
-
-**Implementation Example**:
-
-```typescript
-// ✅ CORRECT: Self-Documenting Naming
-function calculateDiscountedPrice(
-  originalPrice: number,
-  discountPercentage: number,
-): number {
-  const discountAmount = originalPrice * (discountPercentage / 100);
-  return originalPrice - discountAmount;
-}
-
-// ❌ INCORRECT: Cryptic Variable References
-function calc(p: number, d: number): number {
-  return p - p * (d / 100);
-}
-```
+- ✅ **SOLID Principles**: Single Responsibility architectures isolate UI from business logic completely via Custom Hooks or Services.
+- ✅ **Complexity Bounds**: Logic sequences exceeding 50 lines or reaching a cyclomatic complexity index of > 10 must be abstracted and decoupled.
+- ✅ **DRY Architecture**: Reusable logic is extracted into `/lib/utils` or `/hooks`; copy-pasting code arrays > 5 lines is forbidden.
 
 ---
 
-### 5. Infinite Scalability
+### 5. Cloud-Native Scalability
 
-**Mandatory Requirements**:
+**Mandatory Enforcement**:
 
-- ✅ Modular architecture built on isolated feature silos.
-- ✅ Explicit demarcation between frontend consumption and backend resolution.
-- ✅ Strict API versioning patterns (e.g., v1, v2).
-- ✅ Optimized, deliberate database indexing.
-- ✅ Strategic, multi-layered caching implementations.
-- ❌ Tightly coupled monoliths hindering independent feature deployments.
-- ❌ N+1 query structures.
-- ❌ Retrieving macro datasets without server-side pagination enforcement.
-
-**Architectural Example**:
-
-```typescript
-// ✅ CORRECT: Feature-Driven Modularity
-app/
-├── features/
-│   ├── auth/
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   └── api/
-│   └── articles/
-│       ├── components/
-│       ├── hooks/
-│       └── api/
-
-// ❌ INCORRECT: Generic Type Grouping
-app/
-├── components/
-│   ├── LoginForm.tsx
-│   ├── ArticleCard.tsx
-│   └── UserProfile.tsx
-```
-
----
-
-## 🚨 Protocol Violations
-
-### Critical Severity (Blocks Deployment)
-
-- Submitting code blocks failing unit or integration tests.
-- Committing parameters that result in a failed build sequence.
-- Detecting hardcoded secrets within the repository or staging area.
-- Introducing identified security vulnerabilities to the codebase.
-- Disabling Row Level Security (RLS) in production environments.
-
-### High Severity (Immediate Rectification Required)
-
-- Unresolved linter errors or warnings.
-- Unresolved TypeScript compilation errors.
-- Lighthouse Performance score falling below 70.
-- Lighthouse Accessibility score falling below 90.
-- Code duplication ratios exceeding a 10% threshold.
-
-### Medium Severity (Rectification Required Upcoming Sprint)
-
-- Outdated or misleading inline comments.
-- Hanging TODO notes lacking associated issue tracking tags.
-- Functions approaching or slightly exceeding the 50-line maximum.
-- Insufficient public API documentation.
-
-### Low Severity (Backlog/Nice to Have)
-
-- Opportunities for variable nomenclature optimization.
-- Non-critical, aesthetic refactoring possibilities.
-- Minor computational optimizations.
-
----
-
-## 📚 Core References
-
-- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Level 1
-- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Level 1
-- [QUALITY_GATES.md](./QUALITY_GATES.md) - Level 1
-- [Workflows](../workflows/) - Level 2
+- ✅ **Stateless Isolation**: Applications must be designed as stateless entities capable of infinite horizontal replication at the Edge.
+- ✅ **Data Optimization**: N+1 database queries are strictly prohibited. Joined macros and indexed pagination are mandatory for array resolutions.
+- ✅ **Multi-Layer Caching**: Intensive database aggregates must be buffered by Redis or Next.js aggressive Data Cache (ISR) methodologies.

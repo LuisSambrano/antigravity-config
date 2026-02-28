@@ -1,442 +1,241 @@
-# 🏗️ Antigravity Architecture Standards
+# 🏗️ Enterprise Architecture Standards
 
-**Version**: 1.0.0
+**Version**: 2.0.0
 **Status**: MANDATORY
-**Level**: 1 (Architecture)
+**Level**: 1 (Architecture & System Design)
 
 ---
 
 ## 🎯 Purpose
 
-This document dictates the **mandatory directory structure**, **naming conventions**, and **architectural patterns** required across all Antigravity projects.
+This document enforces the **inflexible directory topologies**, **naming taxonomies**, and **cloud-native architectural patterns** required across all Antigravity properties. Deviations from these doctrines require explicit, documented Architecture Decision Records (ADRs).
 
 ---
 
-## 📁 Mandatory Directory Structure
+## 📁 System Topology (App Router Hierarchy)
 
-### For Next.js (App Router) Projects
+### Mandatory Directory Scaffolding
 
 ```text
 project/
-├── .agent/                          # ← MANDATORY: Agent workspace
-│   ├── rules/                       # Project-specific directives
-│   │   ├── architecture.md
-│   │   ├── workspace-standards.md
-│   │   ├── nextjs-strict.md         # Framework constraints
-│   │   ├── ui-ux-luxury.md          # UI/UX constraints
-│   │   └── supabase-security.md     # Backend constraints
-│   ├── workflows/                   # Project-specific workflows
-│   │   ├── auto-qa.md
-│   │   ├── deploy.md
-│   │   └── create-component.md
-│   └── templates/                   # Code gen templates
-│       ├── component-template.tsx
-│       └── api-route-template.ts
-├── app/                             # Next.js App Router root
-│   ├── (auth)/                      # Route Group: Authentication
-│   │   ├── login/
-│   │   ├── register/
-│   │   └── layout.tsx
-│   ├── (dashboard)/                 # Route Group: Dashboard
-│   │   ├── profile/
-│   │   ├── settings/
-│   │   └── layout.tsx
-│   ├── (public)/                    # Route Group: Public-facing
-│   │   ├── about/
-│   │   ├── contact/
-│   │   └── layout.tsx
-│   ├── api/                         # Backend API routes
-│   │   ├── auth/
-│   │   ├── users/
-│   │   └── articles/
-│   ├── layout.tsx                   # Root layout
-│   ├── page.tsx                     # Home page
-│   ├── error.tsx                    # Error boundary
-│   ├── loading.tsx                  # Loading UI
-│   └── not-found.tsx                # 404 page
-├── components/                      # React Components
-│   ├── ui/                          # Primitive UI (e.g., shadcn/ui)
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   ├── dialog.tsx
-│   │   └── input.tsx
-│   ├── features/                    # Domain-specific components
-│   │   ├── auth/
-│   │   │   ├── LoginForm.tsx
-│   │   │   └── RegisterForm.tsx
-│   │   └── articles/
-│   │       ├── ArticleCard.tsx
-│   │       └── ArticleList.tsx
-│   └── layouts/                     # Reusable structural layouts
-│       ├── Header.tsx
-│       ├── Footer.tsx
-│       └── Sidebar.tsx
-├── lib/                             # Shared utilities and configurations
-│   ├── supabase/                    # Supabase client singletons
-│   │   ├── client.ts                # Browser client
-│   │   ├── server.ts                # Server client
-│   │   └── middleware.ts            # Auth middleware
-│   ├── utils/                       # Generic utilities
-│   │   ├── cn.ts                    # Class name merger
-│   │   ├── date.ts                  # Date formatting
-│   │   └── validation.ts            # Schema validation
-│   ├── hooks/                       # Custom React hooks
-│   │   ├── useAuth.ts
-│   │   ├── useArticles.ts
-│   │   └── useDebounce.ts
-│   └── constants/                   # Static configurations
-│       ├── routes.ts
-│       └── config.ts
-├── types/                           # Global TypeScript declarations
-│   ├── database.types.ts            # Supabase generated typings
-│   ├── user.types.ts
-│   └── article.types.ts
-├── public/                          # Static assets
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
-├── .env.local                       # Local secrets (DO NOT COMMIT)
-├── .env.example                     # Environment template (COMMIT)
-├── .gitignore
-├── next.config.ts                   # Next.js compiler configuration
-├── tailwind.config.ts               # Tailwind CSS configuration
-├── tsconfig.json                    # TypeScript compiler configuration
-├── package.json
-├── README.md                        # ← MANDATORY (English core)
-├── README.es.md                     # ← MANDATORY (Spanish translation)
-└── CHANGELOG.md                     # Version history
+├── .agent/                          # ← MANDATORY: AI/Operator Control Plane
+│   ├── rules/                       # Bounded Context Directives
+│   ├── workflows/                   # Immutable Execution Sequences
+│   └── templates/                   # Code Generation ASTs
+├── app/                             # Next.js App Router (Routing Plane)
+│   ├── (auth)/                      # Route Segments: Auth Domain
+│   ├── (dashboard)/                 # Route Segments: Internal Domain
+│   ├── api/                         # Edge/Node API Handlers
+│   ├── layout.tsx                   # Root HTML Scaffolding
+│   └── error.tsx                    # Top-Level React Error Boundary
+├── components/                      # Presentation Layer (Dumb Components)
+│   ├── ui/                          # Design System Primitives (e.g., shadcn/ui)
+│   ├── features/                    # Domain-Bounded Components (e.g., Auth, Feed)
+│   └── layouts/                     # Macro-Layout Shells
+├── lib/                             # Core Infrastructure & Business Logic
+│   ├── api/                         # Data Access Objects (DAOs) / Fetch Wrappers
+│   ├── supabase/                    # Thread-safe Database Singletons
+│   ├── utils/                       # Pure Functional Utilities
+│   └── hooks/                       # Custom State Orchestration Hooks
+├── server/                          # Server-Side Only Logic (Data Layer)
+│   ├── actions/                     # Next.js Server Actions (Mutations)
+│   ├── services/                    # Business Logic Services
+│   └── dtos/                        # Data Transfer Object Mappers
+├── types/                           # Transversal TypeScript Interfaces (Domain Models)
+├── .env.local                       # Cryptographically Secure Local Overrides
+├── .env.example                     # Sanitized Environment Blueprint (COMMIT)
+├── next.config.ts                   # Next.js Runtime Configuration
+└── README.md                        # Primary Technical Documentation
 ```
 
 ---
 
-## 🏷️ Naming Conventions
+## 🏷️ Structural Taxonomy (Naming Standards)
 
-### File Level
+### File Nomenclature Constraints
 
-| Type                 | Convention                 | Example                  |
-| :------------------- | :------------------------- | :----------------------- |
-| **React Components** | `PascalCase.tsx`           | `ArticleCard.tsx`        |
-| **Next.js Routing**  | `page.tsx`, `layout.tsx`   | `app/about/page.tsx`     |
-| **API Routes**       | `route.ts`                 | `app/api/users/route.ts` |
-| **Utilities**        | `camelCase.ts`             | `formatDate.ts`          |
-| **Hooks**            | `use*.ts`                  | `useAuth.ts`             |
-| **Types**            | `*.types.ts`               | `user.types.ts`          |
-| **Constants**        | `*.constants.ts`           | `routes.constants.ts`    |
-| **Config**           | `*.config.ts`              | `next.config.ts`         |
-| **Tests**            | `*.test.ts` or `*.spec.ts` | `ArticleCard.test.tsx`   |
+| Stratum              | Explicit Convention        | Authorized Example          |
+| :------------------- | :------------------------- | :-------------------------- |
+| **React Components** | `PascalCase.tsx`           | `AuthenticationGate.tsx`    |
+| **Next.js Routing**  | `page.tsx`, `layout.tsx`   | `app/dashboard/page.tsx`    |
+| **Route Handlers**   | `route.ts`                 | `app/api/webhooks/route.ts` |
+| **Pure Utilities**   | `camelCase.ts`             | `calculateLatency.ts`       |
+| **React Hooks**      | `use*.ts`                  | `useSessionTelemetry.ts`    |
+| **Domain Models**    | `*.types.ts`               | `transaction.types.ts`      |
+| **Data Mappers**     | `*.dto.ts`                 | `user.dto.ts`               |
+| **System Config**    | `*.config.ts`              | `tailwind.config.ts`        |
+| **Test Suites**      | `*.test.ts` or `*.spec.ts` | `TransactionDAO.spec.ts`    |
 
-### Directory Level
+### Syntax Abstraction Constraints
 
-| Type                 | Convention     | Example                               |
-| :------------------- | :------------- | :------------------------------------ |
-| **Next.js Routes**   | `kebab-case`   | `app/user-profile/`                   |
-| **Route Groups**     | `(kebab-case)` | `app/(dashboard)/`                    |
-| **Component Groups** | `PascalCase`   | `components/ArticleList/`             |
-| **Utilities**        | `camelCase`    | `lib/utils/`                          |
-| **Features**         | `kebab-case`   | `components/features/article-editor/` |
-
-### Syntax Level
-
-| Type             | Convention                   | Example                                        |
-| :--------------- | :--------------------------- | :--------------------------------------------- |
-| **Variables**    | `camelCase`                  | `const userName = 'Luis';`                     |
-| **Constants**    | `SCREAMING_SNAKE_CASE`       | `const MAX_RETRIES = 3;`                       |
-| **Functions**    | `camelCase` (verb-led)       | `function fetchUser() {}`                      |
-| **Components**   | `PascalCase`                 | `function ArticleCard() {}`                    |
-| **Classes**      | `PascalCase`                 | `class UserService {}`                         |
-| **Interfaces**   | `PascalCase` (No 'I' prefix) | `interface User {}`                            |
-| **Types**        | `PascalCase`                 | `type ArticleStatus = 'draft' \| 'published';` |
-| **Enums**        | `PascalCase`                 | `enum Role { Admin, User }`                    |
-| **Private Refs** | `_prefix`                    | `const _internalCache = {};`                   |
-| **Booleans**     | `is*`, `has*`, `can*`        | `const isLoading = true;`                      |
-| **Handlers**     | `handle*`                    | `const handleClick = () => {};`                |
-| **Callbacks**    | `on*`                        | `const onSuccess = () => {};`                  |
+| Variable Type        | Convention                     | Example                                      |
+| :------------------- | :----------------------------- | :------------------------------------------- |
+| **Primitives**       | `camelCase`                    | `const maxConcurrency = 5;`                  |
+| **Globals/Envs**     | `SCREAMING_SNAKE_CASE`         | `const MAX_RETRIES = 3;`                     |
+| **Functions**        | `camelCase` (Imperative Verb)  | `async function establishConnection() {}`    |
+| **Classes/Services** | `PascalCase`                   | `class PaymentGatewayService {}`             |
+| **Interfaces/Types** | `PascalCase` (No `I` prefix)   | `interface PaymentIntent {}`                 |
+| **Enums**            | `PascalCase`                   | `enum TransactionState { Pending, Settled }` |
+| **Internal Scopes**  | `_prefix`                      | `const _inMemoryCache = new Map();`          |
+| **Predicates**       | `is*`, `has*`, `can*`, `will*` | `const isFullyHydrated = true;`              |
 
 ---
 
-## 🏛️ Mandatory Architectural Patterns
+## 🏛️ Inelastic Architectural Patterns
 
-### 1. Singleton for Remote Clients (Supabase, APIs)
+### 1. Hexagonal Infrastructure Isolation (Thread-Safe Singletons)
 
-**Problem**: Instantiating multiple clients causes memory leaks and pipeline exhaustion.
-
-**Solution**: Strictly enforce the Singleton pattern.
+**Axiom**: External systems (Databases, Message Queues, Payment APIs) must be abstracted behind connection-pooled, thread-safe singletons to prevent memory leaks in serverless/edge environments.
 
 ```typescript
-// ✅ CORRECT: lib/supabase/client.ts
+// ✅ MANDATORY: Caching the global connection instance in Serverless Runtimes
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/database.types";
 
-let supabaseClient: SupabaseClient<Database> | null = null;
+const globalForSupabase = globalThis as unknown as {
+  supabaseClient: SupabaseClient<Database> | undefined;
+};
 
-export function getSupabaseClient(): SupabaseClient<Database> {
-  if (!supabaseClient) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-    supabaseClient = createClient<Database>(supabaseUrl, supabaseKey);
+export function getSupabaseServerSingleton(): SupabaseClient<Database> {
+  if (!globalForSupabase.supabaseClient) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY!; // Server-side execution only
+    globalForSupabase.supabaseClient = createClient<Database>(url, key);
   }
-
-  return supabaseClient;
+  return globalForSupabase.supabaseClient;
 }
 ```
+
+---
+
+### 2. The Render Hierarchy (RSC Default)
+
+**Axiom**: Next.js React Server Components (RSC) are the absolute default execution boundary. The boundary shifts to the client (`'use client'`) strictly and only when interactive lifecycle hooks or Web APIs are demanded.
+
+**Client Boundary Triggers (`'use client'`)**:
+
+- ✅ State orchestration (`useState`, `useReducer`, Context APIs).
+- ✅ Lifecycle ingestion (`useEffect`, `useLayoutEffect`).
+- ✅ User Event propagation (`onClick`, `onKeyDown`).
+- ✅ Browser API coupling (`window.navigator`, `IntersectionObserver`).
+
+**Server Boundary Triggers (Default)**:
+
+- ✅ Secure Secret Access (Tokens, DB Passwords).
+- ✅ Zero-latency database queries.
+- ✅ Downward prop sterilization via Data Transfer Objects (DTOs).
+- ✅ Edge-cached data resolution (ISR/SSG).
+
+---
+
+### 3. Asymmetric Separation of Concerns (UI vs Business Logic)
+
+**Axiom**: The Presentation Layer (Components) remains strictly mathematically pure relative to its properties. Complex asynchronous mutations must route through specific orchestrators (Custom Hooks for Client, Server Actions for Server).
+
+```tsx
+// ✅ SERVER ACTION (Business Logic Layer)
+// server/actions/publish-article.ts
+"use server";
+import { getSupabaseServerSingleton } from "@/lib/supabase/server";
+import { ArticleDTO } from "@/server/dtos/article.dto";
+
+export async function publishArticleAction(formData: FormData) {
+  const supabase = getSupabaseServerSingleton();
+  const payload = ArticleDTO.parse(formData); // Validate via Zod
+  return await supabase.from("articles").insert(payload);
+}
+
+// ✅ PRESENTATION COMPONENT (Dumb Layer)
+// components/features/articles/PublishButton.tsx
+("use client");
+import { useTransition } from "react";
+import { publishArticleAction } from "@/server/actions/publish-article";
+
+export function PublishButton({ formData }: { formData: FormData }) {
+  const [isPending, startTransition] = useTransition();
+
+  return (
+    <button
+      onClick={() => startTransition(() => publishArticleAction(formData))}
+      disabled={isPending}
+      className={isPending ? "opacity-50 cursor-not-allowed" : ""}
+    >
+      {isPending ? "Committing..." : "Publish to Edge"}
+    </button>
+  );
+}
+```
+
+---
+
+### 4. Edge vs Node Runtime Optimization
+
+**Axiom**: Middleware and high-concurrency read operations must target the `edge` runtime. Heavy computing processes or non-standard Node.js native module usage must explicitly define the `nodejs` runtime.
 
 ```typescript
-// ❌ INCORRECT: Creating new instances per call
-import { createClient } from "@supabase/supabase-js";
+// ✅ EDGE ALLOCATION: Maximized global TTFB reduction
+// app/api/fast-proxy/route.ts
+export const runtime = "edge";
+export const preferredRegion = "iad1"; // e.g. Washington D.C near the DB
 
-// This exhausts connection pools
-export const supabase = createClient(url, key);
-```
-
----
-
-### 2. Server Components strictly by Default
-
-**Philosophy**: Assume Next.js Server Components. Explicitly opt-in to Client Components only when browser APIS or client-side interactivity is unavoidable.
-
-**When to use Client Components (`'use client'`)**:
-
-- ✅ Required React hooks (`useState`, `useEffect`, `useContext`).
-- ✅ Required event listeners (`onClick`, `onChange`).
-- ✅ Access to browser APIs (`window`, `localStorage`).
-- ✅ Client-only libraries (e.g., framer-motion, react-hot-toast).
-
-**When to use Server Components**:
-
-- ✅ Direct data fetching.
-- ✅ Direct backend access (databases, file systems).
-- ✅ Static content derivation.
-- ✅ Critical SEO paths.
-
-```tsx
-// ✅ CORRECT: Server Component (Default)
-// app/articles/page.tsx
-import { getSupabaseServer } from "@/lib/supabase/server";
-import { ArticleCard } from "@/components/features/articles/ArticleCard";
-
-export default async function ArticlesPage() {
-  const supabase = getSupabaseServer();
-  const { data: articles } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("status", "published");
-
-  return (
-    <div>
-      {articles?.map((article) => (
-        <ArticleCard key={article.id} article={article} />
-      ))}
-    </div>
-  );
+export async function GET(req: Request) {
+  // Edge-compatible fetch proxy
 }
 ```
 
 ---
 
-### 3. Separation of Concerns (UI vs. Logic)
+### 5. Inverted Component Composition
 
-**Philosophy**: UI components must remain "dumb." Business logic must be outsourced to hooks, services, or Server Actions.
-
-```tsx
-// ✅ CORRECT: Logic isolated in a custom hook
-// lib/hooks/useArticles.ts
-export function useArticles() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const supabase = getSupabaseClient();
-        const { data, error } = await supabase
-          .from("articles")
-          .select("*")
-          .eq("status", "published");
-
-        if (error) throw error;
-        setArticles(data);
-      } catch (err) {
-        setError(err as Error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchArticles();
-  }, []);
-
-  return { articles, isLoading, error };
-}
-
-// components/features/articles/ArticleList.tsx
-("use client");
-
-import { useArticles } from "@/lib/hooks/useArticles";
-import { ArticleCard } from "./ArticleCard";
-
-export function ArticleList() {
-  const { articles, isLoading, error } = useArticles();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
-  return (
-    <div>
-      {articles.map((article) => (
-        <ArticleCard key={article.id} article={article} />
-      ))}
-    </div>
-  );
-}
-```
-
----
-
-### 4. Composition Over Inheritance
-
-**Philosophy**: Construct complex UIs by composing smaller, focused components. Avoid deeply nested inheritance structures.
+**Axiom**: Avoid monolithic "God components" by aggressively employing "slots" and `children` props. Prop drilling > 3 levels is a critical architectural odor indicating failed composition.
 
 ```tsx
-// ✅ CORRECT: Composition pattern
-interface CardProps {
-  children: React.ReactNode;
-  variant?: "default" | "outlined" | "elevated";
-}
-
-export function Card({ children, variant = "default" }: CardProps) {
-  return (
-    <div className={cn("rounded-lg", variantStyles[variant])}>{children}</div>
-  );
-}
-
-export function CardHeader({ children }: { children: React.ReactNode }) {
-  return <div className="p-4 border-b">{children}</div>;
-}
-
-export function CardContent({ children }: { children: React.ReactNode }) {
-  return <div className="p-4">{children}</div>;
-}
-
-// Consumption Context
-<Card variant="elevated">
-  <CardHeader>
-    <h2>Title</h2>
-  </CardHeader>
-  <CardContent>
-    <p>Content</p>
-  </CardContent>
-</Card>;
-```
-
----
-
-### 5. Error Boundaries
-
-**Philosophy**: Implement localized error boundaries to prevent application-wide catastrophic failures. Isolate by feature segment.
-
-```tsx
-// ✅ CORRECT: Feature-level Error Boundary
-// app/(dashboard)/articles/error.tsx
-"use client";
-
-export default function ArticlesError({
-  error,
-  reset,
+// ✅ COMPOSITION (Inversion of Control)
+// The parent injects the highly specific component into the generic layout.
+export function DashboardShell({
+  Sidebar,
+  Content,
 }: {
-  error: Error & { digest?: string };
-  reset: () => void;
+  Sidebar: ReactNode;
+  Content: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px]">
-      <h2 className="text-2xl font-bold mb-4">Error loading articles</h2>
-      <p className="text-muted-foreground mb-4">{error.message}</p>
-      <button onClick={reset} className="btn-primary">
-        Try again
-      </button>
+    <div className="grid grid-cols-[250px_1fr]">
+      <aside className="border-r">{Sidebar}</aside>
+      <main>{Content}</main>
     </div>
   );
 }
+
+// Consumed at the page level
+<DashboardShell
+  Sidebar={<AdminNavigation userRole="admin" />}
+  Content={<FinancialMetricsChart data={financialData} />}
+/>;
 ```
 
 ---
 
-## 🗂️ Feature-Driven Organization
+## 🔐 Cryptographic State Boundaries
 
-**Philosophy**: Group architectural elements by domain feature, not by technical file type.
-
-```text
-// ✅ CORRECT: Organized by Domain Feature
-components/
-└── features/
-    ├── auth/
-    │   ├── LoginForm.tsx
-    │   ├── RegisterForm.tsx
-    │   ├── useAuth.ts
-    │   └── auth.types.ts
-    └── articles/
-        ├── ArticleCard.tsx
-        ├── ArticleList.tsx
-        ├── useArticles.ts
-        └── article.types.ts
-
-// ❌ INCORRECT: Organized by Technical Type
-components/
-├── forms/
-│   ├── LoginForm.tsx
-│   └── ArticleForm.tsx
-├── hooks/
-│   ├── useAuth.ts
-│   └── useArticles.ts
-```
-
----
-
-## 📦 Barrel Exports
-
-**Philosophy**: Utilize `index.ts` files to cleanly expose public interfaces and simplify consumption paths.
-
-```typescript
-// ✅ CORRECT: components/ui/index.ts
-export { Button } from "./button";
-export { Card, CardHeader, CardContent } from "./card";
-export { Dialog } from "./dialog";
-
-// Usage Context
-import { Button, Card, Dialog } from "@/components/ui";
-```
-
----
-
-## 🔐 Environment Variables
-
-**Mandatory Structure**:
+**Mandatory Environmental Topology**:
 
 ```bash
-# .env.example (COMMIT ALLOWED)
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+# .env.example (Safe to Commit - Acts as Architecture Map)
+NEXT_PUBLIC_TELEMETRY_KEY=publishable_key_here
+SUPABASE_SERVICE_ROLE_KEY=do_not_commit_secrets_here
+API_RATE_LIMIT=100
 ```
 
-```bash
-# .env.local (DO NOT COMMIT)
-NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
-```
+**Access Axioms**:
 
-**Conventions**:
-
-- ✅ Use `NEXT_PUBLIC_*` strictly for variables required client-side.
-- ✅ Omit prefixes for secure, server-only variables.
-- ✅ Maintain `.env.example` with dummy values for repository cloning.
-- ❌ Hardcoding secrets within the file system is strictly forbidden.
+- ✅ `NEXT_PUBLIC_*` prefixes are deliberately leaked to the client bundle. Only harmless tracking or public routing variables belong here.
+- ✅ Unprefixed variables are strictly isolated to Server Components, API Routes, or Server Actions. Exposing them to client files will trigger build-time failures in Next.js.
 
 ---
 
 ## 📚 Core References
 
-- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Level 0
-- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Level 2
-- [QUALITY_GATES.md](./QUALITY_GATES.md) - Level 3
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md)
+- [QUALITY_GATES.md](./QUALITY_GATES.md)
