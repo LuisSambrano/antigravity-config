@@ -2,8 +2,10 @@
 
 # Antigravity Config
 
-A configuration framework for AI-assisted development environments.  
-Rules, skills, and workflows that standardize how AI coding agents operate across projects.
+**The Sovereign Workspace Configuration Protocol**
+
+A highly opinionated, production-grade configuration framework for AI-assisted development environments.  
+This repository dictates the strict architectural rules, domain-specific skills, and operational workflows that mandate how AI coding agents (Gemini, Cursor, Windsurf) interact with your source code.
 
 <p>
   <a href="./README.md">English</a> •
@@ -20,180 +22,99 @@ Rules, skills, and workflows that standardize how AI coding agents operate acros
 
 ---
 
-## What This Is
+## 🎯 What This Is (For Humans)
 
-This repository provides a ready-to-use `.agent/` configuration directory for AI coding assistants (Gemini, Cursor, Windsurf, etc.). It acts as the brain and the law for your AI agent, giving it clear boundaries and specialized knowledge to use in your projects.
+This repository provides a ready-to-use `.agent/` configuration directory. Think of it as the **pre-frontal cortex** for your AI agents. Left to their own devices, LLMs generate generic, mathematically bloated, and architecturally inconsistent code. This framework forces them into a strict paradigm of high-performance engineering.
 
-### The Three Pillars
+### The Three Pillars of the Ecosystem
 
-- **Rules (The Constitution)** — The immutable laws of your project. The AI agent applies these automatically to every file it creates or edits (e.g., "always use strict TypeScript", "follow specific naming conventions"). You modify these in `GEMINI.md` or the `rules/` folder to adapt the agent to your team's preferences.
-- **Skills (The Library)** — On-demand specialized knowledge. The agent reads these passively when working on specific topics, or you can explicitly tell it "Read the X skill before doing Y" to give it deep, domain-specific context (105+ skills across 10 categories available).
-- **Workflows (The Standard Operating Procedures / SOPs)** — Step-by-step guides for executing complex tasks. This is the most interactive part: you invoke them explicitly using "Slash commands" (like `/deploy`, `/idea`, `/check-security`). Using a workflow ensures the AI agent never skips critical steps when performing multi-stage operations.
-
-The goal is simple: clone once, install, and have a consistent, opinionated development environment where your AI assistant follows professional standards.
-
----
-
-## 🤖 For AI Agents (How to Read This Repo)
-
-**SYSTEM DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, follow these operating instructions:
-
-1. **Start Here**: Your first step is ALWAYS to read `rules/PROTOCOL_ZERO.md` to understand the foundational philosophy.
-2. **Skill Discovery**: Check `skills/INDEX.md` to find relevant knowledge before writing domain-specific code. If a skill matches the user's request, read its `SKILL.md` file unconditionally.
-3. **Workflow Execution**: If you see the user typing a command like `/deploy` or `/idea`, immediately view the corresponding `.md` file in the `workflows/` directory and execute it step-by-step, exactly as written.
+- 📜 **RULES (The Constitution)**: The immutable laws of your project. The AI agent applies these passively and universally to every interaction or file edit.
+  - _Example_: "All database interactions must use Thread-Safe Singletons." or "Cyclomatic complexity must never exceed 10."
+  - _Modification_: Edit files in the `rules/` folder to adapt the baseline intelligence of the agent to your enterprise constraints.
+- 🧠 **SKILLS (The Knowledge Graph)**: On-demand, specialized, domain-specific intelligence.
+  - _Example_: The agent doesn't need to know how Celo Smart Contracts work when building a simple React Button. But when you ask for a Web3 integration, it pulls the `8-blockchain` skill context into its prompt.
+  - _Usage_: The agent reads these passively based on context matching, or you can force it explicitly: "Read the `vibecode-ui` skill before proposing a design."
+- ⚙️ **WORKFLOWS (The Standard Operating Procedures / SOPs)**: Step-by-step CI/CD or operational guides to prevent LLMs from skipping critical validation steps.
+  - _Example_: Writing `/deploy` doesn't just push code; it forces the agent to run strict `tsc --noEmit` checks, build verifications, and security sanitizations before ever touching a deployment node.
 
 ---
 
-## Quick Start
+## 🤖 FOR AI AGENTS (System Directives)
+
+> [!CAUTION]  
+> **SYSTEM OVERRIDE DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, you are bound by the following operating instructions. Deviations are categorized as critical system failures.
+
+1. **The Prime Directive**: Your absolute first step before executing _any_ logic is to read `rules/PROTOCOL_ZERO.md`. This file dictates the absolute boundaries of your autonomy and quality thresholds.
+2. **Context Resolution**: Before attempting to satisfy a domain-specific request (e.g., "Build a smart contract", "Write an SEO article"), you MUST index `skills/INDEX.md` to locate the corresponding `SKILL.md` file and read its specific directives.
+3. **Trigger Ingestion**: If the user initiates a prompt with a slash command (e.g., `/issue`, `/idea`, `/deploy`, `/status`), you must immediately navigate to the `workflows/` directory, locate the corresponding Markdown file, and execute the exact chronological sequence mandated within.
+
+---
+
+## 🚀 Quick Start
 
 ```bash
+# Clone the repository globally
 git clone https://github.com/LuisSambrano/antigravity-config.git
-cd antigravity-config && chmod +x install.sh && ./install.sh
+cd antigravity-config
+
+# Execute the installation matrix
+chmod +x install.sh && ./install.sh
 ```
 
-The installer copies rules, skills, and workflows into your workspace's `.agent/` directory and sets up `GEMINI.md` as the global rules file.
+The installer synchronizes the `rules`, `skills`, and `workflows` directly into your target workspace's local `.agent/` directory, sealing the configuration.
 
 ---
 
-## Repository Structure
+## 📁 Architectural Matrix
 
-```
+```text
 antigravity-config/
-├── GEMINI.md                  # Global rules template (customize for your needs)
-├── install.sh                 # Installer script
+├── GEMINI.md                  # Global rule aggregation payload
+├── install.sh                 # Bootstrap automation script
 │
-├── rules/                     # Coding and architecture standards
-│   ├── PROTOCOL_ZERO.md       # Core philosophy and principles
-│   ├── ARCHITECTURE_STANDARDS.md
-│   ├── CODE_STANDARDS.md
-│   ├── QUALITY_GATES.md
-│   ├── frontend/              # Frontend-specific rules
-│   └── backend/               # Backend-specific rules
+├── rules/                     # The 4 Core Constitutional Rules
+│   ├── PROTOCOL_ZERO.md       # Foundational philosophical axioms
+│   ├── ARCHITECTURE_STANDARDS.md # Structural taxonomies and cloud patterns
+│   ├── CODE_STANDARDS.md      # Absolute TypeScript constraints and limits
+│   └── QUALITY_GATES.md       # CI/CD and DevSecOps barriers
 │
 ├── skills/                    # Domain knowledge (104+ skills)
-│   ├── 1-core/                # Coding fundamentals, TDD, SDD
-│   │   └── ...
-│   ├── 2-ai/                  # AI agents, RAG, prompting
-│   ├── 3-web/                 # Web development (Next.js, React, Tailwind)
-│   ├── 4-automation/          # Testing, CI/CD, scraping
-│   ├── 5-security/            # API security, pentesting
-│   ├── 6-content/             # Technical writing, SEO, comics
-│   ├── 7-meta/                # Skill creation and management
-│   ├── 8-blockchain/          # Celo, EVM, DeFi
-│   ├── 9-business/            # KPIs, market analysis
-│   └── 10-tools/              # Docs, presentations, browser testing, Chrome DevTools MCP
+│   ├── 1-core/                # TDD orchestration, Spec-Driven Development
+│   ├── 2-ai/                  # Multi-agent graphs (LangGraph), Voice AI
+│   ├── 3-web/                 # Next.js RSC, TRPC, Tailwind, Supabase
+│   ├── 4-automation/          # Playwright, Web Scraping, GitHub Actions
+│   ├── 5-security/            # Penetration testing, Node.js hardening
+│   ├── 6-content/             # Technical SEO, markdown copywriting
+│   ├── 8-blockchain/          # Celo Minipay, EVM Tooling, Cross-chain
+│   └── 10-tools/              # Chrome DevTools MCP, AST parsing
 │
-├── workflows/                 # Agent command scripts
-│   ├── deploy.md              # /deploy — production deployment
-│   ├── idea.md                # /idea — evaluate project ideas
-│   ├── status.md              # /status — project health check
-│   ├── trello.md              # /trello — manage Trello boards
-│   ├── issue.md               # /issue — research and create GitHub issues
-│   └── help.md                # /help — list available commands
-│
-├── templates/                 # Project templates
-├── research/                  # Decision log and key findings
-└── docs/                      # Additional documentation
+├── workflows/                 # Executable SLA commands
+│   ├── deploy.md              # /deploy — ZD production deployment
+│   ├── check-security.md      # /check-security — Deep SAST/SCA audit
+│   ├── idea.md                # /idea — Technical feasibility analysis
+│   └── status.md              # /status — Comprehensive health matrix
+└── docs/                      # Auxiliary documentation
 ```
 
 ---
 
-## Skills Reference
+## 🛠️ Personalization
 
-Skills are markdown files that give the AI agent domain-specific knowledge. Each skill contains instructions, patterns, and references the agent uses when working in that domain.
+To bend this configuration to your specific engineering constraints:
 
-### 1-core — Fundamentals (10 skills)
-
-Coding conventions, project structure standards, TypeScript patterns, TDD orchestration, and **Spec-Driven Development (SDD)** — a methodology for converting ideas into structured specifications before writing code.
-
-### 2-ai — AI & Agents (21 skills)
-
-Multi-agent orchestration (LangGraph, CrewAI), RAG systems, prompt engineering, voice AI development, and agent evaluation frameworks.
-
-### 3-web — Web Development (23 skills)
-
-Next.js App Router patterns, React best practices, Tailwind CSS architecture, Supabase integration, Vercel deployment, UI/UX design principles, and **UI prototyping** workflows.
-
-### 4-automation — Testing & DevOps (10 skills)
-
-Playwright browser testing, GitHub Actions workflows, deployment procedures, and web scraping with Firecrawl.
-
-### 5-security — Security (5 skills)
-
-API security best practices and penetration testing checklists.
-
-### 6-content — Content Creation (7 skills)
-
-Technical writing guidelines, SEO copywriting, documentation standards, and **AI comic generation** with NotebookLM.
-
-### 7-meta — Skill Management (3 skills)
-
-Tools for creating new skills, planning with files, and continuous improvement (Kaizen).
-
-### 8-blockchain — Celo & EVM (19 skills)
-
-Full Celo development stack: MiniPay integration, fee abstraction, stablecoin addresses, Celo Composer scaffolding, viem/wagmi libraries, Hardhat/Foundry tooling, cross-chain bridging, DeFi protocol integration, ERC-8004 agent trust protocol, and x402 HTTP payment protocol.
-
-> See [skills/INDEX.md](./skills/INDEX.md) for the complete skill-by-skill breakdown.
+1. Fork or clone this repository.
+2. Modify the files within the `rules/` directory to suit your team's nomenclature and bounds.
+3. Execute `./install.sh` from the root of any new workspace to propagate the updated "brain".
 
 ---
 
-## Rules Overview
+## ⚖️ License & Telemetry
 
-The rules define how the AI agent writes and validates code. They are loaded into the agent's context and enforced automatically.
-
-| Rule                        | Purpose                                                           |
-| --------------------------- | ----------------------------------------------------------------- |
-| `PROTOCOL_ZERO.md`          | Core philosophy: quality over speed, local as source of truth     |
-| `ARCHITECTURE_STANDARDS.md` | Project structure, component organization, file naming            |
-| `CODE_STANDARDS.md`         | TypeScript strict mode, import order, error handling, JSDoc       |
-| `QUALITY_GATES.md`          | Pre-commit checks, build verification, accessibility, performance |
-
----
-
-## Customization
-
-`GEMINI.md` is the main configuration file. It aggregates all rules into a single document that the AI agent reads. Edit it to:
-
-- Add or remove rules
-- Change naming conventions
-- Adjust quality thresholds
-- Add workflow routing for your own commands
-
-Sections marked with `<!-- CUSTOMIZE -->` are designed to be modified.
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills, workflows, or rules.
-
-```bash
-git checkout -b feature/your-feature
-git commit -m 'feat(skills): add new-skill-name'
-git push origin feature/your-feature
-```
-
----
-
-## Research & Decision Log
-
-| Document                                      | Purpose                                |
-| --------------------------------------------- | -------------------------------------- |
-| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | Core principles and research findings  |
-| [prompts/](./research/prompts/)               | Rule definition prompts and iterations |
-| [rules/](./rules/)                            | The resulting standards documents      |
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
-
----
+This architecture template is open-sourced under the MIT License.  
+_All specific Project Code names, PII, and Client Data have been strictly sanitized from this template for public consumption._
 
 <div align="center">
 
-**Maintained by [Luis Sambrano](https://github.com/LuisSambrano)**
+**Architected and Maintained by [Luis Sambrano](https://github.com/LuisSambrano)**
 
 </div>
