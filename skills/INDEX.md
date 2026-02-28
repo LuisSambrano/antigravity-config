@@ -96,6 +96,10 @@
 | `vibecode-ui`                  | El framework definitivo para crear interfaces "Gorgeous" y de alto ren |
 | `ui-prototyping`               | UI/UX prototyping with generate_image. Design mockups before coding    |
 | `web-performance-optimization` | Optimize website and web application performance including loading spe |
+| `vercel-composition-patterns`  | React composition patterns that scale. Use when refactoring components |
+| `vercel-react-best-practices`  | React and Next.js performance optimization guidelines from Vercel      |
+| `vercel-react-native-skills`   | React Native and Expo best practices for performant mobile apps        |
+| `web-design-guidelines`        | Review UI code for Web Interface Guidelines compliance                 |
 
 ## 4-automation
 
