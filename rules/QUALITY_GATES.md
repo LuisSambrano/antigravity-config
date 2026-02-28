@@ -1,543 +1,384 @@
-# ✅ Quality Gates Antigravity
+# ✅ Antigravity Quality Gates
 
-**Versión**: 1.0.0  
-**Estado**: OBLIGATORIO  
-**Nivel**: 1 (Calidad - Transversal)
-
----
-
-## 🎯 Propósito
-
-Este documento define los **quality gates obligatorios** que se aplican **automáticamente** en diferentes momentos del ciclo de desarrollo. Estos gates unifican todos los workflows de QA en checklists automáticos.
-
-**Origen**: Unifica `auto-qa.md` y otros workflows de calidad.
+**Version**: 1.0.0
+**Status**: MANDATORY
+**Level**: 1 (Quality Assurance - Transversal)
 
 ---
 
-## 🚦 Quality Gates (Por Momento)
+## 🎯 Purpose
 
-### 1. Pre-Code Gate (Antes de Escribir Código)
+This document dictates the **mandatory quality gates** automatically enforced throughout the development lifecycle. These gates unify all localized QA workflows into automated checklists.
 
-**Trigger**: Antes de crear/editar cualquier archivo de código
-
-**Verificaciones Automáticas**:
-
-#### Estructura de Proyecto
-
-- [ ] ✅ Proyecto tiene directorio `.agent/`
-- [ ] ✅ Existe `.agent/rules/architecture.md`
-- [ ] ✅ Existe `README.md` y `README.es.md`
-- [ ] ✅ Existe `.gitignore` configurado
-
-#### Configuración TypeScript
-
-- [ ] ✅ `tsconfig.json` existe
-- [ ] ✅ `strict: true` habilitado
-- [ ] ✅ `noUncheckedIndexedAccess: true`
-
-#### Configuración ESLint
-
-- [ ] ✅ `.eslintrc.json` o `eslint.config.js` existe
-- [ ] ✅ Reglas de TypeScript habilitadas
-
-**Acción si Falla**: Crear archivos faltantes automáticamente
+**Origin**: Condenses `auto-qa.md` and auxiliary quality workflows.
 
 ---
 
-### 2. During-Code Gate (Mientras Escribo Código)
+## 🚦 Quality Gates (By Lifecycle Stage)
 
-**Trigger**: Durante la creación/edición de código
+### 1. Pre-Code Gate (Initialization Phase)
 
-**Reglas Aplicadas Automáticamente**:
+**Trigger**: Prior to the creation or modification of any source code file.
+
+**Automated Validations**:
+
+#### Workspace Architecture
+
+- [ ] ✅ Project root contains the `.agent/` directory.
+- [ ] ✅ `.agent/rules/architecture.md` exists.
+- [ ] ✅ Bilingual README configuration (`README.md`, `README.es.md`) exists.
+- [ ] ✅ `.gitignore` array is fully configured.
+
+#### TypeScript Compiler
+
+- [ ] ✅ `tsconfig.json` exists.
+- [ ] ✅ `"strict": true` is explicitly enabled.
+- [ ] ✅ `"noUncheckedIndexedAccess": true` is explicitly enabled.
+
+#### ESLint Linter
+
+- [ ] ✅ `.eslintrc.json` or `eslint.config.js` exists.
+- [ ] ✅ Strict TypeScript rulesets are active.
+
+**Failure Action**: Automatically provision missing configuration files.
+
+---
+
+### 2. During-Code Gate (Active Development Phase)
+
+**Trigger**: Actively evaluated during code generation or manual modification.
+
+**Automated Enforcements**:
 
 #### Naming Conventions
 
-- ✅ Componentes: `PascalCase.tsx`
-- ✅ Utilidades: `camelCase.ts`
+- ✅ Components: `PascalCase.tsx`
+- ✅ Utilities: `camelCase.ts`
 - ✅ Hooks: `use*.ts`
 - ✅ Types: `*.types.ts`
 - ✅ Variables: `camelCase`
-- ✅ Constantes: `SCREAMING_SNAKE_CASE`
-- ✅ Funciones: `camelCase` (verbo)
-- ✅ Booleanos: `is*`, `has*`, `can*`
+- ✅ Constants: `SCREAMING_SNAKE_CASE`
+- ✅ Functions: `camelCase` (verb-led definitions)
+- ✅ Booleans: `is*`, `has*`, `can*`
 
-#### Import Order
+#### Import Topology
 
 ```typescript
-// 1. React
+// 1. React Runtime
 import React from "react";
 
-// 2. Librerías externas
+// 2. Vendor Dependencies (e.g., node_modules)
 import { motion } from "framer-motion";
 
-// 3. Internos
+// 3. Internal Application Aliases
 import { Button } from "@/components/ui/button";
 
-// 4. Types
+// 4. Type Declarations
 import type { User } from "@/types/user.types";
 
-// 5. Estilos
+// 5. CSS Stylesheets
 import "./styles.css";
 ```
 
-#### TypeScript Strict
+#### TypeScript Integrity
 
-- ✅ Nunca usar `any`
-- ✅ Interfaces para objetos públicos
-- ✅ Types para uniones
-- ✅ Genéricos descriptivos
+- ✅ The `any` type is strictly forbidden.
+- ✅ `interface` used for public object topologies.
+- ✅ `type` used for unions.
+- ✅ Generics are contextually descriptive.
 
-#### Error Handling
+#### Error Handling Paradigms
 
-- ✅ Try-catch en operaciones async
-- ✅ Logging con contexto
-- ✅ Return de errores (no throw en producción)
+- ✅ `try-catch` structures mandatory for all asynchronous operations.
+- ✅ Error logging must include systemic context.
+- ✅ Failures are returned as objects (No `throw` operations in production payloads).
 
-#### Comments
+#### Comment Syntax
 
-- ✅ Comentar el WHY, no el WHAT
-- ✅ JSDoc para funciones exportadas
-- ✅ Código en inglés, comentarios complejos en español
+- ✅ Comments document "WHY", never "WHAT".
+- ✅ JSDoc formatting is mandatory for public/exported functions.
+- ✅ Code syntax is strictly English; complex architectural annotations are localized (Spanish).
 
-**Acción si Falla**: Advertir al usuario antes de guardar
+**Failure Action**: Trigger local block or warn developer prior to save operations.
 
 ---
 
-### 3. Post-Code Gate (Después de Escribir Código)
+### 3. Post-Code Gate (Compilation Phase)
 
-**Trigger**: Después de crear/editar archivos
+**Trigger**: Immediately following file ingestion/modification.
 
-**Verificaciones Automáticas**:
+**Automated Validations**:
 
-#### TypeScript Type Check
+#### TypeScript Type Integrity Check
 
 ```bash
-// turbo
+# turbo execution
 tsc --noEmit
 ```
 
-**Expectativa**: 0 errores de tipos
+**Assertion**: 0 type errors.
 
-#### ESLint
+#### ESLint Diagnostics
 
 ```bash
-// turbo
+# turbo execution
 npx eslint . --ext .ts,.tsx --max-warnings 0
 ```
 
-**Expectativa**: 0 errores, 0 warnings
+**Assertion**: 0 errors, 0 warnings.
 
 #### Build Verification
 
 ```bash
-// turbo
+# turbo execution
 npm run build
 ```
 
-**Expectativa**: Build exitoso sin errores
+**Assertion**: Success without compilation errors.
 
-**Acción si Falla**: Bloquear commit, mostrar errores al usuario
+**Failure Action**: Hard-block Git commit operations. Propagate critical errors to the user.
 
 ---
 
-### 4. Pre-Commit Gate (Antes de Hacer Commit)
+### 4. Pre-Commit Gate (Version Control Phase)
 
-**Trigger**: Antes de `git commit`
+**Trigger**: Intercepts `git commit` operations.
 
-**Verificaciones Automáticas**:
+**Automated Validations**:
 
-#### Git Status
+#### Git Staging Diagnostics
 
 ```bash
-// turbo
+# turbo execution
 git status
 ```
 
-**Verificar**:
+**Required State**:
 
-- [ ] ✅ No hay archivos `.env` en staging
-- [ ] ✅ No hay secretos hardcodeados
-- [ ] ✅ No hay archivos grandes (> 10MB)
-- [ ] ✅ `.gitignore` incluye `node_modules/`, `.env*`, `.DS_Store`
+- [ ] ✅ `.env` configurations absent from the staging area.
+- [ ] ✅ Hardcoded secrets completely absent.
+- [ ] ✅ Asset sizes > 10MB absent from the staging area.
+- [ ] ✅ `.gitignore` effectively blocking `node_modules/`, `.env*`, and `.DS_Store`.
 
-#### Conventional Commits
+#### Conventional Commits Formatting
 
 ```bash
-// Formato obligatorio
+# Mandatory structural pattern
 <type>(<scope>): <description>
 
-# Tipos válidos
+# Validated types
 feat, fix, refactor, style, docs, test, chore
 ```
 
-**Ejemplos**:
+**Formatting Examples**:
 
 - ✅ `feat(auth): implement SSR authentication`
-- ✅ `fix(ui): correct dark mode contrast`
-- ✅ `refactor(api): extract fetch logic to service`
-- ❌ `updated stuff`
+- ✅ `fix(ui): correct dark mode contrast ratios`
+- ❌ `updated auth stuff`
 - ❌ `fix bug`
 
-#### Code Quality
+#### Production Code Integrity
 
-- [ ] ✅ No `console.log` en producción
-- [ ] ✅ No `TODO` sin issue asociado
-- [ ] ✅ No código comentado sin razón
-- [ ] ✅ No imports no utilizados
+- [ ] ✅ `console.log` statements stripped from production code.
+- [ ] ✅ Zero `TODO` annotations lacking GitHub issue association.
+- [ ] ✅ Zero orphaned or commented-out code blocks lacking clear justification.
+- [ ] ✅ Zero unused imports.
 
-**Acción si Falla**: Bloquear commit, solicitar correcciones
+**Failure Action**: Abort Git commit. Output required rectifications.
 
 ---
 
-### 5. Pre-Deploy Gate (Antes de Deploy)
+### 5. Pre-Deploy Gate (CI/CD Pipeline Phase)
 
-**Trigger**: Antes de hacer deploy a producción
+**Trigger**: Actively evaluated prior to production/staging deployment.
 
-**Verificaciones Automáticas**:
+**Automated Validations**:
 
-#### Tests
+#### Testing Architecture
 
 ```bash
-// turbo
+# turbo execution
 npm run test
 ```
 
-**Expectativa**: Todos los tests pasan
+**Assertion**: 100% test pass rate.
 
-#### Build de Producción
+#### Cloud Environment Verification
 
-```bash
-// turbo
-npm run build
-```
+- [ ] ✅ `.env.example` is fully synchronized with required dependencies.
+- [ ] ✅ Required variables are thoroughly documented.
+- [ ] ✅ Zero secrets leaked into `.env.example`.
 
-**Expectativa**: Build exitoso
+#### Database Schemas (If Applicable)
 
-#### Variables de Entorno
+- [ ] ✅ Forward migrations verified and applied.
+- [ ] ✅ RLS policies heavily audited for gaps.
+- [ ] ✅ Data indexing validated for high-frequency queries.
 
-- [ ] ✅ `.env.example` actualizado
-- [ ] ✅ Todas las variables necesarias documentadas
-- [ ] ✅ No hay secretos en `.env.example`
+#### Security Baseline
 
-#### Database Migrations (si aplica)
+- [ ] ✅ Outdated dependencies pruned (`npm audit`).
+- [ ] ✅ Zero critical CVE vulnerabilities remaining.
+- [ ] ✅ HTTPS rigidly configured across all routes.
 
-- [ ] ✅ Migraciones aplicadas
-- [ ] ✅ RLS policies verificadas
-- [ ] ✅ Indexes creados
-
-#### Security
-
-- [ ] ✅ Dependencias actualizadas (`npm audit`)
-- [ ] ✅ No vulnerabilidades críticas
-- [ ] ✅ HTTPS configurado
-
-**Acción si Falla**: Bloquear deploy, solicitar correcciones
+**Failure Action**: Hard-block deployment pipeline. Route issue to engineer.
 
 ---
 
-### 6. Pre-Delivery Gate (Antes de notify_user)
+### 6. Pre-Delivery Gate (Agent Output Phase)
 
-**Trigger**: Antes de presentar trabajo al usuario
+**Trigger**: Fired immediately prior to invoking the `notify_user` system tool.
 
-**Verificaciones Automáticas**:
+**Automated Validations**:
 
-#### Code Quality Summary
+#### Full System Summary Execute
 
 ```bash
-# Ejecutar todos los checks
 tsc --noEmit && \
 npx eslint . --ext .ts,.tsx --max-warnings 0 && \
 npm run build
 ```
 
-#### Content Quality (si aplica)
+#### Content Quality Assertions (If Generating Text)
 
-**Para Artículos/Docs**:
+**For Article/Documentation Targets**:
 
-- [ ] ⚠️ Word count ≥ 800 palabras
-- [ ] ⚠️ Estructura: H1 → H2 → H3 (sin saltos)
-- [ ] ⚠️ Listas usadas apropiadamente
-- [ ] ⚠️ Código formateado correctamente
-- [ ] ⚠️ Links válidos y descriptivos
+- [ ] ⚠️ Total word count ≥ 800 boundaries.
+- [ ] ⚠️ Linear Heading Topology: H1 → H2 → H3 (No structural jumps).
+- [ ] ⚠️ Syntax highlighting injected on all code blocks.
+- [ ] ⚠️ Hyperlinks are descriptive, validated, and resolving.
 
-**Para Componentes UI**:
+**For UI Component Targets**:
 
-- [ ] ⚠️ Responsive (4 breakpoints: 375px, 768px, 1024px, 1440px)
-- [ ] ⚠️ Dark mode funciona
-- [ ] ⚠️ Accesibilidad (alt text, ARIA, contraste, keyboard nav)
+- [ ] ⚠️ Viewport responsiveness verified across 4 matrices (375px, 768px, 1024px, 1440px).
+- [ ] ⚠️ Dark mode color inversions functionally operate.
+- [ ] ⚠️ End-to-end Accessibility parameters met (Alt Text, ARIA bounds, minimum 4.5:1 contrast, keyboard navigation flow).
 
-#### Accessibility Check
+#### Performance Benchmarks
 
-**Obligatorio**:
-
-- [ ] ✅ Imágenes tienen alt text descriptivo
-- [ ] ✅ Inputs tienen labels asociados
-- [ ] ✅ Elementos interactivos tienen ARIA apropiado
-- [ ] ✅ Contraste de color ≥ 4.5:1 (texto)
-- [ ] ✅ Navegación por teclado funciona
-- [ ] ✅ Focus states visibles
-
-**Herramienta**: Lighthouse Accessibility Score ≥ 95
-
-#### SEO Check (si aplica)
-
-**Metadata**:
-
-- [ ] ✅ Título único (50-60 chars)
-- [ ] ✅ Meta description (150-160 chars)
-- [ ] ✅ Open Graph tags
-- [ ] ✅ Twitter Card metadata
-
-**Structured Data**:
-
-- [ ] ⚠️ JSON-LD schema (si es artículo)
-- [ ] ⚠️ Schema válido (schema.org validator)
-
-**Herramienta**: Lighthouse SEO Score ≥ 95
-
-#### Performance Check
-
-**Core Web Vitals**:
+**Core Web Vitals Thresholds**:
 
 - [ ] ✅ LCP (Largest Contentful Paint) < 2.5s
 - [ ] ✅ FID (First Input Delay) < 100ms
 - [ ] ✅ CLS (Cumulative Layout Shift) < 0.1
 
-**Lighthouse Scores**:
+**Lighthouse Benchmarks**:
 
 - [ ] ✅ Performance ≥ 90
 - [ ] ✅ Accessibility ≥ 95
 - [ ] ✅ Best Practices ≥ 90
 - [ ] ✅ SEO ≥ 95
 
-**Optimizaciones**:
-
-- [ ] ✅ Imágenes optimizadas (WebP, lazy loading)
-- [ ] ✅ Code splitting aplicado
-- [ ] ✅ No re-renders innecesarios
-- [ ] ✅ No `console.log` en producción
-
-#### Git Clean State
+#### Git Hygiene Confirmation
 
 ```bash
-// turbo
+# turbo execution
 git status
 ```
 
-**Verificar**:
+**Required State**:
 
-- [ ] ✅ Todos los cambios commiteados
-- [ ] ✅ Commits siguen conventional commits
-- [ ] ✅ No archivos grandes
-- [ ] ✅ Branch actualizado con main
+- [ ] ✅ Working tree clean (all necessary changes fully committed).
+- [ ] ✅ Branch aligned with remote origin.
 
-**Acción**: Generar reporte de QA automático
+**Action**: Aggregates data and autonomously generates the QA status payload.
 
 ---
 
-## 📊 Reporte de QA Automático
+## 📊 Autogenerated QA Reporting Schema
 
-### Formato del Reporte
+### Format Template
 
 ```markdown
 ## 🔍 Quality Assurance Report
 
-**Fecha**: 2026-02-03  
-**Proyecto**: venezuela-news-app  
-**Branch**: feature/new-carousel
+**Timestamp**: 2026-02-03  
+**Target Repository**: venezuela-news-app  
+**Active Branch**: feature/new-carousel
 
 ---
 
-### ✅ Passed (X/Y checks)
+### ✅ Optimal Integrity (X/Y checks passed)
 
 - TypeScript: 0 errors
 - ESLint: 0 errors, 0 warnings
-- Build: Success
+- Build Compilation: Success
 - Git Status: Clean
-- Conventional Commits: ✅
-- Accessibility: 98/100
-- Performance: 95/100
+- Commit Nomenclature: ✅
+- Accessibility Score: 98/100
+- Performance Score: 95/100
 
 ---
 
-### ⚠️ Needs Attention (X items)
+### ⚠️ Attention Required (X non-fatal items)
 
-- **SEO**: Meta description missing on `/about` page
-- **Performance**: Image on homepage not optimized (1.2MB)
-- **Content**: Article word count is 650 (target: 800+)
-
----
-
-### ❌ Failed (X critical issues)
-
-- **Security**: `.env` file found in git staging area
-- **TypeScript**: 3 type errors in `components/ArticleCard.tsx`
+- **SEO**: Meta description data missing on the `/about` route.
+- **Performance**: High-resolution image asset on `/home` bypasses WebP optimization bounds (1.2MB).
+- **Content Density**: Article payload word count registers at 650 (Target: 800+).
 
 ---
 
-### 📝 Recommendations
+### ❌ Fatal Breaches (X critical violations)
 
-1. **Optimize Images**: Convert homepage hero image to WebP and add lazy loading
-2. **Expand Content**: Add 150+ words to article to meet minimum requirement
-3. **Fix SEO**: Add meta description to About page
-4. **Remove .env**: Unstage `.env` file and add to `.gitignore`
+- **Security Override**: Stray `.env` configuration file detected within the Git staging tree.
+- **TypeScript Core**: 3 distinct type violations mapped to `components/ArticleCard.tsx`.
 
 ---
 
-### 🎯 Next Steps
+### 📝 Actionable Recommendations
 
-1. Fix critical issues (❌)
-2. Address warnings (⚠️)
-3. Re-run QA checks
-4. Proceed with delivery
+1. **Optimize Image Assets**: Throttle homepage hero asset to WebP parameters and enforce late/lazy loading.
+2. **Expand Data Density**: Append >150 words of targeted content to clear article validation matrix.
+3. **Patch SEO Routing**: Inject meta description tags to address the `/about` page degradation.
+4. **Isolate Env Variables**: Promptly unstage the `.env` file and append the target to `.gitignore` rules.
+
+---
+
+### 🎯 Iterative Next Steps
+
+1. Remediate Critical/Fatal Breaches (❌).
+2. Triage and integrate Warning advisories (⚠️).
+3. Re-trigger automated QA cycle.
+4. Advance to Delivery state.
 ```
 
 ---
 
-## 🤖 Automatización en GEMINI.md
+## 🚨 Severity Threat Matrices
 
-### Triggers Automáticos
+### Critical Severity (❌) - Blocks Deployment/Delivery
 
-```markdown
-## AUTOMATIC QUALITY GATES
+- Failed Build compilations.
+- Fatal TypeScript routing errors.
+- ESLint terminal state errors.
+- Exposed hardcoded security secrets.
+- Overriding or disabling production Database RLS.
+- Lighthouse Performance metrics dropping < 70 points.
 
-### Before Writing Code
+**Automated Action**: Total procedure halt. Refusal to proceed without resolution.
 
-1. Verify project structure (.agent/, README, tsconfig.json)
-2. Check TypeScript strict mode enabled
-3. Check ESLint configured
+### High Severity (⚠️) - Demands Immediate Triage
 
-### While Writing Code
+- Active ESLint warnings.
+- Lighthouse metric degradation < 90 points.
+- Lighthouse Accessibility degradation < 95 points.
+- Monolithic functional drift (functions spanning > 50 lines).
+- Missing critical HTML alt text/ARIA structures.
 
-1. Apply naming conventions automatically
-2. Order imports automatically
-3. Add JSDoc to exported functions
-4. Use try-catch for async operations
+**Automated Action**: Flag issues directly to engineer. Resolve proactively prior to delivery whenever technically feasible.
 
-### After Writing Code
+### Medium Severity (📝) - Advisory Recommendations
 
-1. Run `tsc --noEmit` automatically
-2. Run `npx eslint` automatically
-3. Run `npm run build` automatically
-4. Report issues to user
+- Hanging TODO strings lacking issue topology.
+- Variable nomenclature that degrades self-documenting parameters.
+- Opportunities for micro-refactoring or localized component logic cleaning.
 
-### Before Commit
-
-1. Check git status
-2. Verify conventional commit format
-3. Check for secrets/large files
-4. Verify .gitignore
-
-### Before Delivery (notify_user)
-
-1. Run full QA checklist
-2. Generate QA summary report
-3. List critical issues (❌)
-4. List warnings (⚠️)
-5. Provide recommendations (📝)
-6. Only proceed if 0 critical issues
-```
+**Automated Action**: Push to next viable sprint. Log in advisory parameters.
 
 ---
 
-## 🎨 Quality Gates por Tipo de Proyecto
+## 📚 Core References
 
-### Frontend (Next.js + React)
-
-**Adicionales**:
-
-- [ ] ✅ Server Components por defecto
-- [ ] ✅ `'use client'` solo cuando necesario
-- [ ] ✅ Imágenes usan `next/image`
-- [ ] ✅ Fonts usan `next/font`
-- [ ] ✅ Suspense boundaries para loading
-- [ ] ✅ Error boundaries por feature
-- [ ] ✅ Glassmorphism aplicado (si UI luxury)
-- [ ] ✅ Dark mode funciona
-- [ ] ✅ Responsive (4 breakpoints)
-
-### Backend (Supabase)
-
-**Adicionales**:
-
-- [ ] ✅ RLS habilitado en todas las tablas
-- [ ] ✅ Policies definidas (SELECT, INSERT, UPDATE, DELETE)
-- [ ] ✅ Auth SSR implementado (`@supabase/ssr`)
-- [ ] ✅ Middleware protege rutas
-- [ ] ✅ Foreign keys con cascade apropiado
-- [ ] ✅ Indexes en columnas frecuentes
-- [ ] ✅ Singleton para cliente Supabase
-
-### Content (Artículos/Docs)
-
-**Adicionales**:
-
-- [ ] ✅ Word count ≥ 800 (artículos)
-- [ ] ✅ Estructura H1 → H2 → H3
-- [ ] ✅ Introducción (100-150 palabras)
-- [ ] ✅ 3-5 secciones principales
-- [ ] ✅ Conclusión (100-150 palabras)
-- [ ] ✅ Código formateado con syntax highlighting
-- [ ] ✅ Imágenes/diagramas (si aplica)
-- [ ] ✅ Links internos/externos
-
----
-
-## 🚨 Niveles de Severidad
-
-### Crítico (❌) - Bloquea Entrega
-
-- Build fallido
-- TypeScript errors
-- ESLint errors
-- Secretos hardcodeados
-- Vulnerabilidades de seguridad
-- RLS deshabilitado (producción)
-- Lighthouse Performance < 70
-
-**Acción**: NO proceder hasta resolver
-
-### Alto (⚠️) - Requiere Atención
-
-- ESLint warnings
-- Lighthouse scores < 90
-- Accesibilidad < 95
-- Código duplicado > 10%
-- Funciones > 50 líneas
-- Missing alt text
-- Missing ARIA labels
-
-**Acción**: Resolver antes de delivery o documentar razón
-
-### Medio (📝) - Recomendación
-
-- Comentarios desactualizados
-- TODOs sin issue
-- Nombres de variables mejorables
-- Oportunidades de refactoring
-- Optimizaciones menores
-
-**Acción**: Considerar para próximo sprint
-
-### Bajo (💡) - Nice to Have
-
-- Mejoras de performance menores
-- Refactorings cosméticos
-- Documentación adicional
-
-**Acción**: Backlog
-
----
-
-## 📚 Referencias
-
-- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Nivel 0
-- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Nivel 1
-- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Nivel 1
-- [auto-qa.md](../../venezuela-news-app/.agent/workflows/auto-qa.md) - Workflow original
-
----
-
-**Última Actualización**: 2026-02-03  
-**Mantenedor**: Luis Sambrano  
-**Estado**: ACTIVO
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Level 0
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Level 1
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Level 1

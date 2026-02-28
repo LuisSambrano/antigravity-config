@@ -1,30 +1,30 @@
-# 💻 Estándares de Código Antigravity
+# 💻 Antigravity Code Standards
 
-**Versión**: 1.0.0  
-**Estado**: OBLIGATORIO  
-**Nivel**: 1 (Código - Transversal)
+**Version**: 1.0.0
+**Status**: MANDATORY
+**Level**: 1 (Code - Transversal)
 
 ---
 
-## 🎯 Propósito
+## 🎯 Purpose
 
-Este documento define los **estándares de código obligatorios** para todos los proyectos Antigravity. Estas reglas son **transversales** (aplican a frontend Y backend) y se aplican **automáticamente** en cada interacción.
+This document dictates the **mandatory coding standards** required across all Antigravity properties. These rules traverse both frontend and backend environments and are aggressively audited by automated gates.
 
 ---
 
 ## 📘 TypeScript Standards
 
-### Configuración Obligatoria
+### Mandatory Configuration
 
-**Archivo**: `tsconfig.json`
+**File**: `tsconfig.json`
 
 ```json
 {
   "compilerOptions": {
-    "strict": true, // ← OBLIGATORIO
-    "noUncheckedIndexedAccess": true, // ← OBLIGATORIO
-    "noImplicitReturns": true, // ← OBLIGATORIO
-    "noFallthroughCasesInSwitch": true, // ← OBLIGATORIO
+    "strict": true, // ← MANDATORY
+    "noUncheckedIndexedAccess": true, // ← MANDATORY
+    "noImplicitReturns": true, // ← MANDATORY
+    "noFallthroughCasesInSwitch": true, // ← MANDATORY
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -40,34 +40,26 @@ Este documento define los **estándares de código obligatorios** para todos los
 }
 ```
 
-**Verificación Automática**:
+**Verification Protocol**:
 
 ```bash
-# Antes de cada commit
+# Pre-commit gate execution
 tsc --noEmit
 ```
 
 ---
 
-### Reglas de Tipado
+### Typing Directives
 
-#### 1. Nunca usar `any`
+#### 1. Prohibition of `any`
 
 ```typescript
-// ❌ INCORRECTO
+// ❌ INCORRECT
 function processData(data: any) {
   return data.value;
 }
 
-// ✅ CORRECTO: Usar unknown y type guard
-function processData(data: unknown) {
-  if (typeof data === "object" && data !== null && "value" in data) {
-    return (data as { value: string }).value;
-  }
-  throw new Error("Invalid data structure");
-}
-
-// ✅ MEJOR: Definir tipo explícito
+// ✅ CORRECT: Explicit typing
 interface DataStructure {
   value: string;
 }
@@ -75,33 +67,41 @@ interface DataStructure {
 function processData(data: DataStructure) {
   return data.value;
 }
+
+// ✅ CORRECT: `unknown` with type guarding for dynamic payloads
+function processUnknownData(data: unknown) {
+  if (typeof data === "object" && data !== null && "value" in data) {
+    return (data as DataStructure).value;
+  }
+  throw new Error("Invalid data structure");
+}
 ```
 
 ---
 
-#### 2. Interfaces vs Types
+#### 2. Interfaces vs. Types
 
-**Regla**: Usar `interface` para objetos públicos, `type` para uniones/intersecciones.
+**Directive**: Use `interface` for declaring public objects. Use `type` for defining unions or intersections.
 
 ```typescript
-// ✅ CORRECTO: Interface para objetos
+// ✅ CORRECT: Interface for standard object definitions
 export interface User {
   id: string;
   name: string;
   email: string;
 }
 
-// ✅ CORRECTO: Type para uniones
+// ✅ CORRECT: Type for union definitions
 export type Status = "draft" | "published" | "archived";
 
-// ✅ CORRECTO: Type para intersecciones
+// ✅ CORRECT: Type for intersection configurations
 export type AuthenticatedUser = User & {
   token: string;
   expiresAt: Date;
 };
 
-// ❌ INCORRECTO: Type para objeto simple
-export type User = {
+// ❌ INCORRECT: Mapping a basic object syntax to a Type
+export type UserType = {
   id: string;
   name: string;
 };
@@ -109,23 +109,17 @@ export type User = {
 
 ---
 
-#### 3. Genéricos Descriptivos
+#### 3. Descriptive Generics
+
+**Directive**: Abstract generic syntax must explicitly document intended behavior.
 
 ```typescript
-// ❌ INCORRECTO: Nombres crípticos
+// ❌ INCORRECT: Cryptic typing abstracts logic context
 function map<T, U>(arr: T[], fn: (item: T) => U): U[] {
   return arr.map(fn);
 }
 
-// ✅ CORRECTO: Nombres descriptivos
-function mapArray<TInput, TOutput>(
-  array: TInput[],
-  transformFn: (item: TInput) => TOutput,
-): TOutput[] {
-  return array.map(transformFn);
-}
-
-// ✅ MEJOR: Usar nombres de dominio
+// ✅ CORRECT: Descriptive generics aligned with domain logic
 function transformArticles<TArticle extends Article, TViewModel>(
   articles: TArticle[],
   toViewModel: (article: TArticle) => TViewModel,
@@ -136,330 +130,182 @@ function transformArticles<TArticle extends Article, TViewModel>(
 
 ---
 
-#### 4. Null vs Undefined
+#### 4. Null vs. Undefined Directives
 
-**Regla**: Preferir `null` para valores ausentes intencionales, `undefined` para valores no inicializados.
+**Directive**: Declare `null` for intentional value absences (e.g., cleared data). Resort to `undefined` for uninitialized memory paths.
 
 ```typescript
-// ✅ CORRECTO
+// ✅ CORRECT
 interface User {
   id: string;
   name: string;
-  avatar: string | null; // Puede no tener avatar (intencional)
-  bio?: string; // Puede no estar definido (opcional)
+  avatar: string | null; // Null signifies intentional omission.
+  bio?: string; // Undefined optional parameter.
 }
 
-// ❌ INCORRECTO: Mezclar null y undefined sin razón
-interface User {
-  avatar: string | null | undefined; // Confuso
+// ❌ INCORRECT: Conflating null and undefined creates type ambiguity.
+interface ConfusingUser {
+  avatar: string | null | undefined;
 }
 ```
 
 ---
 
-## 💬 Comment Standards
+## 💬 Comment Directives
 
-### Cuándo Comentar
+### Trigger Scenarios
 
-**Regla**: Comentar el **POR QUÉ**, no el **QUÉ**.
+**Directive**: Comments document **WHY**, never **WHAT**.
 
 ```typescript
-// ❌ INCORRECTO: Comenta el QUÉ (obvio)
-// Incrementa el contador en 1
+// ❌ INCORRECT: Comment describes exactly what the code does
+// Increment the counter by 1
 count++;
 
-// ✅ CORRECTO: Comenta el POR QUÉ (no obvio)
-// Incrementamos el contador aquí en lugar de en el useEffect
-// para evitar re-renders innecesarios cuando el usuario hace scroll
+// ✅ CORRECT: Comment describes business context explaining the "WHY"
+// Modifying counter directly to bypass React tree re-renders during high-frequency scroll events
 count++;
 ```
 
 ---
 
-### Formato de Comentarios
+### Comment Formatting
 
-#### 1. Comentarios de Línea
+#### 1. Inline Annotations
 
 ```typescript
-// ✅ CORRECTO: Comentario arriba de la línea
-// Cache de 5 minutos para reducir llamadas a la API
+// ✅ CORRECT: Annotation placed strictly above target
+// Establishing a 5-minute CDN cache horizon to throttle DB ingress.
 const CACHE_DURATION = 5 * 60 * 1000;
 
-// ❌ INCORRECTO: Comentario al lado (dificulta lectura)
+// ❌ INCORRECT: Appended annotation disrupts tracking
 const CACHE_DURATION = 5 * 60 * 1000; // Cache de 5 minutos
 ```
 
 ---
 
-#### 2. Comentarios de Bloque
-
-```typescript
-// ✅ CORRECTO: Explicar decisiones complejas
-/**
- * Usamos un Map en lugar de un objeto porque:
- * 1. Necesitamos claves que no sean strings (UUIDs)
- * 2. Map preserva el orden de inserción
- * 3. Map tiene mejor performance para add/delete frecuente
- */
-const userCache = new Map<string, User>();
-```
-
----
-
-#### 3. JSDoc para Funciones Públicas
+#### 2. JSDoc for Public Exports
 
 ````typescript
-// ✅ OBLIGATORIO para funciones exportadas
+// ✅ MANDATORY: Generating documentation for external or consumed services.
 /**
- * Fetches user data from Supabase with caching.
+ * Resolves user dataset authenticated via Supabase.
  *
- * Uses a 5-minute cache to reduce API calls and improve performance.
- * Cache is invalidated on user updates via Supabase realtime.
+ * Implements a 5-minute memory cache to heavily restrict API egress latency.
+ * Invalidated by Supabase realtime broadcast events.
  *
- * @param userId - The UUID of the user to fetch
- * @returns User object or null if not found
- * @throws {Error} If Supabase client is not initialized
+ * @param userId - Extracted UUID mapping.
+ * @returns Serialized User object, or null.
+ * @throws {Error} Fatal if Supabase engine initialization collapses.
  *
  * @example
  * ```typescript
- * const user = await fetchUser('123e4567-e89b-12d3-a456-426614174000');
- * if (user) {
- *   console.log(user.name);
- * }
+ * const user = await fetchUser('UUID-1234');
  * ```
  */
 export async function fetchUser(userId: string): Promise<User | null> {
-  // Implementation
+  // Logic
 }
 ````
 
 ---
 
-### Comentarios en Español (Código Interno)
+## 📦 Import Formatting Directives
 
-**Regla**: Código en inglés, comentarios complejos en español si ayuda a la claridad.
-
-```typescript
-// ✅ CORRECTO: Términos técnicos en inglés, explicación en español
-/**
- * Implementa el patrón Singleton para el cliente de Supabase.
- *
- * Razón: Crear múltiples instancias causa memory leaks y conexiones
- * innecesarias. Este patrón garantiza una sola instancia compartida.
- */
-let supabaseClient: SupabaseClient | null = null;
-
-export function getSupabaseClient(): SupabaseClient {
-  if (!supabaseClient) {
-    supabaseClient = createClient(url, key);
-  }
-  return supabaseClient;
-}
-```
-
----
-
-## 📦 Import Standards
-
-### Orden Obligatorio
+### Mandatory Sequencing
 
 ```typescript
-// 1. React (si aplica)
-import React, { useState, useEffect } from "react";
-import type { FC, ReactNode } from "react";
+// 1. React Runtime Packages
+import React, { useState } from "react";
+import type { ReactNode } from "react";
 
-// 2. Librerías externas (alfabético)
-import { motion } from "framer-motion";
+// 2. Third-Party Vendor Dependencies (Alphabetical Sort)
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
-// 3. Imports internos (alfabético)
+// 3. Internal Application Topology (Alphabetical Sort)
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/lib/hooks/useAuth";
 import { cn } from "@/lib/utils/cn";
 
-// 4. Types (separados)
+// 4. Type Declarations
 import type { User } from "@/types/user.types";
-import type { Article } from "@/types/article.types";
 
-// 5. Estilos (último)
+// 5. CSS Stylesheets (Mandatory Last Position)
 import "./styles.css";
 ```
 
 ---
 
-### Barrel Exports
+## 🔧 Function and Method Constraints
 
-**Regla**: Usar `index.ts` para exportar públicamente.
+### Length Directives
 
-```typescript
-// ✅ CORRECTO: components/ui/index.ts
-export { Button } from "./button";
-export { Card, CardHeader, CardContent } from "./card";
-export { Dialog } from "./dialog";
-export { Input } from "./input";
-
-// Uso
-import { Button, Card, Dialog } from "@/components/ui";
-```
+**Directive**: Rigidly enforce a 50-line maximum depth per functional block. Delegate logic upon breach.
 
 ```typescript
-// ❌ INCORRECTO: Imports individuales
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Dialog } from "@/components/ui/dialog";
-```
-
----
-
-### Imports Dinámicos
-
-**Regla**: Usar `dynamic` de Next.js para componentes pesados.
-
-```typescript
-// ✅ CORRECTO: Lazy loading de componente pesado
-import dynamic from 'next/dynamic';
-
-const HeavyChart = dynamic(() => import('./HeavyChart'), {
-  loading: () => <Skeleton className="h-[400px]" />,
-  ssr: false
-});
-
-// ❌ INCORRECTO: Import estático de componente pesado
-import { HeavyChart } from './HeavyChart';
-```
-
----
-
-## 🔧 Function Standards
-
-### Naming Conventions
-
-```typescript
-// ✅ CORRECTO: Verbos para funciones
-function fetchUser() {}
-function createArticle() {}
-function deleteComment() {}
-
-// ✅ CORRECTO: Prefijos para booleanos
-function isAuthenticated() {}
-function hasPermission() {}
-function canEdit() {}
-
-// ✅ CORRECTO: Prefijos para handlers
-function handleClick() {}
-function handleSubmit() {}
-function handleChange() {}
-
-// ✅ CORRECTO: Prefijos para callbacks
-function onSuccess() {}
-function onError() {}
-function onComplete() {}
-
-// ❌ INCORRECTO: Nombres ambiguos
-function user() {} // ¿Qué hace? ¿Get? ¿Create?
-function data() {} // Muy genérico
-```
-
----
-
-### Tamaño de Funciones
-
-**Regla**: Máximo 50 líneas por función. Si es más larga, dividir.
-
-```typescript
-// ❌ INCORRECTO: Función de 100+ líneas
+// ❌ INCORRECT: Monolithic function orchestrating distinct behaviors
 function processArticle(article: Article) {
-  // 100 líneas de lógica mezclada
+  // ~100 heterogeneous lines of code
 }
 
-// ✅ CORRECTO: Dividir en funciones pequeñas
+// ✅ CORRECT: Functional separation and orchestration
 function processArticle(article: Article) {
   const validated = validateArticle(article);
   const enriched = enrichMetadata(validated);
-  const published = publishToDatabase(enriched);
-  return published;
-}
-
-function validateArticle(article: Article) {
-  // 10-15 líneas
-}
-
-function enrichMetadata(article: Article) {
-  // 10-15 líneas
-}
-
-function publishToDatabase(article: Article) {
-  // 10-15 líneas
+  return publishToDatabase(enriched);
 }
 ```
 
----
-
-### Una Responsabilidad por Función
+### Extensibility Pattern (Single Responsibility)
 
 ```typescript
-// ❌ INCORRECTO: Función hace demasiado
-function saveUserAndSendEmail(user: User) {
-  // Guarda en DB
+// ❌ INCORRECT: Conglomerated actions within a single sequence
+function saveUserAndEmail(user: User) {
   database.save(user);
-
-  // Envía email
-  emailService.send(user.email, "Welcome!");
-
-  // Actualiza analytics
-  analytics.track("user_created", user.id);
+  emailConfig.send(user.email, "Welcome");
 }
 
-// ✅ CORRECTO: Una responsabilidad por función
+// ✅ CORRECT: Atomic functional segregation orchestrated downstream
 function saveUser(user: User) {
   return database.save(user);
 }
 
-function sendWelcomeEmail(user: User) {
-  return emailService.send(user.email, "Welcome!");
+function dispatchWelcome(user: User) {
+  return emailConfig.send(user.email, "Welcome");
 }
 
-function trackUserCreation(userId: string) {
-  return analytics.track("user_created", userId);
-}
-
-// Composición
-async function registerUser(user: User) {
-  const savedUser = await saveUser(user);
-  await sendWelcomeEmail(savedUser);
-  await trackUserCreation(savedUser.id);
-  return savedUser;
+async function userRegistrationPipeline(user: User) {
+  const account = await saveUser(user);
+  await dispatchWelcome(account);
+  return account;
 }
 ```
 
 ---
 
-## 🚨 Error Handling
+## 🚨 Error Handling Paradigms
 
-### Try-Catch Obligatorio
+### Try-Catch Integrity
 
-**Regla**: Toda operación asíncrona debe tener try-catch.
+**Directive**: Every asynchronous promise or operation must route through a defensive try-catch boundary.
 
 ```typescript
-// ❌ INCORRECTO: Sin error handling
+// ❌ INCORRECT: Susceptible to unhandled promise rejections
 async function fetchUser(id: string) {
   const response = await fetch(`/api/users/${id}`);
   return response.json();
 }
 
-// ✅ CORRECTO: Con try-catch
+// ✅ CORRECT: Validated boundary handling
 async function fetchUser(id: string): Promise<User | null> {
   try {
     const response = await fetch(`/api/users/${id}`);
-
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      throw new Error(`HTTP ${response.status}`);
     }
-
     return await response.json();
   } catch (error) {
-    console.error("Error fetching user:", error);
+    console.error("Fetch rejection intercepted:", error);
     return null;
   }
 }
@@ -467,207 +313,64 @@ async function fetchUser(id: string): Promise<User | null> {
 
 ---
 
-### Logging de Errores
+### Graceful Return Fallbacks (No-Throw Design in Production)
 
 ```typescript
-// ✅ CORRECTO: Log con contexto
-try {
-  await processPayment(orderId);
-} catch (error) {
-  console.error("Payment processing failed:", {
-    orderId,
-    error: error instanceof Error ? error.message : "Unknown error",
-    timestamp: new Date().toISOString(),
-  });
-  throw error; // Re-throw si es crítico
-}
-```
-
----
-
-### Return de Errores (No Throw en Producción)
-
-```typescript
-// ✅ CORRECTO: Return de errores en lugar de throw
+// ✅ CORRECT: Returning defined Result payloads instead of aggressively throwing
 type Result<T> = { success: true; data: T } | { success: false; error: string };
 
-async function fetchUser(id: string): Promise<Result<User>> {
+async function fetchEntity(id: string): Promise<Result<User>> {
   try {
     const user = await database.users.findById(id);
-
-    if (!user) {
-      return { success: false, error: "User not found" };
-    }
-
+    if (!user) return { success: false, error: "Missing Entity Record" };
     return { success: true, data: user };
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+      error: error instanceof Error ? error.message : "Fatal Unknown Context",
     };
   }
 }
-
-// Uso
-const result = await fetchUser("123");
-if (result.success) {
-  console.log(result.data.name);
-} else {
-  console.error(result.error);
-}
 ```
 
 ---
 
-## 🧪 Testing Standards
+## 🔒 Security Posture
 
-### Naming de Tests
-
-```typescript
-// ✅ CORRECTO: Descriptivo
-describe("fetchUser", () => {
-  it("should return user when ID exists", async () => {
-    // Test
-  });
-
-  it("should return null when ID does not exist", async () => {
-    // Test
-  });
-
-  it("should throw error when database is unavailable", async () => {
-    // Test
-  });
-});
-
-// ❌ INCORRECTO: Ambiguo
-describe("fetchUser", () => {
-  it("works", () => {});
-  it("fails", () => {});
-});
-```
-
----
-
-### Arrange-Act-Assert
+### Hardcoding Violations
 
 ```typescript
-// ✅ CORRECTO: Estructura clara
-it("should calculate total price correctly", () => {
-  // Arrange
-  const items = [
-    { price: 10, quantity: 2 },
-    { price: 5, quantity: 3 },
-  ];
-
-  // Act
-  const total = calculateTotal(items);
-
-  // Assert
-  expect(total).toBe(35);
-});
-```
-
----
-
-## 🔒 Security Standards
-
-### Nunca Hardcodear Secretos
-
-```typescript
-// ❌ INCORRECTO: Secreto hardcodeado
+// ❌ CRITICAL VIOLATION: Hardcoded authentication token
 const API_KEY = "sk_live_123456789";
 
-// ✅ CORRECTO: Variable de entorno
-const API_KEY = process.env.STRIPE_SECRET_KEY!;
-
-// ✅ MEJOR: Con validación
+// ✅ CORRECT: Validated environment extraction
 const API_KEY = process.env.STRIPE_SECRET_KEY;
 if (!API_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not defined");
+  throw new Error("Missing required STRIPE_SECRET_KEY environment variable");
 }
 ```
 
----
-
-### Validación de Entrada
+### Input Schema Validation
 
 ```typescript
-// ✅ CORRECTO: Validar con Zod
+// ✅ CORRECT: Defense-in-depth via Zod schema parsers
 import { z } from "zod";
 
 const UserSchema = z.object({
   email: z.string().email(),
   age: z.number().min(18).max(120),
-  name: z.string().min(1).max(100),
 });
 
-function createUser(input: unknown) {
-  const validated = UserSchema.parse(input);
-  // validated es type-safe
-  return database.users.create(validated);
+function insertUserRecord(input: unknown) {
+  const payload = UserSchema.parse(input);
+  return database.users.create(payload);
 }
 ```
 
 ---
 
-### Sanitización de Salida
+## 📚 Core References
 
-```typescript
-// ✅ CORRECTO: Sanitizar HTML
-import DOMPurify from 'dompurify';
-
-function renderUserContent(html: string) {
-  const clean = DOMPurify.sanitize(html);
-  return <div dangerouslySetInnerHTML={{ __html: clean }} />;
-}
-```
-
----
-
-## 📊 Performance Standards
-
-### Memoization
-
-```typescript
-// ✅ CORRECTO: Memoizar cálculos costosos
-import { useMemo } from 'react';
-
-function ExpensiveComponent({ items }: { items: Item[] }) {
-  const sortedItems = useMemo(() => {
-    return items.sort((a, b) => a.price - b.price);
-  }, [items]);
-
-  return <List items={sortedItems} />;
-}
-```
-
----
-
-### useCallback para Funciones
-
-```typescript
-// ✅ CORRECTO: useCallback para funciones pasadas como props
-import { useCallback } from 'react';
-
-function ParentComponent() {
-  const handleClick = useCallback(() => {
-    console.log('Clicked');
-  }, []);
-
-  return <ChildComponent onClick={handleClick} />;
-}
-```
-
----
-
-## 📚 Referencias
-
-- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Nivel 0
-- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Nivel 1
-- [QUALITY_GATES.md](./QUALITY_GATES.md) - Nivel 1
-
----
-
-**Última Actualización**: 2026-02-03  
-**Mantenedor**: Luis Sambrano  
-**Estado**: ACTIVO
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md) - Level 0
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Level 1
+- [QUALITY_GATES.md](./QUALITY_GATES.md) - Level 1

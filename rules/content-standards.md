@@ -1,72 +1,78 @@
-# Content Standards - Venezuela News App
+# 📝 Content Standards
 
-## Article Requirements
+**Version**: 1.0.0
+**Status**: ACTIVE
+**Level**: 2 (Content & SEO)
 
-### Word Count
+---
 
-- **News Articles**: 800-1500 words
-- **Analysis Pieces**: 1200-2000 words
-- **Breaking News**: 400-600 words (exception)
-- **Opinion/Editorial**: 1000-1800 words
+## 📰 Article Configuration
 
-### Structure
+### Word Count Matrices
 
-#### Standard Article
+- **Standard News**: 800 - 1500 words
+- **Analysis/In-Depth**: 1200 - 2000 words
+- **Breaking Alert**: 400 - 600 words (Explicitly flagged exception)
+- **Opinion/Editorial**: 1000 - 1800 words
 
-1. **Headline** (60-70 characters)
-   - Clear, compelling, SEO-optimized
-   - Include focus keyword
-2. **Lead Paragraph** (100-150 words)
-   - Answer: Who, What, When, Where, Why, How
-   - Hook the reader immediately
-   - Include focus keyword naturally
-3. **Body** (600-1200 words)
-   - 3-5 sections with H2 headers
-   - Each section 200-300 words
-   - Supporting details and context
-   - Quotes from sources (if applicable)
-   - Data/statistics with sources
-   - Internal links to related articles
-4. **Conclusion** (100-150 words)
-   - Summary of key points
-   - Future implications
-   - Call to action (if applicable)
+### Structural Architecture
 
-### SEO Requirements
+#### General Assembly
 
-#### Metadata
+1. **Headline** (Target: 60-70 characters)
+   - Must be engaging, clear, and explicitly SEO-optimized.
+   - Must embed primary focus keyword.
+2. **Lead Paragraph** (Target: 100-150 words)
+   - Mandatory resolution of the "5 W's + How".
+   - Primary focus keyword embedded fluidly.
+3. **Core Body** (Target: 600-1200 words)
+   - Separated into 3-5 distinct sub-sections using `H2` headers.
+   - Section density: 200-300 words.
+   - Requires verified statistics, source citations, and direct quotes.
+   - Mandatory internal routing to adjacent content payloads.
+4. **Conclusion** (Target: 100-150 words)
+   - Aggregate summation of critical insights.
+   - Explicit Call-to-Action (CTA) if contextually appropriate.
 
-- **Meta Title**: 50-60 characters (include focus keyword)
-- **Meta Description**: 150-160 characters (compelling, includes keyword)
-- **Focus Keyword**: In title, first paragraph, and 2-3 times in body
-- **Keyword Density**: 1-2% (natural, not forced)
+---
 
-#### Links
+## 🔍 SEO Parameters
 
-- **Internal Links**: 2-3 to related articles
-- **External Links**: 1-2 to authoritative sources
-- **Anchor Text**: Descriptive, not "click here"
+### Metadata Specifications
 
-#### Images
+- **Meta Title**: 50-60 characters (Must contain focus keyword).
+- **Meta Description**: 150-160 characters (Must contain focus keyword and prompt engagement).
+- **Keyword Distribution**: Headline, H1, Lead Paragraph, and 2-3 organic placements within the Core Body.
+- **Density Index**: 1% to 2% max threshold (Avoid keyword stuffing metrics).
 
-- **Featured Image**: 1200x630px minimum (Open Graph)
-- **In-Body Images**: 2-3 relevant images
-- **Alt Text**: Descriptive, includes keyword when relevant
-- **File Names**: Descriptive, kebab-case (e.g., `venezuela-economy-2026.jpg`)
+### Link Architecture
 
-### JSON-LD Structured Data
+- **Internal Ingress**: 2-3 explicit bounds to related platform content.
+- **External Egress**: 1-2 outbound references to high-authority/verified sources.
+- **Anchor Semantics**: Links must utilize descriptive, contextual text (Prohibit arbitrary "click here" syntax).
 
-**All articles MUST include NewsArticle schema**:
+### Media Specifications
+
+- **OpenGraph Hero**: 1200x630px absolute minimum bounds.
+- **Inline Density**: 2-3 auxiliary images supporting the Core Body.
+- **Alt Processing**: Meaningful contextual string; inject focus keyword natively only if relevant to the graphic.
+- **File Nomenclature**: Kebab-case formatting, highly descriptive (e.g., `venezuela-economy-report-2026.jpg`).
+
+---
+
+## 🧩 JSON-LD Structured Data
+
+**MANDATORY**: All article renders must aggressively inject `NewsArticle` schema formatting.
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "Article Title (max 110 characters)",
-  "description": "Article description (150-160 characters)",
+  "headline": "Article Title (Max 110 characters strict limit)",
+  "description": "Article summary data (150-160 characters bounds)",
   "image": {
     "@type": "ImageObject",
-    "url": "https://example.com/image.jpg",
+    "url": "https://example.com/asset-url.jpg",
     "width": 1200,
     "height": 630
   },
@@ -74,136 +80,61 @@
   "dateModified": "2026-02-02T15:30:00-04:00",
   "author": {
     "@type": "Person",
-    "name": "Author Name",
+    "name": "Author Full Name",
     "url": "https://example.com/author/author-name"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "M&T Venezuela",
+    "name": "Publisher Legal Entity",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://example.com/logo.png",
+      "url": "https://example.com/logo-asset.png",
       "width": 600,
       "height": 60
     }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://example.com/article-slug"
+    "@id": "https://example.com/canonical-article-slug"
   }
 }
 ```
 
-### Quality Checklist
+---
 
-**Before publishing, verify**:
+## ✅ Content Quality Gate
 
-- [ ] Word count meets minimum (800+ for standard articles)
-- [ ] Proper heading hierarchy (H1 → H2 → H3, no skipping)
-- [ ] Lead paragraph answers 5 W's + How
-- [ ] At least 3 body sections with H2 headers
-- [ ] Conclusion summarizes key points
-- [ ] Meta title written (50-60 chars)
-- [ ] Meta description written (150-160 chars)
-- [ ] Focus keyword optimized (title, first para, 2-3x in body)
-- [ ] Featured image added (1200x630px min)
-- [ ] All images have descriptive alt text
-- [ ] 2-3 internal links to related articles
-- [ ] 1-2 external links to authoritative sources
-- [ ] JSON-LD NewsArticle schema included
-- [ ] No spelling or grammar errors
-- [ ] Facts verified and sources cited
-- [ ] Dates and numbers double-checked
+**Pre-Flight Verification Protocol**:
 
-### Google News Compliance
-
-#### Requirements
-
-- **Author Attribution**: Clear author name and bio
-- **Publication Date**: Visible and in ISO 8601 format
-- **Original Content**: No plagiarism, unique perspective
-- **Factual Accuracy**: All claims verified
-- **Transparency**: Sources cited, corrections noted
-- **Contact Information**: Author/editorial contact available
-
-#### Prohibited
-
-- ❌ Clickbait headlines
-- ❌ Misleading information
-- ❌ Unverified rumors
-- ❌ Plagiarized content
-- ❌ Excessive ads interrupting content
-- ❌ Auto-playing videos with sound
+- [ ] Volume density achieves minimum bounds (800+ standard).
+- [ ] Heading hierarchy parses linearly (`H1` → `H2` → `H3`). No skipped depths.
+- [ ] Lead density fulfills 5W+H requirements.
+- [ ] Minimum 3 `H2` segmented divisions present.
+- [ ] Meta Title within 50-60 character bounds.
+- [ ] Meta Description within 150-160 character bounds.
+- [ ] Focus keyword mapped sequentially (Title, Lead, x2 Body).
+- [ ] Hero graphic uploaded and satisfies 1200x630px requirements.
+- [ ] Alt tags mapped to 100% of injected graphical assets.
+- [ ] Link topology validated (2 internal, 1 external minimum).
+- [ ] `NewsArticle` JSON-LD payload injected and syntax verified.
+- [ ] Grammar/Linter pass cleared.
 
 ---
 
-## Documentation Standards
+## 🏛️ Google News Aggregation Parameters
 
-### README Files
+### Enforcement Requirements
 
-- **English**: `README.md` (primary)
-- **Spanish**: `README.es.md` (translation)
-- Both files must be kept in sync
-- Language switcher at top of both files
+- **Origin Attribution**: Explicit author identity and biographic payload.
+- **Temporal Stamping**: ISO 8601 formatting explicitly rendered.
+- **Originality Matrix**: Deeply verified unique perspective; zero plagiarism tolerance.
+- **Factual Integrity**: Stringent source verification algorithms applied.
+- **Entity Transparency**: Corrections flagged; Publisher contact details structurally accessible.
 
-### Code Comments
+### Absolute Prohibitions
 
-- Explain **WHY**, not just WHAT
-- Document complex logic
-- Note performance considerations
-- Reference issues/PRs when applicable
-
----
-
-## Component Standards
-
-### File Naming
-
-- Use PascalCase for components: `NewsFeed.tsx`, `ArticleCard.tsx`
-- Use kebab-case for utilities: `format-date.ts`, `fetch-news.ts`
-- Use SCREAMING_SNAKE_CASE for constants: `API_ENDPOINTS.ts`
-
-### Component Structure
-
-```typescript
-// 1. Imports (grouped: React, Next.js, third-party, local)
-import { useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { formatDate } from "@/lib/utils";
-
-// 2. Types/Interfaces
-interface ArticleCardProps {
-  title: string;
-  description: string;
-  image: string;
-  date: string;
-}
-
-// 3. Component
-export function ArticleCard({ title, description, image, date }: ArticleCardProps) {
-  // 4. Hooks
-  const [isHovered, setIsHovered] = useState(false);
-
-  // 5. Handlers
-  const handleClick = () => {
-    // ...
-  };
-
-  // 6. Render
-  return (
-    // ...
-  );
-}
-```
-
-### TypeScript Standards
-
-- Always use `interface` for props (not `type`)
-- Use `type` for unions, intersections, utilities
-- Never use `any` (use `unknown` if truly unknown)
-- Enable strict mode in tsconfig.json
-
----
-
-**End of Content Standards**
+- ❌ Manipulation/Clickbait meta-text schemas.
+- ❌ Synthetically generated rumors or spoofed datasets.
+- ❌ Code or content mirroring without canonical attribution/tagging.
+- ❌ Interstitial or layout-shifting advertising elements.
+- ❌ Autoplay audio configurations.

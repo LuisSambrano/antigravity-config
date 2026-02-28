@@ -1,52 +1,58 @@
-# Architecture Rules - Venezuela News App
+# 🏗️ Architecture Rules
 
-## Project Structure
+**Version**: 1.0.0
+**Status**: ACTIVE
+**Level**: 2 (Project Architecture)
+
+---
+
+## 📁 Project Structure
 
 ### Directory Organization
 
-```
+```text
 src/
-├── app/                    # Next.js App Router pages
-│   ├── (routes)/          # Route groups
-│   ├── api/               # API routes
-│   └── layout.tsx         # Root layout
-├── components/            # React components
-│   ├── home/             # Landing page components
-│   ├── news/             # News feed components
-│   ├── layout/           # Layout components (Header, Footer)
-│   └── ui/               # shadcn/ui components
-├── lib/                  # Utilities and configurations
-│   ├── api/             # API client functions
-│   ├── utils/           # Helper functions
-│   └── constants/       # Constants and config
-└── types/               # TypeScript type definitions
+├── app/                    # Next.js App Router root
+│   ├── (routes)/           # Route grouping bounds
+│   ├── api/                # API endpoints
+│   └── layout.tsx          # Root layout scaffolding
+├── components/             # React component domains
+│   ├── home/               # Landing/Index components
+│   ├── news/               # Feed aggregation components
+│   ├── layout/             # Structural layouts (Header, Footer)
+│   └── ui/                 # Primitive UI layer (shadcn/ui)
+├── lib/                    # Core utilities and configuration
+│   ├── api/                # Remote API client gateways
+│   ├── utils/              # Helper utilities
+│   └── constants/          # Static variable configurations
+└── types/                  # TypeScript interface declarations
 ```
 
-### Component Organization
+### Component Architecture
 
-#### Feature-Based Structure
+#### Feature-Driven Structuring
 
-- Group related components by feature
-- Each feature has its own directory
-- Shared components go in `/components/ui`
+- Organize components explicitly by domain feature.
+- Isolate features within dedicated subdirectories.
+- Extract generic, reusable UI primitives to `/components/ui`.
 
-#### Component Rules
+#### Component Boundaries
 
-- One component per file
-- File name matches component name (PascalCase)
-- Export as named export (not default)
-- Co-locate types with components when feature-specific
+- Enforce strictly one component per file.
+- Anchor filename to component declaration (PascalCase).
+- Enforce named exports (Prohibit `default` exports for components).
+- Co-locate `.types.ts` schemas alongside feature-specific components.
 
 ### Naming Conventions
 
-#### Files
+#### File Topology
 
 - **Components**: `PascalCase.tsx` (e.g., `NewsFeed.tsx`)
 - **Utilities**: `kebab-case.ts` (e.g., `format-date.ts`)
 - **Constants**: `SCREAMING_SNAKE_CASE.ts` (e.g., `API_ENDPOINTS.ts`)
 - **Types**: `PascalCase.types.ts` (e.g., `Article.types.ts`)
 
-#### Code
+#### Syntax Topology
 
 - **Variables**: `camelCase`
 - **Functions**: `camelCase`
@@ -56,124 +62,121 @@ src/
 
 ---
 
-## Component Standards
+## ⚛️ Component Standards
 
-### Server vs Client Components
+### Server vs. Client Components
 
-#### Default to Server Components
+#### Server Component Defaults
 
 ```typescript
-// Server Component (default)
-export function ArticleList() {
-  // Can fetch data directly
+// Server Component (Default isolation)
+export async function ArticleList() {
+  // Direct asynchronous data hydration permitted
   const articles = await fetchArticles();
-  return <div>{/* ... */}</div>;
+  return <div>{/* Render logic */}</div>;
 }
 ```
 
-#### Use Client Components Only When Needed
+#### Explicit Client Components
 
 ```typescript
-"use client"; // Only when using hooks, event handlers, browser APIs
+"use client"; // Explicit opt-in boundary
 
+// Required for hook lifecycle, events, or DOM interfaces
 export function InteractiveButton() {
   const [count, setCount] = useState(0);
   return <button onClick={() => setCount(count + 1)}>{count}</button>;
 }
 ```
 
-**Use "use client" for**:
+**Client Component Triggers**:
 
-- `useState`, `useEffect`, `useContext`
-- Event handlers (`onClick`, `onChange`, etc.)
-- Browser APIs (`window`, `document`, `localStorage`)
-- Third-party libraries that use hooks
+- `useState`, `useEffect`, `useContext` implementations.
+- Synthetic event dispatch (`onClick`, `onChange`).
+- Browser API bindings (`window`, `document`, `localStorage`).
+- Dependent external libraries demanding client runtime.
 
-### TypeScript Standards
+### TypeScript Integrity
 
-#### Props Interface
+#### Interface over Type (Props)
 
 ```typescript
-// ✅ CORRECT: Use interface for props
+// ✅ CORRECT: Standardize prop definitions using interfaces
 interface ArticleCardProps {
   title: string;
   description: string;
-  image?: string; // Optional with ?
+  image?: string;
   onClick?: () => void;
 }
 
-// ❌ WRONG: Don't use type for props
+// ❌ INCORRECT: Avoid mapping basic objects to types
 type ArticleCardProps = {
   title: string;
 };
 ```
 
-#### Type Safety
+#### Strict Typing Validation
 
 ```typescript
-// ✅ CORRECT: Proper typing
+// ✅ CORRECT: Statically typed resolution
 const articles: Article[] = await fetchArticles();
 
-// ❌ WRONG: Using any
+// ❌ INCORRECT: Arbitrary suppression
 const articles: any = await fetchArticles();
 
-// ✅ CORRECT: Use unknown if truly unknown
+// ✅ CORRECT: Dynamic payload validation
 const data: unknown = JSON.parse(response);
 if (isArticle(data)) {
-  // Type guard
   const article: Article = data;
 }
 ```
 
 ---
 
-## Styling Standards
+## 🎨 Styling Architecture
 
-### Tailwind CSS
+### Tailwind CSS Operations
 
-#### Use Utility Classes
+#### Utility Extensiblity
 
-```typescript
-// ✅ CORRECT: Tailwind utilities
+```tsx
+// ✅ CORRECT: Inline utility mapping
 <div className="flex items-center gap-4 p-6 rounded-lg bg-white dark:bg-zinc-900">
 
-// ❌ WRONG: Inline styles
+// ❌ INCORRECT: Hardcoded DOM styling
 <div style={{ display: 'flex', padding: '24px' }}>
 ```
 
-#### Semantic Color Tokens
+#### Semantic Token Integration
 
-```typescript
-// ✅ CORRECT: Use semantic tokens
+```tsx
+// ✅ CORRECT: Contextual variable mapping
 <div className="bg-primary text-primary-foreground">
 
-// ❌ WRONG: Hardcoded colors
+// ❌ INCORRECT: Hardcoded absolute colors
 <div className="bg-blue-500 text-white">
 ```
 
-#### Responsive Design
+#### Viewport Responsiveness
 
-```typescript
-// ✅ CORRECT: Mobile-first responsive
+```tsx
+// ✅ CORRECT: Mobile-first breakpoint targeting
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-// Test breakpoints: 375px, 768px, 1024px, 1440px
+// Mandated validation breakpoints: 375px, 768px, 1024px, 1440px
 ```
 
-### Dark Mode
+### Dark Mode Adherence
 
-```typescript
-// ✅ CORRECT: Dark mode support
+```tsx
+// ✅ CORRECT: Binary mode support
 <div className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white">
-
-// Always test both light and dark modes
 ```
 
 ---
 
-## Data Fetching
+## 🌐 Data Hydration
 
-### API Routes
+### Server API Routing
 
 ```typescript
 // src/app/api/articles/route.ts
@@ -182,19 +185,22 @@ export async function GET(request: Request) {
     const articles = await fetchFromSupabase();
     return Response.json(articles);
   } catch (error) {
-    return Response.json({ error: "Failed to fetch" }, { status: 500 });
+    return Response.json(
+      { error: "Failed to fetch resource" },
+      { status: 500 },
+    );
   }
 }
 ```
 
-### Client-Side Fetching
+### Client Fetching Patterns
 
-```typescript
-// Use SWR or React Query for client-side fetching
-import useSWR from 'swr';
+```tsx
+// Utilize SWR or React Query architectures for client ingress
+import useSWR from "swr";
 
 export function ArticleList() {
-  const { data, error, isLoading } = useSWR('/api/articles', fetcher);
+  const { data, error, isLoading } = useSWR("/api/articles", fetcher);
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState />;
@@ -204,12 +210,12 @@ export function ArticleList() {
 
 ---
 
-## SEO Standards
+## 🔍 SEO Benchmarks
 
-### Metadata
+### Next.js Metadata Generation
 
 ```typescript
-// app/noticias/[slug]/page.tsx
+// app/news/[slug]/page.tsx
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticle(params.slug);
 
@@ -234,10 +240,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 ```
 
-### Semantic HTML
+### Semantic HTML Scaffolding
 
-```typescript
-// ✅ CORRECT: Semantic elements
+```tsx
+// ✅ CORRECT: Explicit semantic regions
 <article>
   <header>
     <h1>{title}</h1>
@@ -248,7 +254,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   </section>
 </article>
 
-// ❌ WRONG: Generic divs
+// ❌ INCORRECT: Generic `div` nesting obliterating screen readers
 <div>
   <div>{title}</div>
   <div>{content}</div>
@@ -257,12 +263,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 ---
 
-## Performance Standards
+## ⚡ Performance Matrix
 
-### Image Optimization
+### Asset Optimization (Images)
 
-```typescript
-// ✅ CORRECT: Next.js Image component
+```tsx
+// ✅ CORRECT: Enforced Next.js Image optimization pipeline
 import Image from 'next/image';
 
 <Image
@@ -270,54 +276,54 @@ import Image from 'next/image';
   alt={article.title}
   width={1200}
   height={630}
-  priority={isFeatured}
+  priority={isFeatured} // LCP optimization
   placeholder="blur"
   blurDataURL={article.blurDataURL}
 />
 
-// ❌ WRONG: Regular img tag
+// ❌ CRITICAL: Unoptimized DOM injection
 <img src={article.image} alt={article.title} />
 ```
 
-### Code Splitting
+### Splitting Architecture
 
-```typescript
-// ✅ CORRECT: Dynamic imports for heavy components
-import dynamic from 'next/dynamic';
+```tsx
+// ✅ CORRECT: Deferred loading for heavy dependencies
+import dynamic from "next/dynamic";
 
-const HeavyChart = dynamic(() => import('./HeavyChart'), {
+const HeavyChart = dynamic(() => import("./HeavyChart"), {
   loading: () => <ChartSkeleton />,
-  ssr: false, // If component uses browser APIs
+  ssr: false,
 });
 ```
 
 ---
 
-## Error Handling
+## 🚨 Error Control
 
-### Try-Catch Blocks
+### Boundary Triaging
 
 ```typescript
-// ✅ CORRECT: Proper error handling
+// ✅ CORRECT: Wrapping egress in defensive Try/Catch structures
 async function fetchArticles() {
   try {
     const response = await fetch("/api/articles");
-    if (!response.ok) throw new Error("Failed to fetch");
+    if (!response.ok) throw new Error("Ingress failure");
     return await response.json();
   } catch (error) {
-    console.error("Error fetching articles:", error);
-    throw error; // Re-throw for caller to handle
+    console.error("Transmission error logged:", error);
+    throw error;
   }
 }
 ```
 
-### Error Boundaries
+### Interface Error Boundaries
 
-```typescript
+```tsx
 // app/error.tsx
-'use client';
+"use client";
 
-export default function Error({
+export default function ErrorBoundary({
   error,
   reset,
 }: {
@@ -325,9 +331,9 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button onClick={reset}>Try again</button>
+    <div className="flex flex-col items-center">
+      <h2>Critical Rendering Failure</h2>
+      <button onClick={reset}>Attempt Soft Reset</button>
     </div>
   );
 }
@@ -335,27 +341,23 @@ export default function Error({
 
 ---
 
-## Security Standards
+## 🔐 Security Baselines
 
-### Environment Variables
+### Environment Variable Sanitization
 
 ```typescript
-// ✅ CORRECT: Use env variables
+// ✅ CORRECT: Variables orchestrated via .env definitions
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
-// ❌ WRONG: Hardcoded credentials
+// ❌ CRITICAL: Exposed cleartext secrets
 const supabaseUrl = "https://myproject.supabase.co";
 ```
 
-### Input Validation
+### Payload Validation
 
 ```typescript
-// ✅ CORRECT: Validate user input
+// ✅ CORRECT: Standardize rigorous input sanitization parameters
 function sanitizeInput(input: string): string {
-  return input.trim().replace(/<script>/gi, "");
+  return input.trim().replace(/<script>/gi, ""); // Or delegate to DOMPurify
 }
 ```
-
----
-
-**End of Architecture Rules**

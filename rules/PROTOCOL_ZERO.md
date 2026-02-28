@@ -1,88 +1,88 @@
-# 🌌 PROTOCOL ZERO: Filosofía de Antigravity
+# 🌌 PROTOCOL ZERO: Antigravity Philosophy
 
-**Versión**: 1.0.0  
-**Estado**: INMUTABLE  
-**Nivel**: 0 (Fundacional)
-
----
-
-## 🎯 Propósito
-
-Este documento define los **principios fundamentales** y **valores no negociables** del ecosistema Antigravity. Todas las decisiones técnicas, arquitectónicas y operativas deben alinearse con estos principios.
+**Version**: 1.0.0
+**Status**: IMMUTABLE
+**Level**: 0 (Foundational)
 
 ---
 
-## 🧬 Principios Fundamentales
+## 🎯 Purpose
 
-### 1. Playground es la Fuente de Verdad
+This document defines the **fundamental principles** and **non-negotiable values** of the Antigravity ecosystem. All technical, architectural, and operational decisions must align with these principles.
 
-**Filosofía**: El entorno local (`~/playground`) es el origen de toda la verdad. GitHub es solo un espejo en la nube.
+---
 
-**Implicaciones**:
+## 🧬 Core Principles
 
-- ✅ Todos los cambios se originan localmente
-- ✅ La sincronización es unidireccional: `Local → GitHub`
-- ✅ Los nombres de directorios locales son autoritativos
-- ✅ GitHub se adapta al local, nunca al revés
-- ❌ Nunca editar directamente en GitHub (excepto emergencias)
-- ❌ Nunca renombrar localmente para coincidir con GitHub
+### 1. Playground is the Source of Truth
 
-**Ejemplo**:
+**Philosophy**: The local environment (`~/playground`) is the origin of all truth. GitHub is merely a cloud mirror.
+
+**Implications**:
+
+- ✅ All changes originate locally.
+- ✅ Synchronization is strictly unidirectional: `Local → GitHub`.
+- ✅ Local directory names are authoritative.
+- ✅ GitHub adapts to the local environment, never the reverse.
+- ❌ Never edit directly in the GitHub Web UI (except in extreme emergencies).
+- ❌ Never rename local directories to match remote inconsistencies.
+
+**Example**:
 
 ```bash
-# ✅ CORRECTO
-cd ~/playground/repos/LuisSambrano/mi-proyecto
-# Hacer cambios localmente
+# ✅ CORRECT
+cd ~/playground/repos/LuisSambrano/my-project
+# Make local changes
 git push origin main
 
-# ❌ INCORRECTO
-# Editar en GitHub Web UI
-# Hacer pull para sincronizar
+# ❌ INCORRECT
+# Editing via GitHub Web UI
+# Running pull to sync local environment
 ```
 
 ---
 
-### 2. Calidad sobre Velocidad
+### 2. Quality Over Speed
 
-**Filosofía**: Nunca sacrificar calidad por rapidez. El código roto no se sube.
+**Philosophy**: Never sacrifice quality for velocity. Broken code is never committed or pushed.
 
-**Implicaciones**:
+**Implications**:
 
-- ✅ Tests pasan antes de commit
-- ✅ Build exitoso antes de push
-- ✅ Lint sin errores antes de commit
-- ✅ TypeScript strict mode siempre
-- ✅ Code review (aunque sea auto-review)
-- ❌ "Lo arreglo después" (no existe)
-- ❌ Commits con TODOs sin issue
-- ❌ Código comentado sin razón
+- ✅ All tests must pass prior to commit.
+- ✅ The build process must succeed prior to push.
+- ✅ Zero linting errors prior to commit.
+- ✅ TypeScript strict mode is mandatory.
+- ✅ Mandatory code review (including self or agent-driven reviews).
+- ❌ "I'll fix it later" is an unacceptable paradigm.
+- ❌ Commits containing TODOs without associated issue tracking are forbidden.
+- ❌ Commented-out code without documented justification is forbidden.
 
-**Checklist Pre-Commit**:
+**Pre-Commit Checklist**:
 
 ```bash
-npm run build  # ✅ Debe pasar
-npm run lint   # ✅ 0 errores
-tsc --noEmit   # ✅ 0 errores de tipos
+npm run build  # ✅ Must succeed
+npm run lint   # ✅ 0 errors
+tsc --noEmit   # ✅ 0 type errors
 ```
 
 ---
 
-### 3. Documentación como Código
+### 3. Documentation as Code
 
-**Filosofía**: Todo debe estar documentado. La documentación es tan importante como el código.
+**Philosophy**: Comprehensive documentation is mandatory. Documentation holds equal weight to the codebase itself.
 
-**Implicaciones**:
+**Implications**:
 
-- ✅ README Trilingüe Senior (EN + ES + PT) obligatorio
-- ✅ Arquitectura visible en diagramas Mermaid
-- ✅ Comentarios explican el "por qué", no el "qué"
-- ✅ CHANGELOG.md actualizado en cada release
-- ✅ API pública documentada con JSDoc
-- ❌ Código sin README
-- ❌ Funciones públicas sin documentación
-- ❌ Cambios breaking sin documentar
+- ✅ Bilingual/Trilingual READMEs (EN + ES + PT) are mandatory.
+- ✅ System architecture must be visualized via Mermaid diagrams.
+- ✅ Inline comments must explain "WHY" the code exists, not "WHAT" it does.
+- ✅ `CHANGELOG.md` must be updated on every release.
+- ✅ Public APIs must be fully documented using JSDoc.
+- ❌ Repositories without a README are unacceptable.
+- ❌ Undocumented public functions are strictly forbidden.
+- ❌ Undocumented breaking changes are strictly forbidden.
 
-**Ejemplo**:
+**Example**:
 
 ```typescript
 /**
@@ -91,9 +91,9 @@ tsc --noEmit   # ✅ 0 errores de tipos
  * Uses a 5-minute cache to reduce API calls and improve performance.
  * Cache is invalidated on user updates via Supabase realtime.
  *
- * @param userId - The UUID of the user to fetch
- * @returns User object or null if not found
- * @throws {Error} If Supabase client is not initialized
+ * @param userId - The UUID of the specified user.
+ * @returns The User object, or null if not found.
+ * @throws {Error} If the Supabase client is uninitialized.
  */
 export async function fetchUser(userId: string): Promise<User | null> {
   // Implementation
@@ -102,119 +102,119 @@ export async function fetchUser(userId: string): Promise<User | null> {
 
 ---
 
-### 4. Autonomía con Responsabilidad
+### 4. Autonomy with Accountability
 
-**Filosofía**: Los agentes (humanos o IA) tienen libertad de decisión, pero deben seguir el protocolo y ser transparentes.
+**Philosophy**: Agents (human or AI) possess decision-making freedom, provided they adhere to the protocol and maintain absolute transparency.
 
-**Implicaciones**:
+**Implications**:
 
-- ✅ Libertad para elegir implementación
-- ✅ Obligación de seguir estándares
-- ✅ Transparencia total en acciones
-- ✅ Documentar decisiones no obvias
-- ✅ Pedir clarificación si hay ambigüedad
-- ❌ Desviarse del protocolo sin justificación
-- ❌ Cambios silenciosos sin documentar
-- ❌ Asumir sin preguntar
+- ✅ Freedom to select implementation strategies.
+- ✅ Strict obligation to adhere to architectural standards.
+- ✅ Total transparency regarding automated or manual actions.
+- ✅ Mandatory documentation of non-obvious engineering decisions.
+- ✅ Obligation to request clarification when confronted with ambiguity.
+- ❌ Deviating from protocol without documented justification is forbidden.
+- ❌ "Silent" or undocumented architectural shifts are unacceptable.
+- ❌ Proceeding on critical assumptions without user verification is forbidden.
 
-**Ejemplo de Transparencia**:
+**Transparency Example**:
 
 ```markdown
-## Decisión: Usar Zustand en lugar de Context API
+## Decision: Implement Zustand overriding Context API
 
-**Razón**: El estado global es complejo (>5 slices) y Context API
-causaría re-renders innecesarios. Zustand ofrece mejor performance
-y developer experience.
+**Rationale**: The global state complexity (>5 slices) rendered Context API
+inefficient due to predictable excessive re-renders. Zustand provides superior
+performance metrics and developer ergonomics for this specific use case.
 
-**Alternativas Consideradas**:
+**Considered Alternatives**:
 
-- Context API: Descartado por performance
-- Redux Toolkit: Demasiado boilerplate para este caso
-- Jotai: Menos maduro que Zustand
+- Context API: Discarded due to performance constraints.
+- Redux Toolkit: Evaluated as excessive overhead for current scope.
+- Jotai: Evaluated as less mature compared to Zustand for this architecture.
 
-**Fecha**: 2026-02-03
-**Autor**: Luis Sambrano
+**Date**: 2026-02-03
+**Author**: Luis Sambrano / Antigravity Agent
 ```
 
 ---
 
-### 5. Mejora Continua (Kaizen)
+### 5. Continuous Improvement (Kaizen)
 
-**Filosofía**: Cada sesión debe dejar el código mejor que como lo encontró. Refactoring incremental constante.
+**Philosophy**: Every session must leave the codebase demonstrably better than its prior state. Incremental refactoring is a constant requirement.
 
-**Implicaciones**:
+**Implications**:
 
-- ✅ Refactorizar al tocar código legacy
-- ✅ Mejorar tests al encontrar bugs
-- ✅ Actualizar documentación al cambiar API
-- ✅ Documentar aprendizajes en TIL
-- ✅ Simplificar complejidad innecesaria
-- ❌ "Si funciona, no lo toques"
-- ❌ Dejar código peor que antes
-- ❌ Ignorar code smells
+- ✅ Refactor adjacent technical debt when interacting with legacy code.
+- ✅ Enhance test coverage upon bug discovery.
+- ✅ Synchronize documentation actively when altering APIs.
+- ✅ Document new technical insights via TIL (Today I Learned) logs.
+- ✅ Actively seek to simplify unnecessary complexity.
+- ❌ "If it works, don't touch it" is an unacceptable paradigm.
+- ❌ Degrading overall code quality is strictly forbidden.
+- ❌ Ignoring identified code smells is an unacceptable practice.
 
-**Boy Scout Rule**:
+**The Boy Scout Rule**:
 
-> "Deja el código más limpio de lo que lo encontraste"
+> "Always leave the codebase cleaner than you found it."
 
 ---
 
-## 🔒 Valores No Negociables
+## 🔒 Non-Negotiable Values
 
-### 1. Seguridad First
+### 1. Security First
 
-**Mandatorio**:
+**Mandatory Requirements**:
 
-- ✅ Row Level Security (RLS) en todas las tablas Supabase
-- ✅ Validación de entrada (nunca confiar en el cliente)
-- ✅ Sanitización de salida (prevenir XSS)
-- ✅ Variables de entorno para secretos
-- ✅ HTTPS en producción
-- ❌ Secretos hardcodeados
-- ❌ SQL injection vulnerable
-- ❌ Autenticación sin rate limiting
+- ✅ Row Level Security (RLS) enforcement on all Supabase tables.
+- ✅ Strict input validation (Zero-trust client model).
+- ✅ Output sanitization (XSS prevention).
+- ✅ Environment variables are mandatory for all sensitive application secrets.
+- ✅ HTTPS enforcement in production environments.
+- ❌ Hardcoded secrets are a critical violation.
+- ❌ SQL injection vulnerabilities are a critical violation.
+- ❌ Authentication endpoints lacking rate limiting are unacceptable.
 
-**Ejemplo RLS**:
+**RLS Enforcement Example**:
 
 ```sql
--- ✅ CORRECTO: RLS habilitado
+-- ✅ CORRECT: RLS Enabled and Managed
 ALTER TABLE articles ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can only read published articles"
 ON articles FOR SELECT
 USING (status = 'published' OR auth.uid() = author_id);
 
--- ❌ INCORRECTO: Sin RLS
--- Tabla sin políticas = acceso total
+-- ❌ INCORRECT: RLS Disabled
+-- Tables lacking policies default to unrestricted access, causing critical data leaks.
 ```
 
 ---
 
-### 2. Accesibilidad (A11y)
+### 2. Accessibility (A11y)
 
-**Mandatorio**:
+**Mandatory Requirements**:
 
-- ✅ WCAG 2.1 AA mínimo
-- ✅ Contraste de colores adecuado (4.5:1 texto, 3:1 UI)
-- ✅ Navegación por teclado 100%
-- ✅ Screen reader compatible
-- ✅ ARIA labels donde sea necesario
-- ❌ Elementos sin texto alternativo
-- ❌ Botones sin labels
-- ❌ Formularios sin labels
+- ✅ WCAG 2.1 AA compliance (Absolute minimum baseline).
+- ✅ Appropriate color contrast ratios (4.5:1 text, 3:1 UI components).
+- ✅ 100% functional keyboard navigation.
+- ✅ Full Screen Reader compatibility.
+- ✅ Strategic deployment of ARIA attributes.
+- ❌ Visual elements lacking alternative text definitions are forbidden.
+- ❌ Interactive elements without descriptive labels are forbidden.
+- ❌ Form inputs lacking explicit association labels are forbidden.
 
-**Ejemplo**:
+**Implementation Example**:
 
 ```tsx
-// ✅ CORRECTO
+// ✅ CORRECT: Accessible Implementation
 <button
-  aria-label="Close dialog"
+  aria-label="Close dialog modal"
   onClick={handleClose}
 >
-  <X className="h-4 w-4" />
+  <X className="h-4 w-4" aria-hidden="true" />
 </button>
 
-// ❌ INCORRECTO
+// ❌ INCORRECT: Inaccessible Implementation
 <button onClick={handleClose}>
   <X className="h-4 w-4" />
 </button>
@@ -222,55 +222,55 @@ USING (status = 'published' OR auth.uid() = author_id);
 
 ---
 
-### 3. Performance
+### 3. Performance Excellence
 
-**Mandatorio**:
+**Mandatory Requirements**:
 
-- ✅ Core Web Vitals en verde
+- ✅ Core Web Vitals must consistently pass.
   - LCP (Largest Contentful Paint): < 2.5s
   - FID (First Input Delay): < 100ms
   - CLS (Cumulative Layout Shift): < 0.1
-- ✅ Lighthouse Performance: > 90
-- ✅ Bundle size optimizado (code splitting)
-- ✅ Imágenes optimizadas (WebP, lazy loading)
-- ❌ Bundles > 500KB sin justificación
-- ❌ Imágenes sin optimizar
-- ❌ Re-renders innecesarios
+- ✅ Lighthouse Performance Score: > 90.
+- ✅ Optimized bundle sizes via strategic code splitting.
+- ✅ Comprehensive image optimization (WebP targeting, lazy loading defaults).
+- ❌ Initial load bundles exceeding 500KB without documented justification.
+- ❌ Deployment of unoptimized media assets.
+- ❌ Predictable, preventable component re-renders.
 
-**Ejemplo**:
+**Implementation Example**:
 
 ```tsx
-// ✅ CORRECTO: Lazy loading
+// ✅ CORRECT: Strategic Lazy Loading
 import dynamic from "next/dynamic";
 
-const HeavyComponent = dynamic(() => import("./HeavyComponent"), {
-  loading: () => <Skeleton />,
+const HeavyDataChart = dynamic(() => import("./HeavyDataChart"), {
+  loading: () => <ChartSkeleton />,
   ssr: false,
 });
 
-// ❌ INCORRECTO: Todo en el bundle inicial
-import { HeavyComponent } from "./HeavyComponent";
+// ❌ INCORRECT: Monolithic Initial Bundle
+import { HeavyDataChart } from "./HeavyDataChart";
 ```
 
 ---
 
-### 4. Mantenibilidad
+### 4. Code Maintainability
 
-**Mandatorio**:
+**Mandatory Requirements**:
 
-- ✅ Código auto-explicativo (nombres descriptivos)
-- ✅ Funciones pequeñas (< 50 líneas)
-- ✅ Separación de concerns (UI vs lógica)
-- ✅ DRY (Don't Repeat Yourself)
-- ✅ Consistencia en naming y estructura
-- ❌ Funciones > 100 líneas
-- ❌ Lógica de negocio en componentes UI
-- ❌ Copy-paste de código
+- ✅ Self-documenting code via hyper-descriptive naming conventions.
+- ✅ Strict function size limits (< 50 lines per function block).
+- ✅ Architectural Separation of Concerns (UI layer isolated from business logic).
+- ✅ DRY principles (Don't Repeat Yourself).
+- ✅ Uniform consistency in naming, structural patterns, and export methods.
+- ❌ Functions exceeding 100 lines.
+- ❌ Embedding complex business logic within presentational UI components.
+- ❌ Copy-pasting architectural blocks without abstraction.
 
-**Ejemplo**:
+**Implementation Example**:
 
 ```typescript
-// ✅ CORRECTO: Código auto-explicativo
+// ✅ CORRECT: Self-Documenting Naming
 function calculateDiscountedPrice(
   originalPrice: number,
   discountPercentage: number,
@@ -279,7 +279,7 @@ function calculateDiscountedPrice(
   return originalPrice - discountAmount;
 }
 
-// ❌ INCORRECTO: Nombres crípticos
+// ❌ INCORRECT: Cryptic Variable References
 function calc(p: number, d: number): number {
   return p - p * (d / 100);
 }
@@ -287,23 +287,23 @@ function calc(p: number, d: number): number {
 
 ---
 
-### 5. Escalabilidad
+### 5. Infinite Scalability
 
-**Mandatorio**:
+**Mandatory Requirements**:
 
-- ✅ Arquitectura modular (features independientes)
-- ✅ Separación frontend/backend clara
-- ✅ API versionada (v1, v2)
-- ✅ Database indexing apropiado
-- ✅ Caching estratégico
-- ❌ Monolitos acoplados
-- ❌ Queries N+1
-- ❌ Sin paginación en listas grandes
+- ✅ Modular architecture built on isolated feature silos.
+- ✅ Explicit demarcation between frontend consumption and backend resolution.
+- ✅ Strict API versioning patterns (e.g., v1, v2).
+- ✅ Optimized, deliberate database indexing.
+- ✅ Strategic, multi-layered caching implementations.
+- ❌ Tightly coupled monoliths hindering independent feature deployments.
+- ❌ N+1 query structures.
+- ❌ Retrieving macro datasets without server-side pagination enforcement.
 
-**Ejemplo**:
+**Architectural Example**:
 
 ```typescript
-// ✅ CORRECTO: Modular
+// ✅ CORRECT: Feature-Driven Modularity
 app/
 ├── features/
 │   ├── auth/
@@ -315,7 +315,7 @@ app/
 │       ├── hooks/
 │       └── api/
 
-// ❌ INCORRECTO: Todo mezclado
+// ❌ INCORRECT: Generic Type Grouping
 app/
 ├── components/
 │   ├── LoginForm.tsx
@@ -325,48 +325,42 @@ app/
 
 ---
 
-## 🚨 Violaciones del Protocolo
+## 🚨 Protocol Violations
 
-### Severidad Crítica (Bloquea Deploy)
+### Critical Severity (Blocks Deployment)
 
-- Código sin tests que pasan
-- Build fallido
-- Secretos hardcodeados
-- Vulnerabilidades de seguridad
-- RLS deshabilitado en producción
+- Submitting code blocks failing unit or integration tests.
+- Committing parameters that result in a failed build sequence.
+- Detecting hardcoded secrets within the repository or staging area.
+- Introducing identified security vulnerabilities to the codebase.
+- Disabling Row Level Security (RLS) in production environments.
 
-### Severidad Alta (Requiere Fix Inmediato)
+### High Severity (Immediate Rectification Required)
 
-- Lint errors
-- TypeScript errors
-- Performance < 70 en Lighthouse
-- Accesibilidad < 90 en Lighthouse
-- Código duplicado > 10%
+- Unresolved linter errors or warnings.
+- Unresolved TypeScript compilation errors.
+- Lighthouse Performance score falling below 70.
+- Lighthouse Accessibility score falling below 90.
+- Code duplication ratios exceeding a 10% threshold.
 
-### Severidad Media (Fix en Próximo Sprint)
+### Medium Severity (Rectification Required Upcoming Sprint)
 
-- Comentarios desactualizados
-- TODOs sin issue
-- Funciones > 50 líneas
-- Falta de documentación
+- Outdated or misleading inline comments.
+- Hanging TODO notes lacking associated issue tracking tags.
+- Functions approaching or slightly exceeding the 50-line maximum.
+- Insufficient public API documentation.
 
-### Severidad Baja (Nice to Have)
+### Low Severity (Backlog/Nice to Have)
 
-- Nombres de variables mejorables
-- Oportunidades de refactoring
-- Optimizaciones menores
-
----
-
-## 📚 Referencias
-
-- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Nivel 1
-- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Nivel 2
-- [QUALITY_GATES.md](./QUALITY_GATES.md) - Nivel 3
-- [Workflows](../workflows/) - Nivel 4
+- Opportunities for variable nomenclature optimization.
+- Non-critical, aesthetic refactoring possibilities.
+- Minor computational optimizations.
 
 ---
 
-**Última Actualización**: 2026-02-03  
-**Mantenedor**: Luis Sambrano  
-**Estado**: ACTIVO
+## 📚 Core References
+
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md) - Level 1
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md) - Level 1
+- [QUALITY_GATES.md](./QUALITY_GATES.md) - Level 1
+- [Workflows](../workflows/) - Level 2
