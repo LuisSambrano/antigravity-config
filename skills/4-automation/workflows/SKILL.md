@@ -1,5 +1,5 @@
 ---
-name: n8n-automator
+name: workflows
 description: A hybrid skill for managing n8n workflows using both MCP (for inspection) and REST API (for creation/editing).
 ---
 

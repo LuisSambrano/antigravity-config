@@ -1,78 +1,78 @@
 ---
 name: repo-showcase
-description: "Directiva proactiva para automatizar la sincronización de la arquitectura (Léeme/Diagramas) desde repositorios seguros (Privados) hacia escaparates públicos (Showcase) utilizando la CLI de GitHub."
+description: "Proactive directive to automate the synchronization of architecture (README/Diagrams) from secure repositories (Private) to public showcases using the GitHub CLI."
 version: "1.0.0"
 category: "7-meta"
 ---
 
 # 🛡️ Repo Showcase Pattern (Proactive Workflow)
 
-## ¿Qué es esta Skill?
+## What is this Skill?
 
-El patrón **"Repo Showcase"** es una técnica avanzada de Developer Relations y Ciberseguridad. Permite a los desarrolladores mantener todo su código fuente, variables de entorno y lógica de negocio encerrados en **repositorios privados intocables**, mientras exponen simultáneamente diagramas estructurales, documentación (`README.md`) e interfaces (capturas) en **repositorios espejo públicos** ("Showcases").
+The **"Repo Showcase"** pattern is an advanced Developer Relations and Cybersecurity technique. It allows developers to keep all their source code, environment variables, and business logic locked away in **untouchable private repositories**, while simultaneously exposing structural diagrams, documentation (`README.md`), and interfaces (screenshots) in **public mirror repositories** ("Showcases").
 
-Como agente de IA configurado bajo el ecosistema Antigravity, **TU DEBER ES PROPONER Y EJECUTAR ACTIVAMENTE ESTA ARQUITECTURA** cada vez que se detecte el inicio de un proyecto.
+As an AI agent configured under the Antigravity ecosystem, **YOUR DUTY IS TO PROACTIVELY PROPOSE AND EXECUTE THIS ARCHITECTURE** whenever the start of a new project is detected.
 
 ---
 
-## ⚡ TIPO DE SKILL: PROACTIVA (TRIGGER-BASED)
+## ⚡ SKILL TYPE: PROACTIVE (TRIGGER-BASED)
 
-Esta no es una skill pasiva. Debes interrumpir e interceptar el flujo del usuario bajo las siguientes condiciones:
+This is not a passive skill. You must interrupt and intercept the user's flow under the following conditions:
 
-### Disparadores (Triggers)
+### Triggers
 
-**Si el usuario dice:**
+**If the user says:**
 
-- _"Crea un nuevo repositorio..."_
-- _"Inicializa un nuevo proyecto web/app..."_
-- _"Vamos a empezar el proyecto de..."_
-- _"Quiero construir un..."_
+- _"Create a new repository..."_
+- _"Initialize a new web/app project..."_
+- _"Let's start the project for..."_
+- _"I want to build a..."_
 
-### Comportamiento Exigido (Intercepción)
+### Required Behavior (Interception)
 
-Antes de escribir una sola línea de código o disparar una CLI, **haz una pausa y lanza el cuestionario de segregación**.
+Before writing a single line of code or firing a CLI, **pause and launch the segregation questionnaire**.
 
 ```markdown
-"He detectado que estás iniciando un nuevo proyecto. Según la arquitectura de Antigravity, necesitamos definir su nivel de privacidad y exposición pública.
+"I have detected that you are starting a new project. According to the Antigravity architecture, we need to define its privacy and public exposure level.
 
-1. **¿El repositorio involucrará lógica propietaria de clientes, integraciones bancarias, o variables de entorno críticas?** (Para bloquearlo automáticamente como **Privado**).
-2. **¿Deseas que active el 'Patrón Showcase' para este proyecto?** (Esto configurará un repositorio espejo público vacío que auto-sincronizará tu arquitectura y README, para que puedas enriquecer tu portafolio público de GitHub sin filtrar código)."
+1. **Will the repository involve proprietary client logic, banking integrations, or critical environment variables?** (To automatically lock it down as **Private**).
+2. **Do you want me to activate the 'Showcase Pattern' for this project?** (This will set up an empty public mirror repository that will auto-synchronize your architecture and README, so you can enrich your public GitHub portfolio without leaking code)."
 ```
 
 ---
 
-## 🛠️ Matriz de Ejecución: `crear_showcase_action()`
+## 🛠️ Execution Matrix: `create_showcase_action()`
 
-Si el usuario **ACEPTA** la implementación del patrón Showcase tras el cuestionario, debes proceder con la creación y automatización de la arquitectura en **3 pasos autónomos**.
+If the user **ACCEPTS** the implementation of the Showcase pattern after the questionnaire, you must proceed with the creation and automation of the architecture in **3 autonomous steps**.
 
-> **Nota para el Agente**: Todo debe ejecutarse vía la herramienta Terminal/Bash usando el comando `gh` (GitHub CLI).
+> **Note for the Agent**: Everything must be executed via the Terminal/Bash tool using the `gh` (GitHub CLI) command.
 
-### Paso 1: Inicialización Diferenciada
+### Step 1: Differentiated Initialization
 
-Debes crear ambos repositorios en paralelo (asumiendo que estás trabajando dentro del flujo original).
-
-```bash
-# 1. Crear el Repositorio de Código (Protegido/Privado)
-gh repo create $USER_ORG/nombre-del-proyecto --private --source=. --remote=origin
-
-# 2. Crear el Repositorio Espejo (Público/Vacío)
-gh repo create $USER_ORG/nombre-del-proyecto-showcase --public
-```
-
-### Paso 2: Aprovisionamiento de Credenciales (PAT)
-
-El mecanismo GitHub Action requiere permisos para empujar datos entre dos repositorios. Para eso, inyecta el Token de Acceso Personal (`MY_GITHUB_PAT` o equivalente) del entorno local como un secreto seguro en el repositorio privado.
+You must create both repositories in parallel (assuming you are working within the original flow).
 
 ```bash
-# Setea el secreto en el repo privado para que la Acción pueda autenticarse.
-gh secret set SHOWCASE_SYNC_TOKEN --body "$MY_GITHUB_PAT" --repo $USER_ORG/nombre-del-proyecto
+# 1. Create the Code Repository (Protected/Private)
+gh repo create $USER_ORG/project-name --private --source=. --remote=origin
+
+# 2. Create the Mirror Repository (Public/Empty)
+gh repo create $USER_ORG/project-name-showcase --public
 ```
 
-### Paso 3: Inyección del Pipeline "Sync"
+### Step 2: Credential Provisioning (PAT)
 
-Finalmente, escribe y envía el pipeline `.github/workflows/sync-showcase.yml` dentro del repositorio privado. Esta rutina vigila los archivos informativos de la Capa de Arquitectura y los transplanta al repositorio público cada vez que hay una modificación en `main`.
+The GitHub Action mechanism requires permissions to push data between two repositories. Therefore, inject the Personal Access Token (`MY_GITHUB_PAT` or equivalent) from the local environment as a secure secret in the private repository.
 
-**Obligatorio:** Escribe el siguiente bloque YAML textualmente en `.github/workflows/sync-showcase.yml`:
+```bash
+# Set the secret in the private repo so the Action can authenticate.
+gh secret set SHOWCASE_SYNC_TOKEN --body "$MY_GITHUB_PAT" --repo $USER_ORG/project-name
+```
+
+### Step 3: "Sync" Pipeline Injection
+
+Finally, write and commit the `.github/workflows/sync-showcase.yml` pipeline inside the private repository. This routine watches the documentation files in the Architecture Layer and transplants them to the public repository whenever there is a modification in `main`.
+
+**Mandatory:** Write the following YAML block exactly as is into `.github/workflows/sync-showcase.yml`:
 
 ```yaml
 name: "🚀 Architectural Sync: Showcase Mirror"
@@ -84,29 +84,29 @@ on:
     paths:
       - "README.md"
       - "README.es.md"
-      - "docs/**" # Sincroniza diagramas y assets PNG/WebP
+      - "docs/**" # Sync diagrams and PNG/WebP assets
       - "architecture/**"
 
 jobs:
   sync-to-public-showcase:
     runs-on: ubuntu-latest
     steps:
-      - name: "Clonación Privada (Protegida)"
+      - name: "Private Checkout (Protected)"
         uses: actions/checkout@v3
 
-      - name: "Propagación a Repositorio Espejo (Público)"
+      - name: "Propagate to Mirror Repository (Public)"
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.SHOWCASE_SYNC_TOKEN }}
         with:
           source-directory: "."
           destination-github-username: "${USER_ORG}"
-          destination-repository-name: "nombre-del-proyecto-showcase" # Cambiar este valor
-          user-email: "bot@antigravity.io" # O correo oficial
+          destination-repository-name: "project-name-showcase" # Change this value
+          user-email: "bot@antigravity.io" # Or official email
           target-branch: "main"
-          commit-message: "docs(bot): auto-propagación de arquitectura al portal público showcase"
+          commit-message: "docs(bot): auto-propagation of architecture to public showcase portal"
 ```
 
-### Conclusión Autónoma
+### Autonomous Conclusion
 
-Una vez confirmados los `push` de este archivo, notifíca al usuario que su "fortaleza" ha sido erigida: la lógica de negocio se ha encapsulado correctamente de manera Privada, mientras que su marca y exposición técnica como desarrollador se actualizan en el servidor Público sin riesgo alguno de filtraciones.
+Once the `push` of this file is confirmed, notify the user that their "fortress" has been erected: the business logic has been correctly encapsulated privately, while their personal brand and technical exposure as a developer are updated on the public server with no risk of leaks.

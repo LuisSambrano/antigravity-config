@@ -1,5 +1,5 @@
 ---
-name: Vibecode UI/UX Pro Max
+name: vibecode-ui
 description: "UI/UX implementation guidelines specializing in Glassmorphism and high-performance Web Interfaces. Enforces Next.js 14+ architectural standards and WCAG accessibility compliance."
 ---
 
