@@ -24,7 +24,7 @@
 | Skill                   | Descripción                                                                             |
 | ----------------------- | --------------------------------------------------------------------------------------- |
 | `clean-code`            | Applies principles from Robert C. Martin's 'Clean Code'. Use this skil                  |
-| `code-reviewer`         | Elite code review expert specializing in modern AI-powered code                         |
+| `code-reviewer`         | Systematic code review, static analysis, and vulnerability detection                    |
 | `coding-standards`      | Universal coding standards, best practices, and patterns for TypeScrip                  |
 | `commit`                | Create commit messages following Sentry conventions. Use when committi                  |
 | `find-bugs`             | Find bugs, security vulnerabilities, and code quality issues in local                   |
@@ -92,8 +92,8 @@
 | `stitch-ui-design`             | Expert guide for creating effective prompts for Google Stitch AI UI de |
 | `tailwind-patterns`            | Tailwind CSS v4 principles. CSS-first configuration, container queries |
 | `typescript-expert`            | >-                                                                     |
-| `ui-ux-pro-max`                | UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 2 |
-| `vibecode-ui`                  | El framework definitivo para crear interfaces "Gorgeous" y de alto ren |
+| `ui-ux-pro-max`                | Diagnostic matrix for UI/UX compliance, verifying stylistic rules and  |
+| `vibecode-ui`                  | UI/UX instructions specializing in Glassmorphism and UI performance    |
 | `ui-prototyping`               | UI/UX prototyping with generate_image. Design mockups before coding    |
 | `web-performance-optimization` | Optimize website and web application performance including loading spe |
 | `vercel-composition-patterns`  | React composition patterns that scale. Use when refactoring components |
@@ -123,14 +123,14 @@
 | `api-security-best-practices` | Implement secure API design patterns including authentication, authori |
 | `pci-compliance`              | Implement PCI DSS compliance requirements for secure handling of payme |
 | `pentest-checklist`           | This skill should be used when the user asks to "plan a penetration te |
-| `security-auditor`            | Expert security auditor specializing in DevSecOps, comprehensive       |
+| `security-auditor`            | Vulnerability assessment, DevSecOps compliance, and threat mitigation  |
 | `top-web-vulnerabilities`     | This skill should be used when the user asks to "identify web applicat |
 
 ## 6-content
 
 | Skill                | Descripción                                                            |
 | -------------------- | ---------------------------------------------------------------------- |
-| `content-marketer`   | Elite content marketing strategist specializing in AI-powered          |
+| `content-marketer`   | SEO-optimized content generation and brand-consistent copy parameters  |
 | `doc-coauthoring`    | Guide users through a structured workflow for co-authoring documentati |
 | `email-sequence`     | When the user wants to create or optimize an email sequence, drip camp |
 | `readme`             | When the user wants to create or update a README.md file for a project |
@@ -143,7 +143,7 @@
 | Skill             | Descripción                                                            |
 | ----------------- | ---------------------------------------------------------------------- |
 | `kaizen`          | Guide for continuous improvement, error proofing, and standardization. |
-| `repo-showcase`   | Directiva proactiva para generar repositorios espejo automáticos.      |
+| `repo-showcase`   | Automated mirror repositories generator for public architectures       |
 | `skill-creator`   | Guide for creating effective skills. This skill should be used when us |
 | `skill-developer` | Create and manage s following Anthropic best practices. Use when creat |
 

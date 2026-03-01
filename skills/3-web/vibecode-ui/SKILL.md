@@ -1,6 +1,6 @@
 ---
 name: Vibecode UI/UX Pro Max
-description: El framework definitivo para crear interfaces "Gorgeous" y de alto rendimiento. Combina estética de lujo (Glassmorphism) con rigor de ingeniería (Next.js 14+) y accesibilidad.
+description: "UI/UX implementation guidelines specializing in Glassmorphism and high-performance Web Interfaces. Enforces Next.js 14+ architectural standards and WCAG accessibility compliance."
 ---
 
 # Framework Vibecode UI/UX Pro Max
