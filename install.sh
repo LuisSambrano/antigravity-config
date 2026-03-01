@@ -80,7 +80,7 @@ echo -e "${GREEN}✓${NC} GEMINI.md installed"
 
 # Step 3: Copy Rules
 echo -e "${BLUE}[3/6]${NC} Installing master rules..."
-cp -r "$SCRIPT_DIR/rules" "$CONFIG_REPO/"
+cp -r "$SCRIPT_DIR/rules" "$AGENT_DIR/"
 echo -e "${GREEN}✓${NC} Rules installed (5 files)"
 
 # Step 4: Copy Workflows
@@ -137,7 +137,7 @@ if [ ! -f "$GEMINI_DIR/GEMINI.md" ]; then
     ERRORS=$((ERRORS + 1))
 fi
 
-if [ ! -d "$CONFIG_REPO/rules" ]; then
+if [ ! -d "$AGENT_DIR/rules" ]; then
     echo -e "${RED}✗${NC} Rules not found"
     ERRORS=$((ERRORS + 1))
 fi
@@ -162,7 +162,7 @@ echo -e "${PURPLE}╚═══════════════════�
 echo ""
 echo -e "Installed components:"
 echo -e "  ${GREEN}✓${NC} GEMINI.md     → $GEMINI_DIR/GEMINI.md"
-echo -e "  ${GREEN}✓${NC} Rules (5)     → $CONFIG_REPO/rules/"
+echo -e "  ${GREEN}✓${NC} Rules (5)     → $AGENT_DIR/rules/"
 echo -e "  ${GREEN}✓${NC} Workflows (3) → $AGENT_DIR/workflows/"
 echo -e "  ${GREEN}✓${NC} Skills        → $AGENT_DIR/skills/"
 echo ""
