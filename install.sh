@@ -104,6 +104,7 @@ CORE_SKILLS=(
     "5-security/api-security"
     "6-content/readme-gen"
     "7-meta/skill-creator"
+    "10-tools/agent-browser"
 )
 
 if [ "$INSTALL_MODE" = "full" ]; then

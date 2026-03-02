@@ -1,13 +1,13 @@
 # Skills Index — .agent
 
-88 skills organizados en 10 categorías.
+89 skills organizados en 10 categorías.
 
 ---
 
 | Categoría    | Skills | Área                                        |
 | ------------ | ------ | ------------------------------------------- |
 | 1-core       | 10     | Fundamentos, calidad, TDD, SDD              |
-| 10-tools     | 4      | Docs, presentaciones, Linear, browser       |
+| 10-tools     | 5      | Docs, presentaciones, Linear, browser       |
 | 2-ai         | 4      | Agentes, RAG, prompting, voz                |
 | 3-web        | 23     | Frontend, backend, plataformas, prototyping |
 | 4-automation | 10     | Testing, CI/CD, n8n, Docker                 |
@@ -36,12 +36,13 @@
 
 ## 10-tools
 
-| Skill           | Descripción                                                                            |
-| --------------- | -------------------------------------------------------------------------------------- |
-| `linear-ops`    | Manage Linear issues, projects, and teams                                              |
-| `pptx-ops`      | Presentation creation, editing, and analysis. When Claude needs to wor                 |
-| `browser-tests` | Browser tool usage guide for testing, verification, screenshots, and responsive checks |
-| `xlsx-ops`      | Comprehensive spreadsheet creation, editing, and analysis with support                 |
+| Skill           | Descripción                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------- |
+| `linear-ops`    | Manage Linear issues, projects, and teams                                                         |
+| `pptx-ops`      | Presentation creation, editing, and analysis. When Claude needs to wor                            |
+| `browser-tests` | Browser tool usage guide for testing, verification, screenshots, and responsive checks            |
+| `xlsx-ops`      | Comprehensive spreadsheet creation, editing, and analysis with support                            |
+| `agent-browser` | Control Electron desktop applications (Slack, Discord, Notion) using Vercel agent-browser via CDP |
 
 ## 2-ai
 
