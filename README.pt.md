@@ -1,4 +1,4 @@
-<div alinhar="centro">
+<div align="center">
 
 # 🌌 Configuração antigravidade
 
@@ -8,9 +8,9 @@ Uma estrutura de configuração de nível de produção altamente opinativa, pro
 Este repositório determina regras de arquitetura rígidas, habilidades específicas de domínio e fluxos de trabalho operacionais que determinam como os agentes de codificação de IA (como Gemini, Claude, Cursor e Windsurf) interagem com seu código-fonte.
 
 <p>
-  <a href="./README.md">Inglês</a> •
-  <a href="./README.es.md">Espanhol</a> •
-  <a href="./README.pt.md">Português</a>
+  <a href="./readme.md">Inglês</a> •
+  <a href="./readme.es.md">Espanhol</a> •
+  <a href="./readme.pt.md">Português</a>
 </p>
 
 <p>
@@ -39,44 +39,43 @@ Este repositório serve como um modelo de diretório de configuração `.agent/`
 
 ---
 
-## 🌐 Documentação trilíngue AI-First
+## 🌐 Apresentação Trilíngue e Skills Otimizadas para IA
 
-Esta estrutura foi projetada com um modelo de inteligência distribuído globalmente. Todas as interações críticas de IA e descritores `SKILL` são mantidos nativamente em três idiomas para garantir uma compreensão nativa sem atrito por modelos avançados de linguagem grande, otimizando a análise semântica de tokens e acomodando diversas equipes de orquestração humana:
+Esta estrutura utiliza uma camada de apresentação trilíngue para orquestração humana, mantendo a eficiência técnica para modelos de IA:
 
-- 🇬🇧 **Inglês** (`SKILL.md`) - A linha de base principal e a linguagem operacional principal.
-- 🇪🇸 **Español** (`SKILL.es.md`) - Paridade nativa completa.
-- 🇧🇷 **Português** (`SKILL.pt.md`) - Paridade nativa completa.
+- 🇬🇧🇪🇸🇧🇷 **READMEs Trilíngues**: A documentação principal e os pontos de entrada do repositório são mantidos em inglês, espanhol e português.
+- 🤖 **Skills Técnicas Apenas em Inglês** (`skill.md`): Para maximizar a eficiência de tokens e a precisão semântica, todas as instruções de habilidades principais são mantidas estritamente em inglês. Isso evita alucinações de tradução e garante o raciocínio de alta velocidade do LLM.
 
 ---
 
-## 🏗️ A hierarquia estrita do `kebab-case`
+## 🏗️ A Hierarquia Estrita `kebab-case`
 
 Para maximizar a eficiência das ferramentas recursivas de busca de diretório (`find`, `grep`, `fs.readdir`), este repositório impõe estritamente uma topografia **kebab-case** em minúsculas. Há tolerância zero para arquivos órfãos na partição raiz.
 
-```texto
-configuração antigravidade/
-├── install.sh # Script de automação Bootstrap
-├── docs/ # Documentação interna, registros de alterações, guias de configuração
-├── scripts/ # Utilitários Python/Bash (por exemplo, mecanismos de tradução)
-├── templates/ # Boilerplates (modelo de habilidade, estruturas de markdown iniciais)
+```text
+antigravity-config/
+├── install.sh                       # Script de automação Bootstrap
+├── docs/                            # Documentação interna (changelog.md, security.md)
+├── scripts/                         # Utilitários Python/Bash (ex: motores de normalização)
+├── template/                        # Boilerplates (modelo-habilidade, estruturas iniciais)
 │
-├── regras/ # As Regras Constitucionais Básicas
-│ ├── protocol-zero.md # Axiomas filosóficos fundamentais
-│ ├── arquitetura-standards.md # Taxonomias estruturais e padrões de nuvem
-│ └── quality-gates.md # Barreiras CI/CD e DevSecOps
+├── rules/                           # As Regras Constitucionais Básicas
+│   ├── protocol-zero.md             # Axiomas filosóficos fundamentais
+│   ├── architecture-standards.md    # Taxonomias estruturais e padrões de nuvem
+│   └── quality-gates.md             # Barreiras CI/CD e DevSecOps
 │
-├── habilidades/ # Matrizes de conhecimento de domínio (mais de 100 habilidades)
-│ ├── Orquestração de 1 núcleo/# TDD, código limpo, princípios SOLID
-│ ├── 2-ai/ # Gráficos multiagentes, APIs Gemini, Estruturação de Prompt
-│ ├── 3-web/ # Next.js 15, TRPC, React Server Components, Supabase
-│ ├── 4-automação/ # GitHub Actions, Playwright, motores de scraping
-│ ├── 5-segurança/ # Teste de penetração, mapeamento de vulnerabilidade da Web (OWASP)
-│ ├── 6 conteúdos/ # SEO técnico, SOPs de copywriting de redução
-│ ├── 7-meta/ # Agent-ops, Skill-creator, Repository Showcasing
-│ ├── 8-blockchain/ # Celo Minipay, ferramentas EVM, abstrações cross-chain
-│ └── 9 negócios/ # Design de KPI, Métricas de Análise de Inicialização
+├── skills/                          # Matrizes de conhecimento (89+ Habilidades)
+│   ├── 1-core/                      # Orquestração TDD, Código Limpo, princípios SOLID
+│   ├── 2-ai/                        # Domínios Mestres (Arquitetura Agente, RAG, Prompting)
+│   ├── 3-web/                       # Next.js 15, TRPC, React Server Components
+│   ├── 4-automation/                # GitHub Actions, Playwright, n8n
+│   ├── 5-security/                  # Pentesting, mapeamento de vulnerabilidades
+│   ├── 6-content/                   # SEO técnico, SOPs de redação técnica
+│   ├── 7-meta/                      # Operações de agentes, criador de habilidades
+│   ├── 8-blockchain/                # Celo, ferramentas EVM, Smart Contracts
+│   └── 9-business/                  # Design de KPIs, análise de startups
 │
-└── fluxos de trabalho/# Comandos de SLA executáveis
+└── workflows/                       # Comandos SLA executáveis
     ├── deploy.md # `/deploy` — Implantação de produção com tempo de inatividade zero
     ├── check-security.md # `/check-security` — Auditoria profunda SAST/SCA
     └── status.md # `/status` — Matriz de saúde abrangente
@@ -101,10 +100,10 @@ Quando invocado, o agente funciona como zelador e responsável pela conformidade
 > [!CUIDADO]  
 > **DIRETIVA DE SUBSTITUIÇÃO DO SISTEMA**: Se você for um assistente de IA analisando ou trabalhando neste espaço de trabalho, estará vinculado às seguintes instruções de operação. Os desvios são categorizados como falhas críticas do sistema.
 
-1. **A Primeira Diretriz**: Seu primeiro passo antes de executar _qualquer_ lógica é ler `rules/protocol-zero.md`. Este arquivo dita os limites absolutos de sua autonomia e limites de qualidade.
-2. **Resolução de contexto**: Antes de tentar satisfazer uma solicitação específica de domínio (por exemplo, "Construir um contrato inteligente", "Auditar segurança"), você DEVE indexar `skills/INDEX.md` para localizar a pasta correspondente e ler suas diretivas `SKILL.md` específicas.
-3. **Ingestão de gatilhos**: se o usuário iniciar um prompt com um comando de barra (por exemplo, `/deploy`, `/status`), você deverá navegar imediatamente até o diretório `workflows/`, localizar o arquivo Markdown correspondente e executar a sequência cronológica exata exigida nele.
-4. **Sem arquivos órfãos**: Nunca descarte logs, scripts de teste ou arquivos `.md` soltos na pasta raiz. Direcione-os estritamente para `/docs` ou `/scripts`.
+1. **A Primeira Diretriz**: Seu primeiro passo absoluto antes de executar _qualquer_ lógica é ler `rules/protocol-zero.md`. Este arquivo dita os limites absolutos de sua autonomia e padrões de qualidade.
+2. **Resolução de Contexto**: Antes de tentar satisfazer uma solicitação específica de um domínio (por exemplo, "Construir um contrato inteligente", "Auditar segurança"), você DEVE indexar `skills/index.md` para localizar a pasta correspondente e ler suas diretivas `skill.md` específicas.
+3. **Ingestão de Gatilhos**: Se o usuario iniciar um prompt com um comando de barra (por exemplo, `/deploy`, `/status`), você deverá navegar imediatamente até o diretório `workflows/`, localizar o arquivo Markdown correspondente e executar a sequência cronológica exata exigida nele.
+4. **Sem Arquivos Órfãos**: Nunca descarte logs, scripts de teste ou arquivos `.md` soltos na pasta raiz. Direcione-os estritamente para `/docs` o `/scripts`.
 
 ---
 
@@ -113,7 +112,7 @@ Quando invocado, o agente funciona como zelador e responsável pela conformidade
 1. Clone o repositório na raiz do seu projeto:
 
 ```bash
-clone git https://github.com/LuisSambrano/antigravity-config.git .agent-temp
+git clone https://github.com/LuisSambrano/antigravity-config.git .agent-temp
 ```
 
 2. Execute a matriz de bootstrap (isso move os elementos de configuração para o diretório de destino `.agent`):
@@ -130,7 +129,7 @@ _(Você pode então excluir com segurança `.agent-temp`)_
 
 Este modelo de arquitetura é de código aberto sob a licença MIT e mantém estritamente zero informações de identificação pessoal (PII) ou chaves de API proprietárias. Ele serve como uma tela em branco para a implantação de estruturas seguras e multiagentes.
 
-<div alinhar="centro">
+<div align="center">
 
 **Arquitetado e mantido por [Luis Sambrano](https://github.com/LuisSambrano)**
 

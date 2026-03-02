@@ -69,14 +69,14 @@ mkdir -p "$AGENT_DIR/workflows"
 mkdir -p "$CONFIG_REPO"
 echo -e "${GREEN}✓${NC} Directories created"
 
-# Step 2: Copy GEMINI.md
-echo -e "${BLUE}[2/6]${NC} Installing GEMINI.md..."
-if [ -f "$GEMINI_DIR/GEMINI.md" ]; then
-    echo -e "${YELLOW}  Backing up existing GEMINI.md...${NC}"
-    cp "$GEMINI_DIR/GEMINI.md" "$GEMINI_DIR/GEMINI.md.backup.$(date +%Y%m%d_%H%M%S)"
+# Step 2: Copy gemini-instructions.md
+echo -e "${BLUE}[2/6]${NC} Installing gemini-instructions.md..."
+if [ -f "$GEMINI_DIR/gemini-instructions.md" ]; then
+    echo -e "${YELLOW}  Backing up existing gemini-instructions.md...${NC}"
+    cp "$GEMINI_DIR/gemini-instructions.md" "$GEMINI_DIR/gemini-instructions.md.backup.$(date +%Y%m%d_%H%M%S)"
 fi
-cp "$SCRIPT_DIR/GEMINI.md" "$GEMINI_DIR/GEMINI.md"
-echo -e "${GREEN}✓${NC} GEMINI.md installed"
+cp "$SCRIPT_DIR/template/gemini-instructions.md" "$GEMINI_DIR/gemini-instructions.md"
+echo -e "${GREEN}✓${NC} gemini-instructions.md installed"
 
 # Step 3: Copy Rules
 echo -e "${BLUE}[3/6]${NC} Installing master rules..."
@@ -137,8 +137,8 @@ fi
 echo -e "${BLUE}[6/6]${NC} Verifying installation..."
 ERRORS=0
 
-if [ ! -f "$GEMINI_DIR/GEMINI.md" ]; then
-    echo -e "${RED}✗${NC} GEMINI.md not found"
+if [ ! -f "$GEMINI_DIR/gemini-instructions.md" ]; then
+    echo -e "${RED}✗${NC} gemini-instructions.md not found"
     ERRORS=$((ERRORS + 1))
 fi
 
@@ -166,7 +166,7 @@ echo -e "${PURPLE}║         🎉 INSTALLATION COMPLETE                        
 echo -e "${PURPLE}╚═══════════════════════════════════════════════════════════╝${NC}"
 echo ""
 echo -e "Installed components:"
-echo -e "  ${GREEN}✓${NC} GEMINI.md     → $GEMINI_DIR/GEMINI.md"
+echo -e "  ${GREEN}✓${NC} gemini-instructions.md     → $GEMINI_DIR/gemini-instructions.md"
 echo -e "  ${GREEN}✓${NC} Rules (5)     → $AGENT_DIR/rules/"
 echo -e "  ${GREEN}✓${NC} Workflows (3) → $AGENT_DIR/workflows/"
 echo -e "  ${GREEN}✓${NC} Skills        → $AGENT_DIR/skills/"

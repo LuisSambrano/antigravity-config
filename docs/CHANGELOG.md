@@ -19,21 +19,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated skill count: 100 → 101 (10-tools category: 4 → 5)
-- Updated trilingual READMEs (EN, ES, PT) with new skill reference
+- Updated trilingual readme.md (en, es, pt) with new skill reference
 
 ## [3.1.0] - 2026-02-03
 
 ### Added
 
 - Professional repository reorganization
-- Trilingual README (English, Spanish, Portuguese)
+- Trilingual readme.md (English, Spanish, Portuguese)
 - One-click installation script (`install.sh`)
-- CONTRIBUTING.md guidelines
-- CODE_OF_CONDUCT.md (Contributor Covenant)
-- SECURITY.md policy
-- Skills INDEX.md catalog
+- `contributing.md` guidelines
+- `code-of-conduct.md` (Contributor Covenant)
+- `security.md` policy
+- Skills `index.md` catalog
 - New category structure (1-core through 7-meta)
-- SKILL_TEMPLATE for creating new skills
+- `skill-template` for creating new skills
 
 ### Changed
 

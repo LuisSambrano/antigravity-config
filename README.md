@@ -8,9 +8,9 @@ A highly opinionated, production-grade configuration framework designed to augme
 This repository dictates the strict architectural rules, domain-specific skills, and operational workflows that mandate how AI coding agents (such as Gemini, Claude, Cursor, and Windsurf) interact with your source code.
 
 <p>
-  <a href="./README.md">English</a> •
-  <a href="./README.es.md">Español</a> •
-  <a href="./README.pt.md">Português</a>
+  <a href="./readme.md">English</a> •
+  <a href="./readme.es.md">Español</a> •
+  <a href="./readme.pt.md">Português</a>
 </p>
 
 <p>
@@ -39,13 +39,12 @@ This repository serves as a ready-to-use `.agent/` configuration directory templ
 
 ---
 
-## 🌐 Trilingual AI-First Documentation
+## 🌐 Trilingual Presentation & AI-Optimized Skills
 
-This framework has been engineered with a globally distributed intelligence model. All critical AI interactions and `SKILL` descriptors are natively maintained in three languages to ensure friction-less native comprehension by advanced Large Language Models, optimizing semantic token parsing and accommodating diverse human orchestration teams:
+This framework leverages a trilingual presentation layer for human orchestration while maintaining technical efficiency for AI models:
 
-- 🇬🇧 **English** (`SKILL.md`) - The core baseline and primary operational language.
-- 🇪🇸 **Español** (`SKILL.es.md`) - Full native parity.
-- 🇧🇷 **Português** (`SKILL.pt.md`) - Full native parity.
+- 🇬🇧🇪🇸🇧🇷 **Trilingual READMEs**: Main repository documentation and entry points are maintained in English, Spanish, and Portuguese.
+- 🤖 **English-Only Technical Skills** (`skill.md`): To maximize token efficiency and semantic precision, all core skill instructions are maintained strictly in English. This prevents translation hallucination and ensures high-speed reasoning by the LLM.
 
 ---
 
@@ -53,34 +52,34 @@ This framework has been engineered with a globally distributed intelligence mode
 
 To maximize the efficiency of recursive directory fetching tools (`find`, `grep`, `fs.readdir`), this repository strictly enforces a **lowercase kebab-case** topography. There is zero tolerance for orphan files in the root partition.
 
-```text
+````text
 antigravity-config/
 ├── install.sh                       # Bootstrap automation script
-├── docs/                            # Internal documentation, Changelogs, Setup Guides
-├── scripts/                         # Python/Bash utilities (e.g., translation engines)
-├── templates/                       # Boilerplates (skill-template, initial markdown structures)
+├── docs/                            # Internal documentation (changelog.md, security.md)
+├── scripts/                         # Python/Bash utilities (e.g., normalization-engines)
+├── template/                        # Boilerplates (skill-template, initial markdown structures)
 │
 ├── rules/                           # The Core Constitutional Rules
 │   ├── protocol-zero.md             # Foundational philosophical axioms
 │   ├── architecture-standards.md    # Structural taxonomies and cloud patterns
 │   └── quality-gates.md             # CI/CD and DevSecOps barriers
 │
-├── skills/                          # Domain knowledge matrices (100+ Skills)
+├── skills/                          # Domain knowledge matrices (89+ Skills)
 │   ├── 1-core/                      # TDD orchestration, Clean Code, SOLID principles
-│   ├── 2-ai/                        # Multi-agent graphs, Gemini APIs, Prompt Structuring
-│   ├── 3-web/                       # Next.js 15, TRPC, React Server Components, Supabase
-│   ├── 4-automation/                # GitHub Actions, Playwright, Scraping engines
-│   ├── 5-security/                  # Penetration testing, Web Vulnerability mapping (OWASP)
+│   ├── 2-ai/                        # Master Domains (Agentic Arch, RAG, Prompting)
+│   ├── 3-web/                       # Next.js 15, TRPC, React Server Components
+│   ├── 4-automation/                # GitHub Actions, Playwright, n8n
+│   ├── 5-security/                  # Penetration testing, Web Vulnerability mapping
 │   ├── 6-content/                   # Technical SEO, markdown copywriting SOPs
-│   ├── 7-meta/                      # Agent-ops, Skill-creator, Repository Showcasing
-│   ├── 8-blockchain/                # Celo Minipay, EVM Tooling, Cross-chain abstractions
+│   ├── 7-meta/                      # Agent-ops, Skill-creator
+│   ├── 8-blockchain/                # Celo, EVM Tooling, Smart Contracts
 │   └── 9-business/                  # KPI Design, Startup Analysis Metrics
 │
 └── workflows/                       # Executable SLA commands
-    ├── deploy.md                    # `/deploy` — Zero-downtime production deployment
+```    ├── deploy.md                    # `/deploy` — Zero-downtime production deployment
     ├── check-security.md            # `/check-security` — Deep SAST/SCA audit
     └── status.md                    # `/status` — Comprehensive health matrix
-```
+````
 
 ---
 
@@ -102,7 +101,7 @@ When invoked, the agent functions as a janitor and compliance officer for the en
 > **SYSTEM OVERRIDE DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, you are bound by the following operating instructions. Deviations are categorized as critical system failures.
 
 1. **The Prime Directive**: Your absolute first step before executing _any_ logic is to read `rules/protocol-zero.md`. This file dictates the absolute boundaries of your autonomy and quality thresholds.
-2. **Context Resolution**: Before attempting to satisfy a domain-specific request (e.g., "Build a smart contract", "Audit security"), you MUST index `skills/INDEX.md` to locate the corresponding folder and read its specific `SKILL.md` directives.
+2. **Context Resolution**: Before attempting to satisfy a domain-specific request (e.g., "Build a smart contract", "Audit security"), you MUST index `skills/index.md` to locate the corresponding folder and read its specific `skill.md` directives.
 3. **Trigger Ingestion**: If the user initiates a prompt with a slash command (e.g., `/deploy`, `/status`), you must immediately navigate to the `workflows/` directory, locate the corresponding Markdown file, and execute the exact chronological sequence mandated within.
 4. **No Orphan Files**: Never drop logs, test scripts, or loose `.md` files in the root folder. Route them strictly to `/docs` or `/scripts`.
 
