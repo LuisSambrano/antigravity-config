@@ -92,14 +92,18 @@ echo -e "${GREEN}✓${NC} Workflows installed (3 commands)"
 echo -e "${BLUE}[5/6]${NC} Installing skills..."
 
 CORE_SKILLS=(
-    "web-development/nextjs-development"
-    "web-development/frontend-design"
-    "coding-standards/typescript-patterns"
-    "ai-agents/prompt-engineering"
-    "security/api-security-best-practices"
-    "automation-tools/playwright-skill"
-    "content-writing/technical-writing"
-    "meta-skills/skill-creator"
+    "1-core/coding-stds"
+    "1-core/clean-code"
+    "2-ai/prompt-engineering"
+    "2-ai/agentic-arch"
+    "3-web/nextjs-practices"
+    "3-web/frontend-design"
+    "3-web/react-patterns"
+    "4-automation/playwright"
+    "4-automation/gh-workflows"
+    "5-security/api-security"
+    "6-content/readme-gen"
+    "7-meta/skill-creator"
 )
 
 if [ "$INSTALL_MODE" = "full" ]; then

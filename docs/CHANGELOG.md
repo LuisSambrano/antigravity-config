@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New skill: `chrome-devtools-mcp` — Ultra-fast UI testing with Chrome DevTools Protocol
+- New skill: `chrome-devtools` — Ultra-fast UI testing with Chrome DevTools Protocol
   - Direct CDP integration replaces slow visual emulation (browser_subagent)
   - 34 tools: input automation, navigation, emulation, performance, network, debugging
   - Decision tree for when to use CDP vs browser_subagent
