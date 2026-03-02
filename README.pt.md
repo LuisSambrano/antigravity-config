@@ -1,18 +1,20 @@
-<div align="center">
+<div alinhar="centro">
 
-# Antigravity Config
+# 🌌 Configuração antigravidade
 
-Um framework de configuração para ambientes de desenvolvimento assistidos por IA.  
-Regras, skills e workflows que padronizam como agentes de código IA operam nos seus projetos.
+**O protocolo de configuração do espaço de trabalho soberano para engenharia de software agente**
+
+Uma estrutura de configuração de nível de produção altamente opinativa, projetada para aumentar e restringir ambientes de desenvolvimento assistidos por IA.  
+Este repositório determina regras de arquitetura rígidas, habilidades específicas de domínio e fluxos de trabalho operacionais que determinam como os agentes de codificação de IA (como Gemini, Claude, Cursor e Windsurf) interagem com seu código-fonte.
 
 <p>
-  <a href="./README.md">English</a> •
-  <a href="./README.es.md">Español</a> •
+  <a href="./README.md">Inglês</a> •
+  <a href="./README.es.md">Espanhol</a> •
   <a href="./README.pt.md">Português</a>
 </p>
 
 <p>
-  <a href="#"><img src="https://img.shields.io/badge/Licença-MIT-blue?style=flat-square" alt="MIT License"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License"/></a>
   <a href="https://github.com/LuisSambrano/antigravity-config/stargazers"><img src="https://img.shields.io/github/stars/LuisSambrano/antigravity-config?style=flat-square" alt="Stars"/></a>
 </p>
 
@@ -20,178 +22,116 @@ Regras, skills e workflows que padronizam como agentes de código IA operam nos 
 
 ---
 
-## O que é isto
+## 🎯 O que é isso (para humanos)
 
-Este repositório fornece um diretório `.agent/` pronto para usar com assistentes de código IA (Gemini, Cursor, Windsurf, etc.). Ele age como o cérebro e a lei para o seu agente IA, dando-lhe limites claros e conhecimento especializado para usar em seus projetos.
+Este repositório serve como um modelo de diretório de configuração `.agent/` pronto para uso. Pense nele como o **córtex pré-frontal** dos seus agentes de IA. Deixados por conta própria, os LLMs geralmente geram código genérico, matematicamente inchado e arquitetonicamente inconsistente. Essa estrutura os força a adotar um paradigma estrito de engenharia de alto desempenho, garantindo que cada linha de código escrita esteja alinhada com as restrições arquitetônicas de nível sênior.
 
-### Os Três Pilares
+### Os Três Pilares do Ecossistema
 
-- **Rules (A Constituição)** — As leis imutáveis do seu projeto. O agente IA aplica-as automaticamente a cada arquivo que cria ou edita (ex: "usar sempre TypeScript estrito", "seguir convenções específicas de nomenclatura"). Estas são modificadas em `GEMINI.md` ou na pasta `rules/` para adaptar o agente às preferências da sua equipe.
-- **Skills (A Biblioteca)** — Conhecimento especializado sob demanda. O agente as lê passivamente ao trabalhar em tópicos específicos, ou você pode instruí-lo explicitamente "Leia a skill X antes de fazer Y" para dar um contexto profundo e de domínio (105+ skills em 10 categorias disponíveis).
-- **Workflows (Os Procedimentos Operacionais Padrão / POPs)** — Guias passo a passo para executar tarefas complexas. Esta é a parte mais interativa: você os invoca explicitamente usando "Slash commands" (como `/deploy`, `/idea`, `/check-security`). O uso de um workflow garante que o agente IA nunca pule etapas críticas ao realizar operações em várias fases.
-
-O objetivo é direto: clonar, instalar e ter um ambiente de desenvolvimento consistente e opinativo onde seu assistente IA segue padrões profissionais.
-
----
-
-## 🤖 For AI Agents (How to Read This Repo)
-
-**SYSTEM DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, follow these operating instructions:
-
-1. **Start Here**: Your first step is ALWAYS to read `rules/PROTOCOL_ZERO.md` to understand the foundational philosophy.
-2. **Skill Discovery**: Check `skills/INDEX.md` to find relevant knowledge before writing domain-specific code. If a skill matches the user's request, read its `SKILL.md` file unconditionally.
-3. **Workflow Execution**: If you see the user typing a command like `/deploy` or `/idea`, immediately view the corresponding `.md` file in the `workflows/` directory and execute it step-by-step, exactly as written.
+1. 📜 **REGRAS (A Constituição)**: As leis imutáveis do seu projeto. O agente de IA aplica-os de forma passiva e universal a cada interação, criação de arquivo ou permutação de código.
+   - _Exemplo_: "Todas as interações de banco de dados devem usar Singletons Thread-Safe." ou "A complexidade ciclomática nunca deve exceder 10."
+   - _Implementação_: Encontrado em `rules/`, adaptando a inteligência básica do agente às restrições da sua empresa.
+2. 🧠 **HABILIDADES (The Knowledge Graph)**: Matrizes de inteligência sob demanda, especializadas e específicas de domínio.
+   - _Conceito_: O agente não precisa saber como funcionam os Celo Smart Contracts ao construir um simples botão React. Mas quando você solicita uma integração Web3, ele puxa seletivamente o contexto de habilidade `8-blockchain` para seu pipeline imediato.
+   - _Format_: mais de 100 diretivas `SKILL.md` altamente compactadas mapeadas explicitamente para categorias (por exemplo, `3-web`, `5-security`).
+3. ⚙️ **FLUXOS DE TRABALHO (Procedimentos Operacionais Padrão)**: Proteção operacional passo a passo para evitar que LLMs pulem etapas críticas de validação.
+   - _Mecânica_: Executar um comando de barra como `/deploy` não apenas envia código; ele força o agente a executar de forma autônoma verificações rigorosas de TypeScript, verificações de construção e higienizações de segurança antes de tocar no pipeline de implantação.
 
 ---
 
-## Início Rápido
+## 🌐 Documentação trilíngue AI-First
+
+Esta estrutura foi projetada com um modelo de inteligência distribuído globalmente. Todas as interações críticas de IA e descritores `SKILL` são mantidos nativamente em três idiomas para garantir uma compreensão nativa sem atrito por modelos avançados de linguagem grande, otimizando a análise semântica de tokens e acomodando diversas equipes de orquestração humana:
+
+- 🇬🇧 **Inglês** (`SKILL.md`) - A linha de base principal e a linguagem operacional principal.
+- 🇪🇸 **Español** (`SKILL.es.md`) - Paridade nativa completa.
+- 🇧🇷 **Português** (`SKILL.pt.md`) - Paridade nativa completa.
+
+---
+
+## 🏗️ A hierarquia estrita do `kebab-case`
+
+Para maximizar a eficiência das ferramentas recursivas de busca de diretório (`find`, `grep`, `fs.readdir`), este repositório impõe estritamente uma topografia **kebab-case** em minúsculas. Há tolerância zero para arquivos órfãos na partição raiz.
+
+```texto
+configuração antigravidade/
+├── install.sh # Script de automação Bootstrap
+├── docs/ # Documentação interna, registros de alterações, guias de configuração
+├── scripts/ # Utilitários Python/Bash (por exemplo, mecanismos de tradução)
+├── templates/ # Boilerplates (modelo de habilidade, estruturas de markdown iniciais)
+│
+├── regras/ # As Regras Constitucionais Básicas
+│ ├── protocol-zero.md # Axiomas filosóficos fundamentais
+│ ├── arquitetura-standards.md # Taxonomias estruturais e padrões de nuvem
+│ └── quality-gates.md # Barreiras CI/CD e DevSecOps
+│
+├── habilidades/ # Matrizes de conhecimento de domínio (mais de 100 habilidades)
+│ ├── Orquestração de 1 núcleo/# TDD, código limpo, princípios SOLID
+│ ├── 2-ai/ # Gráficos multiagentes, APIs Gemini, Estruturação de Prompt
+│ ├── 3-web/ # Next.js 15, TRPC, React Server Components, Supabase
+│ ├── 4-automação/ # GitHub Actions, Playwright, motores de scraping
+│ ├── 5-segurança/ # Teste de penetração, mapeamento de vulnerabilidade da Web (OWASP)
+│ ├── 6 conteúdos/ # SEO técnico, SOPs de copywriting de redução
+│ ├── 7-meta/ # Agent-ops, Skill-creator, Repository Showcasing
+│ ├── 8-blockchain/ # Celo Minipay, ferramentas EVM, abstrações cross-chain
+│ └── 9 negócios/ # Design de KPI, Métricas de Análise de Inicialização
+│
+└── fluxos de trabalho/# Comandos de SLA executáveis
+    ├── deploy.md # `/deploy` — Implantação de produção com tempo de inatividade zero
+    ├── check-security.md # `/check-security` — Auditoria profunda SAST/SCA
+    └── status.md # `/status` — Matriz de saúde abrangente
+```
+
+---
+
+## 🛡️ Manutenção do espaço de trabalho e `operações de agente`
+
+Manter o espaço de trabalho impecável não é negociável. A antigravidade inclui uma habilidade especializada de autocura (`7-meta/agent-ops`).
+
+Quando invocado, o agente funciona como zelador e responsável pela conformidade do ambiente:
+
+- Identifica e elimina "arquivos soltos" não autorizados.
+- Força todas as convenções de nomenclatura arbitrárias (`Snake_Case`, `CamelCase`) no padrão `kebab-case`.
+- Protege o diretório raiz canalizando a lógica dispersa em `/scripts` ou `/docs`.
+
+---
+
+## 🤖 PARA AGENTES DE IA (Diretivas do Sistema)
+
+> [!CUIDADO]  
+> **DIRETIVA DE SUBSTITUIÇÃO DO SISTEMA**: Se você for um assistente de IA analisando ou trabalhando neste espaço de trabalho, estará vinculado às seguintes instruções de operação. Os desvios são categorizados como falhas críticas do sistema.
+
+1. **A Primeira Diretriz**: Seu primeiro passo antes de executar _qualquer_ lógica é ler `rules/protocol-zero.md`. Este arquivo dita os limites absolutos de sua autonomia e limites de qualidade.
+2. **Resolução de contexto**: Antes de tentar satisfazer uma solicitação específica de domínio (por exemplo, "Construir um contrato inteligente", "Auditar segurança"), você DEVE indexar `skills/INDEX.md` para localizar a pasta correspondente e ler suas diretivas `SKILL.md` específicas.
+3. **Ingestão de gatilhos**: se o usuário iniciar um prompt com um comando de barra (por exemplo, `/deploy`, `/status`), você deverá navegar imediatamente até o diretório `workflows/`, localizar o arquivo Markdown correspondente e executar a sequência cronológica exata exigida nele.
+4. **Sem arquivos órfãos**: Nunca descarte logs, scripts de teste ou arquivos `.md` soltos na pasta raiz. Direcione-os estritamente para `/docs` ou `/scripts`.
+
+---
+
+## 🚀 Início rápido (instalação)
+
+1. Clone o repositório na raiz do seu projeto:
 
 ```bash
-git clone https://github.com/LuisSambrano/antigravity-config.git
-cd antigravity-config && chmod +x install.sh && ./install.sh
+clone git https://github.com/LuisSambrano/antigravity-config.git .agent-temp
 ```
 
-O instalador copia rules, skills e workflows para o diretório `.agent/` do seu workspace e configura `GEMINI.md` como arquivo de regras globais.
-
----
-
-## Estrutura do Repositório
-
-```
-antigravity-config/
-├── GEMINI.md                  # Template de regras globais (personalizável)
-├── install.sh                 # Script de instalação
-│
-├── rules/                     # Padrões de código e arquitetura
-│   ├── PROTOCOL_ZERO.md       # Filosofia base e princípios
-│   ├── ARCHITECTURE_STANDARDS.md
-│   ├── CODE_STANDARDS.md
-│   ├── QUALITY_GATES.md
-│   ├── frontend/              # Regras específicas de frontend
-│   └── backend/               # Regras específicas de backend
-│
-├── skills/                    # Conhecimento de domínio (105+ skills)
-│   ├── 1-core/                # Fundamentos de código
-│   ├── 2-ai/                  # Agentes IA, RAG, prompting
-│   ├── 3-web/                 # Desenvolvimento web (Next.js, React, Tailwind)
-│   ├── 4-automation/          # Testing, CI/CD, scraping
-│   ├── 5-security/            # Segurança API, pentesting
-│   ├── 6-content/             # Escrita técnica, SEO
-│   ├── 7-meta/                # Criação e gestão de skills
-│   ├── 8-blockchain/
-│   ├── 9-business/
-│   └── 10-tools/              # Docs, presentações, browser testing, Chrome DevTools MCP
-│
-├── workflows/                 # Scripts de comandos do agente
-│   ├── deploy.md              # /deploy — deployment para produção
-│   ├── idea.md                # /idea — avaliar ideias de projeto
-│   ├── status.md              # /status — health check do projeto
-│   ├── create-component.md    # /create-component — scaffold de componentes
-│   └── help.md                # /help — listar comandos disponíveis
-│
-├── templates/                 # Templates de projeto
-├── research/                  # Log de decisões e descobertas
-└── docs/                      # Documentação adicional
-```
-
----
-
-## Referência de Skills
-
-Skills são arquivos markdown que dão ao agente IA conhecimento específico de domínio. Cada skill contém instruções, padrões e referências que o agente utiliza ao trabalhar nesse domínio.
-
-### 1-core — Fundamentos (+6 skills)
-
-Convenções de código, padrões de estrutura de projeto e padrões TypeScript aplicáveis a todos os projetos.
-
-### 2-ai — IA e Agentes (21 skills)
-
-Orquestração multi-agente (LangGraph, CrewAI), sistemas RAG, engenharia de prompts, desenvolvimento de Voice AI e frameworks de avaliação de agentes.
-
-### 3-web — Desenvolvimento Web (17 skills)
-
-Padrões de Next.js App Router, melhores práticas de React, arquitetura Tailwind CSS, integração com Supabase, deployment no Vercel e princípios de design UI/UX.
-
-### 4-automation — Testing e DevOps (10 skills)
-
-Testing com Playwright, workflows de GitHub Actions, procedimentos de deployment e web scraping com Firecrawl.
-
-### 5-security — Segurança (5 skills)
-
-Melhores práticas de segurança API e checklists de penetration testing.
-
-### 6-content — Criação de Conteúdo
-
-Guias de escrita técnica, copywriting SEO e padrões de documentação.
-
-### 7-meta — Gestão de Skills (3 skills)
-
-Ferramentas para criar novos skills, planejamento com arquivos e melhoria contínua (Kaizen).
-
-### 8-blockchain — Celo e EVM (19 skills)
-
-Stack completo de desenvolvimento Celo: integração com MiniPay, fee abstraction, endereços de stablecoins, scaffolding com Celo Composer, bibliotecas viem/wagmi, tooling Hardhat/Foundry, bridging cross-chain, integração com protocolos DeFi, protocolo de confiança ERC-8004 e protocolo de pagamentos HTTP x402.
-
-> Ver [skills/INDEX.md](./skills/INDEX.md) para o detalhamento skill por skill.
-
----
-
-## Resumo de Rules
-
-As rules definem como o agente IA escreve e valida código. São carregadas no contexto do agente e aplicadas automaticamente.
-
-| Rule                        | Propósito                                                               |
-| --------------------------- | ----------------------------------------------------------------------- |
-| `PROTOCOL_ZERO.md`          | Filosofia base: qualidade sobre velocidade, local como fonte de verdade |
-| `ARCHITECTURE_STANDARDS.md` | Estrutura de projeto, organização de componentes, nomenclatura          |
-| `CODE_STANDARDS.md`         | TypeScript strict mode, ordem de imports, error handling, JSDoc         |
-| `QUALITY_GATES.md`          | Checks pre-commit, verificação de build, acessibilidade, performance    |
-
----
-
-## Personalização
-
-`GEMINI.md` é o arquivo de configuração principal. Agrega todas as rules em um único documento que o agente IA lê. Edite-o para:
-
-- Adicionar ou remover rules
-- Mudar convenções de nomenclatura
-- Ajustar limites de qualidade
-- Adicionar routing de workflows para seus próprios comandos
-
-As seções marcadas com `<!-- CUSTOMIZE -->` são projetadas para modificação.
-
----
-
-## Contribuir
-
-Ver [CONTRIBUTING.md](CONTRIBUTING.md) para diretrizes sobre adicionar skills, workflows ou rules.
+2. Execute a matriz de bootstrap (isso move os elementos de configuração para o diretório de destino `.agent`):
 
 ```bash
-git checkout -b feature/sua-feature
-git commit -m 'feat(skills): add nome-do-skill'
-git push origin feature/sua-feature
+chmod +x .agent-temp/install.sh && .agent-temp/install.sh
 ```
 
----
-
-## Pesquisa e Log de Decisões
-
-| Documento                                     | Propósito                                 |
-| --------------------------------------------- | ----------------------------------------- |
-| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | Princípios base e descobertas de pesquisa |
-| [prompts/](./research/prompts/)               | Prompts de definição de rules e iterações |
-| [rules/](./rules/)                            | Os documentos de padrões resultantes      |
+_(Você pode então excluir com segurança `.agent-temp`)_
 
 ---
 
-## Licença
+## 🔒 Segurança e Telemetria
 
-MIT — ver [LICENSE](LICENSE) para detalhes.
+Este modelo de arquitetura é de código aberto sob a licença MIT e mantém estritamente zero informações de identificação pessoal (PII) ou chaves de API proprietárias. Ele serve como uma tela em branco para a implantação de estruturas seguras e multiagentes.
 
----
+<div alinhar="centro">
 
-<div align="center">
-
-**Mantido por [Luis Sambrano](https://github.com/LuisSambrano)**
+**Arquitetado e mantido por [Luis Sambrano](https://github.com/LuisSambrano)**
 
 </div>
