@@ -1,7 +1,7 @@
 import os
 import re
 
-base_dir = '/Users/luissambrano/playground/repos/LuisSambrano/antigravity-config/skills'
+base_dir = os.path.join(os.getcwd(), 'skills')
 
 # 1. Rename files with uppercase (except standard ones)
 allowed_uppercase_files = {'SKILL.md', 'SKILL.es.md', 'SKILL.pt.md', 'README.md', 'README.es.md', 'README.pt.md', 'INDEX.md', 'CHANGELOG.md', 'CHANGELOG.es.md', 'CHANGELOG.pt.md', 'LICENSE.txt'}

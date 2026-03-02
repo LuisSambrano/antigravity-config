@@ -1,7 +1,7 @@
 import os
 from deep_translator import GoogleTranslator
 
-base_dir = '/Users/luissambrano/playground/repos/LuisSambrano/antigravity-config/skills'
+base_dir = os.path.join(os.getcwd(), 'skills')
 
 es_translator = GoogleTranslator(source='en', target='es')
 pt_translator = GoogleTranslator(source='en', target='pt')
