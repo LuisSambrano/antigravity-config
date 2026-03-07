@@ -236,6 +236,6 @@ API_RATE_LIMIT=100
 
 ## 📚 Core References
 
-- [protocol-zero.md](./protocol-zero.md)
-- [code-standards.md](./code-standards.md)
-- [quality-gates.md](./quality-gates.md)
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md)
+- [QUALITY_GATES.md](./QUALITY_GATES.md)

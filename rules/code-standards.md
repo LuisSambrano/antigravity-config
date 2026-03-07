@@ -211,6 +211,6 @@ import styles from "./Dashboard.module.css";
 
 ## 📚 Core References
 
-- [protocol-zero.md](./protocol-zero.md)
-- [architecture-standards.md](./architecture-standards.md)
-- [quality-gates.md](./quality-gates.md)
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md)
+- [QUALITY_GATES.md](./QUALITY_GATES.md)

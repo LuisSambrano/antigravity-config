@@ -160,6 +160,6 @@ This document operationalizes the **inflexible DevSecOps validation barriers** t
 
 ## 📚 Core References
 
-- [protocol-zero.md](./protocol-zero.md)
-- [architecture-standards.md](./architecture-standards.md)
-- [code-standards.md](./code-standards.md)
+- [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
+- [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md)
+- [CODE_STANDARDS.md](./CODE_STANDARDS.md)
