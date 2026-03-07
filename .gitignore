@@ -26,3 +26,13 @@ env/
 .vscode/
 .idea/
 *.swp
+
+# Install / Sync
+*.backup.*
+skills.backup*/
+rules.backup*/
+*.backup.20*
+test-install/
+
+# OS
+**/.DS_Store
