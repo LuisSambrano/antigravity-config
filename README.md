@@ -33,7 +33,7 @@ This repository serves as a ready-to-use `.agent/` configuration directory templ
    - _Implementation_: Found in `rules/`, adapting the baseline intelligence of the agent to your enterprise constraints.
 2. 🧠 **SKILLS (The Knowledge Graph)**: On-demand, specialized, domain-specific intelligence arrays.
    - _Concept_: The agent doesn't need to know how Celo Smart Contracts work when building a simple React Button. But when you ask for a Web3 integration, it selectively pulls the `8-blockchain` skill context into its prompt pipeline.
-   - _Format_: 100+ highly compressed `SKILL.md` directives mapped explicitly to categories (e.g., `3-web`, `5-security`).
+   - _Format_: 116 highly compressed `SKILL.md` directives mapped explicitly to categories (e.g., `3-web`, `5-security`).
 3. ⚙️ **WORKFLOWS (Standard Operating Procedures)**: Step-by-step operational guardrails to prevent LLMs from skipping critical validation steps.
    - _Mechanics_: Executing a slash command like `/deploy` doesn't just push code; it forces the agent to autonomously run strict TypeScript checks, build verifications, and security sanitizations before touching the deployment pipeline.
 
@@ -64,7 +64,7 @@ antigravity-config/
 │   ├── architecture-standards.md    # Structural taxonomies and cloud patterns
 │   └── quality-gates.md             # CI/CD and DevSecOps barriers
 │
-├── skills/                          # Domain knowledge matrices (89+ Skills)
+├── skills/                          # Domain knowledge matrices (116 Skills)
 │   ├── 1-core/                      # TDD orchestration, Clean Code, SOLID principles
 │   ├── 2-ai/                        # Master Domains (Agentic Arch, RAG, Prompting)
 │   ├── 3-web/                       # Next.js 15, TRPC, React Server Components

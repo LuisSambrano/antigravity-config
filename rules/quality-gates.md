@@ -163,3 +163,41 @@ This document operationalizes the **inflexible DevSecOps validation barriers** t
 - [PROTOCOL_ZERO.md](./PROTOCOL_ZERO.md)
 - [ARCHITECTURE_STANDARDS.md](./ARCHITECTURE_STANDARDS.md)
 - [CODE_STANDARDS.md](./CODE_STANDARDS.md)
+
+
+---
+
+## 🔒 Security Gate Addendum (v2.1 — appended to Terminal Gate)
+
+**The following checks are HARD BLOCKS added to Gate 5.
+They run BEFORE the checks above. A failure here means DO NOT push, DO NOT report done.**
+
+### Security Scan Sequence (run in order)
+
+```bash
+# S1 — Build passes
+npm run build
+
+# S2 — No server-only secrets in NEXT_PUBLIC_ namespace
+grep -rn 'NEXT_PUBLIC_ADMIN_EMAIL\|NEXT_PUBLIC_SERVICE_ROLE\|NEXT_PUBLIC_RESEND_API' \
+  app/ proxy.ts --include='*.ts' --include='*.tsx' 2>/dev/null
+# Expected: EMPTY output. Any match = ship-stopper.
+
+# S3 — affiliate_url not in client-facing code
+grep -rn 'affiliate_url' components/ app/ --include='*.ts' --include='*.tsx' | \
+  grep -v '//\|server\|action\|SECURITY\|has_affiliate\|exclude'
+# Expected: EMPTY. A match in a Client Component = ship-stopper.
+
+# S4 — No hardcoded domains in email fields
+grep -rn "from:.*'[^']*@" app/ --include='*.ts' | grep -v 'process\.env'
+# Expected: EMPTY. Any match = replace with env var.
+```
+
+### Verdicts
+
+| Result | Action |
+|--------|--------|
+| All EMPTY | Proceed — run Gate 5 checks, then push |
+| Any match | STOP — fix before any commit or push |
+
+**Reference**: `rules/frontend/nextjs-security-boundaries.md`, `rules/pre-push-checklist.md`, `workflows/pre-push.md`
