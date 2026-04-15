@@ -1,11 +1,8 @@
-<div align="center">
-
 # 🌌 Antigravity Config
 
-**The Sovereign Workspace Configuration Protocol for Agentic Software Engineering**
+**Workspace Configuration Framework for Agentic Software Engineering**
 
-A highly opinionated, production-grade configuration framework designed to augment and restrain AI-assisted development environments.  
-This repository dictates the strict architectural rules, domain-specific skills, and operational workflows that mandate how AI coding agents (such as Gemini, Claude, Cursor, and Windsurf) interact with your source code.
+A standardized configuration framework to define architectural constraints, specialized skills, and operational workflows for AI coding agents (Gemini, Claude, Cursor, Windsurf).
 
 <p>
   <a href="./readme.md">English</a> •
@@ -13,97 +10,66 @@ This repository dictates the strict architectural rules, domain-specific skills,
   <a href="./readme.pt.md">Português</a>
 </p>
 
-<p>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License"/></a>
-  <a href="https://github.com/LuisSambrano/antigravity-config/stargazers"><img src="https://img.shields.io/github/stars/LuisSambrano/antigravity-config?style=flat-square" alt="Stars"/></a>
-</p>
+---
 
-</div>
+## 🎯 Overview
+
+This repository provides a standardized configuration structure for AI development environments. It ensures code consistency and adherence to architectural standards through three main components:
+
+### Core Components
+
+1. **Rules**: Global architectural constraints applied universally to all agent interactions.
+   - *Example*: Enforcing thread-safe patterns or complexity limits.
+   - *Location*: `rules/`
+2. **Skills**: Specialized knowledge modules for specific domains.
+   - *Concept*: Contextual information (e.g., `8-blockchain`) loaded only when relevant to the task.
+   - *Format*: Standardized `SKILL.md` files organized by category.
+3. **Workflows**: Automated procedures for multi-step tasks.
+   - *Mechanics*: Pre-defined sequences for operations like `/deploy` or security audits.
 
 ---
 
-## 🎯 What This Is (For Humans)
+## 🌐 Trilingual Support
 
-This repository serves as a ready-to-use `.agent/` configuration directory template. Think of it as the **pre-frontal cortex** for your AI agents. Left to their own devices, LLMs often generate generic, mathematically bloated, and architecturally inconsistent code. This framework forces them into a strict paradigm of high-performance engineering, ensuring that every line of code written aligns with senior-level architectural constraints.
-
-### The Three Pillars of the Ecosystem
-
-1. 📜 **RULES (The Constitution)**: The immutable laws of your project. The AI agent applies these passively and universally to every interaction, file creation, or code permutation.
-   - _Example_: "All database interactions must use Thread-Safe Singletons." or "Cyclomatic complexity must never exceed 10."
-   - _Implementation_: Found in `rules/`, adapting the baseline intelligence of the agent to your enterprise constraints.
-2. 🧠 **SKILLS (The Knowledge Graph)**: On-demand, specialized, domain-specific intelligence arrays.
-   - _Concept_: The agent doesn't need to know how Celo Smart Contracts work when building a simple React Button. But when you ask for a Web3 integration, it selectively pulls the `8-blockchain` skill context into its prompt pipeline.
-   - _Format_: 116 highly compressed `SKILL.md` directives mapped explicitly to categories (e.g., `3-web`, `5-security`).
-3. ⚙️ **WORKFLOWS (Standard Operating Procedures)**: Step-by-step operational guardrails to prevent LLMs from skipping critical validation steps.
-   - _Mechanics_: Executing a slash command like `/deploy` doesn't just push code; it forces the agent to autonomously run strict TypeScript checks, build verifications, and security sanitizations before touching the deployment pipeline.
+Main documentation is available in English, Spanish, and Portuguese. Technical skill instructions (`skill.md`) are maintained in English for cross-LLM precision and token efficiency.
 
 ---
 
-## 🌐 Trilingual Presentation & AI-Optimized Skills
+## 🏗️ Directory Standards
 
-This framework leverages a trilingual presentation layer for human orchestration while maintaining technical efficiency for AI models:
+This repository enforces **lowercase kebab-case** for file and directory names to ensure compatibility with CLI tools.
 
-- 🇬🇧🇪🇸🇧🇷 **Trilingual READMEs**: Main repository documentation and entry points are maintained in English, Spanish, and Portuguese.
-- 🤖 **English-Only Technical Skills** (`skill.md`): To maximize token efficiency and semantic precision, all core skill instructions are maintained strictly in English. This prevents translation hallucination and ensures high-speed reasoning by the LLM.
-
----
-
-## 🏗️ The Strict `kebab-case` Hierarchy
-
-To maximize the efficiency of recursive directory fetching tools (`find`, `grep`, `fs.readdir`), this repository strictly enforces a **lowercase kebab-case** topography. There is zero tolerance for orphan files in the root partition.
-
-````text
+```text
 antigravity-config/
-├── install.sh                       # Bootstrap automation script
-├── docs/                            # Internal documentation (changelog.md, security.md)
-├── scripts/                         # Python/Bash utilities (e.g., normalization-engines)
-├── template/                        # Boilerplates (skill-template, initial markdown structures)
-│
-├── rules/                           # The Core Constitutional Rules
-│   ├── protocol-zero.md             # Foundational philosophical axioms
-│   ├── architecture-standards.md    # Structural taxonomies and cloud patterns
-│   └── quality-gates.md             # CI/CD and DevSecOps barriers
-│
-├── skills/                          # Domain knowledge matrices (116 Skills)
-│   ├── 1-core/                      # TDD orchestration, Clean Code, SOLID principles
-│   ├── 2-ai/                        # Master Domains (Agentic Arch, RAG, Prompting)
-│   ├── 3-web/                       # Next.js 15, TRPC, React Server Components
-│   ├── 4-automation/                # GitHub Actions, Playwright, n8n
-│   ├── 5-security/                  # Penetration testing, Web Vulnerability mapping
-│   ├── 6-content/                   # Technical SEO, markdown copywriting SOPs
-│   ├── 7-meta/                      # Agent-ops, Skill-creator
-│   ├── 8-blockchain/                # Celo, EVM Tooling, Smart Contracts
-│   └── 9-business/                  # KPI Design, Startup Analysis Metrics
-│
-└── workflows/                       # Executable SLA commands
-```    ├── deploy.md                    # `/deploy` — Zero-downtime production deployment
-    ├── check-security.md            # `/check-security` — Deep SAST/SCA audit
-    └── status.md                    # `/status` — Comprehensive health matrix
-````
+├── install.sh           # Installation script
+├── docs/                # Project documentation
+├── scripts/             # Internal utilities and scripts
+├── template/            # Templates for new components
+├── rules/               # Global architectural rules
+├── skills/              # Domain knowledge (100+ Skills)
+└── workflows/           # Automated operational sequences
+```
 
 ---
 
-## 🛡️ Workspace Maintenance & `agent-ops`
+## 🛡️ Workspace Maintenance
 
-Keeping the workspace pristine is non-negotiable. Antigravity includes a specialized self-healing skill (`7-meta/agent-ops`).
-
-When invoked, the agent functions as a janitor and compliance officer for the environment:
-
-- Identifies and eliminates rogue "loose files".
-- Forces all arbitrary naming conventions (`Snake_Case`, `CamelCase`) down into the `kebab-case` standard.
-- Secures the root directory by funneling scattered logic into `/scripts` or `/docs`.
+The `7-meta/agent-ops` skill automates workspace organization:
+- Enforces naming conventions.
+- Removes unauthorized or temporary files.
+- Organizes scattered files into `/scripts` or `/docs`.
 
 ---
 
-## 🤖 FOR AI AGENTS (System Directives)
+## 🤖 Guidelines for AI Agents
 
-> [!CAUTION]  
-> **SYSTEM OVERRIDE DIRECTIVE**: If you are an AI assistant analyzing or working within this workspace, you are bound by the following operating instructions. Deviations are categorized as critical system failures.
+> [!IMPORTANT]
+> Support instructions for AI agents operating within this workspace:
 
-1. **The Prime Directive**: Your absolute first step before executing _any_ logic is to read `rules/protocol-zero.md`. This file dictates the absolute boundaries of your autonomy and quality thresholds.
-2. **Context Resolution**: Before attempting to satisfy a domain-specific request (e.g., "Build a smart contract", "Audit security"), you MUST index `skills/index.md` to locate the corresponding folder and read its specific `skill.md` directives.
-3. **Trigger Ingestion**: If the user initiates a prompt with a slash command (e.g., `/deploy`, `/status`), you must immediately navigate to the `workflows/` directory, locate the corresponding Markdown file, and execute the exact chronological sequence mandated within.
-4. **No Orphan Files**: Never drop logs, test scripts, or loose `.md` files in the root folder. Route them strictly to `/docs` or `/scripts`.
+1. **Initialization**: Read `rules/protocol-zero.md` before executing any task.
+2. **Context Selection**: Reference `skills/index.md` to identify and load relevant domain skills.
+3. **Workflow Execution**: For commands (e.g., `/deploy`), follow the sequence defined in the corresponding `workflows/` file.
+4. **Organization**: Store logs and temporary scripts in `/docs` or `/scripts`. Never add orphan files to the root directory.
 
 ---
 
@@ -123,9 +89,9 @@ chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh --minimal
 
 ---
 
-## 🔒 Security & Telemetry
+## 🔒 Security
 
-This architecture template is open-sourced under the MIT License and strictly maintains zero Personal Identifiable Information (PII) or proprietary API keys. It serves as an uncompromised blank canvas for deploying secure, multi-agent frameworks.
+This architecture template is open-sourced under the MIT License and strictly maintains zero Personal Identifiable Information (PII) or proprietary API keys.
 
 <div align="center">
 

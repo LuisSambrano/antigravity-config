@@ -1,136 +1,72 @@
-# 🌌 PROTOCOL ZERO: Antigravity Prime Directive
+# 🌌 Core Engineering Principles (Protocol Zero)
 
-**Version**: 2.0.0
-**Status**: IMMUTABLE
-**Level**: 0 (Foundational Doctrine)
+**Version**: 2.1.0
+**Status**: Active
+**Scope**: Standards and Best Practices
 
 ---
 
 ## 🎯 Purpose
 
-This document enshrines the **unalterable foundational doctrines** and **engineering axioms** of the Antigravity ecosystem. All architectural design, code synthesis, and operational deployment pipelines must derive logically from these axioms.
+This document defines the foundational standards for development within the Antigravity ecosystem. These principles ensure consistency, quality, and security across all architectural designs, code synthesis, and deployment pipelines.
 
 ---
 
-## 🧬 Core Engineering Axioms
+## ⚙️ Core Principles
 
-### 1. The Local Workspace as the Single Source of Truth (SSOT)
+### 1. Local Workspace as Source of Truth
+The local development environment is the primary authority for the project state. Remote repositories (e.g., GitHub) serve as mirrors of this local state.
+- **Workflow**: Mutations flow from `Local → Remote`.
+- **Consistency**: Local configurations and structures supersede remote state.
+- **Integrity**: Remote repositories must be kept in sync with the established local state.
 
-**Philosophy**: The local developer machine (`~/playground`) acts as the absolute Authoritative State. Remote VCS (GitHub) is strictly a passive, downstream artifact mirror.
+### 2. Quality-First Development
+Code quality is prioritized over delivery speed. All contributions must meet established verification thresholds before being integrated.
+- **Verification**: Passing automated CI/CD pipelines is a prerequisite for all merges.
+- **Standards**: Zero tolerance for types/lint errors or failing builds in production branches.
+- **Reliability**: All operations must include proper error handling and graceful degradation.
 
-**Implications**:
+### 3. Documentation of Intent
+Code defines logic, while documentation and comments define intent. Both must be maintained with the same level of rigor.
+- **Bilingual Context**: Technical documentation is maintained in English (system) and human-facing docs in Spanish.
+- **Logic Explanation**: Comments should explain the "Why" (business logic) rather than the "What" (syntax).
+- **Tracability**: Significant architectural changes must be documented (e.g., via ADRs) and reflected in the CHANGELOG.
 
-- ✅ **Strict Unidirectionality**: State mutations flow exclusively from `Local → Remote`.
-- ✅ **Immutable Local Authority**: Directory structures, configurations, and environment variables declared locally supersede any remote drift.
-- ❌ **Prohibition of Remote Mutations**: Modifications via GitHub Web UI or remote interventions are classified as critical system violations.
-- ❌ **Rebasing Remote Drift**: Remote repositories must be force-pushed to match local state if an unauthorized remote mutation occurs.
+### 4. Transparency and Standards Adherence
+Developers have implementation autonomy but must operate within established architectural bounds and maintain full transparency.
+- **Innovation**: New libraries or patterns are encouraged if they provide measurable improvements over existing solutions.
+- **Consensus**: Systemic changes or deviations from standard rules require documentation and peer review.
+- **Predictability**: Potential destructive or high-impact changes must be clearly communicated before execution.
 
----
-
-### 2. Quality as a Gatekeeper (Zero-Defect Tolerance)
-
-**Philosophy**: Velocity is a byproduct of quality, not its replacement. Defective, unoptimized, or untested code is fundamentally blocked from ingestion.
-
-**Implications**:
-
-- ✅ **Automated Gate Enforcement**: Passing CI/CD pipelines is the minimum valid threshold for commit rights.
-- ✅ **Strict Concurrency**: Zero TypeScript errors (`tsc --noEmit`), zero ESLint warnings, and flawless builds are non-negotiable compilation requirements.
-- ✅ **Defensive Programming**: All IO operations and asynchronous pipelines must handle failure gracefully via isolated error boundaries.
-- ❌ **Technical Debt Acceptance**: "Fixing it post-deployment" is an invalid operational paradigm.
-- ❌ **Bypassing Gates**: Using `--no-verify` or `// @ts-ignore` without explicit, documented architectural justification is a critical violation.
-
----
-
-### 3. Documentation as Executable Context
-
-**Philosophy**: Code executes logic; documentation defines intent. Abstract intent must be as rigidly maintained as the execution environments.
-
-**Implications**:
-
-- ✅ **Bilingual Synchronization**: Core architectural documentation must exist flawlessly in English (System Primary) and Spanish (Human Primary).
-- ✅ **Architectural Visualization**: Complex system flows must be mapped via code-generated graphs (Mermaid.js).
-- ✅ **Teleological Commenting**: Inline annotations explain the _business logic ("Why")_, never the _syntax ("What")_.
-- ❌ **Undocumented Mutations**: Publishing API updates or breaking changes without immediate `CHANGELOG.md` and type-definition updates is forbidden.
+### 5. Continuous Improvement
+Every modification should aim to reduce technical debt and improve the overall quality of the module.
+- **Refactoring**: Improving adjacent legacy code and increasing test coverage is encouraged during feature development.
+- **Simplification**: Continuously seek to reduce code complexity and improve maintainability.
 
 ---
 
-### 4. Autonomous Execution with Absolute Telemetry
+## 🛡️ Technical Standards
 
-**Philosophy**: AI Agents and human operators exercise extreme autonomy in implementation details, bound strictly by total transparency and adherence to Protocol Zero.
+### 1. Security
+- **Data Privacy**: Row Level Security (RLS) is required for all database interactions. Default access is restricted.
+- **Input Validation**: All ingress data must be validated against strict schemas (e.g., Zod).
+- **Key Management**: Secrets must be managed via environment variables; never hardcoded.
 
-**Implications**:
+### 2. Accessibility (A11y)
+- **Compliance**: Follow WCAG 2.1 AA standards as a baseline for all user interfaces.
+- **Semantics**: Use correct HTML semantic elements and ARIA attributes where necessary.
+- **Visuals**: Maintain standard contrast ratios for readability.
 
-- ✅ **Design Freedom**: Operators may select novel libraries or design patterns if they mathematically or architecturally outperform existing constraints.
-- ✅ **Decision Logging**: Every non-trivial architectural pivot (e.g., migrating from Context to Zustand) requires an explicit Architecture Decision Record (ADR) appended to the issue/PR.
-- ✅ **Predictable Staging**: Agents must clarify assumptions prior to executing destructive or systemic changes.
-- ❌ **Shadow Implementations**: Introducing unapproved paradigms or deviating from the `.agent/rules/` bounds without logged consensus is a critical failure.
+### 3. Performance
+- **Web Vitals**: Aim for high performance metrics (LCP < 2.5s, minimal CLS and TTFB).
+- **Optimization**: Use code-splitting, lazy loading, and next-gen asset formats (WebP/AVIF).
+- **Efficiency**: Aggressively optimize bundles and database queries (avoid N+1).
 
----
+### 4. Maintainability
+- **Design Patterns**: Follow SOLID principles and separate UI from business logic.
+- **Complexity Limits**: Abstract complex logic into reusable functions, hooks, or services.
+- **Code Reuse**: Follow DRY (Don't Repeat Yourself) principles to minimize redundancy.
 
-### 5. Architectural Kaizen (Continuous Iteration)
-
-**Philosophy**: Codebases tend toward entropy. Every interaction must apply negative pressure on technical debt, leaving the requested module measurably superior.
-
-**Implications**:
-
-- ✅ **The Boy Scout Axiom**: Refactor adjacent legacy code, elevate test coverage, and modernize types whenever modifying a module.
-- ✅ **Complexity Reduction**: Actively seek out and compress cyclomatic complexity strings.
-- ❌ **Stagnation Tolerance**: Preserving poorly written code simply because "it currently executes" is an invalid engineering stance.
-
----
-
-## 🔒 Enterprise Posture Standards
-
-### 1. Zero-Trust Security Architecture
-
-**Mandatory Enforcement**:
-
-- ✅ **Data Sovereignty**: Row Level Security (RLS) is strictly enforced on all relational databases (Supabase/Postgres). Default state is `DENY ALL`.
-- ✅ **Edge Validation**: 100% of ingress payloads must be structurally validated against strict schemas (e.g., Zod) prior to application logic parsing.
-- ✅ **Cryptographic Hygiene**: Environment secrets (`.env`) manage all keys. Hardcoded tokens trigger immediate rollback.
-- ✅ **Sanitized Egress**: Output contexts must be stripped of executable payloads to neutralize XSS vectors.
-
----
-
-### 2. Extreme Accessibility (A11y)
-
-**Mandatory Enforcement**:
-
-- ✅ **WCAG 2.1 AA Baseline**: Accessibility is a core operational metric, not a post-launch enhancement.
-- ✅ **Screen Reader Matrix**: ARIA tagging, focus-trapping in modals, and logical DOM flows are required.
-- ✅ **Contrast Topologies**: 4.5:1 minimum contrast for text; 3:1 for interactive UI boundaries.
-- ❌ **Semantic Violence**: Using a `<div>` when a `<button>` or `<nav>` is semantically required is an architectural failure.
-
----
-
-### 3. High-Fidelity Performance Metrics
-
-**Mandatory Enforcement**:
-
-- ✅ **Core Web Vitals Thresholds**:
-  - Largest Contentful Paint (LCP): < 2.5s (Target: < 1.5s via Edge Caching)
-  - First Input Delay (FID): < 100ms
-  - Cumulative Layout Shift (CLS): 0.00
-  - Time to First Byte (TTFB): < 200ms
-- ✅ **Bundle Optimization**: Initial JavaScript payloads must be aggressively code-split. Dynamic imports (`next/dynamic`) are mandatory for heavy charting or secondary UI renders.
-- ✅ **Asset Delivery**: Media assets are strictly deferred, lazy-loaded, and served in next-gen formats (WebP/AVIF).
-
----
-
-### 4. Cyclomatic Code Maintainability
-
-**Mandatory Enforcement**:
-
-- ✅ **SOLID Principles**: Single Responsibility architectures isolate UI from business logic completely via Custom Hooks or Services.
-- ✅ **Complexity Bounds**: Logic sequences exceeding 50 lines or reaching a cyclomatic complexity index of > 10 must be abstracted and decoupled.
-- ✅ **DRY Architecture**: Reusable logic is extracted into `/lib/utils` or `/hooks`; copy-pasting code arrays > 5 lines is forbidden.
-
----
-
-### 5. Cloud-Native Scalability
-
-**Mandatory Enforcement**:
-
-- ✅ **Stateless Isolation**: Applications must be designed as stateless entities capable of infinite horizontal replication at the Edge.
-- ✅ **Data Optimization**: N+1 database queries are strictly prohibited. Joined macros and indexed pagination are mandatory for array resolutions.
-- ✅ **Multi-Layer Caching**: Intensive database aggregates must be buffered by Redis or Next.js aggressive Data Cache (ISR) methodologies.
+### 5. Scalability
+- **Statelessness**: Design applications to be stateless and capable of horizontal scaling.
+- **Caching**: Implement multi-layer caching (Edge, CDN, Redis) for data-intensive operations.

@@ -1,63 +1,51 @@
 # GEMINI — Antigravity Global Rules (Template)
 
-**Version**: 3.0.0
-**Last Updated**: 2026-02-11
-**Purpose**: Agentic command center — Global rules for Antigravity
-
-> [!TIP]
-> This is a **template**. Fork this file and customize the sections marked with `<!-- CUSTOMIZE -->` to match your workflow, language preferences, and project structure.
+**Version**: 3.1.0
+**Status**: Active
 
 ---
 
-## 🌌 ANTIGRAVITY PROTOCOL ZERO
+## 🌌 Core Principles
 
-**CRITICAL**: All technical, architectural, and operational decisions must align with [Protocol Zero](rules/protocol-zero.md).
+**Standard**: All technical, architectural, and operational decisions must align with [Protocol Zero](rules/protocol-zero.md).
 
-### Core Principles (Immutable)
+### Core Engineering Principles
 
-1. **Local is the Source of Truth**
-   - Your workspace is the single source of truth
-   - GitHub is a cloud mirror
-   - Sync: `Local → GitHub`
+1. **Local Workspace as Source of Truth**
+   - Development is performed locally.
+   - GitHub serves as a mirror of the local state.
+   - Final state is pushed from local to remote.
 
-2. **Quality over Speed**
-   - Tests pass before commit
-   - Build succeeds before push
-   - Lint clean before commit
-   - TypeScript strict mode always
+2. **Quality Standards**
+   - Automated tests, builds, and linting must pass before committing or pushing code.
+   - TypeScript strict mode is enabled by default.
 
-3. **Documentation as Code**
-   - READMEs are mandatory
-   - Architecture visible in Mermaid diagrams
-   - Comments explain "why", not "what"
+3. **Documentation and Intent**
+   - Documentation is required for all projects.
+   - Architecture should be visualized when necessary (e.g., Mermaid).
+   - Comments explain business logic ("Why") rather than syntax.
 
-4. **Autonomy with Responsibility**
-   - Freedom within the protocol
-   - Full transparency in actions
-   - Document non-obvious decisions
+4. **Professional Autonomy**
+   - Implementation autonomy is expected within established standards.
+   - All actions and decisions must be transparent and documented.
 
-5. **Continuous Improvement (Kaizen)**
-   - Every session leaves the code better
-   - Incremental refactoring
-   - Learnings documented
+5. **Continuous Improvement**
+   - Every session aim to refine the codebase and reduce technical debt through incremental refactoring.
 
-### Non-Negotiable Values
+### Key Metrics
 
-- ✅ **Security First**: RLS, validation, sanitization
-- ✅ **Accessibility**: WCAG 2.1 AA minimum
-- ✅ **Performance**: Core Web Vitals in green
-- ✅ **Maintainability**: Self-documenting code
-- ✅ **Scalability**: Modular architecture
+- **Security**: Mandatory RLS, data validation, and sanitization.
+- **Accessibility**: Compliance with WCAG 2.1 AA standards.
+- **Performance**: High Core Web Vitals scores.
+- **Maintainability**: Clear, modular, and self-documenting code.
 
-### Architecture Rules
+### Project Structure
 
-**MANDATORY**: Follow [architecture-standards.md](rules/architecture-standards.md)
-
-**Required Directory Structure**:
+**Standard**: Follow [architecture-standards.md](rules/architecture-standards.md)
 
 ```
 project/
-├── .agent/                    # ← MANDATORY
+├── .agent/                    # Configuration and controls
 │   ├── rules/
 │   ├── workflows/
 │   └── templates/
@@ -67,11 +55,11 @@ project/
 │   ├── features/
 │   └── layouts/
 ├── lib/
-│   ├── supabase/
+│   ├── api/
 │   ├── utils/
 │   └── hooks/
 ├── types/
-└── README.md                  # ← MANDATORY
+└── README.md
 ```
 
 <!-- CUSTOMIZE: Add additional README files for your preferred languages -->

@@ -1,115 +1,81 @@
-<div align="center">
+# 🌌 Configuración Antigravity
 
-# 🌌 Configuración antigravedad
+**Marco de configuración de espacios de trabajo para ingeniería de software agéntica**
 
-**Protocolo de configuración del espacio de trabajo soberano para ingeniería de software agente**
-
-Un marco de configuración de nivel de producción altamente obstinado diseñado para aumentar y restringir los entornos de desarrollo asistidos por IA.  
-Este repositorio dicta las estrictas reglas arquitectónicas, habilidades específicas de dominio y flujos de trabajo operativos que exigen cómo los agentes de codificación de IA (como Gemini, Claude, Cursor y Windsurf) interactúan con su código fuente.
+Un marco de configuración estandarizado para definir restricciones arquitectónicas, habilidades especializadas y flujos de trabajo operativos para agentes de IA (Gemini, Claude, Cursor, Windsurf).
 
 <p>
-  <a href="./readme.md">Inglés</a> •
+  <a href="./readme.md">English</a> •
   <a href="./readme.es.md">Español</a> •
   <a href="./readme.pt.md">Português</a>
 </p>
 
-<p>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="Licencia MIT"/></a>
-  <a href="https://github.com/LuisSambrano/antigravity-config/stargazers"><img src="https://img.shields.io/github/stars/LuisSambrano/antigravity-config?style=flat-square" alt="Estrellas"/></a>
-</p>
+---
 
-</div>
+## 🎯 Descripción General
+
+Este repositorio proporciona una estructura de configuración estandarizada para entornos de desarrollo con IA. Garantiza la consistencia del código y el cumplimiento de estándares arquitectónicos a través de tres componentes principales:
+
+### Componentes Principales
+
+1. **Reglas (Rules)**: Restricciones arquitectónicas globales aplicadas a todas las interacciones del agente.
+   - *Ejemplo*: Aplicación de patrones thread-safe o límites de complejidad.
+   - *Ubicación*: `rules/`
+2. **Habilidades (Skills)**: Módulos de conocimiento especializado para dominios específicos.
+   - *Concepto*: Información contextual (ej. `8-blockchain`) cargada solo cuando es relevante para la tarea.
+   - *Formato*: Archivos `SKILL.md` estandarizados y organizados por categoría.
+3. **Flujos de Trabajo (Workflows)**: Procedimientos automatizados para tareas multi-paso.
+   - *Mecánica*: Secuencias predefinidas para operaciones como `/deploy` o auditorías de seguridad.
 
 ---
 
-## 🎯 Qué es esto (para humanos)
+## 🌐 Soporte Trilingüe
 
-Este repositorio sirve como una plantilla de directorio de configuración `.agent/` lista para usar. Piense en ello como la **corteza prefrontal** de sus agentes de IA. Dejados a su suerte, los LLM a menudo generan código genérico, matemáticamente inflado y arquitectónicamente inconsistente. Este marco los obliga a adoptar un paradigma estricto de ingeniería de alto rendimiento, garantizando que cada línea de código escrita se alinee con las restricciones arquitectónicas de alto nivel.
-
-### Los tres pilares del ecosistema
-
-1. 📜 **REGLAS (La Constitución)**: Las leyes inmutables de tu proyecto. El agente de IA los aplica de forma pasiva y universal a cada interacción, creación de archivos o permutación de código.
-   - _Ejemplo_: "Todas las interacciones de la base de datos deben utilizar Singletons seguros para subprocesos". o "La complejidad ciclomática nunca debe exceder 10".
-   - _Implementación_: Se encuentra en `reglas/`, adaptando la inteligencia base del agente a las limitaciones de su empresa.
-2. 🧠 **HABILIDADES (The Knowledge Graph)**: matrices de inteligencia bajo demanda, especializadas y de dominio específico.
-   - _Concepto_: El agente no necesita saber cómo funcionan los contratos inteligentes de Celo cuando construye un botón de reacción simple. Pero cuando solicita una integración Web3, incorpora selectivamente el contexto de habilidades de "8-blockchain" a su canal de información.
-   - _Formato_: más de 100 directivas `SKILL.md` altamente comprimidas asignadas explícitamente a categorías (por ejemplo, `3-web`, `5-security`).
-3. ⚙️ **FLUJOS DE TRABAJO (procedimientos operativos estándar)**: barreras operativas paso a paso para evitar que los LLM se salten pasos de validación críticos.
-   - _Mecánica_: La ejecución de un comando de barra diagonal como `/deploy` no solo envía código; obliga al agente a ejecutar de forma autónoma comprobaciones estrictas de TypeScript, verificaciones de compilación y saneamientos de seguridad antes de tocar el proceso de implementación.
+La documentación principal está disponible en inglés, español y portugués. Las instrucciones técnicas de las habilidades (`skill.md`) se mantienen en inglés para optimizar el uso de tokens y garantizar la precisión técnica entre diferentes modelos de lenguaje.
 
 ---
 
-## 🌐 Presentación Trilingüe y Skills Optimizadas para IA
+## 🏗️ Estándares de Directorio
 
-Este marco utiliza una capa de presentación trilingüe para la orquestación humana, manteniendo la eficiencia técnica para los modelos de IA:
-
-- 🇬🇧🇪🇸🇧🇷 **READMEs Trilingües**: La documentación principal y los puntos de entrada se mantienen en inglés, español y portugués.
-- 🤖 **Skills Técnicas Solo en Inglés** (`skill.md`): Para maximizar la eficiencia de tokens y la precisión semántica, todas las instrucciones de habilidades principales se mantienen estrictamente en inglés. Esto evita alucinaciones de traducción y garantiza el razonamiento de alta velocidad del LLM.
-
----
-
-## 🏗️ La Estricta Jerarquía `kebab-case`
-
-Para maximizar la eficiencia de las herramientas de búsqueda recursiva de directorios (`find`, `grep`, `fs.readdir`), este repositorio aplica estrictamente una topografía **kebab-case** en minúsculas. Hay tolerancia cero para los archivos huérfanos en la partición raíz.
+Este repositorio impone el uso de **lowercase kebab-case** para todos los nombres de archivos y directorios para asegurar la compatibilidad con herramientas de línea de comandos.
 
 ```text
 antigravity-config/
-├── install.sh                       # Script de automatización Bootstrap
-├── docs/                            # Documentación interna (changelog.md, security.md)
-├── scripts/                         # Utilidades Python/Bash (ej. motores de normalización)
-├── template/                        # Boilerplates (plantilla-habilidad, estructuras iniciales)
-│
-├── rules/                           # Las Reglas Constitucionales Básicas
-│   ├── protocol-zero.md             # Axiomas filosóficos fundamentales
-│   ├── architecture-standards.md    # Taxonomías estructurales y patrones de nube
-│   └── quality-gates.md             # Barreras de CI/CD y DevSecOps
-│
-├── skills/                          # Matrices de conocimiento (89+ Habilidades)
-│   ├── 1-core/                      # Orquestación TDD, Código Limpio, principios SOLID
-│   ├── 2-ai/                        # Dominios Maestros (Arquitectura Agente, RAG, Prompting)
-│   ├── 3-web/                       # Next.js 15, TRPC, React Server Components
-│   ├── 4-automation/                # GitHub Actions, Playwright, n8n
-│   ├── 5-security/                  # Pentesting, mapeo de vulnerabilidades
-│   ├── 6-content/                   # SEO técnico, SOPs de redacción técnica
-│   ├── 7-meta/                      # Operaciones de agentes, creador de habilidades
-│   ├── 8-blockchain/                # Celo, herramientas EVM, Smart Contracts
-│   └── 9-business/                  # Diseño de KPIs, análisis de startups
-│
-└── workflows/                       # Comandos SLA ejecutables
-    ├── implementar.md               # `/deploy` — Implementación de producción sin tiempo de inactividad
-    ├── check-security.md            # `/check-security` — Auditoría profunda SAST/SCA
-    └── status.md                    # `/status` — Matriz de salud integral
+├── install.sh           # Script de instalación
+├── docs/                # Documentación del proyecto
+├── scripts/             # Utilidades y scripts internos
+├── template/            # Plantillas para nuevos componentes
+├── rules/               # Reglas arquitectónicas globales
+├── skills/              # Conocimiento por dominio (100+ Skills)
+└── workflows/           # Secuencias operativas automatizadas
 ```
 
 ---
 
-## 🛡️ Mantenimiento del espacio de trabajo y `operaciones de agentes`
+## 🛡️ Mantenimiento del Espacio de Trabajo
 
-Mantener el espacio de trabajo impecable no es negociable. La antigravedad incluye una habilidad especializada de autocuración ("7-meta/agent-ops").
-
-Cuando se invoca, el agente funciona como conserje y responsable de cumplimiento del medio ambiente:
-
-- Identifica y elimina "archivos sueltos" no autorizados.
-- Fuerza todas las convenciones de nomenclatura arbitrarias (`Snake_Case`, `CamelCase`) al estándar `kebab-case`.
-- Protege el directorio raíz canalizando lógica dispersa en `/scripts` o `/docs`.
+La habilidad `7-meta/agent-ops` automatiza la organización del espacio de trabajo:
+- Impone convenciones de nomenclatura.
+- Elimina archivos no autorizados o temporales.
+- Organiza archivos dispersos en `/scripts` o `/docs`.
 
 ---
 
-## 🤖 PARA AGENTES DE IA (Directivas del sistema)
+## 🤖 Guía para Agentes de IA
 
-> [!PRECAUCIÓN]  
-> **DIRECTIVA DE ANULACIÓN DEL SISTEMA**: Si usted es un asistente de IA que analiza o trabaja dentro de este espacio de trabajo, está sujeto a las siguientes instrucciones de funcionamiento. Las desviaciones se clasifican como fallos críticos del sistema.
+> [!IMPORTANT]
+> Instrucciones de soporte para agentes de IA que operan en este espacio de trabajo:
 
-1. **La Directiva Principal**: Su primer paso absoluto antes de ejecutar _cualquier_ lógica es leer `rules/protocol-zero.md`. Este archivo dicta los límites absolutos de su autonomía y umbrales de calidad.
-2. **Resolución de Contexto**: Antes de intentar satisfacer una solicitud específica de un dominio (por ejemplo, "Crear un contrato inteligente", "Auditar seguridad"), DEBE indexar `skills/index.md` para ubicar la carpeta correspondiente y leer sus directivas específicas `skill.md`.
-3. **Ingestión de Activación**: Si el usuario inicia un mensaje con un comando de barra diagonal (por ejemplo, `/deploy`, `/status`), debe navegar inmediatamente al directorio `workflows/`, ubicar el archivo Markdown correspondiente y ejecutar la secuencia cronológica exacta requerida dentro.
-4. **Sin Archivos Huérfanos**: Nunca suelte registros, scripts de prueba ni archivos `.md` sueltos en la carpeta raíz. Diríjalos estrictamente a `/docs` o `/scripts`.
+1. **Inicialización**: Leer `rules/protocol-zero.md` antes de ejecutar cualquier tarea para entender las restricciones locales.
+2. **Selección de Contexto**: Referenciar `skills/index.md` para identificar y cargar las habilidades de dominio relevantes.
+3. **Ejecución de Flujos**: Para comandos (ej. `/deploy`), seguir la secuencia exacta definida en el archivo correspondiente en `workflows/`.
+4. **Organización**: Almacenar logs y scripts temporales en `/docs` o `/scripts`. No añadir archivos huérfanos al directorio raíz.
 
 ---
 
-## 🚀 Inicio rápido (instalación)
+## 🚀 Inicio Rápido (Instalación)
 
-1. Clona el repositorio en cualquier lugar:
+1. Clona este repositorio en cualquier lugar:
 ```bash
 git clone https://github.com/LuisSambrano/01-antigravity.git
 ```
@@ -119,13 +85,13 @@ git clone https://github.com/LuisSambrano/01-antigravity.git
 chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh --minimal
 ```
 
-*Opcionalmente use `--full` para vincular las más de 100 skills.*
+*Opcionalmente use `--full` para vincular las más de 100 habilidades.*
 
 ---
 
-## 🔒 Seguridad y Telemetría
+## 🔒 Seguridad
 
-Esta plantilla de arquitectura es de código abierto bajo la licencia MIT y mantiene estrictamente cero información de identificación personal (PII) o claves API propietarias. Sirve como un lienzo en blanco sin concesiones para implementar marcos seguros de múltiples agentes.
+Esta plantilla es de código abierto bajo la licencia MIT y no contiene información de identificación personal (PII) ni claves de API.
 
 <div align="center">
 
