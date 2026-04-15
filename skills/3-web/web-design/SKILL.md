@@ -1,13 +1,15 @@
 ---
 name: web-design
 description: Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices".
-metadata:
-  author: vercel
-  version: "1.0.0"
-  argument-hint: <file-or-pattern>
+version: 1.0.0
+author: vercel
 ---
 
 # Web Interface Guidelines
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Review files for compliance with Web Interface Guidelines.
 

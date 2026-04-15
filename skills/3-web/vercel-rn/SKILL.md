@@ -1,17 +1,15 @@
 ---
 name: vercel-rn
-description:
-  React Native and Expo best practices for building performant mobile apps. Use
-  when building React Native components, optimizing list performance,
-  implementing animations, or working with native modules. Triggers on tasks
-  involving React Native, Expo, mobile performance, or native platform APIs.
-license: MIT
-metadata:
-  author: vercel
-  version: '1.0.0'
+description: Antigravity skill for vercel-rn
+version: 1.0.0
+author: vercel
 ---
 
 # React Native Skills
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive best practices for React Native and Expo applications. Contains
 rules across multiple categories covering performance, animations, UI patterns,

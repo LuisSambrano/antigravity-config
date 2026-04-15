@@ -1,13 +1,15 @@
 ---
 name: best-practices
 description: Apply modern web development best practices for security, compatibility, and code quality. Use when asked to "apply best practices", "security audit", "modernize code", "code quality review", or "check for vulnerabilities".
-license: MIT
-metadata:
-  author: web-quality-skills
-  version: "1.0"
+version: 1.0
+author: web-quality-skills
 ---
 
 # Best practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Modern web development standards based on Lighthouse best practices audits. Covers security, browser compatibility, and code quality patterns.
 

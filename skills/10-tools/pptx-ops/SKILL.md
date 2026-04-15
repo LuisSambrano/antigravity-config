@@ -1,10 +1,15 @@
 ---
 name: pptx-ops
-description: "Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks"
-license: Proprietary. LICENSE.txt has complete terms
+description: Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks
+version: 1.0
+author: Antigravity
 ---
 
 # PPTX creation, editing, and analysis
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## Overview
 

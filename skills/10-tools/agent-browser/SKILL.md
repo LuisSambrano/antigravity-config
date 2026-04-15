@@ -1,9 +1,15 @@
 ---
 name: agent-browser
 description: Control Electron desktop applications (Slack, Discord, Notion, VS Code) using Vercel's agent-browser via Chrome DevTools Protocol (CDP).
+version: 1.0
+author: Antigravity
 ---
 
 # AGENT-BROWSER (VERCEL LABS)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 **Version**: 1.0.0
 **Status**: ACTIVE

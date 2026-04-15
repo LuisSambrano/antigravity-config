@@ -1,9 +1,15 @@
 ---
 name: rag-mastery
 description: Consolidated master domain for rag mastery.
+version: 1.0
+author: Antigravity
 ---
 
 # RAG-MASTERY
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 
 

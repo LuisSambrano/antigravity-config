@@ -1,13 +1,15 @@
 ---
 name: performance
 description: Optimize web performance for faster loading and better user experience. Use when asked to "speed up my site", "optimize performance", "reduce load time", "fix slow loading", "improve page speed", or "performance audit".
-license: MIT
-metadata:
-  author: web-quality-skills
-  version: "1.0"
+version: 1.0
+author: web-quality-skills
 ---
 
 # Performance optimization
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Deep performance optimization based on Lighthouse performance audits. Focuses on loading speed, runtime efficiency, and resource optimization.
 

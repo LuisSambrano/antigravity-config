@@ -1,13 +1,15 @@
 ---
 name: postgres-practices
 description: Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.
-license: MIT
-metadata:
-  author: supabase
-  version: "1.0.0"
+version: 1.0.0
+author: supabase
 ---
 
 # Supabase Postgres Best Practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.
 

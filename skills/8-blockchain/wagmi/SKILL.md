@@ -1,13 +1,15 @@
 ---
 name: wagmi
 description: Use wagmi React hooks for Celo dApps. Includes wallet connection, transaction hooks, and React integration patterns.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # Wagmi for Celo
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Wagmi is a React library for building Ethereum applications with hooks. It uses viem under the hood.
 

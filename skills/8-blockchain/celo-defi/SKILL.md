@@ -1,13 +1,15 @@
 ---
 name: celo-defi
 description: Integrate DeFi protocols on Celo. Use when building swaps, lending, or liquidity applications with Uniswap, Aave, Ubeswap, or other DeFi protocols.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # Celo DeFi Integration
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill covers integrating DeFi protocols on Celo, including Uniswap for swaps, Aave for lending/borrowing, and other protocols.
 

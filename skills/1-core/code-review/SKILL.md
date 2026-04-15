@@ -1,10 +1,13 @@
 ---
 name: code-review
-description: "Systematic code review and static analysis directive. Validates vulnerability thresholds, architectural patterns, and production reliability via automated CI/CD security constraints."
-metadata:
-  model: opus
+description: Systematic code review and static analysis directive. Validates vulnerability thresholds, architectural patterns, and production reliability via automated CI/CD security constraints.
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## Use this skill when
 
 - Working on code reviewer tasks or workflows

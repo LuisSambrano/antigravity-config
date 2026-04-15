@@ -1,10 +1,13 @@
 ---
 name: tool-design
-description: "Build tools that agents can use effectively, including architectural reduction patterns"
-source: "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/tree/main/skills/tool-design"
-risk: safe
+description: Build tools that agents can use effectively, including architectural reduction patterns
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## When to Use This Skill
 
 Build tools that agents can use effectively, including architectural reduction patterns

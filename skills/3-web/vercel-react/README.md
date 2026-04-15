@@ -1,4 +1,15 @@
+---
+name: vercel-react
+description: Antigravity skill for vercel-react
+version: 1.0
+author: Antigravity
+---
+
 # React Best Practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 A structured repository for creating and maintaining React Best Practices optimized for agents and LLMs.
 

@@ -1,11 +1,15 @@
 ---
 name: n8n-mcp
-description: "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns."
-source: "https://github.com/czlonkowski/n8n-skills/tree/main/skills/n8n-mcp-tools-expert"
-risk: safe
+description: Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns.
+version: 1.0
+author: Antigravity
 ---
 
 # n8n MCP Tools Expert
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Master guide for using n8n-mcp MCP server tools to build workflows.
 

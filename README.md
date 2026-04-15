@@ -109,19 +109,17 @@ When invoked, the agent functions as a janitor and compliance officer for the en
 
 ## 🚀 Quick Start (Installation)
 
-1. Clone the repository into your project's root:
-
+1. Clone this repository anywhere:
 ```bash
-git clone https://github.com/LuisSambrano/antigravity-config.git .agent-temp
+git clone https://github.com/LuisSambrano/01-antigravity.git
 ```
 
-2. Execute the bootstrap matrix (this moves configuration elements into the `.agent` target directory):
-
+2. Run the bootstrap installer (this configures everything in `~/.gemini/antigravity`):
 ```bash
-chmod +x .agent-temp/install.sh && .agent-temp/install.sh
+chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh --minimal
 ```
 
-_(You can then safely delete `.agent-temp`)_
+*Optionally use `--full` to link all 100+ skills.*
 
 ---
 

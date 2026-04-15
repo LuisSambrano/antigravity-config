@@ -1,9 +1,15 @@
 ---
 name: notebooklm
 description: Sistema universal para crear y mantener notebooks de NotebookLM como Memoria Viva de Proyecto. Úsalo cuando el usuario describe una idea de proyecto, pide crear un "libro", registrar decisiones de arquitectura/diseño o auditar la consistencia del proyecto. Actúa como el cerebro central que cualquier IA puede leer inmediatamente para hacer onboarding y funcionar como un Product Architect / Dev Team automatizado, integrando capacidades como Deep Research. Funciona en conjunto con el workflow /notebook.
+version: 1.0
+author: Antigravity
 ---
 
 # NotebookLM — Product Architecture Memory
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Cada proyecto tiene un notebook en NotebookLM que funciona como su Memoria Viviente y Arquitectura de Producto. No es un documento estático, sino una bitácora en constante evolución que cualquier agente (Antigravity, Gemini, Claude) lee para hacer *onboarding* instantáneo al proyecto, con cero alucinaciones (las respuestas se basan estrictamente en la base de conocimiento).
 

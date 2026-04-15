@@ -1,9 +1,15 @@
 ---
 name: kpi-design
 description: Design effective KPI dashboards with metrics selection, visualization best practices, and real-time monitoring patterns. Use when building business dashboards, selecting metrics, or designing data visualization layouts.
+version: 1.0
+author: Antigravity
 ---
 
 # KPI Dashboard Design
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive patterns for designing effective Key Performance Indicator (KPI) dashboards that drive business decisions.
 

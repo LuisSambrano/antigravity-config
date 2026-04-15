@@ -1,13 +1,15 @@
 ---
 name: minipay-integration
 description: Build Mini Apps for MiniPay wallet. Use when building applications for MiniPay, detecting MiniPay wallet, or creating mobile-first dApps for Celo.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # MiniPay Integration
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill covers building Mini Apps for MiniPay, the fastest growing non-custodial wallet in the Global South with 10M+ activations.
 

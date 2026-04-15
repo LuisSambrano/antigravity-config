@@ -1,9 +1,15 @@
 ---
 name: nft-standards
 description: Implement NFT standards (ERC-721, ERC-1155) with proper metadata handling, minting strategies, and marketplace integration. Use when creating NFT contracts, building NFT marketplaces, or implementing digital asset systems.
+version: 1.0
+author: Antigravity
 ---
 
 # NFT Standards
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Master ERC-721 and ERC-1155 NFT standards, metadata best practices, and advanced NFT features.
 

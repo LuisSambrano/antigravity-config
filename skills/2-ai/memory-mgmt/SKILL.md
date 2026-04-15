@@ -1,10 +1,13 @@
 ---
 name: memory-mgmt
-description: "Design short-term, long-term, and graph-based memory architectures"
-source: "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/tree/main/skills/memory-systems"
-risk: safe
+description: Design short-term, long-term, and graph-based memory architectures
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## When to Use This Skill
 
 Design short-term, long-term, and graph-based memory architectures

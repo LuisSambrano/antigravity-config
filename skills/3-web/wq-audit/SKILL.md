@@ -1,13 +1,15 @@
 ---
 name: web-quality-audit
 description: Comprehensive web quality audit covering performance, accessibility, SEO, and best practices. Use when asked to "audit my site", "review web quality", "run lighthouse audit", "check page quality", or "optimize my website".
-license: MIT
-metadata:
-  author: web-quality-skills
-  version: "1.0"
+version: 1.0
+author: web-quality-skills
 ---
 
 # Web quality audit
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive quality review based on Google Lighthouse audits. Covers Performance, Accessibility, SEO, and Best Practices across 150+ checks.
 

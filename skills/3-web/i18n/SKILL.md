@@ -1,10 +1,15 @@
 ---
 name: i18n
 description: Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.
-allowed-tools: Read, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # i18n & Localization
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > Internationalization (i18n) and Localization (L10n) best practices.
 

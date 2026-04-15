@@ -1,13 +1,15 @@
 ---
 name: celo-composer
 description: Scaffold Celo dApps with Celo Composer. Use when starting new Celo projects, creating MiniPay apps, or setting up development environments.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # Celo Composer
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill covers using Celo Composer to scaffold Celo dApps with pre-configured templates.
 

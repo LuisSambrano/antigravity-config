@@ -1,9 +1,15 @@
 ---
 name: trello-ops
-description: "Manage Trello boards, lists, and cards for project management. Use when the user asks to create, update, move, or query Trello cards, lists, or boards. Also use for: (1) organizing tasks on Trello boards, (2) moving cards between lists, (3) adding labels, members, or comments to cards, (4) querying board status, (5) syncing project progress with Trello, (6) any task management involving Trello."
+description: Manage Trello boards, lists, and cards for project management. Use when the user asks to create, update, move, or query Trello cards, lists, or boards. Also use for: (1) organizing tasks on Trello boards, (2) moving cards between lists, (3) adding labels, members, or comments to cards, (4) querying board status, (5) syncing project progress with Trello, (6) any task management involving Trello.
+version: 1.0
+author: Antigravity
 ---
 
 # Trello Skill
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Manage Trello boards, lists, cards, labels, and members via REST API or MCP.
 

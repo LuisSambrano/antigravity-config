@@ -1,13 +1,15 @@
 ---
 name: x402
 description: x402 HTTP-native payment protocol for AI agents on Celo. Use when implementing pay-per-use APIs, agent micropayments, or HTTP 402 Payment Required flows with stablecoins.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # x402: HTTP-Native Agent Payments
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 x402 is an open protocol that activates the HTTP 402 "Payment Required" status code, enabling AI agents and applications to make instant, permissionless micropayments using stablecoins.
 

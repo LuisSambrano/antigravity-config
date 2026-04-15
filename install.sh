@@ -25,9 +25,9 @@ NC='\033[0m' # No Color
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEMINI_DIR="$HOME/.gemini"
-PLAYGROUND_DIR="$HOME/playground"
-AGENT_DIR="$PLAYGROUND_DIR/.agent"
-CONFIG_REPO="$PLAYGROUND_DIR/repos/LuisSambrano/antigravity-config"
+ANTIGRAVITY_DIR="$GEMINI_DIR/antigravity"
+SKILLS_DIR="$ANTIGRAVITY_DIR/skills"
+WORKFLOWS_DIR="$ANTIGRAVITY_DIR/workflows"
 
 # Default mode
 INSTALL_MODE="minimal"
@@ -64,9 +64,9 @@ echo ""
 # Step 1: Create directories
 echo -e "${BLUE}[1/6]${NC} Creating directories..."
 mkdir -p "$GEMINI_DIR"
-mkdir -p "$AGENT_DIR/skills"
-mkdir -p "$AGENT_DIR/workflows"
-mkdir -p "$CONFIG_REPO"
+mkdir -p "$SKILLS_DIR"
+mkdir -p "$WORKFLOWS_DIR"
+mkdir -p "$ANTIGRAVITY_DIR/rules"
 echo -e "${GREEN}✓${NC} Directories created"
 
 # Step 2: Copy gemini-instructions.md
@@ -80,13 +80,13 @@ echo -e "${GREEN}✓${NC} gemini-instructions.md installed"
 
 # Step 3: Copy Rules
 echo -e "${BLUE}[3/6]${NC} Installing master rules..."
-cp -r "$SCRIPT_DIR/rules" "$AGENT_DIR/"
-echo -e "${GREEN}✓${NC} Rules installed (5 files)"
+cp -r "$SCRIPT_DIR/rules/"* "$ANTIGRAVITY_DIR/rules/"
+echo -e "${GREEN}✓${NC} Rules installed"
 
 # Step 4: Copy Workflows
 echo -e "${BLUE}[4/6]${NC} Installing workflows..."
-cp "$SCRIPT_DIR/workflows/"*.md "$AGENT_DIR/workflows/" 2>/dev/null || true
-echo -e "${GREEN}✓${NC} Workflows installed (3 commands)"
+cp "$SCRIPT_DIR/workflows/"*.md "$WORKFLOWS_DIR/" 2>/dev/null || true
+echo -e "${GREEN}✓${NC} Workflows installed"
 
 # Step 5: Install Skills
 echo -e "${BLUE}[5/6]${NC} Installing skills..."
@@ -110,15 +110,15 @@ if [ "$INSTALL_MODE" = "full" ]; then
     echo -e "${YELLOW}  Installing ALL skills (this may take a moment)...${NC}"
     # Create symlinks for all skill categories
     for category in "$SCRIPT_DIR/skills"/*/; do
-        category_name=$(basename "$category")
+        [ -d "$category" ] || continue
         for skill in "$category"*/; do
             if [ -d "$skill" ]; then
                 skill_name=$(basename "$skill")
-                ln -sf "$skill" "$AGENT_DIR/skills/$skill_name" 2>/dev/null || true
+                ln -sf "$skill" "$SKILLS_DIR/$skill_name"
             fi
         done
     done
-    SKILL_COUNT=$(find "$AGENT_DIR/skills" -maxdepth 1 -type l | wc -l | tr -d ' ')
+    SKILL_COUNT=$(find "$SKILLS_DIR" -maxdepth 1 -type l | wc -l | tr -d ' ')
     echo -e "${GREEN}✓${NC} $SKILL_COUNT skills linked"
 else
     echo -e "${YELLOW}  Installing core skills (12)...${NC}"
@@ -126,7 +126,7 @@ else
         skill_name=$(basename "$skill_path")
         full_path="$SCRIPT_DIR/skills/$skill_path"
         if [ -d "$full_path" ]; then
-            ln -sf "$full_path" "$AGENT_DIR/skills/$skill_name"
+            ln -sf "$full_path" "$SKILLS_DIR/$skill_name"
             echo -e "    ${GREEN}✓${NC} $skill_name"
         fi
     done
@@ -141,12 +141,12 @@ if [ ! -f "$GEMINI_DIR/gemini-instructions.md" ]; then
     ERRORS=$((ERRORS + 1))
 fi
 
-if [ ! -d "$AGENT_DIR/rules" ]; then
+if [ ! -d "$ANTIGRAVITY_DIR/rules" ]; then
     echo -e "${RED}✗${NC} Rules not found"
     ERRORS=$((ERRORS + 1))
 fi
 
-if [ ! -d "$AGENT_DIR/workflows" ]; then
+if [ ! -d "$WORKFLOWS_DIR" ]; then
     echo -e "${RED}✗${NC} Workflows not found"
     ERRORS=$((ERRORS + 1))
 fi

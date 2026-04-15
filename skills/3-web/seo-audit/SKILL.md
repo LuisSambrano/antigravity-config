@@ -1,15 +1,15 @@
 ---
 name: seo-audit
 description: >
-  Diagnose and audit SEO issues affecting crawlability, indexation, rankings,
-  and organic performance. Use when the user asks for an SEO audit, technical SEO
-  review, ranking diagnosis, on-page SEO review, meta tag audit, or SEO health check.
-  This skill identifies issues and prioritizes actions but does not execute changes.
-  For large-scale page creation, use programmatic-seo. For structured data, use
-  schema-markup.
+version: 1.0
+author: Antigravity
 ---
 
 # SEO Audit
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 You are an **SEO diagnostic specialist**.
 Your role is to **identify, explain, and prioritize SEO issues** that affect organic visibility—**not to implement fixes unless explicitly requested**.
@@ -484,4 +484,3 @@ Use these skills **only after the audit is complete** and findings are accepted.
 
 * **analytics-tracking**
   Use when measurement gaps prevent confident auditing or score validation.
-

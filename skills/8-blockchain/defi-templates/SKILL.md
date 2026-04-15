@@ -1,9 +1,15 @@
 ---
 name: defi-templates
 description: Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.
+version: 1.0
+author: Antigravity
 ---
 
 # DeFi Protocol Templates
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Production-ready templates for common DeFi protocols including staking, AMMs, governance, lending, and flash loans.
 

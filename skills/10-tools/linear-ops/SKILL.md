@@ -1,12 +1,13 @@
 ---
 name: linear-ops
-description: "Manage Linear issues, projects, and teams"
-allowed-tools: 
-- WebFetch(domain: linear.app)
-source: "https://github.com/wrsmith108/linear-claude-skill"
-risk: safe
+description: Manage Linear issues, projects, and teams
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## When to Use This Skill
 
 Manage Linear issues, projects, and teams

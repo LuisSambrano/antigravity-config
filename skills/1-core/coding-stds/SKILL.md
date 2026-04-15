@@ -1,11 +1,15 @@
 ---
 name: coding-stds
 description: Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.
+version: 1.0
 author: affaan-m
-version: "1.0"
 ---
 
 # Coding Standards & Best Practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Universal coding standards applicable across all projects.
 

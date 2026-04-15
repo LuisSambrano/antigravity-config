@@ -1,4 +1,15 @@
+---
+name: examples
+description: Antigravity skill for examples
+version: 1.0
+author: Antigravity
+---
+
 # Radix UI Design System - Skill Examples
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This folder contains practical examples demonstrating how to use Radix UI primitives to build accessible, customizable components.
 

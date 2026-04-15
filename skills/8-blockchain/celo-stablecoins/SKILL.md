@@ -1,13 +1,15 @@
 ---
 name: celo-stablecoins
 description: Working with Celo's stablecoin ecosystem. Use when building with USDm, EURm, USDC, USDT, or regional Mento stablecoins on Celo.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # Celo Stablecoins
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill covers working with stablecoins on the Celo blockchain, including Mento stablecoins and other major stablecoins.
 

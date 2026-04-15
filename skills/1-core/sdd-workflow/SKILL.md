@@ -1,9 +1,15 @@
 ---
 name: sdd-workflow
 description: Spec-Driven Development methodology. Use when starting a new feature, project, or complex implementation. Transforms vague ideas into structured specifications before writing code.
+version: 1.0
+author: Antigravity
 ---
 
 # Spec-Driven Development (SDD)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > **"Specifications generate code. Code serves specifications."**
 

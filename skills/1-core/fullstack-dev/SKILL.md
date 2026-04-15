@@ -1,9 +1,15 @@
 ---
 name: fullstack-dev
 description: Comprehensive fullstack development skill for building complete web applications with React, Next.js, Node.js, GraphQL, and PostgreSQL. Includes project scaffolding, code quality analysis, architecture patterns, and complete tech stack guidance. Use when building new projects, analyzing code quality, implementing design patterns, or setting up development workflows.
+version: 1.0
+author: Antigravity
 ---
 
 # Senior Fullstack
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Complete toolkit for senior fullstack with modern tools and best practices.
 

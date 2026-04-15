@@ -1,9 +1,15 @@
 ---
 name: web3-testing
 description: Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, setting up blockchain test suites, or validating DeFi protocols.
+version: 1.0
+author: Antigravity
 ---
 
 # Web3 Smart Contract Testing
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Master comprehensive testing strategies for smart contracts using Hardhat, Foundry, and advanced testing patterns.
 

@@ -1,10 +1,13 @@
 ---
 name: context-mgmt
-description: "Recognize patterns of context failure: lost-in-middle, poisoning, distraction, and clash"
-source: "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/tree/main/skills/context-degradation"
-risk: safe
+description: Recognize patterns of context failure: lost-in-middle, poisoning, distraction, and clash
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## When to Use This Skill
 
 Recognize patterns of context failure: lost-in-middle, poisoning, distraction, and clash

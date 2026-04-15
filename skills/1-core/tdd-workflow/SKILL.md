@@ -1,14 +1,13 @@
 ---
 name: tdd-workflow
 description: Master TDD orchestrator specializing in red-green-refactor
-  discipline, multi-agent workflow coordination, and comprehensive test-driven
-  development practices. Enforces TDD best practices across teams with
-  AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD
-  implementation and governance.
-metadata:
-  model: opus
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## Use this skill when
 
 - Working on tdd orchestrator tasks or workflows

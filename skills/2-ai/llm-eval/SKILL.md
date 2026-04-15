@@ -1,9 +1,15 @@
 ---
 name: llm-eval
 description: Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.
+version: 1.0
+author: Antigravity
 ---
 
 # LLM Evaluation
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Master comprehensive evaluation strategies for LLM applications, from automated metrics to human evaluation and A/B testing.
 

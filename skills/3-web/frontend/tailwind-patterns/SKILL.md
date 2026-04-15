@@ -1,10 +1,15 @@
 ---
 name: tailwind-patterns
 description: Tailwind CSS v4 principles. CSS-first configuration, container queries, modern patterns, design token architecture.
-allowed-tools: Read, Write, Edit, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # Tailwind CSS Patterns (v4 - 2025)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > Modern utility-first CSS with CSS-native configuration.
 

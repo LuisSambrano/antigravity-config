@@ -1,9 +1,15 @@
 ---
 name: ui-ux-matrix
-description: "Diagnostic matrix for UI/UX compliance. Validates web/mobile structures against 50+ stylistic rules, color contrast thresholds, interaction feedback loops, and framework-specific patterns."
+description: Diagnostic matrix for UI/UX compliance. Validates web/mobile structures against 50+ stylistic rules, color contrast thresholds, interaction feedback loops, and framework-specific patterns.
+version: 1.0
+author: Antigravity
 ---
 
 # UI/UX Pro Max - Design Intelligence
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive design guide for web and mobile applications. Contains 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 9 technology stacks. Searchable database with priority-based recommendations.
 

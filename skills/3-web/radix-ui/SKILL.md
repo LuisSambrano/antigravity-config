@@ -1,11 +1,15 @@
 ---
 name: radix-ui
 description: Build accessible design systems with Radix UI primitives. Headless component customization, theming strategies, and compound component patterns for production-grade UI libraries.
-risk: safe
-source: self
+version: 1.0
+author: Antigravity
 ---
 
 # Radix UI Design System
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Build production-ready, accessible design systems using Radix UI primitives with full customization control and zero style opinions.
 

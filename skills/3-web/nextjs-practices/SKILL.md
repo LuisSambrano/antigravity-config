@@ -1,10 +1,15 @@
 ---
 name: nextjs-practices
 description: Next.js App Router principles. Server Components, data fetching, routing patterns.
-allowed-tools: Read, Write, Edit, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # Next.js Best Practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > Principles for Next.js App Router development.
 

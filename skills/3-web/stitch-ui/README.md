@@ -1,4 +1,15 @@
+---
+name: stitch-ui
+description: Antigravity skill for stitch-ui
+version: 1.0
+author: Antigravity
+---
+
 # Stitch UI Design Skill
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Expert guidance for creating effective prompts in Google Stitch, the AI-powered UI design tool.
 

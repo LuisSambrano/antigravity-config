@@ -1,9 +1,15 @@
 ---
 name: comic-gen
 description: Generate complete AI comics from a simple idea using NotebookLM. Use when the user wants to create comics, graphic stories, or illustrated narratives.
+version: 1.0
+author: Antigravity
 ---
 
 # Comic Generator with AI
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Automated comic creation workflow using NotebookLM.
 

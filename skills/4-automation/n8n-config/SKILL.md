@@ -1,11 +1,15 @@
 ---
 name: n8n-config
-description: "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type."
-source: "https://github.com/czlonkowski/n8n-skills/tree/main/skills/n8n-node-configuration"
-risk: safe
+description: Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type.
+version: 1.0
+author: Antigravity
 ---
 
 # n8n Node Configuration
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Expert guidance for operation-aware node configuration with property dependencies.
 

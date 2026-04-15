@@ -1,10 +1,15 @@
 ---
 name: browser-5mb-limit
 description: |
-  How to prevent and recover from HTTP 400 and 401 errors caused by the Vertex AI 5 Megabyte limit when processing screenshots from the browser_subagent tool.
+version: 1.0
+author: Antigravity
 ---
 
 # Handling Browser 5MB Limit Error (image exceeds 5 MB maximum)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## 📌 Context of the Problem
 

@@ -1,15 +1,13 @@
 ---
 name: startup-analyst
 description: Expert startup business analyst specializing in market sizing,
-  financial modeling, competitive analysis, and strategic planning for
-  early-stage companies. Use PROACTIVELY when the user asks about market
-  opportunity, TAM/SAM/SOM, financial projections, unit economics, competitive
-  landscape, team planning, startup metrics, or business strategy for pre-seed
-  through Series A startups.
-metadata:
-  model: inherit
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## Use this skill when
 
 - Working on startup analyst tasks or workflows

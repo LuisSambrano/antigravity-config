@@ -1,9 +1,15 @@
 ---
 name: workflows
 description: A hybrid skill for managing n8n workflows using both MCP (for inspection) and REST API (for creation/editing).
+version: 1.0
+author: Antigravity
 ---
 
 # n8n Automator Skill
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill enables "Unicorn-Tier" automation of your n8n instance.
 

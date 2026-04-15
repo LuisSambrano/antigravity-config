@@ -1,13 +1,15 @@
 ---
 name: erc-8004
 description: ERC-8004 Agent Trust Protocol for AI agent identity, reputation, and validation on Celo. Use when building AI agents that need identity registration, reputation tracking, or trust verification across organizational boundaries.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # ERC-8004: Agent Trust Protocol
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ERC-8004 establishes trust infrastructure for autonomous AI agents, enabling them to discover, identify, and evaluate other agents across organizational boundaries.
 

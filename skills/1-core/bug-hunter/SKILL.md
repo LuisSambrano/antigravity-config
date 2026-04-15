@@ -1,11 +1,15 @@
 ---
 name: bug-hunter
-description: "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch."
-source: "https://github.com/getsentry/skills/tree/main/plugins/sentry-skills/skills/find-bugs"
-risk: safe
+description: Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.
+version: 1.0
+author: Antigravity
 ---
 
 # Find Bugs
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Review changes on this branch for bugs, security vulnerabilities, and code quality issues.
 

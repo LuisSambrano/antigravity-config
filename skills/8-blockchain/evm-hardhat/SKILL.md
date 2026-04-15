@@ -1,13 +1,15 @@
 ---
 name: evm-hardhat
 description: Hardhat development for EVM chains including Celo. Use when setting up Hardhat projects, writing Solidity contracts, compiling, testing, deploying, or verifying contracts with Hardhat.
-license: Apache-2.0
-metadata:
-  author: celo-org
-  version: "1.0.0"
+version: 1.0.0
+author: celo-org
 ---
 
 # Hardhat Development for EVM Chains
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 This skill covers Hardhat setup and development for EVM-compatible chains with emphasis on Celo.
 

@@ -1,9 +1,15 @@
 ---
 name: web-perf
-description: "Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance"
+description: Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance
+version: 1.0
+author: Antigravity
 ---
 
 # Web Performance Optimization
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## Overview
 

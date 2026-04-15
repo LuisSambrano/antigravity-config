@@ -1,9 +1,15 @@
 ---
 name: api-security
-description: "Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities"
+description: Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities
+version: 1.0
+author: Antigravity
 ---
 
 # API Security Best Practices
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## Overview
 

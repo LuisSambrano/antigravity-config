@@ -1,13 +1,15 @@
 ---
 name: seo
 description: Optimize for search engine visibility and ranking. Use when asked to "improve SEO", "optimize for search", "fix meta tags", "add structured data", "sitemap optimization", or "search engine optimization".
-license: MIT
-metadata:
-  author: web-quality-skills
-  version: "1.0"
+version: 1.0
+author: web-quality-skills
 ---
 
 # SEO optimization
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Search engine optimization based on Lighthouse SEO audits and Google Search guidelines. Focus on technical SEO, on-page optimization, and structured data.
 

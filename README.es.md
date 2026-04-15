@@ -109,19 +109,17 @@ Cuando se invoca, el agente funciona como conserje y responsable de cumplimiento
 
 ## 🚀 Inicio rápido (instalación)
 
-1. Clona el repositorio en la raíz de tu proyecto:
-
+1. Clona el repositorio en cualquier lugar:
 ```bash
-git clone https://github.com/LuisSambrano/antigravity-config.git .agent-temp
+git clone https://github.com/LuisSambrano/01-antigravity.git
 ```
 
-2. Ejecute la matriz de arranque (esto mueve los elementos de configuración al directorio de destino `.agent`):
-
+2. Ejecute el instalador de arranque (esto configura todo en `~/.gemini/antigravity`):
 ```bash
-chmod +x .agent-temp/install.sh && .agent-temp/install.sh
+chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh --minimal
 ```
 
-_(Luego puede eliminar `.agent-temp`)_ de forma segura
+*Opcionalmente use `--full` para vincular las más de 100 skills.*
 
 ---
 

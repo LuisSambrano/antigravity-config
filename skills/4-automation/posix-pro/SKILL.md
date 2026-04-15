@@ -1,12 +1,13 @@
 ---
 name: posix-pro
 description: Expert in strict POSIX sh scripting for maximum portability across
-  Unix-like systems. Specializes in shell scripts that run on any
-  POSIX-compliant shell (dash, ash, sh, bash --posix).
-metadata:
-  model: sonnet
+version: 1.0
+author: Antigravity
 ---
 
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 ## Use this skill when
 
 - Working on posix shell pro tasks or workflows

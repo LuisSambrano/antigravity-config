@@ -1,10 +1,15 @@
 ---
 name: chrome-devtools
 description: |
-  Skill that automatically prioritizes the chrome-devtools-mcp server over visual emulation (browser_subagent) for UI testing, network/console debugging, and performance audits. Uses the Chrome DevTools Protocol (CDP) directly, eliminating the friction of screenshots and emulated clicks.
+version: 1.0
+author: Antigravity
 ---
 
 # Chrome DevTools MCP — Ultra-fast Testing & Debugging
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## 📌 When to Activate (Automatic Trigger)
 

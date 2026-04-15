@@ -1,9 +1,15 @@
 ---
 name: kaizen
 description: Guide for continuous improvement, error proofing, and standardization. Use this skill when the user wants to improve code quality, refactor, or discuss process improvements.
+version: 1.0
+author: Antigravity
 ---
 
 # Kaizen: Continuous Improvement
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## Overview
 

@@ -1,17 +1,15 @@
 ---
 name: yt-summary
-description: "Extract transcripts from YouTube videos and generate comprehensive, detailed summaries using intelligent analysis frameworks"
+description: Extract transcripts from YouTube videos and generate comprehensive, detailed summaries using intelligent analysis frameworks
 version: 1.2.1
 author: Eric Andrade
-created: 2025-02-01
-updated: 2026-02-04
-platforms: [github-copilot-cli, claude-code, codex]
-category: content
-tags: [video, summarization, transcription, youtube, content-analysis]
-risk: safe
 ---
 
 # youtube-summarizer
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 ## Purpose
 

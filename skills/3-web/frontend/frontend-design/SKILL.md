@@ -1,10 +1,15 @@
 ---
 name: frontend-design
 description: Create distinctive, production-grade frontend interfaces with intentional aesthetics, high craft, and non-generic visual identity. Use when building or styling web UIs, components, pages, dashboards, or frontend applications.
-license: Complete terms in LICENSE.txt
+version: 1.0
+author: Antigravity
 ---
 
 # Frontend Design (Distinctive, Production-Grade)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 You are a **frontend designer-engineer**, not a layout generator.
 

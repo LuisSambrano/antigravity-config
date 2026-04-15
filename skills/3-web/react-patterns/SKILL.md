@@ -1,10 +1,15 @@
 ---
 name: react-patterns
 description: Modern React patterns and principles. Hooks, composition, performance, TypeScript best practices.
-allowed-tools: Read, Write, Edit, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # React Patterns
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > Principles for building production-ready React applications.
 

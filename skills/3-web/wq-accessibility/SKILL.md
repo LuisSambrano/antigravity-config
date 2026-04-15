@@ -1,13 +1,15 @@
 ---
 name: accessibility
 description: Audit and improve web accessibility following WCAG 2.1 guidelines. Use when asked to "improve accessibility", "a11y audit", "WCAG compliance", "screen reader support", "keyboard navigation", or "make accessible".
-license: MIT
-metadata:
-  author: web-quality-skills
-  version: "1.0"
+version: 1.0
+author: web-quality-skills
 ---
 
 # Accessibility (a11y)
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive accessibility guidelines based on WCAG 2.1 and Lighthouse accessibility audits. Goal: make content usable by everyone, including people with disabilities.
 

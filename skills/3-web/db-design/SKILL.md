@@ -1,10 +1,15 @@
 ---
 name: db-design
 description: Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.
-allowed-tools: Read, Write, Edit, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # Database Design
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > **Learn to THINK, not copy SQL patterns.**
 

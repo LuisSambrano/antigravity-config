@@ -1,9 +1,15 @@
 ---
 name: react-state
 description: Master modern React state management with Redux Toolkit, Zustand, Jotai, and React Query. Use when setting up global state, managing server state, or choosing between state management solutions.
+version: 1.0
+author: Antigravity
 ---
 
 # React State Management
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Comprehensive guide to modern React state management patterns, from local component state to global stores and server state synchronization.
 

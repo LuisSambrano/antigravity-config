@@ -1,10 +1,15 @@
 ---
 name: api-patterns
 description: API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.
-allowed-tools: Read, Write, Edit, Glob, Grep
+version: 1.0
+author: Antigravity
 ---
 
 # API Patterns
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 > API design principles and decision-making for 2025.
 > **Learn to THINK, not copy fixed patterns.**
@@ -78,4 +83,3 @@ Before designing an API:
 | Script | Purpose | Command |
 |--------|---------|---------|
 | `scripts/api_validator.py` | API endpoint validation | `python scripts/api_validator.py <project_path>` |
-

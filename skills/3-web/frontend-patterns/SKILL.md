@@ -1,11 +1,15 @@
 ---
 name: frontend-patterns
 description: Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices.
+version: 1.0
 author: affaan-m
-version: "1.0"
 ---
 
 # Frontend Development Patterns
+
+> [!IMPORTANT]
+> This skill MUST be executed strictly under the **Omni-Architect Agent Protocol v1.0**.
+> All tool executions, code modifications, and communications MUST adhere to the 13 core protocols.
 
 Modern frontend patterns for React, Next.js, and performant user interfaces.
 
