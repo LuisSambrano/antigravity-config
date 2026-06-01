@@ -1,63 +1,33 @@
 ---
-description: Comprehensive project health, CI/CD, and quality status report
+description: Project health report — git state, quality checks, and actionable recommendations.
 ---
 
-# /status - Project Status Report
+# /status
 
-Use this workflow to generate an overview of the project's current health, codebase quality, and repository state.
+Generates a project health report.
 
-## Automated Execution Steps
+## Steps
 
-1. **Codebase Quality Check**
-   - TypeScript compilation status (errors/warnings)
-   - ESLint validation
-   - Build execution status
+1. TypeScript: run tsc --noEmit. Report error count.
+2. ESLint: run npx eslint . --ext .ts,.tsx. Report error and warning count.
+3. Build: run npm run build. Report pass/fail.
+4. Git: run git status --short and git log --oneline -5.
+5. If applicable: accessibility score, Core Web Vitals, SEO metadata.
 
-2. **Version Control Audit**
-   - Pending working tree changes (uncommitted)
-   - Current active branch
-   - Synchronization state with remote repository (GitHub)
+## Output format
 
-3. **Performance & Standards Review**
-   - Accessibility (a11y) score
-   - Core Web Vitals / Navigation performance
-   - SEO metadata (if applicable)
+```
+Status: [project-name]
 
-4. **Summary Generation**
-   - ✅ Optimal elements (Passed checks)
-   - ⚠️ Attention required (Warnings/Degradations)
-   - 📝 Actionable recommendations
-
-## Usage Context
-
-- Resuming work on a project after a context switch or downtime.
-- Auditing the project state before a major refactor or deployment.
-- Generating a stakeholder report on technical debt.
-
-## Usage Example
-
-USER: `/status`
-
-AGENT:
-
-```text
-📊 Project Status: target-project-name
-
-## ✅ Optimal (5/7)
+PASSED
 - TypeScript: 0 errors
 - ESLint: 0 errors
-- Build: Successful
-- Git: Synced with origin/main
-- Accessibility: 95/100
+- Build: success
+- Git: clean, synced with origin/main
 
-## ⚠️ Attention Required (2 items)
-- Performance: 78/100 (Oversized hero asset)
-- SEO: Missing meta description on `/about`
+NEEDS ATTENTION
+- Performance: 78/100 (oversized hero asset)
 
-## 📝 Recommendations
-1. Convert hero image to WebP format.
-2. Inject meta description tags in `/about` route.
-
-## 🔄 Last Commit
-`feat(carousel): add auto-play functionality` (2 days ago)
+RECOMMENDATIONS
+1. Convert hero image to WebP.
 ```

@@ -1,72 +1,47 @@
 ---
-description: Comprehensive security audit, vulnerabilities and data leaks prevention
+description: OWASP-based security audit — secrets, database, auth, HTTP headers, vulnerability scan.
 ---
 
-# /check-security - Comprehensive Security Audit
+# /check-security
 
-Use this workflow to evaluate the security posture of a web project, application, or infrastructure, identifying potential breaches and data leaks before reaching production.
+Full security audit of the current project.
 
-## Automated Execution Steps
+## Scope
 
-1. **Environment & Secrets Scanning**
-   - Check for exposed `.env` files or files in Git staging.
-   - Scan for hardcoded credentials, tokens, and API keys in the source code (especially on the client).
-   - Validate correct environment variable conventions (e.g., `NEXT_PUBLIC_` only when strictly public).
+1. Environment and secrets
+   - Check for .env files in git staging.
+   - Scan source for hardcoded credentials, tokens, API keys.
+   - Validate NEXT_PUBLIC_ conventions.
 
-2. **Database and Backend Auditing (e.g., Supabase/Postgres)**
-   - Run the Security Advisor (MCP Linter) to detect DB vulnerabilities.
-   - Validate that **all** sensitive tables have `Row Level Security (RLS)` active with explicitly defined policies.
-   - Check that stored procedures and "Security Definers" possess a secured `search_path` to prevent schema injections.
-   - Verify excessive privileges in views and tables towards public roles (`anon`).
+2. Database (Supabase/Postgres)
+   - Run Security Advisor via MCP.
+   - Verify RLS is active on all sensitive tables with explicit policies.
+   - Check stored procedures for secured search_path.
+   - Verify no excessive privileges on public roles.
 
-3. **Authentication, Sessions & Middleware**
-   - Review middleware execution (Zero-Trust style) to ensure private routes are protected.
-   - Verify correct sanitation and destruction of cookies/sessions (including "zombie sessions" mitigation).
-   - Evaluate OAuth flows and redirects against vulnerabilities and session hijacking.
+3. Authentication and sessions
+   - Review middleware for zero-trust pattern on private routes.
+   - Verify cookie/session destruction.
+   - Evaluate OAuth flows for session hijacking vectors.
 
-4. **Framework HTTP & Network Configurations**
-   - Examine critical security headers in the framework configuration (e.g., `next.config.ts` or `next.config.js`): `Content-Security-Policy (CSP)`, `Strict-Transport-Security (HSTS)`, `X-Frame-Options`, `X-Content-Type-Options`.
-   - Audit CORS configuration and origin to prevent API consumption from risky or unauthorized domains.
+4. HTTP headers (next.config.ts)
+   - Content-Security-Policy
+   - Strict-Transport-Security
+   - X-Frame-Options
+   - X-Content-Type-Options
+   - CORS configuration.
 
-5. **Advanced Sanitization and Mitigation (Exhaustive Checklist)**
-   - Examine the code against the following structured vulnerabilities:
-     - **Injections**: SQL Injection (SQLi), NoSQL Injection, OS Command Injection, LDAP Injection, XML External Entity (XXE) Injection, Server-Side Template Injection (SSTI).
-     - **Client & Request Vulnerabilities**: Cross-Site Scripting (XSS) (Reflected, Stored, DOM-based), Server-Side Request Forgery (SSRF), Cross-Site Request Forgery (CSRF), Unvalidated Redirects and Forwards, Clickjacking (UI Redressing).
-     - **Access Control & Authorization**: Insecure Direct Object Reference (IDOR) / Broken Access Control, Missing Function-Level Access Control, Directory Traversal / Path Traversal, Local File Inclusion (LFI), Remote File Inclusion (RFI), Parameter Tampering / Mass Assignment.
-     - **Authentication & Sessions**: Default Passwords / Weak Passwords, Credential Stuffing / Brute Force, Session Fixation, Session Hijacking, Insufficient Session Expiration, JSON Web Token (JWT) Vulnerabilities (None Algorithm, Signature bypass).
-     - **Data, Logic & Integrity**: Sensitive Data Exposure, Insecure Deserialization, Business Logic Flaws, Race Conditions (Time-of-check to time-of-use - TOCTOU), Denial of Service (DoS) / Buffer Overflows.
-     - **Configuration & Operations**: Security Misconfiguration, Missing or Weak HTTP Security Headers (CORS, CSP, HSTS), Insecure Cryptographic Storage / Weak Ciphers, Using Components with Known Vulnerabilities, Open Cloud Storage Buckets (S3, GCP), Insufficient Logging & Monitoring.
-     - **Code Execution**: Remote Code Execution (RCE).
-   - Identify obsolete third-party dependencies and packages by running ecosystem audits (like `npm audit`).
+5. Vulnerability checklist
+   Injections: SQLi, NoSQL, OS command, XXE, SSTI.
+   Client: XSS (reflected, stored, DOM), SSRF, CSRF, clickjacking, open redirects.
+   Access control: IDOR, broken access control, path traversal, LFI, RFI, mass assignment.
+   Auth: brute force, session fixation, session hijacking, JWT vulnerabilities.
+   Data: insecure deserialization, race conditions, sensitive data exposure.
+   Config: missing headers, weak ciphers, outdated dependencies (npm audit).
 
-## Report Generation (Verdict)
+## Output format
 
-Upon completing the deep scan, the results will be presented in a Traffic Light style with Action Items:
-
-- ❌ **CRITICAL**: Urgent deployment blockers (e.g., hardcoded passwords, RLS disabled on personal data). Requires immediate patches or purges.
-- ⚠️ **WARNING**: Moderate risks (e.g., non-standard CSP, obsolete secondary dependencies).
-- 📝 **IMPROVEMENT**: Minor opportunities and recommended optimizations for network architecture.
-- ✅ **SECURE**: A balance of what the application is already protecting satisfactorily.
-
-## Usage Context
-
-- Pre-launch to formal production (before buying a definitive domain).
-- After adding new architectures or systems to the main stack (e.g., incorporating payment gateways or file Storage).
-- Quarterly as a strength test (Penta/Health-Check).
-
-## Usage Example
-
-USER: `/check-security`
-(Optional specific focus) USER: `/check-security focus on Supabase database RLS`
-(Optional local focus) USER: `/check-security check for hardcoded .env variables in UI Components`
-
-AGENT: _(Assumes the role of an expert, runs bash commands, grep, invokes MCP if applicable, and drafts an executive report of flaws and patches)_.
-
-## Prerequisites
-
-- ❌ Do not interpret complex policies like Content-Security-Policy or Row Level Security in SQL.
-- ❌ Do not provide base password secrets.
-- ❌ Do not specify exactly how to search for flaws, linter commands, etc.
-- ❌ Do not need to know the OWASP Top 10 in detail.
-
-Just request the workflow; the agent will act as your Security Architect and document or resolve the platform.
+CRITICAL: Deployment blocker. Fix before any push.
+WARNING: Moderate risk. Fix before release.
+IMPROVEMENT: Minor optimization.
+SECURE: Check passed.

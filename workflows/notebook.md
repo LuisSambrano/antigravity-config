@@ -1,114 +1,56 @@
 ---
-description: Create, update, sync, and audit NotebookLM project notebooks. Serves as the Universal Command for initiating ideas, running deep research, and managing living product architecture memory.
+description: NotebookLM project memory management. Create, sync, log, and audit project notebooks.
 ---
 
-# /notebook — Universal Product Memory Workflow
+# /notebook
 
-Flujo de trabajo oficial para administrar los portafolios y proyectos mediante NotebookLM. Convierte ideas crudas en estructuras profesionales de Product Architecture. Trabaja de manera conjunta con la skill `notebooklm` (lee el SKILL.md para ver plantillas, convenciones de nombres y reglas de tono estricto).
+Manages project notebooks in NotebookLM via the nlm CLI.
 
 ## Prerequisites
-- CLI de `nlm` instalada y autenticada (`nlm auth status`). Si la sesión expira o es la primera vez, usa `nlm login`.
 
----
+nlm CLI installed and authenticated. Verify with: nlm auth status
 
-## Comandos del Workflow
+## Commands
 
-### 1. `/notebook init [Nombre o Concepto]`
+### /notebook init [name]
 
-**Uso**: Generar inmediatamente un "cerebro de proyecto" cuando el usuario presenta una idea base o solicita un nuevo proyecto. Esto hace el trabajo inicial de todo un equipo de desarrollo / arquitectura.
+Creates a new project notebook with initial architecture documents.
 
-**Pasos de Ejecución Automática por Antigravity:**
+Steps:
+1. nlm notebook create "[name]"
+2. Generate base documents locally in /tmp/nlm_[project]/: brief, UX, architecture, features, infrastructure.
+3. Upload each document: nlm source add <notebook-id> --file /tmp/nlm_[project]/NN-file.md --title "NN - Title" --wait
+4. Start deep research: nlm research start <notebook-id> "Research market, recommended stacks, and similar projects described in source 01."
+5. Return notebook ID. Notify that research is running.
 
-1. **Crear Notebook**:
-   ```bash
-   nlm notebook create "[Nombre del Proyecto]"
-   ```
-2. **Generar Archivos Iniciales**: 
-   Crea localmente en `/tmp/nlm_[proyecto]/` los documentos base definidos en la skill (01-Brief, 02-UX, 03-Arquitectura, 04-Features, 05-Infraestructura). Con el poco contexto de la idea, elabora hipótesis iniciales (fase conceptual 💭).
-3. **Subir Fuentes al Notebook**:
-   ```bash
-   nlm source add <notebook-id> --file /tmp/nlm_[proyecto]/NN-file.md --title "NN — Título" --wait
-   ```
-4. **Disparar Deep Research Obligatorio**: 
-   Basado en el brief inicial, lanza de forma autónoma una investigación para completar "lo que falta" (benchmarks, viabilidad técnica de la idea, stack recomendado).
-   ```bash
-   nlm research start <notebook-id> "Investiga a profundidad el mercado, los stacks técnicos recomendados y ejemplos similares para construir el proyecto descrito en el Source 01."
-   ```
-5. **Reportar**: Entrega al usuario el ID del notebook y notifica que el Deep Research está corriendo. Sugiere usar `nlm research import` cuando termine.
+### /notebook sync [name]
 
----
+Synchronizes the notebook with the current codebase state.
 
-### 2. `/notebook sync [Nombre del Proyecto]`
+Steps:
+1. nlm notebook list to find the target notebook.
+2. Download current sources to /tmp/nlm_sync/.
+3. Compare against actual code (package.json, DB schemas, deploy URLs).
+4. Rewrite stale sources where discrepancies exist.
+5. Replace atomically: nlm source delete <old-id> -y && nlm source add <notebook-id> --file updated.md --wait
+6. Report which sources were updated and why.
 
-**Uso**: Mantener el libro de NotebookLM sincronizado con el código base actual, deploy o decisiones de diseño que existan en el ecosistema real. Evita que la memoria se oxide.
+### /notebook log [name]
 
-**Pasos:**
-1. **Identificar**:
-   ```bash
-   nlm notebook list
-   ```
-2. **Descargar Estado Actual**:
-   ```bash
-   nlm source content <source-id> -o /tmp/nlm_sync/NN-current.md
-   ```
-3. **Contrastar Localmente**:
-   Verifica el código real del proyecto (`package.json`, esquemas de base de datos, URLs de despliegue, Vercel) y compara con lo descargado.
-4. **Reescribir Stale Sources**: Modifica el markdown localmente donde haya discrepancia (ej. Features que pasaron de ⚠ a ✔ porque ya fueron codeadas; stack actualizado). **Aplicando el tono estricto**.
-5. **Reemplazo Atómico**:
-   ```bash
-   nlm source delete <old-source-id> -y
-   nlm source add <notebook-id> --file /tmp/nlm_sync/NN-updated.md --title "NN — Título" --wait
-   ```
-6. **Reportar**: Informa qué fuentes fueron actualizadas y por qué.
+Appends a session log or architecture decision record.
 
----
+Steps:
+1. Determine next sequence number from existing sources.
+2. Create log file with: session context, architectural decisions (decision / reason / long-term consequence), next steps.
+3. Upload: nlm source add <notebook-id> --file log.md --title "NN - Log: YYYY-MM-DD [topic]" --wait
+4. If the decision invalidates an existing architecture or feature source, run a sync on those sources.
 
-### 3. `/notebook log [Nombre del Proyecto]`
+### /notebook audit [name]
 
-**Uso**: Añadir un registro tras una sesión de lluvia de ideas, depuración (debugging), o decisión de producto crítico (como elegir un servicio BaaS o cambiar una regla UX). Equivale a un ADR (Architecture Decision Record).
+Reviews notebook content for quality and accuracy.
 
-**Pasos:**
-1. **Determinar la Secuencialidad**:
-   Busca las fuentes existentes (`nlm source list`) y determina el número `NN` más alto para seguir la secuencia (ej. si hay 06, el siguiente es el 07).
-2. **Crear el Archivo de Bitácora**:
-   Plantilla base:
-   ```markdown
-   # NN — Bitácora: YYYY-MM-DD [Tema/Decisión]
-
-   **Última Actualización**: YYYY-MM-DD
-   
-   ## Contexto de la Sesión
-   [Describir de qué se hablaba o el bug a resolver]
-
-   ## Decisiones Arquitectónicas (ADRs)
-   | Decisión | Razón / Ventaja | Consecuencia a largo plazo |
-   |----------|-----------------|----------------------------|
-   | [X]      | [Por qué]       | [Afecta BD y Auth]         |
-
-   ## Próximos pasos de Ejecución
-   - Tareas derivadas.
-   ```
-3. **Subir Fuente**:
-   ```bash
-   nlm source add <notebook-id> --file /tmp/nlm_log/NN-bitacora.md --title "NN — Bitácora: YYYY-MM-DD [Tema]" --wait
-   ```
-4. **Trigger**: Si la decisión descrita en la bitácora invalida una arquitectura pasada (03) o cambia una funcionalidad (04), el agente debe proseguir invocando un **Sync inverso** para actualizar dichas capas fundamentales.
-
----
-
-### 4. `/notebook audit [Nombre del Proyecto]`
-
-**Uso**: Pasar un "Linter Humano" a la documentación para asegurar que la calidad de la información del proyecto sea premium, ejecutiva y libre de sesgos de ventas o estados mentirosos. 
-
-**Pasos:**
-1. Descarga del notebook entero a `/tmp/`. 
-2. **Tone Check**: Buscar por superlativos ("ultra", "increíble", "el mejor"), promesas absolutas ("imposible de") y adjetivos marketing.
-3. **State Check**: Revisa todas las flags de feature `✔ Operativo`. ¿El agente puede encontrar el commit / URL que lo verifica? Si no, se degrada a `⚠ En pruebas`.
-4. **Reporte**: Genera archivo o comentario de GitHub indicando violaciones. Reescribe y resube si se autoriza automático.
-
-## Filosofía Operativa (Zero Friction Context)
-
-Cuando Antigravity, Gemini, o Stitch entren en contexto sin memoria asíncrona, basta con enviarles la orden: 
-*"Lee el notebook [ID] y basate estricamente en él para seguir mi requerimiento"*. 
-
-Con esto, el framework Open Source asegura de que ningún desarrollador, UI Architect o Project Manager deba escribir especificaciones manuales de nuevo para un Agente IA. Todo nace, vive y se audita en el libro.
+Steps:
+1. Download all sources to /tmp/.
+2. Tone check: find superlatives, absolute promises, marketing adjectives.
+3. State check: for every feature marked as operational, verify a commit or URL exists. Degrade to "in progress" if not verifiable.
+4. Report violations. Rewrite and re-upload if auto mode is confirmed.

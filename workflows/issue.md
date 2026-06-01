@@ -1,37 +1,26 @@
 ---
-description: Automates research on a given topic and creates a structured GitHub Issue
+description: Autonomous research on a topic followed by structured GitHub Issue creation.
 ---
 
-# /issue - Automated Research & Issue Generation
+# /issue
 
-Use this workflow to trigger autonomous research on a specific topic. The agent will gather findings and publish them as a structured GitHub Issue for asynchronous tracking.
+Researches a topic and creates a structured GitHub Issue.
 
-## Automated Execution Steps
+## Steps
 
-1. **Topic Extraction**: Parse the user's command to identify the specific research objective.
-2. **Web Reconnaissance**: Utilize the `search_web` tool to aggregate official documentation, technical specifications, implementation tradeoffs, and relevant context.
-3. **Content Structuring**: Draft the issue payload using the standard research template:
-   - **Context / Problem**: Rationale for the research.
-   - **Objective**: The specific technical question to answer.
-   - **Findings**: Bulleted list of technical discoveries.
-   - **Conclusion / Solution**: Actionable recommendations.
-4. **GitHub Integration**: Execute the `gh` CLI to publish the issue.
-   - Command pattern: `gh issue create --title "[RESEARCH] <Topic>" --body "<Draft>" --label "research"`
-5. **Confirmation**: Return the generated GitHub Issue URL to the user.
+1. Parse the topic from the user command.
+2. Search the web for official documentation, specifications, tradeoffs, and relevant context.
+3. Structure findings:
+   - Context / Problem
+   - Objective
+   - Findings
+   - Conclusion / Recommended action
+4. Create the GitHub Issue:
+   gh issue create --title "[RESEARCH] topic" --body "content" --label "research"
+5. Return the issue URL.
 
-## Usage Context
+## Usage examples
 
-- Exploring architectural pivots (e.g., "Research migrating from REST to GraphQL").
-- Investigating third-party API capabilities before integration.
-- Documenting technical debt or emerging vulnerabilities for future sprints.
-
-## Usage Example
-
-USER: `/issue Research Next.js Core Web Vitals Optimization`
-
-AGENT:
-
-1. Executes web searches for relevant adoption data and stablecoin usage.
-2. Aggregates findings into the markdown template.
-3. Executes: `gh issue create --title "[RESEARCH] Next.js Core Web Vitals Optimization" ...`
-4. Reply: "Issue created successfully: https://github.com/your-org/target-repo/issues/15"
+/issue Research migrating from REST to GraphQL
+/issue Investigate Supabase realtime capabilities
+/issue Document Next.js server action limitations

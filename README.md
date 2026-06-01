@@ -1,40 +1,51 @@
 # Antigravity
 
-Agentic configuration system. It enforces code standards, design consistency, and automation through skills and protocols for AI code generation (Gemini, Claude, Cursor).
+Agent configuration system. Installs skills, workflows, and rules into any AI coding agent that reads markdown files from a context directory.
 
-<p>
-  <a href="./readme.md">English</a> •
-  <a href="./readme.es.md">Español</a>
-</p>
+Tested with: Google Gemini CLI, Claude Code, Cursor.
+
+[English](./readme.md) · [Español](./readme.es.md)
 
 ---
 
-## Technical Structure
+## Structure
 
-```text
+```
 antigravity/
-├── install.sh           # Bootstrap script (~/.gemini/antigravity)
-├── docs/                # Knowledge base
-├── rules/               # protocol.md (System constraints)
-├── skills/              # Context triggers (React, Logic, UI)
-└── workflows/           # Execution chains
+├── install.sh           # Installer — copies config into the active agent directory
+├── AGENT.md             # Global agent rules (copy of template/agent-instructions.md)
+├── rules/               # Core protocol — loaded by agent on every session
+├── skills/              # Domain modules — loaded by agent based on task context
+└── workflows/           # Slash commands — invoked explicitly by the user
 ```
 
-## AI Agent Directives
+## How It Works
 
-1. **Read Protocols**: Parse `rules/protocol.md` before resolving tasks.
-2. **Context First**: Autonomously load relevant `.md` from `skills/` based on the user's prompt (e.g. `skills/web/design-system` for UI tasks).
-3. **DESIGN.md Integrity**: For any frontend work, the agent MUST locate and adhere to the `DESIGN.md` in the project root. If absent, fallback to minimal UI constraints.
-4. **Clean Execution**: Commit directly using the Continuous Commit protocol once tests/lint pass.
+The installer detects which agent is active based on the `--target` flag and copies the relevant files into the agent's configuration directory. The agent then reads these files at session start or on-demand.
 
----
+Agents must:
+1. Read `rules/protocol.md` before resolving any task.
+2. Autonomously load relevant skills from `skills/` based on the user's prompt.
+3. Adhere to `DESIGN.md` in the project root for any frontend work. If absent, use the fallback defined in `rules/protocol.md`.
+4. Follow the GitOps Continuous Commit protocol after completing tasks.
 
 ## Installation
 
 ```bash
 git clone https://github.com/LuisSambrano/01-antigravity.git
-chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh
+cd 01-antigravity
+chmod +x install.sh
+
+# Gemini CLI  →  ~/.gemini/
+./install.sh --target gemini
+
+# Claude Code  →  project root CLAUDE.md + .claude/
+./install.sh --target claude
+
+# Cursor  →  .cursor/rules/
+./install.sh --target cursor
 ```
 
-## Security & Ethics
-Contains no PII or proprietary code. MIT License.
+## License
+
+MIT. No PII or proprietary code.

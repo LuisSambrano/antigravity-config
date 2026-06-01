@@ -1,52 +1,29 @@
 ---
-description: Deploy to Vercel with automated quality and security checks
+description: Deploy to production via Vercel after quality and security gates pass.
 ---
 
-# /deploy - Production Deployment
+# /deploy
 
-Use this workflow to deploy the current project to production.
+Deploys the current project to production.
 
-## Automated Execution Steps
+## Steps
 
-1. **Quality Assurance Check**
-   - TypeScript: 0 errors required
-   - ESLint: 0 errors required
-   - Build: Must complete successfully
+1. TypeScript: 0 errors required.
+2. ESLint: 0 errors required.
+3. Build: must complete successfully.
+4. Security: no exposed secrets, environment variables validated.
+5. Execute: vercel --prod
 
-2. **Security Verification**
-   - No exposed secrets in code or staging
-   - Environment variables validated
+## Output format
 
-3. **Deployment Execution**
-
-   ```bash
-   // turbo
-   vercel --prod
-   ```
-
-4. **Result Reporting**
-   - ✅ Deployment successful + Production URL
-   - ❌ Deployment failed + Actionable fix recommendations
-
-## Usage Context
-
-- Completing a feature and deploying to production.
-- Releasing a hotfix or bug fix.
-- Deploying a stable version for stakeholder review.
-
-## Usage Example
-
-USER: `/deploy`
-
-AGENT:
-
-```text
-🚀 Initiating Vercel deployment...
-
-✅ TypeScript: 0 errors
-✅ ESLint: 0 errors
-✅ Build: Successful
-✅ Deploy: Completed
-
-🔗 URL: https://your-project.vercel.app
 ```
+Deploy: [project-name]
+
+TypeScript: 0 errors
+ESLint: 0 errors
+Build: success
+Deploy: complete
+URL: https://project.vercel.app
+```
+
+If any gate fails, report the error and block deployment.

@@ -1,68 +1,43 @@
 ---
-description: Evaluate technical feasibility of product ideas and technologies
+description: Technical feasibility evaluation for a new feature or technology concept.
 ---
 
-# /idea - Feasibility Evaluation
+# /idea
 
-Use this workflow to assess the technical viability of new features, libraries, or product concepts within the current stack.
+Evaluates the technical viability of a concept within the current stack.
 
-## Automated Execution Steps
+## Steps
 
-1. **Research & Analysis**
-   - Define the core concept and technical requirements.
-   - Identify underlying technologies and dependencies.
-   - Assess required infrastructure resources.
+1. Define the core concept and technical requirements.
+2. Identify underlying technologies and dependencies.
+3. Assess stack compatibility: Next.js, Supabase, Vercel.
+4. Estimate effort.
+5. Identify security, performance, or architectural risks.
+6. Issue verdict.
 
-2. **Feasibility Assessment**
-   - Stack Compatibility: Evaluate integration with Next.js, Supabase, Vercel.
-   - Effort Estimation: Approximate implementation time.
-   - Risk Analysis: Identify security, performance, or architectural risks.
+## Verdict format
 
-3. **Verdict Generation**
-   - ✅ YES: Provide an actionable implementation plan.
-   - ⚠️ PARTIAL: Specify supported vs. unsupported components.
-   - ❌ NO: State blocking reasons and propose viable alternatives.
+YES: Provide an actionable implementation plan.
+PARTIAL: List supported vs unsupported components and propose workarounds.
+NO: State blocking reasons and propose viable alternatives.
 
-## Usage Context
+## Example
 
-- Evaluating a new technology trend or library.
-- Assessing if a requested feature aligns with the current architecture.
-- Determining implementation cost before committing development time.
+Input: /idea implement passkey authentication
 
-## Usage Example
-
-USER: `/idea Implement passkey authentication`
-
-AGENT:
-
-```text
-🔍 Researching WebAuthn passkeys...
-
-## Analysis
-
-**Concept**: Passwordless authentication via device biometrics.
-
-**Stack Compatibility**:
-- Next.js ✅ Supported
-- Supabase ⚠️ Indirect support via workarounds
-- Vercel ✅ Supported
-
-## Verdict: ⚠️ PARTIAL
-
-**Supported Implementation**:
-- Integrate WebAuthn via `@simplewebauthn`.
-- Deploy as a secondary MFA method.
-
-**Unsupported Strategy**:
-- Exclusive passkey authentication (due to device compatibility limits).
-
-**Estimated Effort**: 4-6 hours
-
-**Recommended Alternative**: Magic links (Native Supabase support).
+Output:
 ```
+Concept: Passwordless authentication via device biometrics.
 
-## Prerequisites
+Stack compatibility:
+- Next.js: supported
+- Supabase: indirect (workarounds needed)
+- Vercel: supported
 
-- ❌ Do not self-research before invoking.
-- ❌ Deep technical context is not required from the user.
-- Provide the core idea; the agent handles the technical assessment.
+Verdict: PARTIAL
+
+Supported path: integrate WebAuthn via @simplewebauthn as secondary MFA.
+Blocking path: exclusive passkey auth has device compatibility limits.
+Estimated effort: 4-6 hours.
+Alternative: magic links (native Supabase support).
+```

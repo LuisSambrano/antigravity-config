@@ -1,40 +1,45 @@
 # Antigravity
 
-Sistema de configuración agéntica. Impone estándares de código, consistencia visual y automatización mediante habilidades (skills) y protocolos para la generación de código vía IA (Gemini, Claude, Cursor).
+Sistema de configuración para agentes de IA. Instala skills, workflows y reglas en cualquier agente que lea archivos markdown desde un directorio de contexto.
 
-<p>
-  <a href="./readme.md">English</a> •
-  <a href="./readme.es.md">Español</a>
-</p>
+Compatible con: Google Gemini CLI, Claude Code, Cursor.
 
----
-
-## Estructura Técnica
-
-```text
-antigravity/
-├── install.sh           # Script de inicialización (~/.gemini/antigravity)
-├── docs/                # Base de conocimiento
-├── rules/               # protocol.md (Restricciones del sistema)
-├── skills/              # Disparadores de contexto (React, Logic, UI)
-└── workflows/           # Cadenas de ejecución
-```
-
-## Directivas para Agentes de IA
-
-1. **Leer Protocolos**: Parsear `rules/protocol.md` antes de resolver tareas.
-2. **Contexto Primero**: Cargar autónomamente el `.md` relevante desde `skills/` basado en el prompt (ej. `skills/web/design-system` para tareas UI).
-3. **Integridad DESIGN.md**: Para cualquier trabajo de frontend, el agente DEBE localizar y ajustarse al `DESIGN.md` en la raíz del proyecto. Si no existe, usar el fallback de restricciones UI mínimas.
-4. **Ejecución Limpia**: Completar el trabajo con commits directos utilizando el protocolo de Continuous Commit una vez pasen los tests y el lint.
+[English](./readme.md) · [Español](./readme.es.md)
 
 ---
+
+## Qué hace
+
+El instalador detecta el agente activo según el flag `--target` y copia los archivos de configuración en el directorio correspondiente. A partir de ahí, el agente lee esos archivos al inicio de cada sesión o bajo demanda.
 
 ## Instalación
 
 ```bash
 git clone https://github.com/LuisSambrano/01-antigravity.git
-chmod +x 01-antigravity/install.sh && ./01-antigravity/install.sh
+cd 01-antigravity
+chmod +x install.sh
+
+# Gemini CLI  →  ~/.gemini/
+./install.sh --target gemini
+
+# Claude Code  →  CLAUDE.md + .claude/ en la raíz del proyecto
+./install.sh --target claude
+
+# Cursor  →  .cursor/rules/
+./install.sh --target cursor
 ```
 
-## Seguridad y Ética
-No contiene datos personales identificables (PII) ni código propietario. Licencia MIT.
+## Estructura
+
+```
+antigravity/
+├── install.sh           # Instalador
+├── AGENT.md             # Reglas globales del agente
+├── rules/               # Protocolo base
+├── skills/              # Módulos de dominio
+└── workflows/           # Comandos slash
+```
+
+## Licencia
+
+MIT. No contiene datos personales ni código propietario.

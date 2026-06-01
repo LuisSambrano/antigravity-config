@@ -1,84 +1,59 @@
 ---
-description: Mandatory pre-push security and quality gate. Run before reporting any phase complete.
+description: Security and quality gate. Run before every git push and before marking any task complete.
 ---
-# /pre-push — Security & Quality Gate
 
-Run this workflow before every `git push` and before reporting any task or phase as done.
+# /pre-push
 
-## Automated Execution Steps
+Mandatory gate before every push. Not optional.
 
-1. **Build Gate**
-   ```bash
+## Steps
+
+1. Build gate
    npm run build
-   ```
-   Zero errors required. No exceptions.
-
-2. **Environment Variable Security Scan**
-   ```bash
-   grep -rn 'NEXT_PUBLIC_ADMIN_EMAIL\|NEXT_PUBLIC_SERVICE_ROLE\|NEXT_PUBLIC_RESEND_API' 
-     app/ proxy.ts 2>/dev/null
-   ```
-   Expected: zero matches. Any match is a CRITICAL violation — remove NEXT_PUBLIC_ prefix.
-
-3. **Sensitive Field Exposure Scan**
-   ```bash
-   grep -rn 'affiliate_url' components/ app/ --include='*.ts' --include='*.tsx' | 
-     grep -v '//\|server\|action\|SECURITY\|has_affiliate\|exclude'
-   ```
-   Expected: zero unintentional client-side matches.
-
-4. **Hardcoded Domain Scan**
-   ```bash
-   grep -rn "from:.*'[^']*@" app/ --include='*.ts' | grep -v 'process\.env'
-   grep -rn 'https://[a-z-]*\.(co|cc)/' app/ --include='*.ts' --include='*.tsx'
-   ```
-   Expected: zero matches. Replace with environment variables.
-
-5. **TypeScript Strict Check**
-   ```bash
-   npx tsc --noEmit
-   ```
    Zero errors required.
 
-6. **Git Status Verification**
-   ```bash
-   git status --short
-   git log --oneline -3
-   ```
-   All work committed. Working tree clean before push.
+2. Environment variable scan
+   grep -rn "NEXT_PUBLIC_" app/ --include="*.ts" --include="*.tsx"
+   Expected: any NEXT_PUBLIC_ variable must be intentionally public. Remove prefix from anything that should be server-only.
 
-## Output Format
+3. Secrets scan
+   grep -rn "password\|api_key\|secret\|token" app/ --include="*.ts" --include="*.tsx" | grep -v process.env | grep -v "//"
+   Expected: zero matches.
 
-```
-🔒 Pre-push Gate — [Project Name]
-──────────────────────────────────
-✅ Build:           0 errors
-✅ NEXT_PUBLIC_:    0 violations
-✅ affiliate_url:   0 client exposures
-✅ Hardcoded domains: 0 matches
-✅ TypeScript:      0 errors
-✅ Git:             clean, 3 commits ready
+4. Hardcoded domain scan
+   grep -rn "https://" app/ --include="*.ts" --include="*.tsx" | grep -v process.env
+   Expected: domains must come from environment variables.
 
-🚀 Safe to push.
-```
+5. TypeScript strict check
+   npx tsc --noEmit
+   Zero errors required.
 
-Or if a check fails:
+6. Git status
+   git status --short && git log --oneline -3
+   Working tree must be clean before push.
+
+## Output format
 
 ```
-❌ Pre-push Gate FAILED — [Project Name]
+Pre-push Gate: [project-name]
 
-❌ NEXT_PUBLIC_ violation found:
-   proxy.ts:47 — process.env.NEXT_PUBLIC_ADMIN_EMAIL
-   → Fix: change to process.env.ADMIN_EMAIL
+Build:            pass
+NEXT_PUBLIC_:     0 violations
+Secrets:          0 matches
+Hardcoded domains: 0 matches
+TypeScript:       0 errors
+Git:              clean
+
+Safe to push.
+```
+
+If any check fails:
+
+```
+Pre-push Gate FAILED: [project-name]
+
+[check]: [violation detail]
+[file:line] [offending value]
 
 Push blocked. Fix violations before proceeding.
 ```
-
-## Usage
-
-```
-/pre-push
-```
-
-Invoke before every push. Invoke before reporting any phase complete.
-This workflow is NOT optional — it is a gate, not a suggestion.

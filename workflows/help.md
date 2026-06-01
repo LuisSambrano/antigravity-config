@@ -1,34 +1,25 @@
 ---
-description: List all available workflows and their purposes
+description: List all available workflows and their slash commands.
 ---
 
-# 🆘 /help - Agent Command Menu
+# /help
 
-Use this command to review available operational workflows and automated skills.
+Lists all available workflows and context-triggered skills.
 
-## 🔴 Core Workflows (On-Demand)
+## Workflows (explicit invocation)
 
-| Command               | Definition               | Usage Context                                                                |
-| :-------------------- | :----------------------- | :--------------------------------------------------------------------------- |
-| **`/status`**         | **Health Check**         | Run upon starting a session to review git, linting, and build integrity.     |
-| **`/deploy`**         | **Production Release**   | Trigger deployment pipelines (e.g., Vercel) after security validation.       |
-| **`/idea`**           | **Feasibility Analysis** | Evaluate the technical viability of a new concept against the current stack. |
-| **`/trello`**         | **Task Management**      | Interface with Trello boards, lists, and sprint management.                  |
-| **`/check-security`** | **Security Audit**       | Execute an OWASP Top 10 vulnerability scan on specific components.           |
-| **`/issue`**          | **Automated Research**   | Autonomous web research and GitHub issue generation.                         |
+| Command | Purpose |
+|---|---|
+| /status | Project health: git state, lint, build, quality metrics. |
+| /deploy | Production deployment via Vercel with quality and security gates. |
+| /pre-push | Security and quality gate. Run before every push. |
+| /idea | Technical feasibility evaluation for a new concept or feature. |
+| /issue | Autonomous research + GitHub Issue creation. |
+| /trello | Trello board and card management via API. |
+| /notebook | NotebookLM project memory management. |
+| /til | Today I Learned - append entry to the knowledge base repo. |
+| /check-security | Full OWASP-based security audit of the current project. |
 
-## 🧠 Automated Skills (Context-Aware)
+## Skills (context-triggered, no explicit invocation)
 
-> _Skills do not require explicit invocation. The agent activates them based on context._
-
-| Skill                             | Domain   | Activation Trigger                                                   |
-| :-------------------------------- | :------- | :------------------------------------------------------------------- |
-| **`spec-driven-dev`**             | Core     | Planning complex architectural features from scratch.                |
-| **`browser-testing`**             | Tools    | Visual validation, screenshots, or cross-browser debugging required. |
-| **`ui-prototyping`**              | Web      | Pre-code UI/UX wireframing requests.                                 |
-| **`api-security-best-practices`** | Security | Writing or modifying backend API routes.                             |
-| + 90 more skills                  | Various  | Refer to the complete [INDEX.md](../skills/INDEX.md) directory.      |
-
----
-
-> **Execution Directive:** Simply input the slash command (e.g., `/status`) to initiate the workflow. For skills, state the objective, and the agent will load the optimal toolkit.
+Skills load automatically based on the user prompt. See skills/index.md for the full catalog.
